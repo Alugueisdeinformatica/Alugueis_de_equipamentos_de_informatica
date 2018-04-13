@@ -13,7 +13,7 @@ public class Cliente {
     private String nome;
     private String email;
     private String telefone;
-    private String endereco;
+    private Endereco endereco;
     private String dataNascimento;
     private String sexo;
     private String cpf;
@@ -21,7 +21,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String nome, String email, String telefone, String endereco, String dataNascimento, String sexo, String cpf) {
+    public Cliente(String nome, String email, String telefone, Endereco endereco, String dataNascimento, String sexo, String cpf) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
@@ -55,11 +55,11 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
