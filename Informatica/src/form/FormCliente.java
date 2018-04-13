@@ -88,12 +88,22 @@ public class FormCliente extends javax.swing.JFrame {
         lbTelefone.setText("Telefone:");
         lbTelefone.setName("lbTelefone"); // NOI18N
 
+        try {
+            tfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         tfTelefone.setName("tfTelefone"); // NOI18N
 
         lbDataNescimento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbDataNescimento.setText("Data de Nascimento:");
         lbDataNescimento.setName("lbDataNescimento"); // NOI18N
 
+        try {
+            tfDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         tfDataNascimento.setName("tfDataNascimento"); // NOI18N
 
         cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
@@ -106,6 +116,7 @@ public class FormCliente extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Estado Civil:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         bgEstadoCivil.add(rbSolteiro);
+        rbSolteiro.setSelected(true);
         rbSolteiro.setText("Solteiro");
         rbSolteiro.setName("rbSolteiro"); // NOI18N
 
@@ -216,6 +227,11 @@ public class FormCliente extends javax.swing.JFrame {
         lbCEP.setText("CEP:");
         lbCEP.setName("lbCEP"); // NOI18N
 
+        try {
+            tfCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         tfCEP.setName("tfCEP"); // NOI18N
 
         lbCidade.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -244,6 +260,11 @@ public class FormCliente extends javax.swing.JFrame {
         lbNumero.setName("lbNumero"); // NOI18N
 
         tfNumero.setName("tfNumero"); // NOI18N
+        tfNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNumeroKeyTyped(evt);
+            }
+        });
 
         lbBairro.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbBairro.setText("Bairro:");
@@ -342,6 +363,11 @@ public class FormCliente extends javax.swing.JFrame {
         lbCPF.setText("CPF:");
         lbCPF.setName("lbCPF"); // NOI18N
 
+        try {
+            tfCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         tfCPF.setName("tfCPF"); // NOI18N
 
         lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -349,6 +375,11 @@ public class FormCliente extends javax.swing.JFrame {
         lbNome.setName("lbNome"); // NOI18N
 
         tfNome.setName("tfNome"); // NOI18N
+        tfNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNomeKeyTyped(evt);
+            }
+        });
 
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCadastrar.setText("Cadastrar");
@@ -423,6 +454,20 @@ public class FormCliente extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(646, 490));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tfNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNomeKeyTyped
+        String caracteres = "0987654321";
+        if(caracteres.contains(evt.getKeyChar() + "")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_tfNomeKeyTyped
+
+    private void tfNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNumeroKeyTyped
+        String caracteres = "0987654321";
+        if(!caracteres.contains(evt.getKeyChar() + "")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_tfNumeroKeyTyped
 
     /**
      * @param args the command line arguments
