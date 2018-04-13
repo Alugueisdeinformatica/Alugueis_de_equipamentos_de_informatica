@@ -97,7 +97,7 @@ public class Endereco {
         this.rua = rua;
     }
     
-    public boolean validaEndereco(){
+    public boolean validaEndereco(){ //Verifica se todos os campos foram preenchidos
         return !cep.equals("") &&
                 !cidade.equals("") &&
                 !pais.equals("") &&

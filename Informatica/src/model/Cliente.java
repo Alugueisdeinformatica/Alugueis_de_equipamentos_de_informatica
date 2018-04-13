@@ -17,11 +17,12 @@ public class Cliente {
     private String dataNascimento;
     private String sexo;
     private String cpf;
+    private String estadoCivil;
 
     public Cliente() {
     }
 
-    public Cliente(String nome, String email, String telefone, Endereco endereco, String dataNascimento, String sexo, String cpf) {
+    public Cliente(String nome, String email, String telefone, Endereco endereco, String dataNascimento, String sexo, String cpf, String estadoCivil) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
@@ -29,6 +30,7 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
         this.cpf = cpf;
+        this.estadoCivil = estadoCivil;
     }
 
     public String getNome() {
@@ -86,8 +88,16 @@ public class Cliente {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
     
-    public boolean validaCliente(){
+    public boolean validaCliente(){ //Verifica se todos os campos foram preenchidos
         return !nome.equals("") &&
                 !email.equals("") &&
                 !telefone.equals("") &&
