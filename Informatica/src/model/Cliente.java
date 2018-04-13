@@ -86,4 +86,14 @@ public class Cliente {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+    
+    public boolean validaCliente(){
+        return !nome.equals("") &&
+                !email.equals("") &&
+                !telefone.equals("") &&
+                endereco.validaEndereco() &&
+                !dataNascimento.equals("") &&
+                !sexo.equals("") &&
+                !cpf.equals("");
+    }
 }

@@ -97,5 +97,14 @@ public class Endereco {
         this.rua = rua;
     }
     
-    
+    public boolean validaEndereco(){
+        return !cep.equals("") &&
+                !cidade.equals("") &&
+                !pais.equals("") &&
+                !estado.equals("") &&
+                !complemento.equals("") &&
+                !numero.equals("") &&
+                !bairro.equals("") &&
+                !rua.equals("");
+    }
 }
