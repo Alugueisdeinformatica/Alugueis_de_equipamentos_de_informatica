@@ -27,21 +27,87 @@ public class FormPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        JMenuCadastro = new javax.swing.JMenu();
+        JMenuItemCliente = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        JMenuItemSair = new javax.swing.JMenuItem();
+        JMenuSuporte = new javax.swing.JMenu();
+        JMenuItemAjuda = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        JMenuItemSobre = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Equipamentos de Informática");
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 623, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
         );
 
-        pack();
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        JMenuCadastro.setText("Cadastro");
+        JMenuCadastro.setName("JMenuCadastro"); // NOI18N
+
+        JMenuItemCliente.setText("Cliente");
+        JMenuItemCliente.setName("JMenuItemCliente"); // NOI18N
+        JMenuCadastro.add(JMenuItemCliente);
+        JMenuCadastro.add(jSeparator1);
+
+        JMenuItemSair.setText("Sair");
+        JMenuItemSair.setName("JMenuItemSair"); // NOI18N
+        JMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemSairActionPerformed(evt);
+            }
+        });
+        JMenuCadastro.add(JMenuItemSair);
+
+        jMenuBar1.add(JMenuCadastro);
+
+        JMenuSuporte.setText("Suporte");
+        JMenuSuporte.setName("JMenuSuporte"); // NOI18N
+
+        JMenuItemAjuda.setText("Ajuda");
+        JMenuItemAjuda.setName("JMenuItemAjuda"); // NOI18N
+        JMenuSuporte.add(JMenuItemAjuda);
+        JMenuSuporte.add(jSeparator2);
+
+        JMenuItemSobre.setText("Sobre");
+        JMenuItemSobre.setName("JMenuItemSobre"); // NOI18N
+        JMenuSuporte.add(JMenuItemSobre);
+
+        jMenuBar1.add(JMenuSuporte);
+
+        setJMenuBar(jMenuBar1);
+
+        setSize(new java.awt.Dimension(639, 409));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setExtendedState(this.MAXIMIZED_BOTH);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void JMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_JMenuItemSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +145,15 @@ public class FormPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu JMenuCadastro;
+    private javax.swing.JMenuItem JMenuItemAjuda;
+    private javax.swing.JMenuItem JMenuItemCliente;
+    private javax.swing.JMenuItem JMenuItemSair;
+    private javax.swing.JMenuItem JMenuItemSobre;
+    private javax.swing.JMenu JMenuSuporte;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }
