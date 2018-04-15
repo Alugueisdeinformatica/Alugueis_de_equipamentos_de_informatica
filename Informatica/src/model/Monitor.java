@@ -9,7 +9,7 @@ package model;
  *
  * @author Luís Gustavo
  */
-public class Monitor extends Equipamento{
+public class Monitor implements Equipamento{
     private String tipo;
     private String tamanhoTela;
     private String resolucao;
@@ -17,8 +17,7 @@ public class Monitor extends Equipamento{
     public Monitor() {
     }
 
-    public Monitor(String tipo, String tamanhoTela, String resolucao, String codEquipamento, String modelo, String marca, String quantidade, String valorUnitarioAluguel) {
-        super(codEquipamento, modelo, marca, quantidade, valorUnitarioAluguel);
+    public Monitor(String tipo, String tamanhoTela, String resolucao) {
         this.tipo = tipo;
         this.tamanhoTela = tamanhoTela;
         this.resolucao = resolucao;
@@ -46,5 +45,15 @@ public class Monitor extends Equipamento{
 
     public void setResolucao(String resolucao) {
         this.resolucao = resolucao;
+    }
+
+    @Override
+    public String codEquipamento() {
+        return "";
+    }
+
+    @Override
+    public int quantidade() {
+        return 0;
     }
 }

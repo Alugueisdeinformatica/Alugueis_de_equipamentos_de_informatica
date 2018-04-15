@@ -27,7 +27,7 @@ public class EquipamentoDao {
     public Equipamento buscaEquipamento(String codEquipamento){
         Equipamento eq = null;
         for(int i = 0; i < lista.size(); i++){
-            if(codEquipamento.equals(lista.get(i).getCodEquipamento())){
+            if(codEquipamento.equals(lista.get(i).codEquipamento())){
                 eq = lista.get(i);
             }
         }
@@ -42,7 +42,7 @@ public class EquipamentoDao {
     }
     
     public void atualizarEquipamento(Equipamento equipamento){
-        Equipamento eq = buscaEquipamento(equipamento.getCodEquipamento());
+        Equipamento eq = buscaEquipamento(equipamento.codEquipamento());
         if(eq != null){
             int idx = lista.indexOf(eq);
             lista.set(idx, eq);

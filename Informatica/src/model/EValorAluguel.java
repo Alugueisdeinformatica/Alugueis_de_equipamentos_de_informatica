@@ -9,7 +9,6 @@ package model;
  *
  * @author Luís Gustavo
  */
-public interface Equipamento {    
-    public String codEquipamento();
-    public int quantidade();    
- }
+public enum EValorAluguel {
+    VALOR1, VALOR2, VALOR3, VALOR4, VALOR5;
+}

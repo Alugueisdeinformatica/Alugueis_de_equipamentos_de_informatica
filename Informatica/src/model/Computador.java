@@ -9,7 +9,7 @@ package model;
  *
  * @author Luís Gustavo
  */
-public class Computador extends Equipamento{
+public class Computador implements Equipamento{
     private String sistemaOperacional;
     private String placaVideo;
     private String hd;
@@ -19,8 +19,7 @@ public class Computador extends Equipamento{
     public Computador() {
     }
 
-    public Computador(String sistemaOperacional, String placaVideo, String hd, String processador, String memoria, String codEquipamento, String modelo, String marca, String quantidade, String valorUnitarioAluguel) {
-        super(codEquipamento, modelo, marca, quantidade, valorUnitarioAluguel);
+    public Computador(String sistemaOperacional, String placaVideo, String hd, String processador, String memoria) {
         this.sistemaOperacional = sistemaOperacional;
         this.placaVideo = placaVideo;
         this.hd = hd;
@@ -66,5 +65,15 @@ public class Computador extends Equipamento{
 
     public void setMemoria(String memoria) {
         this.memoria = memoria;
+    }
+
+    @Override
+    public String codEquipamento() {
+        return "";
+    }
+
+    @Override
+    public int quantidade() {
+        return 0;
     }
 }

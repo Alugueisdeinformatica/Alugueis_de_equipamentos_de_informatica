@@ -9,7 +9,7 @@ package model;
  *
  * @author Luís Gustavo
  */
-public class Projetor extends Equipamento{
+public class Projetor implements Equipamento{
     private String material;
     private String brilho;
     private String resolucaoOptica;
@@ -19,8 +19,7 @@ public class Projetor extends Equipamento{
     public Projetor() {
     }
 
-    public Projetor(String material, String brilho, String resolucaoOptica, String lampada, String lente, String codEquipamento, String modelo, String marca, String quantidade, String valorUnitarioAluguel) {
-        super(codEquipamento, modelo, marca, quantidade, valorUnitarioAluguel);
+    public Projetor(String material, String brilho, String resolucaoOptica, String lampada, String lente) {
         this.material = material;
         this.brilho = brilho;
         this.resolucaoOptica = resolucaoOptica;
@@ -66,5 +65,15 @@ public class Projetor extends Equipamento{
 
     public void setLente(String lente) {
         this.lente = lente;
+    }
+
+    @Override
+    public String codEquipamento() {
+        return "";
+    }
+
+    @Override
+    public int quantidade() {
+        return 0;
     }
 }
