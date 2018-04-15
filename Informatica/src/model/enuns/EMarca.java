@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package model.enuns;
 
 /**
  *
  * @author Luís Gustavo
  */
-public enum EValorAluguel {
-    VALOR1, VALOR2, VALOR3, VALOR4, VALOR5;
+public enum EMarca {
+    MARCA1, MARCA2, MARCA3, MARCA4, MARCA5;
 }

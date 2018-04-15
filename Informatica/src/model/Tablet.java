@@ -5,11 +5,13 @@
  */
 package model;
 
+import model.interfaces.IEquipamento;
+
 /**
  *
  * @author Luís Gustavo
  */
-public class Tablet implements Equipamento{
+public class Tablet implements IEquipamento{
     private String capacidade;
     private String tamanhoTela;
     private String memoriaRam;

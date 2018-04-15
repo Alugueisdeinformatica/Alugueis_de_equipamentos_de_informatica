@@ -5,11 +5,13 @@
  */
 package model;
 
+import model.interfaces.IEquipamento;
+
 /**
  *
  * @author Luís Gustavo
  */
-public class Monitor implements Equipamento{
+public class Monitor implements IEquipamento{
     private String tipo;
     private String tamanhoTela;
     private String resolucao;

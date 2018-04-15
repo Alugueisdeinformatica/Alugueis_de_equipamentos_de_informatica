@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package model.interfaces;
 
 /**
  *
  * @author Luís Gustavo
  */
-public enum EMarca {
-    MARCA1, MARCA2, MARCA3, MARCA4, MARCA5;
-}
+public interface IEquipamento {    
+    public String codEquipamento();
+    public int quantidade();    
+ }

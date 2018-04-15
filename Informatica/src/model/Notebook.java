@@ -5,11 +5,13 @@
  */
 package model;
 
+import model.interfaces.IEquipamento;
+
 /**
  *
  * @author Luís Gustavo
  */
-public class Notebook extends Computador implements Equipamento{
+public class Notebook extends Computador implements IEquipamento{
     private String bateria;
 
     public Notebook() {

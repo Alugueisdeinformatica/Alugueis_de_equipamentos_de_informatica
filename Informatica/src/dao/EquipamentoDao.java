@@ -7,25 +7,25 @@ package dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.Equipamento;
+import model.interfaces.IEquipamento;
 
 /**
  *
  * @author Luís Gustavo
  */
 public class EquipamentoDao {
-    private List<Equipamento> lista = null;
+    private List<IEquipamento> lista = null;
 
     public EquipamentoDao() {
-        lista = new ArrayList<Equipamento>();
+        lista = new ArrayList<IEquipamento>();
     }
     
-    public void adicionaEquipamento(Equipamento equipamento){
+    public void adicionaEquipamento(IEquipamento equipamento){
         lista.add(equipamento);
     }
     
-    public Equipamento buscaEquipamento(String codEquipamento){
-        Equipamento eq = null;
+    public IEquipamento buscaEquipamento(String codEquipamento){
+        IEquipamento eq = null;
         for(int i = 0; i < lista.size(); i++){
             if(codEquipamento.equals(lista.get(i).codEquipamento())){
                 eq = lista.get(i);
@@ -35,21 +35,21 @@ public class EquipamentoDao {
     }
     
     public void removerEquipamento(String codEquipamento){
-        Equipamento eq = buscaEquipamento(codEquipamento);
+        IEquipamento eq = buscaEquipamento(codEquipamento);
         if(eq != null){
             lista.remove(eq);
         }
     }
     
-    public void atualizarEquipamento(Equipamento equipamento){
-        Equipamento eq = buscaEquipamento(equipamento.codEquipamento());
+    public void atualizarEquipamento(IEquipamento equipamento){
+        IEquipamento eq = buscaEquipamento(equipamento.codEquipamento());
         if(eq != null){
             int idx = lista.indexOf(eq);
             lista.set(idx, eq);
         }
     }
     
-    public List<Equipamento> todosEquipamentos(){
+    public List<IEquipamento> todosEquipamentos(){
         return lista;
     }
 }

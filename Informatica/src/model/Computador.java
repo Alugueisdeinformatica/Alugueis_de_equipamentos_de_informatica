@@ -5,11 +5,13 @@
  */
 package model;
 
+import model.interfaces.IEquipamento;
+
 /**
  *
  * @author Luís Gustavo
  */
-public class Computador implements Equipamento{
+public class Computador implements IEquipamento{
     private String sistemaOperacional;
     private String placaVideo;
     private String hd;

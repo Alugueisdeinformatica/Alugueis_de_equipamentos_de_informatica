@@ -5,11 +5,13 @@
  */
 package model;
 
+import model.interfaces.IEquipamento;
+
 /**
  *
  * @author Luís Gustavo
  */
-public class Impressora implements Equipamento{
+public class Impressora implements IEquipamento{
     private String tipo;
     private String tecnologia;
     private String especificacao;

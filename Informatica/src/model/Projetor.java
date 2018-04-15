@@ -5,11 +5,13 @@
  */
 package model;
 
+import model.interfaces.IEquipamento;
+
 /**
  *
  * @author Luís Gustavo
  */
-public class Projetor implements Equipamento{
+public class Projetor implements IEquipamento{
     private String material;
     private String brilho;
     private String resolucaoOptica;
