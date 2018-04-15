@@ -20,6 +20,7 @@ public class Cliente {
     private String estadoCivil;
 
     public Cliente() {
+        endereco = new Endereco();
     }
 
     public Cliente(String nome, String email, String telefone, Endereco endereco, String dataNascimento, String sexo, String cpf, String estadoCivil) {

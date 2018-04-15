@@ -24,25 +24,25 @@ public class EquipamentoDao {
         lista.add(equipamento);
     }
     
-    public Equipamento buscaEquipamento(String numSerie){
+    public Equipamento buscaEquipamento(String codEquipamento){
         Equipamento eq = null;
         for(int i = 0; i < lista.size(); i++){
-            if(numSerie.equals(lista.get(i).getNumSerie())){
+            if(codEquipamento.equals(lista.get(i).getCodEquipamento())){
                 eq = lista.get(i);
             }
         }
         return eq;
     }
     
-    public void removerEquipamento(String numSerie){
-        Equipamento eq = buscaEquipamento(numSerie);
+    public void removerEquipamento(String codEquipamento){
+        Equipamento eq = buscaEquipamento(codEquipamento);
         if(eq != null){
             lista.remove(eq);
         }
     }
     
     public void atualizarEquipamento(Equipamento equipamento){
-        Equipamento eq = buscaEquipamento(equipamento.getNumSerie());
+        Equipamento eq = buscaEquipamento(equipamento.getCodEquipamento());
         if(eq != null){
             int idx = lista.indexOf(eq);
             lista.set(idx, eq);
