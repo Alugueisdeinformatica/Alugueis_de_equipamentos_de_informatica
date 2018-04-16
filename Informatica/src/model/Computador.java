@@ -16,8 +16,8 @@ import model.enuns.EValorAluguel;
 public class Computador extends Equipamento{
     private String sistemaOperacional;
     private String placaVideo;
-    private String hd;
-    private String processador;
+    private String capacidadeHD;//desmembrar em classe nova, para ter os atributos. Ex: marca, capacidade modelo...
+    private String processador;// idem HD
     private String memoria;
 
     public Computador() {
@@ -27,7 +27,7 @@ public class Computador extends Equipamento{
         super(modelo, marca, valor, codEquipamento, quantidade);
         this.sistemaOperacional = sistemaOperacional;
         this.placaVideo = placaVideo;
-        this.hd = hd;
+        this.capacidadeHD = hd;
         this.processador = processador;
         this.memoria = memoria;
     }
@@ -49,11 +49,11 @@ public class Computador extends Equipamento{
     }
 
     public String getHd() {
-        return hd;
+        return capacidadeHD;
     }
 
     public void setHd(String hd) {
-        this.hd = hd;
+        this.capacidadeHD = hd;
     }
 
     public String getProcessador() {
@@ -70,5 +70,14 @@ public class Computador extends Equipamento{
 
     public void setMemoria(String memoria) {
         this.memoria = memoria;
+    }
+    
+    @Override
+    public String toString() {
+        return "\n\nComputador{" + "\nsistemaOp=" + sistemaOperacional + 
+               ", \nplacaVideo=" + placaVideo + 
+               ", \ncapacidadeHD=" + capacidadeHD + 
+               ", \nprocessador=" + processador + 
+               ", \nmemoria=" + memoria + '}';
     }
 }
