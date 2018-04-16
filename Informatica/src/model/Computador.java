@@ -23,11 +23,11 @@ public class Computador extends Equipamento{
     public Computador() {
     }
 
-    public Computador(String sistemaOperacional, String placaVideo, String hd, String processador, String memoria, EModelo modelo, EMarca marca, EValorAluguel valor, String codEquipamento, String quantidade) {
-        super(modelo, marca, valor, codEquipamento, quantidade);
+    public Computador(String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria, EModelo modelo, EMarca marca, EValorAluguel valorDiaria, String codEquipamento, int quantEstoque, String categoria) {
+        super(modelo, marca, valorDiaria, codEquipamento, quantEstoque, categoria);
         this.sistemaOperacional = sistemaOperacional;
         this.placaVideo = placaVideo;
-        this.capacidadeHD = hd;
+        this.capacidadeHD = capacidadeHD;
         this.processador = processador;
         this.memoria = memoria;
     }
@@ -48,12 +48,12 @@ public class Computador extends Equipamento{
         this.placaVideo = placaVideo;
     }
 
-    public String getHd() {
+    public String getCapacidadeHD() {
         return capacidadeHD;
     }
 
-    public void setHd(String hd) {
-        this.capacidadeHD = hd;
+    public void setCapacidadeHD(String capacidadeHD) {
+        this.capacidadeHD = capacidadeHD;
     }
 
     public String getProcessador() {

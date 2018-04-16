@@ -24,8 +24,8 @@ public class Tablet extends Equipamento{
     public Tablet() {
     }
 
-    public Tablet(String capacidade, String tamanhoTela, String memoriaRam, String sistemaOperacional, String bateria, String cpu, EModelo modelo, EMarca marca, EValorAluguel valor, String codEquipamento, String quantidade) {
-        super(modelo, marca, valor, codEquipamento, quantidade);
+    public Tablet(String capacidade, String tamanhoTela, String memoriaRam, String sistemaOperacional, String bateria, String cpu, EModelo modelo, EMarca marca, EValorAluguel valorDiaria, String codEquipamento, int quantEstoque, String categoria) {
+        super(modelo, marca, valorDiaria, codEquipamento, quantEstoque, categoria);
         this.capacidade = capacidade;
         this.tamanhoTela = tamanhoTela;
         this.memoriaRam = memoriaRam;

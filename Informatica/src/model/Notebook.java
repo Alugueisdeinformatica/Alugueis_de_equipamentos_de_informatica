@@ -19,8 +19,8 @@ public class Notebook extends Computador{
     public Notebook() {
     }
 
-    public Notebook(String bateria, String sistemaOperacional, String placaVideo, String hd, String processador, String memoria, EModelo modelo, EMarca marca, EValorAluguel valor, String codEquipamento, String quantidade) {
-        super(sistemaOperacional, placaVideo, hd, processador, memoria, modelo, marca, valor, codEquipamento, quantidade);
+    public Notebook(String bateria, String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria, EModelo modelo, EMarca marca, EValorAluguel valorDiaria, String codEquipamento, int quantEstoque, String categoria) {
+        super(sistemaOperacional, placaVideo, capacidadeHD, processador, memoria, modelo, marca, valorDiaria, codEquipamento, quantEstoque, categoria);
         this.bateria = bateria;
     }
 

@@ -16,19 +16,21 @@ import model.enuns.EMarca;
 public class Equipamento {
     private EModelo modelo;
     private EMarca marca;
-    private EValorAluguel valor;
+    private EValorAluguel valorDiaria;
     private String codEquipamento;
-    private String quantidade;
+    private int quantEstoque;
+    private String categoria;
 
     public Equipamento() {
     }
 
-    public Equipamento(EModelo modelo, EMarca marca, EValorAluguel valor, String codEquipamento, String quantidade) {
+    public Equipamento(EModelo modelo, EMarca marca, EValorAluguel valorDiaria, String codEquipamento, int quantEstoque, String categoria) {
         this.modelo = modelo;
         this.marca = marca;
-        this.valor = valor;
+        this.valorDiaria = valorDiaria;
         this.codEquipamento = codEquipamento;
-        this.quantidade = quantidade;
+        this.quantEstoque = quantEstoque;
+        this.categoria = categoria;
     }
 
     public EModelo getModelo() {
@@ -47,12 +49,12 @@ public class Equipamento {
         this.marca = marca;
     }
 
-    public EValorAluguel getValor() {
-        return valor;
+    public EValorAluguel getValorDiaria() {
+        return valorDiaria;
     }
 
-    public void setValor(EValorAluguel valor) {
-        this.valor = valor;
+    public void setValorDiaria(EValorAluguel valorDiaria) {
+        this.valorDiaria = valorDiaria;
     }
 
     public String getCodEquipamento() {
@@ -63,11 +65,25 @@ public class Equipamento {
         this.codEquipamento = codEquipamento;
     }
 
-    public String getQuantidade() {
-        return quantidade;
+    public int getQuantEstoque() {
+        return quantEstoque;
     }
 
-    public void setQuantidade(String quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantEstoque(int quantEstoque) {
+        this.quantEstoque = quantEstoque;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+    
+    public int quantDisponivel(int quant) {
+        int total = getQuantEstoque();//atualizando a quantidade disponivel aumentando ou diminuindo        
+        total += quantEstoque;        
+        return total;        
     }
 }

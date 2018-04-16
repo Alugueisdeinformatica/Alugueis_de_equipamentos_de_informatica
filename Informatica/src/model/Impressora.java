@@ -21,8 +21,8 @@ public class Impressora extends Equipamento{
     public Impressora() {
     }
 
-    public Impressora(String tipo, String tecnologia, String especificacao, EModelo modelo, EMarca marca, EValorAluguel valor, String codEquipamento, String quantidade) {
-        super(modelo, marca, valor, codEquipamento, quantidade);
+    public Impressora(String tipo, String tecnologia, String especificacao, EModelo modelo, EMarca marca, EValorAluguel valorDiaria, String codEquipamento, int quantEstoque, String categoria) {
+        super(modelo, marca, valorDiaria, codEquipamento, quantEstoque, categoria);
         this.tipo = tipo;
         this.tecnologia = tecnologia;
         this.especificacao = especificacao;
