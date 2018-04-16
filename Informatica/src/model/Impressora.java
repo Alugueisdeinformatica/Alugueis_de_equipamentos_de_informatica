@@ -51,4 +51,11 @@ public class Impressora extends Equipamento{
     public void setEspecificacao(String especificacao) {
         this.especificacao = especificacao;
     }
+    
+    @Override
+    public String toString() {
+        return "\n\nImpressora{" + "\ntipo=" + tipo + 
+               "\n, tecnologia=" + tecnologia + 
+               ",\n especificacao=" + especificacao + '}';
+    }   
 }
