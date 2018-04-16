@@ -5,13 +5,15 @@
  */
 package model;
 
-import model.interfaces.IEquipamento;
+import model.enuns.EMarca;
+import model.enuns.EModelo;
+import model.enuns.EValorAluguel;
 
 /**
  *
  * @author Luís Gustavo
  */
-public class Projetor implements IEquipamento{
+public class Projetor extends Equipamento{
     private String material;
     private String brilho;
     private String resolucaoOptica;
@@ -21,7 +23,8 @@ public class Projetor implements IEquipamento{
     public Projetor() {
     }
 
-    public Projetor(String material, String brilho, String resolucaoOptica, String lampada, String lente) {
+    public Projetor(String material, String brilho, String resolucaoOptica, String lampada, String lente, EModelo modelo, EMarca marca, EValorAluguel valor, String codEquipamento, String quantidade) {
+        super(modelo, marca, valor, codEquipamento, quantidade);
         this.material = material;
         this.brilho = brilho;
         this.resolucaoOptica = resolucaoOptica;
@@ -67,15 +70,5 @@ public class Projetor implements IEquipamento{
 
     public void setLente(String lente) {
         this.lente = lente;
-    }
-
-    @Override
-    public String codEquipamento() {
-        return "";
-    }
-
-    @Override
-    public int quantidade() {
-        return 0;
     }
 }

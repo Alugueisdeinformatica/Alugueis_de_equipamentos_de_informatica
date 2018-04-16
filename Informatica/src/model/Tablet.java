@@ -5,13 +5,15 @@
  */
 package model;
 
-import model.interfaces.IEquipamento;
+import model.enuns.EMarca;
+import model.enuns.EModelo;
+import model.enuns.EValorAluguel;
 
 /**
  *
  * @author Luís Gustavo
  */
-public class Tablet implements IEquipamento{
+public class Tablet extends Equipamento{
     private String capacidade;
     private String tamanhoTela;
     private String memoriaRam;
@@ -22,7 +24,8 @@ public class Tablet implements IEquipamento{
     public Tablet() {
     }
 
-    public Tablet(String capacidade, String tamanhoTela, String memoriaRam, String sistemaOperacional, String bateria, String cpu) {
+    public Tablet(String capacidade, String tamanhoTela, String memoriaRam, String sistemaOperacional, String bateria, String cpu, EModelo modelo, EMarca marca, EValorAluguel valor, String codEquipamento, String quantidade) {
+        super(modelo, marca, valor, codEquipamento, quantidade);
         this.capacidade = capacidade;
         this.tamanhoTela = tamanhoTela;
         this.memoriaRam = memoriaRam;
@@ -77,15 +80,5 @@ public class Tablet implements IEquipamento{
 
     public void setCpu(String cpu) {
         this.cpu = cpu;
-    }
-
-    @Override
-    public String codEquipamento() {
-        return "";
-    }
-
-    @Override
-    public int quantidade() {
-        return 0;
     }
 }

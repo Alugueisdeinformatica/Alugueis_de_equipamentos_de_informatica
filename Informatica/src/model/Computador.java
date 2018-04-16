@@ -5,13 +5,15 @@
  */
 package model;
 
-import model.interfaces.IEquipamento;
+import model.enuns.EMarca;
+import model.enuns.EModelo;
+import model.enuns.EValorAluguel;
 
 /**
  *
  * @author Luís Gustavo
  */
-public class Computador implements IEquipamento{
+public class Computador extends Equipamento{
     private String sistemaOperacional;
     private String placaVideo;
     private String hd;
@@ -21,7 +23,8 @@ public class Computador implements IEquipamento{
     public Computador() {
     }
 
-    public Computador(String sistemaOperacional, String placaVideo, String hd, String processador, String memoria) {
+    public Computador(String sistemaOperacional, String placaVideo, String hd, String processador, String memoria, EModelo modelo, EMarca marca, EValorAluguel valor, String codEquipamento, String quantidade) {
+        super(modelo, marca, valor, codEquipamento, quantidade);
         this.sistemaOperacional = sistemaOperacional;
         this.placaVideo = placaVideo;
         this.hd = hd;
@@ -67,15 +70,5 @@ public class Computador implements IEquipamento{
 
     public void setMemoria(String memoria) {
         this.memoria = memoria;
-    }
-
-    @Override
-    public String codEquipamento() {
-        return "";
-    }
-
-    @Override
-    public int quantidade() {
-        return 0;
     }
 }

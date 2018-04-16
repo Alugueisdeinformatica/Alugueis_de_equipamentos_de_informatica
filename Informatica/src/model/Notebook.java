@@ -5,20 +5,22 @@
  */
 package model;
 
-import model.interfaces.IEquipamento;
+import model.enuns.EMarca;
+import model.enuns.EModelo;
+import model.enuns.EValorAluguel;
 
 /**
  *
  * @author Luís Gustavo
  */
-public class Notebook extends Computador implements IEquipamento{
+public class Notebook extends Computador{
     private String bateria;
 
     public Notebook() {
     }
 
-    public Notebook(String bateria, String sistemaOperacional, String placaVideo, String hd, String processador, String memoria) {
-        super(sistemaOperacional, placaVideo, hd, processador, memoria);
+    public Notebook(String bateria, String sistemaOperacional, String placaVideo, String hd, String processador, String memoria, EModelo modelo, EMarca marca, EValorAluguel valor, String codEquipamento, String quantidade) {
+        super(sistemaOperacional, placaVideo, hd, processador, memoria, modelo, marca, valor, codEquipamento, quantidade);
         this.bateria = bateria;
     }
 

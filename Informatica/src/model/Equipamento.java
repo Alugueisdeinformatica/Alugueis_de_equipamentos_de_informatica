@@ -8,13 +8,12 @@ package model;
 import model.enuns.EValorAluguel;
 import model.enuns.EModelo;
 import model.enuns.EMarca;
-import model.interfaces.IEquipamento;
 
 /**
  *
  * @author Luís Gustavo
  */
-public class Equipamento implements IEquipamento{
+public class Equipamento {
     private EModelo modelo;
     private EMarca marca;
     private EValorAluguel valor;
@@ -56,21 +55,19 @@ public class Equipamento implements IEquipamento{
         this.valor = valor;
     }
 
+    public String getCodEquipamento() {
+        return codEquipamento;
+    }
+
     public void setCodEquipamento(String codEquipamento) {
         this.codEquipamento = codEquipamento;
     }
 
+    public String getQuantidade() {
+        return quantidade;
+    }
+
     public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
-    }
-
-    @Override
-    public String codEquipamento() {
-        return "";
-    }
-
-    @Override
-    public int quantidade() {
-        return 0;
     }
 }

@@ -5,13 +5,15 @@
  */
 package model;
 
-import model.interfaces.IEquipamento;
+import model.enuns.EMarca;
+import model.enuns.EModelo;
+import model.enuns.EValorAluguel;
 
 /**
  *
  * @author Luís Gustavo
  */
-public class Monitor implements IEquipamento{
+public class Monitor extends Equipamento{
     private String tipo;
     private String tamanhoTela;
     private String resolucao;
@@ -19,7 +21,8 @@ public class Monitor implements IEquipamento{
     public Monitor() {
     }
 
-    public Monitor(String tipo, String tamanhoTela, String resolucao) {
+    public Monitor(String tipo, String tamanhoTela, String resolucao, EModelo modelo, EMarca marca, EValorAluguel valor, String codEquipamento, String quantidade) {
+        super(modelo, marca, valor, codEquipamento, quantidade);
         this.tipo = tipo;
         this.tamanhoTela = tamanhoTela;
         this.resolucao = resolucao;
@@ -47,15 +50,5 @@ public class Monitor implements IEquipamento{
 
     public void setResolucao(String resolucao) {
         this.resolucao = resolucao;
-    }
-
-    @Override
-    public String codEquipamento() {
-        return "";
-    }
-
-    @Override
-    public int quantidade() {
-        return 0;
     }
 }
