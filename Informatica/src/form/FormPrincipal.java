@@ -31,6 +31,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenuCadastro = new javax.swing.JMenu();
         JMenuItemCliente = new javax.swing.JMenuItem();
+        jMenuItemEquipamento = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         JMenuItemSair = new javax.swing.JMenuItem();
         JMenuSuporte = new javax.swing.JMenu();
@@ -73,6 +74,9 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
         JMenuCadastro.add(JMenuItemCliente);
+
+        jMenuItemEquipamento.setText("Equipamento");
+        JMenuCadastro.add(jMenuItemEquipamento);
         JMenuCadastro.add(jSeparator1);
 
         JMenuItemSair.setText("Sair");
@@ -161,6 +165,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMenuItemSobre;
     private javax.swing.JMenu JMenuSuporte;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemEquipamento;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
