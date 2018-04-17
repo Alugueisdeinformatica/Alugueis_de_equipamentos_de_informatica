@@ -5,64 +5,53 @@
  */
 package model;
 
-import model.enuns.EValorAluguel;
-import model.enuns.EModelo;
-import model.enuns.EMarca;
 
 /**
  *
  * @author Luís Gustavo
  */
 public class Equipamento {
-    private EModelo modelo;
-    private EMarca marca;
-    private EValorAluguel valorDiaria;
-    private String codEquipamento;
+    private int codEquipamento;
+    private String modelo;
+    private String marca;
     private int quantEstoque;
     private String categoria;
+    private double valorDiaria;
 
     public Equipamento() {
     }
 
-    public Equipamento(EModelo modelo, EMarca marca, EValorAluguel valorDiaria, String codEquipamento, int quantEstoque, String categoria) {
+    public Equipamento(int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, double valorDiaria) {
+        this.codEquipamento = codEquipamento;
         this.modelo = modelo;
         this.marca = marca;
-        this.valorDiaria = valorDiaria;
-        this.codEquipamento = codEquipamento;
         this.quantEstoque = quantEstoque;
         this.categoria = categoria;
-    }
-
-    public EModelo getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(EModelo modelo) {
-        this.modelo = modelo;
-    }
-
-    public EMarca getMarca() {
-        return marca;
-    }
-
-    public void setMarca(EMarca marca) {
-        this.marca = marca;
-    }
-
-    public EValorAluguel getValorDiaria() {
-        return valorDiaria;
-    }
-
-    public void setValorDiaria(EValorAluguel valorDiaria) {
         this.valorDiaria = valorDiaria;
     }
 
-    public String getCodEquipamento() {
+    public int getCodEquipamento() {
         return codEquipamento;
     }
 
-    public void setCodEquipamento(String codEquipamento) {
+    public void setCodEquipamento(int codEquipamento) {
         this.codEquipamento = codEquipamento;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public int getQuantEstoque() {
@@ -80,6 +69,14 @@ public class Equipamento {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+
+    public double getValorDiaria() {
+        return valorDiaria;
+    }
+
+    public void setValorDiaria(double valorDiaria) {
+        this.valorDiaria = valorDiaria;
+    }   
     
     public int quantDisponivel(int quant) {
         int total = getQuantEstoque();//atualizando a quantidade disponivel aumentando ou diminuindo        

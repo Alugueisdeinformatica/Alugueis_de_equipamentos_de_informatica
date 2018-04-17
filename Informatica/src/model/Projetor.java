@@ -5,9 +5,6 @@
  */
 package model;
 
-import model.enuns.EMarca;
-import model.enuns.EModelo;
-import model.enuns.EValorAluguel;
 
 /**
  *
@@ -21,10 +18,11 @@ public class Projetor extends Equipamento{
     private String lente;
 
     public Projetor() {
+        super();
     }
 
-    public Projetor(String material, String brilho, String resolucaoOptica, String lampada, String lente, EModelo modelo, EMarca marca, EValorAluguel valorDiaria, String codEquipamento, int quantEstoque, String categoria) {
-        super(modelo, marca, valorDiaria, codEquipamento, quantEstoque, categoria);
+    public Projetor(String material, String brilho, String resolucaoOptica, String lampada, String lente) {
+        this();
         this.material = material;
         this.brilho = brilho;
         this.resolucaoOptica = resolucaoOptica;

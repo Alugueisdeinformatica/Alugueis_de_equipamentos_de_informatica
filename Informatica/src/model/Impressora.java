@@ -5,9 +5,6 @@
  */
 package model;
 
-import model.enuns.EMarca;
-import model.enuns.EModelo;
-import model.enuns.EValorAluguel;
 
 /**
  *
@@ -19,10 +16,11 @@ public class Impressora extends Equipamento{
     private String especificacao;
 
     public Impressora() {
+        super();
     }
 
-    public Impressora(String tipo, String tecnologia, String especificacao, EModelo modelo, EMarca marca, EValorAluguel valorDiaria, String codEquipamento, int quantEstoque, String categoria) {
-        super(modelo, marca, valorDiaria, codEquipamento, quantEstoque, categoria);
+    public Impressora(String tipo, String tecnologia, String especificacao) {
+        this();
         this.tipo = tipo;
         this.tecnologia = tecnologia;
         this.especificacao = especificacao;

@@ -5,9 +5,6 @@
  */
 package model;
 
-import model.enuns.EMarca;
-import model.enuns.EModelo;
-import model.enuns.EValorAluguel;
 
 /**
  *
@@ -19,10 +16,11 @@ public class Monitor extends Equipamento{
     private String resolucao;
 
     public Monitor() {
+        super();
     }
 
-    public Monitor(String tipo, String tamanhoTela, String resolucao, EModelo modelo, EMarca marca, EValorAluguel valorDiaria, String codEquipamento, int quantEstoque, String categoria) {
-        super(modelo, marca, valorDiaria, codEquipamento, quantEstoque, categoria);
+    public Monitor(String tipo, String tamanhoTela, String resolucao) {
+        this();
         this.tipo = tipo;
         this.tamanhoTela = tamanhoTela;
         this.resolucao = resolucao;

@@ -42,7 +42,8 @@ public class EquipamentoDao {
     }
     
     public void atualizarEquipamento(Equipamento equipamento){
-        Equipamento eq = buscaEquipamento(equipamento.getCodEquipamento());
+        String codigo = String.valueOf(equipamento.getCodEquipamento());
+        Equipamento eq = buscaEquipamento( codigo );
         if(eq != null){
             int idx = lista.indexOf(eq);
             lista.set(idx, eq);

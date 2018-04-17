@@ -5,10 +5,6 @@
  */
 package model;
 
-import model.enuns.EMarca;
-import model.enuns.EModelo;
-import model.enuns.EValorAluguel;
-
 /**
  *
  * @author Luís Gustavo
@@ -22,17 +18,18 @@ public class Tablet extends Equipamento{
     private String cpu;
 
     public Tablet() {
+        super();
     }
 
-    public Tablet(String capacidade, String tamanhoTela, String memoriaRam, String sistemaOperacional, String bateria, String cpu, EModelo modelo, EMarca marca, EValorAluguel valorDiaria, String codEquipamento, int quantEstoque, String categoria) {
-        super(modelo, marca, valorDiaria, codEquipamento, quantEstoque, categoria);
+    public Tablet(String capacidade, String tamanhoTela, String memoriaRam, String sistemaOperacional, String bateria, String cpu) {
+        this();
         this.capacidade = capacidade;
         this.tamanhoTela = tamanhoTela;
         this.memoriaRam = memoriaRam;
         this.sistemaOperacional = sistemaOperacional;
         this.bateria = bateria;
         this.cpu = cpu;
-    }
+    }    
 
     public String getCapacidade() {
         return capacidade;

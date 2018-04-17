@@ -5,9 +5,6 @@
  */
 package model;
 
-import model.enuns.EMarca;
-import model.enuns.EModelo;
-import model.enuns.EValorAluguel;
 
 /**
  *
@@ -23,14 +20,13 @@ public class Computador extends Equipamento{
     public Computador() {
     }
 
-    public Computador(String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria, EModelo modelo, EMarca marca, EValorAluguel valorDiaria, String codEquipamento, int quantEstoque, String categoria) {
-        super(modelo, marca, valorDiaria, codEquipamento, quantEstoque, categoria);
+    public Computador(String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria) {
         this.sistemaOperacional = sistemaOperacional;
         this.placaVideo = placaVideo;
         this.capacidadeHD = capacidadeHD;
         this.processador = processador;
         this.memoria = memoria;
-    }
+    }    
 
     public String getSistemaOperacional() {
         return sistemaOperacional;
