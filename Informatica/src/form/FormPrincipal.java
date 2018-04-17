@@ -81,6 +81,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         JMenuCadastro.add(JMenuItemCliente);
 
         jMenuItemEquipamento.setText("Equipamento");
+        jMenuItemEquipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEquipamentoActionPerformed(evt);
+            }
+        });
         JMenuCadastro.add(jMenuItemEquipamento);
         JMenuCadastro.add(jSeparator1);
 
@@ -126,6 +131,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void JMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemClienteActionPerformed
         new FormCliente().setVisible(true);
     }//GEN-LAST:event_JMenuItemClienteActionPerformed
+
+    private void jMenuItemEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEquipamentoActionPerformed
+        new FormEquipamento().setVisible(true);
+    }//GEN-LAST:event_jMenuItemEquipamentoActionPerformed
 
     /**
      * @param args the command line arguments

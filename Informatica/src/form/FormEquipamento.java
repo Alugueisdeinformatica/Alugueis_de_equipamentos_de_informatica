@@ -277,17 +277,17 @@ public class FormEquipamento extends javax.swing.JFrame {
         setQuant( Integer.parseInt( tfQuantidade.getText() ) );       
         int opcao = cbCategoria.getSelectedIndex();
         
-        /*switch(opcao){
+        switch(opcao){
             case 0:
                 new FormDesktop().setVisible(true);
                 break;
             case 1:
                 new FormImpressora().setVisible(true);
                 break;
-            case 2:
+            /*case 2:
                 new FormMonitor().setVisible(true);
-                break;
-        } */              
+                break;*/
+        }               
     }//GEN-LAST:event_btSeguinteActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed

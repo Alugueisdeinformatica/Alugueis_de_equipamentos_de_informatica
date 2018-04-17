@@ -14,16 +14,18 @@ public class Impressora extends Equipamento{
     private String tipo;
     private String tecnologia;
     private String especificacao;
+    private boolean wifi;
 
     public Impressora() {
         super();
     }
 
-    public Impressora(String tipo, String tecnologia, String especificacao) {
+    public Impressora(String tipo, String tecnologia, String especificacao, boolean wifi) {
         this();
         this.tipo = tipo;
         this.tecnologia = tecnologia;
         this.especificacao = especificacao;
+        this.wifi = wifi;
     }
 
     public String getTipo() {
@@ -49,11 +51,20 @@ public class Impressora extends Equipamento{
     public void setEspecificacao(String especificacao) {
         this.especificacao = especificacao;
     }
+
+    public boolean isWifi() {
+        return wifi;
+    }
+
+    public void setWifi(boolean wifi) {
+        this.wifi = wifi;
+    }    
     
     @Override
     public String toString() {
         return "\n\nImpressora{" + "\ntipo=" + tipo + 
                "\n, tecnologia=" + tecnologia + 
-               ",\n especificacao=" + especificacao + '}';
+               ",\n especificacao=" + especificacao +
+                "\n Wifi: " + wifi +'}';
     }   
 }
