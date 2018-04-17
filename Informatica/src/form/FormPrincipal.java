@@ -5,16 +5,21 @@
  */
 package form;
 
+import dao.EquipamentoDao;
+
 /**
  *
  * @author John Peter
  */
 public class FormPrincipal extends javax.swing.JFrame {
+    
+    public static EquipamentoDao bdEquipamento;
 
     /**
      * Creates new form FormPrincipal
      */
     public FormPrincipal() {
+        bdEquipamento = new EquipamentoDao();
         initComponents();
     }
 
