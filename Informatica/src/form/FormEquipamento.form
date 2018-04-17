@@ -139,8 +139,14 @@
     <Component class="javax.swing.JTextField" name="tfMarca">
     </Component>
     <Component class="javax.swing.JTextField" name="tfQuantidade">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfQuantidadeKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tfValor">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfValorKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>

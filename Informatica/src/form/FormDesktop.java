@@ -75,6 +75,18 @@ public class FormDesktop extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Processador:");
 
+        tfMemoria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfMemoriaKeyTyped(evt);
+            }
+        });
+
+        tfArmHD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfArmHDKeyTyped(evt);
+            }
+        });
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sistema Operacional", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         bgSO.add(rbWind);
@@ -294,6 +306,20 @@ public class FormDesktop extends javax.swing.JFrame {
         
         FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) comp);        
     }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void tfArmHDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfArmHDKeyTyped
+        String caracteres = "0987654321";
+        if(!caracteres.contains(evt.getKeyChar() + "")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_tfArmHDKeyTyped
+
+    private void tfMemoriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfMemoriaKeyTyped
+        String caracteres = "0987654321";
+        if(!caracteres.contains(evt.getKeyChar() + "")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_tfMemoriaKeyTyped
 
     private void capturarRadioSO(Computador comp) {
         //Radio Button SO
