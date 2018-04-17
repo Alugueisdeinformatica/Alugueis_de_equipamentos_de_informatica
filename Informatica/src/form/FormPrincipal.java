@@ -33,6 +33,14 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jToolBar1 = new javax.swing.JToolBar();
+        btCliente = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JToolBar.Separator();
+        btEquipamento = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JToolBar.Separator();
+        btAluguel = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenuCadastro = new javax.swing.JMenu();
         JMenuItemCliente = new javax.swing.JMenuItem();
@@ -65,18 +73,61 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 623, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
-        );
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/my-computer-icon.png"))); // NOI18N
+        jLabel2.setText("J&L INFORMÁTICA");
+        jPanel1.add(jLabel2, java.awt.BorderLayout.CENTER);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/computer-stuff-1-e1465742115813.png"))); // NOI18N
+        jLabel1.setToolTipText("");
+        jPanel1.add(jLabel1, java.awt.BorderLayout.PAGE_END);
+
+        jToolBar1.setBackground(new java.awt.Color(204, 255, 255));
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
+
+        btCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/user-add-icon.png"))); // NOI18N
+        btCliente.setText("Novo Cliente");
+        btCliente.setFocusable(false);
+        btCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClienteActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btCliente);
+        jToolBar1.add(jSeparator4);
+
+        btEquipamento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btEquipamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/my-computer-icon.png"))); // NOI18N
+        btEquipamento.setText("Novo Equipamento");
+        btEquipamento.setFocusable(false);
+        btEquipamento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btEquipamento.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btEquipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEquipamentoActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btEquipamento);
+        jToolBar1.add(jSeparator3);
+
+        btAluguel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btAluguel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/02-Basket-icon.png"))); // NOI18N
+        btAluguel.setText("Novo Aluguel");
+        btAluguel.setFocusable(false);
+        btAluguel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btAluguel.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btAluguel);
+
+        jPanel1.add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -164,7 +215,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(623, 370));
+        setSize(new java.awt.Dimension(756, 481));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -183,6 +234,14 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void jMenuItemEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEquipamentoActionPerformed
         new FormEquipamento().setVisible(true);
     }//GEN-LAST:event_jMenuItemEquipamentoActionPerformed
+
+    private void btClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteActionPerformed
+        JMenuItemClienteActionPerformed(evt);
+    }//GEN-LAST:event_btClienteActionPerformed
+
+    private void btEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipamentoActionPerformed
+        jMenuItemEquipamentoActionPerformed(evt);
+    }//GEN-LAST:event_btEquipamentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,6 +285,11 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMenuItemSair;
     private javax.swing.JMenuItem JMenuItemSobre;
     private javax.swing.JMenu JMenuSuporte;
+    private javax.swing.JButton btAluguel;
+    private javax.swing.JButton btCliente;
+    private javax.swing.JButton btEquipamento;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenuAluguel;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCAluguel;
@@ -242,5 +306,8 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JToolBar.Separator jSeparator3;
+    private javax.swing.JToolBar.Separator jSeparator4;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

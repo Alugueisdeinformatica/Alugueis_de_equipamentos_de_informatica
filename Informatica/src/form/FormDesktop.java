@@ -5,7 +5,10 @@
  */
 package form;
 
+import java.awt.Dialog.ModalExclusionType;
+import java.awt.event.WindowFocusListener;
 import java.util.Enumeration;
+import javax.swing.JFrame;
 import javax.swing.JRadioButton;
 import model.Computador;
 import model.Equipamento;
@@ -62,11 +65,6 @@ public class FormDesktop extends javax.swing.JFrame {
         setTitle("Cadastro de Desktop");
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Armazenamento HD:");
@@ -296,10 +294,6 @@ public class FormDesktop extends javax.swing.JFrame {
         
         FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) comp);        
     }//GEN-LAST:event_btCadastrarActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setFocusable(true);
-    }//GEN-LAST:event_formWindowOpened
 
     private void capturarRadioSO(Computador comp) {
         //Radio Button SO
