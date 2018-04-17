@@ -39,6 +39,17 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuItemEquipamento = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         JMenuItemSair = new javax.swing.JMenuItem();
+        jMenuAluguel = new javax.swing.JMenu();
+        jMenuItemNovo = new javax.swing.JMenuItem();
+        jMenuItemEmitir = new javax.swing.JMenuItem();
+        jMenuItemEfetuar = new javax.swing.JMenuItem();
+        jMenuConsulta = new javax.swing.JMenu();
+        jMenuItemCliente = new javax.swing.JMenuItem();
+        jMenuItemEquipamentos = new javax.swing.JMenuItem();
+        jMenuCAluguel = new javax.swing.JMenu();
+        jMenuItemAbertos = new javax.swing.JMenuItem();
+        jMenuItemRealizados = new javax.swing.JMenuItem();
+        jMenuItemAviso = new javax.swing.JMenuItem();
         JMenuSuporte = new javax.swing.JMenu();
         JMenuItemAjuda = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
@@ -46,6 +57,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Equipamentos de Informática");
+        setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -100,6 +112,42 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(JMenuCadastro);
 
+        jMenuAluguel.setText("Aluguel");
+
+        jMenuItemNovo.setText("Novo Aluguel");
+        jMenuAluguel.add(jMenuItemNovo);
+
+        jMenuItemEmitir.setText("Emitir Contrato");
+        jMenuAluguel.add(jMenuItemEmitir);
+
+        jMenuItemEfetuar.setText("Efetuar Devolução");
+        jMenuAluguel.add(jMenuItemEfetuar);
+
+        jMenuBar1.add(jMenuAluguel);
+
+        jMenuConsulta.setText("Consulta");
+
+        jMenuItemCliente.setText("Cliente");
+        jMenuConsulta.add(jMenuItemCliente);
+
+        jMenuItemEquipamentos.setText("Equipamentos");
+        jMenuConsulta.add(jMenuItemEquipamentos);
+
+        jMenuCAluguel.setText("Aluguel");
+
+        jMenuItemAbertos.setText("Aluguel Aberto");
+        jMenuCAluguel.add(jMenuItemAbertos);
+
+        jMenuItemRealizados.setText("Aluguel Realizado");
+        jMenuCAluguel.add(jMenuItemRealizados);
+
+        jMenuItemAviso.setText("Aviso de Vencimento");
+        jMenuCAluguel.add(jMenuItemAviso);
+
+        jMenuConsulta.add(jMenuCAluguel);
+
+        jMenuBar1.add(jMenuConsulta);
+
         JMenuSuporte.setText("Suporte");
         JMenuSuporte.setName("JMenuSuporte"); // NOI18N
 
@@ -116,7 +164,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(639, 409));
+        setSize(new java.awt.Dimension(623, 370));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -178,8 +226,19 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMenuItemSair;
     private javax.swing.JMenuItem JMenuItemSobre;
     private javax.swing.JMenu JMenuSuporte;
+    private javax.swing.JMenu jMenuAluguel;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuCAluguel;
+    private javax.swing.JMenu jMenuConsulta;
+    private javax.swing.JMenuItem jMenuItemAbertos;
+    private javax.swing.JMenuItem jMenuItemAviso;
+    private javax.swing.JMenuItem jMenuItemCliente;
+    private javax.swing.JMenuItem jMenuItemEfetuar;
+    private javax.swing.JMenuItem jMenuItemEmitir;
     private javax.swing.JMenuItem jMenuItemEquipamento;
+    private javax.swing.JMenuItem jMenuItemEquipamentos;
+    private javax.swing.JMenuItem jMenuItemNovo;
+    private javax.swing.JMenuItem jMenuItemRealizados;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
