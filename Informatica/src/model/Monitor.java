@@ -49,4 +49,10 @@ public class Monitor extends Equipamento{
     public void setResolucao(String resolucao) {
         this.resolucao = resolucao;
     }
+    
+    public boolean validaMonitor(){
+        return !tipo.equals("") &&
+               !tamanhoTela.equals("") &&
+               !resolucao.equals("");
+    }
 }

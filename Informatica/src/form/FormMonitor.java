@@ -6,6 +6,7 @@
 package form;
 
 import static form.FormEquipamento.equipamento;
+import javax.swing.JOptionPane;
 import model.Equipamento;
 import model.Monitor;
 
@@ -160,9 +161,14 @@ public class FormMonitor extends javax.swing.JFrame {
         
         Monitor mon = new Monitor(tipo, tamanhoTela, resolucao, 
                 equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
-                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());       
+                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());  
         
-        FormPrincipal.bdEquipamento.adicionaEquipamento( (Equipamento)  mon);
+        if(mon.validaMonitor()){
+            FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) mon); 
+            JOptionPane.showMessageDialog(null, "Monitor Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+        }  
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     /**

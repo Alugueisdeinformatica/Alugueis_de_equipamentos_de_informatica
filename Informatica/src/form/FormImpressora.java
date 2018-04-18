@@ -176,9 +176,7 @@ public class FormImpressora extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Impressora Cadastrada!", "", JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
-        }  
-                        
-        FormPrincipal.bdEquipamento.adicionaEquipamento( (Equipamento) impres);        
+        }                          
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     /**
