@@ -218,6 +218,11 @@ public class FormDesktop extends javax.swing.JFrame {
         btCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
         btCancelar.setText("Cancelar");
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btCancelar);
         jToolBar1.add(jSeparator1);
 
@@ -298,7 +303,7 @@ public class FormDesktop extends javax.swing.JFrame {
         String memoria = tfMemoria.getText();
         String processador = cbProcessador.getSelectedItem().toString();        
         String sistemaOp = capturarSO();        
-        String placaVideo = captuarPlaca();      
+        String placaVideo = captuarPlaca();    
         
         Computador comp = new Computador(sistemaOp, placaVideo, capacidadeHD, processador, memoria, 
                 equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
@@ -353,6 +358,17 @@ public class FormDesktop extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        tfArmHD.setText("");
+        tfMemoria.setText("");
+        cbProcessador.setSelectedIndex(0);
+        bgSO.clearSelection();
+        rbWind.setSelected(true);
+        bgPlaca.clearSelection();
+        rbOnBoard.setSelected(true);
+        tfArmHD.requestFocus();
+    }//GEN-LAST:event_btCancelarActionPerformed
 
     private void capturarRadioSO(Computador comp) {
         //Radio Button SO

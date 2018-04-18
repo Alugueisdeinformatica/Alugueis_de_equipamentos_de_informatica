@@ -101,6 +101,11 @@ public class FormImpressora extends javax.swing.JFrame {
 
         jbCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
         jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jbCancelar);
         jToolBar1.add(jSeparator1);
 
@@ -187,6 +192,14 @@ public class FormImpressora extends javax.swing.JFrame {
     private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_jbSairActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        jtfTipo.setText("");
+        jtfEsp.setText("");
+        jtfTecn.setText("");
+        jcbWifi.setSelected(false);
+        jtfTipo.requestFocus();
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
     /**
      * @param args the command line arguments

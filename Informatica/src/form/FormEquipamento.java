@@ -5,7 +5,9 @@
  */
 package form;
 
+import java.awt.Component;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import model.Equipamento;
 
 /**
@@ -117,6 +119,11 @@ public class FormEquipamento extends javax.swing.JFrame {
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Magic-eraser-tool-icon.png"))); // NOI18N
         btLimpar.setText("Limpar");
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btLimpar);
         jToolBar1.add(jSeparator1);
 
@@ -294,6 +301,16 @@ public class FormEquipamento extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_tfCodigoKeyTyped
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        tfCodigo.setText("0");
+        tfModelo.setText("");
+        tfMarca.setText("");
+        tfQuantidade.setText("0");
+        tfValor.setText("0");
+        cbCategoria.setSelectedIndex(0);
+        tfCodigo.requestFocus();
+    }//GEN-LAST:event_btLimparActionPerformed
 
     /**
      * @param args the command line arguments
