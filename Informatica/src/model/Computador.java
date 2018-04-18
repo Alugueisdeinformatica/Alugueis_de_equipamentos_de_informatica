@@ -18,15 +18,17 @@ public class Computador extends Equipamento{
     private String memoria;
 
     public Computador() {
+        super();
     }
 
-    public Computador(String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria) {
+    public Computador(String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, double valorDiaria) {
+        super(codEquipamento, modelo, marca, quantEstoque, categoria, valorDiaria);
         this.sistemaOperacional = sistemaOperacional;
         this.placaVideo = placaVideo;
         this.capacidadeHD = capacidadeHD;
         this.processador = processador;
         this.memoria = memoria;
-    }    
+    }        
 
     public String getSistemaOperacional() {
         return sistemaOperacional;
