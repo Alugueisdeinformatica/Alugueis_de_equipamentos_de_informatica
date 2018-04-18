@@ -5,6 +5,11 @@
  */
 package form;
 
+import java.util.Enumeration;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import model.Cliente;
+
 /**
  *
  * @author Luís Gustavo
@@ -259,6 +264,7 @@ public class FormCliente extends javax.swing.JFrame {
         lbNumero.setText("Número:");
         lbNumero.setName("lbNumero"); // NOI18N
 
+        tfNumero.setText("0");
         tfNumero.setName("tfNumero"); // NOI18N
         tfNumero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -347,9 +353,9 @@ public class FormCliente extends javax.swing.JFrame {
                     .addComponent(tfRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbBairro)
-                    .addComponent(lbComplemento))
+                .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbComplemento, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbBairro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -369,6 +375,11 @@ public class FormCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         tfCPF.setName("tfCPF"); // NOI18N
+        tfCPF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfCPFFocusLost(evt);
+            }
+        });
 
         lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNome.setText("Nome:");
@@ -383,7 +394,13 @@ public class FormCliente extends javax.swing.JFrame {
 
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCadastrar.setText("Cadastrar");
+        btCadastrar.setEnabled(false);
         btCadastrar.setName("btCadastrar"); // NOI18N
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
+            }
+        });
 
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setText("Limpar");
@@ -400,6 +417,7 @@ public class FormCliente extends javax.swing.JFrame {
 
         btEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btEditar.setText("Editar");
+        btEditar.setEnabled(false);
         btEditar.setName("btEditar"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -477,6 +495,53 @@ public class FormCliente extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        Cliente cliente = new Cliente();
+        cliente.setCpf(tfCPF.getText());
+        cliente.setNome(tfNome.getText());
+        cliente.setEmail(tfEmail.getText());
+        cliente.setDataNascimento(tfDataNascimento.getText());
+        cliente.setTelefone(tfTelefone.getText());
+        cliente.setSexo(cbSexo.getSelectedItem().toString());
+        JRadioButton radio; 
+        Enumeration jr = bgEstadoCivil.getElements(); 
+        while ( jr.hasMoreElements() )
+        {
+            radio = (JRadioButton) jr.nextElement(); 
+            if (radio.isSelected())
+            {
+                cliente.setEstadoCivil(radio.getText());
+            }
+        }
+        cliente.getEndereco().setPais(tfPais.getText());
+        cliente.getEndereco().setCep(tfCEP.getText());
+        cliente.getEndereco().setCidade(tfCidade.getText());
+        cliente.getEndereco().setEstado(cbEstado.getSelectedItem().toString());
+        cliente.getEndereco().setRua(tfRua.getText());
+        cliente.getEndereco().setNumero(Integer.parseInt(tfNumero.getText()));
+        cliente.getEndereco().setBairro(tfBairro.getText());
+        cliente.getEndereco().setComplemento(tfComplemento.getText());
+        
+        if(cliente.validaCliente()){
+            FormPrincipal.bdCliente.adicionaCliente(cliente);
+            JOptionPane.showMessageDialog(null, "Cliente Cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+            btCadastrar.setEnabled(false);
+            tfCPF.setEnabled(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void tfCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCPFFocusLost
+        Cliente cliente = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
+        if(cliente != null){
+            JOptionPane.showMessageDialog(null, "Já existe este CPF cadastrado!", "Informação de Cliente", JOptionPane.ERROR_MESSAGE);
+            btCadastrar.setEnabled(false);
+        }else{
+            btCadastrar.setEnabled(true);
+        }
+    }//GEN-LAST:event_tfCPFFocusLost
 
     /**
      * @param args the command line arguments

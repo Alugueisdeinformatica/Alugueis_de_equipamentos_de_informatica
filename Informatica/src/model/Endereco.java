@@ -15,14 +15,14 @@ public class Endereco {
     private String pais;
     private String estado;
     private String complemento;
-    private String numero;
+    private int numero;
     private String bairro;
     private String rua;
 
     public Endereco() {
     }
 
-    public Endereco(String cep, String cidade, String pais, String estado, String complemento, String numero, String bairro, String rua) {
+    public Endereco(String cep, String cidade, String pais, String estado, String complemento, int numero, String bairro, String rua) {
         this.cep = cep;
         this.cidade = cidade;
         this.pais = pais;
@@ -73,11 +73,11 @@ public class Endereco {
         this.complemento = complemento;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
@@ -103,7 +103,7 @@ public class Endereco {
                 !pais.equals("") &&
                 !estado.equals("") &&
                 !complemento.equals("") &&
-                !numero.equals("") &&
+                numero > 0 &&
                 !bairro.equals("") &&
                 !rua.equals("");
     }

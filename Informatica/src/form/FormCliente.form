@@ -455,9 +455,9 @@
                               <Component id="cbEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbBairro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lbComplemento" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbBairro" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -588,6 +588,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="tfNumero">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="name" type="java.lang.String" value="tfNumero" noResource="true"/>
                   </Properties>
                   <Events>
@@ -642,6 +643,9 @@
             </Property>
             <Property name="name" type="java.lang.String" value="tfCPF" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfCPFFocusLost"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbNome">
           <Properties>
@@ -666,8 +670,12 @@
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="btCadastrar" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCadastrarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btLimpar">
           <Properties>
@@ -696,6 +704,7 @@
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Editar"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="btEditar" noResource="true"/>
           </Properties>
         </Component>

@@ -105,6 +105,7 @@ public class Cliente {
                 endereco.validaEndereco() &&
                 !dataNascimento.equals("") &&
                 !sexo.equals("") &&
-                !cpf.equals("");
+                !cpf.equals("") &&
+                !estadoCivil.equals("");
     }
 }
