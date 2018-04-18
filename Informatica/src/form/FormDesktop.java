@@ -224,6 +224,11 @@ public class FormDesktop extends javax.swing.JFrame {
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
         btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btSair);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -344,6 +349,10 @@ public class FormDesktop extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_tfMemoriaKeyTyped
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
 
     private void capturarRadioSO(Computador comp) {
         //Radio Button SO

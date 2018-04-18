@@ -271,7 +271,7 @@ public class FormEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btSeguinteActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
     private void tfQuantidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfQuantidadeKeyTyped

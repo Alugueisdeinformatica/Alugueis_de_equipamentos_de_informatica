@@ -106,6 +106,11 @@ public class FormImpressora extends javax.swing.JFrame {
 
         jbSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
         jbSair.setText("Sair");
+        jbSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSairActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jbSair);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -178,6 +183,10 @@ public class FormImpressora extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
         }                          
     }//GEN-LAST:event_jbCadastrarActionPerformed
+
+    private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbSairActionPerformed
 
     /**
      * @param args the command line arguments
