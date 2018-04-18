@@ -20,13 +20,13 @@ public class Impressora extends Equipamento{
         super();
     }
 
-    public Impressora(String tipo, String tecnologia, String especificacao, boolean wifi) {
-        this();
+    public Impressora(String tipo, String tecnologia, String especificacao, boolean wifi, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, double valorDiaria) {
+        super(codEquipamento, modelo, marca, quantEstoque, categoria, valorDiaria);
         this.tipo = tipo;
         this.tecnologia = tecnologia;
         this.especificacao = especificacao;
         this.wifi = wifi;
-    }
+    }  
 
     public String getTipo() {
         return tipo;

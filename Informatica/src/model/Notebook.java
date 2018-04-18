@@ -22,15 +22,15 @@ public class Notebook extends Equipamento{
         super();
     }
 
-    public Notebook(String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria, String bateria) {
-        this();
+    public Notebook(String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria, String bateria, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, double valorDiaria) {
+        super(codEquipamento, modelo, marca, quantEstoque, categoria, valorDiaria);
         this.sistemaOperacional = sistemaOperacional;
         this.placaVideo = placaVideo;
         this.capacidadeHD = capacidadeHD;
         this.processador = processador;
         this.memoria = memoria;
         this.bateria = bateria;
-    }
+    }   
 
     public String getSistemaOperacional() {
         return sistemaOperacional;

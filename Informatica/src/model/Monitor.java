@@ -19,12 +19,12 @@ public class Monitor extends Equipamento{
         super();
     }
 
-    public Monitor(String tipo, String tamanhoTela, String resolucao) {
-        this();
+    public Monitor(String tipo, String tamanhoTela, String resolucao, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, double valorDiaria) {
+        super(codEquipamento, modelo, marca, quantEstoque, categoria, valorDiaria);
         this.tipo = tipo;
         this.tamanhoTela = tamanhoTela;
         this.resolucao = resolucao;
-    }
+    }   
 
     public String getTipo() {
         return tipo;
