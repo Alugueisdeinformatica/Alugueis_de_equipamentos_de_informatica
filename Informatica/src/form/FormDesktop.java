@@ -7,6 +7,7 @@ package form;
 
 import static form.FormEquipamento.equipamento;
 import java.util.Enumeration;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import model.Computador;
 import model.Equipamento;
@@ -89,6 +90,7 @@ public class FormDesktop extends javax.swing.JFrame {
 
         bgSO.add(rbWind);
         rbWind.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbWind.setSelected(true);
         rbWind.setText("Windows 10");
         rbWind.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +160,7 @@ public class FormDesktop extends javax.swing.JFrame {
 
         bgPlaca.add(rbOnBoard);
         rbOnBoard.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbOnBoard.setSelected(true);
         rbOnBoard.setText("On-Board");
 
         bgPlaca.add(rbAsus);
@@ -294,9 +297,14 @@ public class FormDesktop extends javax.swing.JFrame {
         
         Computador comp = new Computador(sistemaOp, placaVideo, capacidadeHD, processador, memoria, 
                 equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
-                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());       
+                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria()); 
         
-        FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) comp);        
+        if(comp.validaComputador()){
+            FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) comp); 
+            JOptionPane.showMessageDialog(null, "Desktop Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+        }       
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private String captuarPlaca() {

@@ -83,4 +83,13 @@ public class Equipamento {
         total += quantEstoque;        
         return total;        
     }
+    
+    public boolean validaEquipamento(){
+        return codEquipamento > 0 &&
+               !modelo.equals("") &&
+               !marca.equals("") &&
+               quantEstoque > 0 &&
+               !categoria.equals("") &&
+               valorDiaria > 0;
+    }
 }

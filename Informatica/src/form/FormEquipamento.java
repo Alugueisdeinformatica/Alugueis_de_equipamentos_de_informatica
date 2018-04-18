@@ -5,6 +5,7 @@
  */
 package form;
 
+import javax.swing.JOptionPane;
 import model.Equipamento;
 
 /**
@@ -58,6 +59,13 @@ public class FormEquipamento extends javax.swing.JFrame {
         setTitle("Cadastro de Equipamento");
         setResizable(false);
 
+        tfCodigo.setText("0");
+        tfCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfCodigoKeyTyped(evt);
+            }
+        });
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Código:");
 
@@ -67,12 +75,14 @@ public class FormEquipamento extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Marca:");
 
+        tfQuantidade.setText("0");
         tfQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfQuantidadeKeyTyped(evt);
             }
         });
 
+        tfValor.setText("0");
         tfValor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfValorKeyTyped(evt);
@@ -238,19 +248,24 @@ public class FormEquipamento extends javax.swing.JFrame {
         equipamento.setValorDiaria( Double.parseDouble( tfValor.getText() ) );
         equipamento.setQuantEstoque( Integer.parseInt( tfQuantidade.getText() ) );
         
-        int opcao = cbCategoria.getSelectedIndex();
+        if(equipamento.validaEquipamento()){
+            int opcao = cbCategoria.getSelectedIndex();
         
-        switch(opcao){
-            case 0:
-                new FormDesktop().setVisible(true);
-                break;
-            case 1:
-                new FormImpressora().setVisible(true);
-                break;
-            case 2:
-                new FormMonitor().setVisible(true);
-                break;
-        }               
+            switch(opcao){
+                case 0:
+                    new FormDesktop().setVisible(true);
+                    this.setVisible(false);
+                    break;
+                case 1:
+                    new FormImpressora().setVisible(true);
+                    break;
+                case 2:
+                    new FormMonitor().setVisible(true);
+                    break;
+            }        
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+        }       
     }//GEN-LAST:event_btSeguinteActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
@@ -270,6 +285,13 @@ public class FormEquipamento extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_tfValorKeyTyped
+
+    private void tfCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfCodigoKeyTyped
+        String caracteres = "0987654321";
+        if(!caracteres.contains(evt.getKeyChar() + "")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_tfCodigoKeyTyped
 
     /**
      * @param args the command line arguments

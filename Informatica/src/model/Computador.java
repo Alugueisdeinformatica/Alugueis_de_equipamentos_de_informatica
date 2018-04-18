@@ -78,4 +78,12 @@ public class Computador extends Equipamento{
                ", \nprocessador=" + processador + 
                ", \nmemoria=" + memoria + '}';
     }
+    
+    public boolean validaComputador(){
+        return !sistemaOperacional.equals("") &&
+               !placaVideo.equals("") &&
+               !capacidadeHD.equals("") &&
+               !processador.equals("") &&
+               !memoria.equals("");
+    }
 }
