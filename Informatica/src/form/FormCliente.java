@@ -5,9 +5,14 @@
  */
 package form;
 
+import java.awt.Component;
 import java.util.Enumeration;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 import model.Cliente;
 
 /**
@@ -405,6 +410,11 @@ public class FormCliente extends javax.swing.JFrame {
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setText("Limpar");
         btLimpar.setName("btLimpar"); // NOI18N
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setText("Sair");
@@ -542,6 +552,26 @@ public class FormCliente extends javax.swing.JFrame {
             btCadastrar.setEnabled(true);
         }
     }//GEN-LAST:event_tfCPFFocusLost
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        tfCPF.setValue("");
+        tfNome.setText("");
+        tfEmail.setText("");
+        tfDataNascimento.setValue("");
+        tfTelefone.setValue("");
+        cbSexo.setSelectedIndex(0);
+        bgEstadoCivil.clearSelection();
+        rbSolteiro.setSelected(true);
+        tfPais.setText("");
+        tfCEP.setValue("");
+        tfCidade.setText("");
+        cbEstado.setSelectedIndex(0);
+        tfRua.setText("");
+        tfNumero.setText("");
+        tfBairro.setText("");
+        tfComplemento.setText("");
+        tfCPF.requestFocus();
+    }//GEN-LAST:event_btLimparActionPerformed
 
     /**
      * @param args the command line arguments
