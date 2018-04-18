@@ -258,9 +258,11 @@ public class FormEquipamento extends javax.swing.JFrame {
                     break;
                 case 1:
                     new FormImpressora().setVisible(true);
+                    this.setVisible(false);
                     break;
                 case 2:
                     new FormMonitor().setVisible(true);
+                    this.setVisible(false);
                     break;
             }        
         }else{

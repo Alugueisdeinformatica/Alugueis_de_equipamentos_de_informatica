@@ -18,6 +18,7 @@ public class Impressora extends Equipamento{
 
     public Impressora() {
         super();
+        wifi = false;
     }
 
     public Impressora(String tipo, String tecnologia, String especificacao, boolean wifi, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, double valorDiaria) {
@@ -66,5 +67,11 @@ public class Impressora extends Equipamento{
                "\n, tecnologia=" + tecnologia + 
                ",\n especificacao=" + especificacao +
                 "\n Wifi: " + wifi +'}';
-    }   
+    }
+    
+    public boolean validaImpressora(){
+        return !tipo.equals("") &&
+               !tecnologia.equals("") &&
+               !especificacao.equals("");
+    }
 }
