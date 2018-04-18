@@ -5,6 +5,7 @@
  */
 package form;
 
+import static form.FormEquipamento.equipamento;
 import model.Equipamento;
 import model.Monitor;
 
@@ -152,18 +153,14 @@ public class FormMonitor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-        Monitor mon = new Monitor();
+        String tipo = jcbResolucao.getSelectedItem().toString();
+        String tamanhoTela = jcbTamanho.getSelectedItem().toString();
+        String resolucao = jcbResolucao.getSelectedItem().toString();
         
-        mon.setCodEquipamento(FormEquipamento.getCodigo() );
-        mon.setMarca( FormEquipamento.getMarca() );
-        mon.setModelo( FormEquipamento.getModelo() );
-        mon.setQuantEstoque( FormEquipamento.getQuant() );
-        mon.setCategoria( FormEquipamento.getCategoria() );
-        mon.setValorDiaria( FormEquipamento.getValor() );
         
-        mon.setResolucao( jcbResolucao.getSelectedItem().toString() );
-        mon.setTamanhoTela( jcbTamanho.getSelectedItem().toString() );
-        mon.setTipo( jcbTipo.getSelectedItem().toString() );        
+        Monitor mon = new Monitor(tipo, tamanhoTela, resolucao, 
+                equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
+                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());       
         
         FormPrincipal.bdEquipamento.adicionaEquipamento( (Equipamento)  mon);
     }//GEN-LAST:event_jbCadastrarActionPerformed

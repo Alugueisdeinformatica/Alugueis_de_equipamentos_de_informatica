@@ -5,10 +5,8 @@
  */
 package form;
 
-import java.awt.Dialog.ModalExclusionType;
-import java.awt.event.WindowFocusListener;
+import static form.FormEquipamento.equipamento;
 import java.util.Enumeration;
-import javax.swing.JFrame;
 import javax.swing.JRadioButton;
 import model.Computador;
 import model.Equipamento;
@@ -288,25 +286,43 @@ public class FormDesktop extends javax.swing.JFrame {
     }//GEN-LAST:event_rbWindActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        Computador comp = new Computador();
+        String capacidadeHD = tfArmHD.getText();
+        String memoria = tfMemoria.getText();
+        String processador = cbProcessador.getSelectedItem().toString();        
+        String sistemaOp = capturarSO();        
+        String placaVideo = captuarPlaca();      
         
-        comp.setCodEquipamento(FormEquipamento.getCodigo() );
-        comp.setMarca( FormEquipamento.getMarca() );
-        comp.setModelo( FormEquipamento.getModelo() );
-        comp.setQuantEstoque( FormEquipamento.getQuant() );
-        comp.setCategoria( FormEquipamento.getCategoria() );
-        comp.setValorDiaria( FormEquipamento.getValor() );
-        
-        comp.setCapacidadeHD(tfArmHD.getText() );
-        comp.setMemoria( tfMemoria.getText() );
-        comp.setProcessador( cbProcessador.getSelectedItem().toString() );
-        
-        capturarRadioSO(comp);
-        capturarRadioPlaca(comp);
+        Computador comp = new Computador(sistemaOp, placaVideo, capacidadeHD, processador, memoria, 
+                equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
+                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());       
         
         FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) comp);        
     }//GEN-LAST:event_btCadastrarActionPerformed
 
+    private String captuarPlaca() {
+        JRadioButton radio;
+        String placaVideo = null;
+        Enumeration jr = bgPlaca.getElements();
+        while ( jr.hasMoreElements() ){
+            radio = (JRadioButton) jr.nextElement();
+            if (radio.isSelected())
+                placaVideo = radio.getText();
+        }
+        return placaVideo;
+    }
+
+    private String capturarSO() {
+        JRadioButton radio;
+        String sistemaOp = null;
+        Enumeration jr = bgSO.getElements();
+        while ( jr.hasMoreElements() ){
+            radio = (JRadioButton) jr.nextElement();
+            if (radio.isSelected())
+                sistemaOp = radio.getText();
+        }
+        return sistemaOp;
+    }
+    
     private void tfArmHDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfArmHDKeyTyped
         String caracteres = "0987654321";
         if(!caracteres.contains(evt.getKeyChar() + "")){

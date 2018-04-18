@@ -13,7 +13,7 @@ import model.Equipamento;
  */
 public class FormEquipamento extends javax.swing.JFrame {
     
-    private static Equipamento equipamento;   
+    public static Equipamento equipamento;   
     
     /**
      * Creates new form FormComputador

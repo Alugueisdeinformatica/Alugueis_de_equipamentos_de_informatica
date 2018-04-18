@@ -65,7 +65,6 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Equipamentos de Informática");
-        setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -215,7 +214,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(756, 481));
+        setSize(new java.awt.Dimension(772, 520));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

@@ -5,6 +5,7 @@
  */
 package form;
 
+import static form.FormEquipamento.equipamento;
 import model.Equipamento;
 import model.Impressora;
 
@@ -160,20 +161,15 @@ public class FormImpressora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-        Impressora impres = new Impressora();
+        String tipo = jtfTipo.getText();
+        String tecnologia = jtfTecn.getText();
+        String especificacao = jtfEsp.getText();
+        boolean wifi = jcbWifi.isSelected();      
         
-        impres.setCodEquipamento(FormEquipamento.getCodigo() );
-        impres.setMarca( FormEquipamento.getMarca() );
-        impres.setModelo( FormEquipamento.getModelo() );
-        impres.setQuantEstoque( FormEquipamento.getQuant() );
-        impres.setCategoria( FormEquipamento.getCategoria() );
-        impres.setValorDiaria( FormEquipamento.getValor() );
-        
-        impres.setEspecificacao( jtfEsp.getText() );
-        impres.setTecnologia( jtfTecn.getText() );
-        impres.setTipo( jtfTipo.getText() );
-        impres.setWifi( jcbWifi.isSelected() );
-        
+        Impressora impres = new Impressora(tipo, tecnologia, especificacao, wifi,
+                equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
+                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
+                        
         FormPrincipal.bdEquipamento.adicionaEquipamento( (Equipamento) impres);        
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
