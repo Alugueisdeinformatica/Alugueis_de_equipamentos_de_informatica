@@ -5,67 +5,15 @@
  */
 package form;
 
+import model.Equipamento;
+
 /**
  *
  * @author Posto Figueira
  */
 public class FormEquipamento extends javax.swing.JFrame {
     
-    private static int codigo;
-    private static int quant;
-    private static String modelo;
-    private static String marca;
-    private static String categoria;
-    private static double valor;
-
-    public static int getCodigo() {
-        return codigo;
-    }
-
-    public static void setCodigo(int codigo) {
-        FormEquipamento.codigo = codigo;
-    }
-
-    public static int getQuant() {
-        return quant;
-    }
-
-    public static void setQuant(int quant) {
-        FormEquipamento.quant = quant;
-    }
-
-    public static String getModelo() {
-        return modelo;
-    }
-
-    public static void setModelo(String modelo) {
-        FormEquipamento.modelo = modelo;
-    }
-
-    public static String getMarca() {
-        return marca;
-    }
-
-    public static void setMarca(String marca) {
-        FormEquipamento.marca = marca;
-    }
-
-    public static double getValor() {
-        return valor;
-    }
-
-    public static void setValor(double valor) {
-        FormEquipamento.valor = valor;
-    }
-
-    public static String getCategoria() {
-        return categoria;
-    }
-
-    public static void setCategoria(String categoria) {
-        FormEquipamento.categoria = categoria;
-    }
-    
+    private static Equipamento equipamento;   
     
     /**
      * Creates new form FormComputador
@@ -281,12 +229,15 @@ public class FormEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btSeguinteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeguinteActionPerformed
-        setCodigo( Integer.parseInt( tfCodigo.getText() ) );
-        setCategoria( cbCategoria.getSelectedItem().toString() );
-        setModelo( tfModelo.getText() );
-        setMarca( tfMarca.getText()  );
-        setValor( Double.parseDouble( tfValor.getText() ) );
-        setQuant( Integer.parseInt( tfQuantidade.getText() ) );       
+        equipamento = new Equipamento();
+        
+        equipamento.setCodEquipamento( Integer.parseInt(tfCodigo.getText()) );
+        equipamento.setCategoria( cbCategoria.getSelectedItem().toString() );
+        equipamento.setModelo( tfModelo.getText() );
+        equipamento.setMarca( tfMarca.getText() );
+        equipamento.setValorDiaria( Double.parseDouble( tfValor.getText() ) );
+        equipamento.setQuantEstoque( Integer.parseInt( tfQuantidade.getText() ) );
+        
         int opcao = cbCategoria.getSelectedIndex();
         
         switch(opcao){
