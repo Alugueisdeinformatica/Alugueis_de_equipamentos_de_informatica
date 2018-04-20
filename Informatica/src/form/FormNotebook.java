@@ -5,6 +5,12 @@
  */
 package form;
 
+import static form.FormEquipamento.equipamento;
+import java.util.Enumeration;
+import javax.swing.JRadioButton;
+import model.Equipamento;
+import model.Notebook;
+
 /**
  *
  * @author John Peter
@@ -27,19 +33,19 @@ public class FormNotebook extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupProcessador = new javax.swing.ButtonGroup();
-        buttonGroupMemoria = new javax.swing.ButtonGroup();
+        bgProcessador = new javax.swing.ButtonGroup();
+        bgMemoria = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        cbSistemaOp = new javax.swing.JComboBox<>();
+        cbPlacaVideo = new javax.swing.JComboBox<>();
+        tfCapacidade = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        taBateria = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -97,33 +103,33 @@ public class FormNotebook extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mc OS", "Windows 10", "Ubuntu" }));
+        cbSistemaOp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mc OS", "Windows 10", "Ubuntu" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "On-Board", "Asus Geforce Gtx", "Nvidia Gt 210", "Radeon R5 230" }));
+        cbPlacaVideo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "On-Board", "Asus Geforce Gtx", "Nvidia Gt 210", "Radeon R5 230" }));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        taBateria.setColumns(20);
+        taBateria.setRows(5);
+        jScrollPane1.setViewportView(taBateria);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Processador", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        buttonGroupProcessador.add(jRadioButton1);
+        bgProcessador.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButton1.setText("AMD Athlon™ X4");
 
-        buttonGroupProcessador.add(jRadioButton2);
+        bgProcessador.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButton2.setText("AMD Ryzen™ 5");
 
-        buttonGroupProcessador.add(jRadioButton3);
+        bgProcessador.add(jRadioButton3);
         jRadioButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButton3.setText("Intel Core™ i3");
 
-        buttonGroupProcessador.add(jRadioButton4);
+        bgProcessador.add(jRadioButton4);
         jRadioButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButton4.setText("Intel Core™ i5");
 
-        buttonGroupProcessador.add(jRadioButton5);
+        bgProcessador.add(jRadioButton5);
         jRadioButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButton5.setText("Intel Core™ i7");
 
@@ -160,23 +166,23 @@ public class FormNotebook extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Memória", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        buttonGroupMemoria.add(jRadioButton6);
+        bgMemoria.add(jRadioButton6);
         jRadioButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButton6.setText("DDR 3 4Gb");
 
-        buttonGroupMemoria.add(jRadioButton7);
+        bgMemoria.add(jRadioButton7);
         jRadioButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButton7.setText("DDR 4 8Gb");
 
-        buttonGroupMemoria.add(jRadioButton8);
+        bgMemoria.add(jRadioButton8);
         jRadioButton8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButton8.setText("DDR 2 2Gb");
 
-        buttonGroupMemoria.add(jRadioButton9);
+        bgMemoria.add(jRadioButton9);
         jRadioButton9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButton9.setText("DDR 3 2Gb");
 
-        buttonGroupMemoria.add(jRadioButton10);
+        bgMemoria.add(jRadioButton10);
         jRadioButton10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButton10.setText("DDR 3 8GB");
 
@@ -219,6 +225,11 @@ public class FormNotebook extends javax.swing.JFrame {
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton1);
         jToolBar1.add(jSeparator1);
 
@@ -260,15 +271,15 @@ public class FormNotebook extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbSistemaOp, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbPlacaVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -286,9 +297,9 @@ public class FormNotebook extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbSistemaOp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbPlacaVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -305,6 +316,45 @@ public class FormNotebook extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(531, 587));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String sistemaOperacional = cbSistemaOp.getSelectedItem().toString();
+        String placaVideo = cbPlacaVideo.getSelectedItem().toString();
+        String capacidadeHD = tfCapacidade.getText();
+        String bateria = taBateria.getText();
+        String processador = capturaProcessador();
+        String memoria = capturaMemoria();
+        
+        Notebook note = new Notebook(sistemaOperacional, placaVideo, capacidadeHD, processador, memoria, bateria,
+                equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
+                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
+        
+        FormPrincipal.bdEquipamento.adicionaEquipamento( (Equipamento) note );
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private String capturaMemoria() {
+        JRadioButton radio;
+        String memoria = null;
+        Enumeration jr = bgMemoria.getElements();
+        while ( jr.hasMoreElements() ){
+            radio = (JRadioButton) jr.nextElement();
+            if (radio.isSelected())
+                memoria = radio.getText();
+        }
+        return memoria;
+    }
+
+    private String capturaProcessador() {
+        JRadioButton radio;
+        String processador = null;
+        Enumeration jr = bgProcessador.getElements();
+        while ( jr.hasMoreElements() ){
+            radio = (JRadioButton) jr.nextElement();
+            if (radio.isSelected())
+                processador = radio.getText();
+        }
+        return processador;
+    }
 
     /**
      * @param args the command line arguments
@@ -345,13 +395,13 @@ public class FormNotebook extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroupMemoria;
-    private javax.swing.ButtonGroup buttonGroupProcessador;
+    private javax.swing.ButtonGroup bgMemoria;
+    private javax.swing.ButtonGroup bgProcessador;
+    private javax.swing.JComboBox<String> cbPlacaVideo;
+    private javax.swing.JComboBox<String> cbSistemaOp;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -373,8 +423,8 @@ public class FormNotebook extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTextArea taBateria;
+    private javax.swing.JTextField tfCapacidade;
     // End of variables declaration//GEN-END:variables
 }
