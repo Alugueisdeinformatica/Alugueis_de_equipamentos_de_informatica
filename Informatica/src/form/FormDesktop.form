@@ -219,13 +219,12 @@
     <Component class="javax.swing.JComboBox" name="cbProcessador">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
+          <StringArray count="5">
             <StringItem index="0" value="AMD Athlon&#x2122; X4"/>
             <StringItem index="1" value="AMD Ryzen&#x2122; 5"/>
             <StringItem index="2" value="Intel Core&#x2122; i3"/>
             <StringItem index="3" value="Intel Core&#x2122; i5"/>
             <StringItem index="4" value="Intel Core&#x2122; i7"/>
-            <StringItem index="5" value=" "/>
           </StringArray>
         </Property>
       </Properties>
@@ -380,7 +379,7 @@
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/icon/computer-ok-icon.png"/>
+              <Image iconType="3" name="/icon/Accept-icon.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
           </Properties>

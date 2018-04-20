@@ -260,18 +260,19 @@ public class FormEquipamento extends javax.swing.JFrame {
         
             switch(opcao){
                 case 0:
-                    new FormDesktop().setVisible(true);
-                    this.setVisible(false);
+                    new FormDesktop().setVisible(true);                     
                     break;
                 case 1:
-                    new FormImpressora().setVisible(true);
-                    this.setVisible(false);
+                    new FormImpressora().setVisible(true);                    
                     break;
                 case 2:
-                    new FormMonitor().setVisible(true);
-                    this.setVisible(false);
+                    new FormMonitor().setVisible(true);                    
                     break;
-            }        
+                case 3:
+                    new FormNotebook().setVisible(true);
+                    break;
+            }
+            this.setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
         }       

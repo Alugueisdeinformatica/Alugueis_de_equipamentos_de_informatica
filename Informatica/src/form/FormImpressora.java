@@ -89,7 +89,7 @@ public class FormImpressora extends javax.swing.JFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        jbCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Printer-Default-Network-icon.png"))); // NOI18N
+        jbCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
         jbCadastrar.setText("Cadastrar");
         jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

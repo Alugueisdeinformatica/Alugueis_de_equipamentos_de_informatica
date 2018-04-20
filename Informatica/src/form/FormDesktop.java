@@ -130,7 +130,7 @@ public class FormDesktop extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        cbProcessador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AMD Athlon™ X4", "AMD Ryzen™ 5", "Intel Core™ i3", "Intel Core™ i5", "Intel Core™ i7", " " }));
+        cbProcessador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AMD Athlon™ X4", "AMD Ryzen™ 5", "Intel Core™ i3", "Intel Core™ i5", "Intel Core™ i7" }));
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 204));
         jPanel2.setPreferredSize(new java.awt.Dimension(520, 100));
@@ -205,7 +205,7 @@ public class FormDesktop extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
 
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/computer-ok-icon.png"))); // NOI18N
+        btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
         btCadastrar.setText("Cadastrar");
         btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
