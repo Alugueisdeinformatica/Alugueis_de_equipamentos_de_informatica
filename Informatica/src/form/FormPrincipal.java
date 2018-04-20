@@ -130,13 +130,15 @@ public class FormPrincipal extends javax.swing.JFrame {
         jToolBar1.add(btAluguel);
 
         jPanel1.add(jToolBar1, java.awt.BorderLayout.PAGE_START);
+        jToolBar1.getAccessibleContext().setAccessibleDescription("");
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         JMenuCadastro.setText("Cadastro");
         JMenuCadastro.setName("JMenuCadastro"); // NOI18N
 
-        JMenuItemCliente.setText("Cliente");
+        JMenuItemCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/user-add-icon 16.png"))); // NOI18N
+        JMenuItemCliente.setText("Novo Cliente");
         JMenuItemCliente.setName("JMenuItemCliente"); // NOI18N
         JMenuItemCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +147,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         JMenuCadastro.add(JMenuItemCliente);
 
-        jMenuItemEquipamento.setText("Equipamento");
+        jMenuItemEquipamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/my-computer-icon 16.png"))); // NOI18N
+        jMenuItemEquipamento.setText("Novo Equipamento");
         jMenuItemEquipamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemEquipamentoActionPerformed(evt);
