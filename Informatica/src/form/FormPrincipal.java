@@ -184,6 +184,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuConsulta.add(jMenuItemCliente);
 
         jMenuItemEquipamentos.setText("Equipamentos");
+        jMenuItemEquipamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEquipamentosActionPerformed(evt);
+            }
+        });
         jMenuConsulta.add(jMenuItemEquipamentos);
 
         jMenuCAluguel.setText("Aluguel");
@@ -217,7 +222,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        setSize(new java.awt.Dimension(772, 520));
+        setSize(new java.awt.Dimension(772, 669));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -244,6 +249,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void btEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipamentoActionPerformed
         jMenuItemEquipamentoActionPerformed(evt);
     }//GEN-LAST:event_btEquipamentoActionPerformed
+
+    private void jMenuItemEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEquipamentosActionPerformed
+        new FormBuscarEquipamento().setVisible(true);
+    }//GEN-LAST:event_jMenuItemEquipamentosActionPerformed
 
     /**
      * @param args the command line arguments

@@ -47,23 +47,23 @@ public class FormNotebook extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         taBateria = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
+        rbAmdAthlon = new javax.swing.JRadioButton();
+        rbAmdRyzen = new javax.swing.JRadioButton();
+        rbInteli3 = new javax.swing.JRadioButton();
+        rbInteli5 = new javax.swing.JRadioButton();
+        rbInteli7 = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
-        jRadioButton6 = new javax.swing.JRadioButton();
-        jRadioButton7 = new javax.swing.JRadioButton();
-        jRadioButton8 = new javax.swing.JRadioButton();
-        jRadioButton9 = new javax.swing.JRadioButton();
-        jRadioButton10 = new javax.swing.JRadioButton();
+        rbDDR34g = new javax.swing.JRadioButton();
+        rbDDR48g = new javax.swing.JRadioButton();
+        rbDDR22g = new javax.swing.JRadioButton();
+        rbDDR32g = new javax.swing.JRadioButton();
+        rbDDR38g = new javax.swing.JRadioButton();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
+        btCadastrar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        jButton2 = new javax.swing.JButton();
+        btCancelar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
-        jButton3 = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -113,25 +113,25 @@ public class FormNotebook extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Processador", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        bgProcessador.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton1.setText("AMD Athlon™ X4");
+        bgProcessador.add(rbAmdAthlon);
+        rbAmdAthlon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbAmdAthlon.setText("AMD Athlon™ X4");
 
-        bgProcessador.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton2.setText("AMD Ryzen™ 5");
+        bgProcessador.add(rbAmdRyzen);
+        rbAmdRyzen.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbAmdRyzen.setText("AMD Ryzen™ 5");
 
-        bgProcessador.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton3.setText("Intel Core™ i3");
+        bgProcessador.add(rbInteli3);
+        rbInteli3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbInteli3.setText("Intel Core™ i3");
 
-        bgProcessador.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton4.setText("Intel Core™ i5");
+        bgProcessador.add(rbInteli5);
+        rbInteli5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbInteli5.setText("Intel Core™ i5");
 
-        bgProcessador.add(jRadioButton5);
-        jRadioButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton5.setText("Intel Core™ i7");
+        bgProcessador.add(rbInteli7);
+        rbInteli7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbInteli7.setText("Intel Core™ i7");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -140,51 +140,51 @@ public class FormNotebook extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1)
+                    .addComponent(rbAmdRyzen)
+                    .addComponent(rbAmdAthlon)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jRadioButton4)
-                        .addComponent(jRadioButton3)
-                        .addComponent(jRadioButton5)))
+                        .addComponent(rbInteli5)
+                        .addComponent(rbInteli3)
+                        .addComponent(rbInteli7)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton1)
+                .addComponent(rbAmdAthlon)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(rbAmdRyzen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(rbInteli3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton4)
+                .addComponent(rbInteli5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton5)
+                .addComponent(rbInteli7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Memória", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        bgMemoria.add(jRadioButton6);
-        jRadioButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton6.setText("DDR 3 4Gb");
+        bgMemoria.add(rbDDR34g);
+        rbDDR34g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbDDR34g.setText("DDR 3 4Gb");
 
-        bgMemoria.add(jRadioButton7);
-        jRadioButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton7.setText("DDR 4 8Gb");
+        bgMemoria.add(rbDDR48g);
+        rbDDR48g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbDDR48g.setText("DDR 4 8Gb");
 
-        bgMemoria.add(jRadioButton8);
-        jRadioButton8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton8.setText("DDR 2 2Gb");
+        bgMemoria.add(rbDDR22g);
+        rbDDR22g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbDDR22g.setText("DDR 2 2Gb");
 
-        bgMemoria.add(jRadioButton9);
-        jRadioButton9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton9.setText("DDR 3 2Gb");
+        bgMemoria.add(rbDDR32g);
+        rbDDR32g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbDDR32g.setText("DDR 3 2Gb");
 
-        bgMemoria.add(jRadioButton10);
-        jRadioButton10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton10.setText("DDR 3 8GB");
+        bgMemoria.add(rbDDR38g);
+        rbDDR38g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbDDR38g.setText("DDR 3 8GB");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -193,62 +193,62 @@ public class FormNotebook extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton10)
-                    .addComponent(jRadioButton7)
-                    .addComponent(jRadioButton6)
-                    .addComponent(jRadioButton9)
-                    .addComponent(jRadioButton8))
+                    .addComponent(rbDDR38g)
+                    .addComponent(rbDDR48g)
+                    .addComponent(rbDDR34g)
+                    .addComponent(rbDDR32g)
+                    .addComponent(rbDDR22g))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButton6)
+                .addComponent(rbDDR34g)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton7)
+                .addComponent(rbDDR48g)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton8)
+                .addComponent(rbDDR22g)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRadioButton9)
+                .addComponent(rbDDR32g)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jRadioButton10)
+                .addComponent(rbDDR38g)
                 .addGap(22, 22, 22))
         );
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
-        jButton1.setText("Cadastrar");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
+        btCadastrar.setText("Cadastrar");
+        btCadastrar.setFocusable(false);
+        btCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btCadastrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btCadastrarActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton1);
+        jToolBar1.add(btCadastrar);
         jToolBar1.add(jSeparator1);
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
-        jButton2.setText("Cancelar");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
+        btCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
+        btCancelar.setText("Cancelar");
+        btCancelar.setFocusable(false);
+        btCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btCancelar);
         jToolBar1.add(jSeparator2);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
-        jButton3.setText("Sair");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
+        btSair.setText("Sair");
+        btSair.setFocusable(false);
+        btSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btSair);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -317,7 +317,7 @@ public class FormNotebook extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         String sistemaOperacional = cbSistemaOp.getSelectedItem().toString();
         String placaVideo = cbPlacaVideo.getSelectedItem().toString();
         String capacidadeHD = tfCapacidade.getText();
@@ -330,7 +330,7 @@ public class FormNotebook extends javax.swing.JFrame {
                 equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
         
         FormPrincipal.bdEquipamento.adicionaEquipamento( (Equipamento) note );
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btCadastrarActionPerformed
 
     private String capturaMemoria() {
         JRadioButton radio;
@@ -397,11 +397,11 @@ public class FormNotebook extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgMemoria;
     private javax.swing.ButtonGroup bgProcessador;
+    private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btCancelar;
+    private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cbPlacaVideo;
     private javax.swing.JComboBox<String> cbSistemaOp;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -410,20 +410,20 @@ public class FormNotebook extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton10;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
-    private javax.swing.JRadioButton jRadioButton7;
-    private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JRadioButton jRadioButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JRadioButton rbAmdAthlon;
+    private javax.swing.JRadioButton rbAmdRyzen;
+    private javax.swing.JRadioButton rbDDR22g;
+    private javax.swing.JRadioButton rbDDR32g;
+    private javax.swing.JRadioButton rbDDR34g;
+    private javax.swing.JRadioButton rbDDR38g;
+    private javax.swing.JRadioButton rbDDR48g;
+    private javax.swing.JRadioButton rbInteli3;
+    private javax.swing.JRadioButton rbInteli5;
+    private javax.swing.JRadioButton rbInteli7;
     private javax.swing.JTextArea taBateria;
     private javax.swing.JTextField tfCapacidade;
     // End of variables declaration//GEN-END:variables

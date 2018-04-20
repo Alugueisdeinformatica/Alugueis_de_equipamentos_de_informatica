@@ -24,17 +24,17 @@ public class EquipamentoDao {
         lista.add(equipamento);
     }
     
-    public Equipamento buscaEquipamento(String codEquipamento){
+    public Equipamento buscaEquipamento(int codEquipamento){
         Equipamento eq = null;
         for(int i = 0; i < lista.size(); i++){
-            if(codEquipamento.equals(lista.get(i).getCodEquipamento())){
+            if(codEquipamento == lista.get(i).getCodEquipamento()){
                 eq = lista.get(i);
             }
         }
         return eq;
     }
     
-    public void removerEquipamento(String codEquipamento){
+    public void removerEquipamento(int codEquipamento){
         Equipamento eq = buscaEquipamento(codEquipamento);
         if(eq != null){
             lista.remove(eq);
@@ -42,7 +42,7 @@ public class EquipamentoDao {
     }
     
     public void atualizarEquipamento(Equipamento equipamento){
-        String codigo = String.valueOf(equipamento.getCodEquipamento());
+        int codigo = equipamento.getCodEquipamento();
         Equipamento eq = buscaEquipamento( codigo );
         if(eq != null){
             int idx = lista.indexOf(eq);

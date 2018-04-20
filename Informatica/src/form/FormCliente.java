@@ -84,7 +84,9 @@ public class FormCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Cliente");
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(200, 200, 200));
+
+        jTabbedPane1.setBackground(new java.awt.Color(200, 200, 200));
 
         jpDadosPessoais.setName("jpDadosPessoais"); // NOI18N
 

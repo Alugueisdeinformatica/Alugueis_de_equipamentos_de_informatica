@@ -14,7 +14,7 @@ import model.Equipamento;
 
 /**
  *
- * @author Posto Figueira
+ * @author John Peter
  */
 public class FormDesktop extends javax.swing.JFrame {
 

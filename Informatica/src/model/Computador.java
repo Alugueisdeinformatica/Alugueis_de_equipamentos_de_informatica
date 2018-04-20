@@ -69,15 +69,18 @@ public class Computador extends Equipamento{
     public void setMemoria(String memoria) {
         this.memoria = memoria;
     }
-    
+
     @Override
     public String toString() {
-        return "\n\nComputador{" + "\nsistemaOp=" + sistemaOperacional + 
-               ", \nplacaVideo=" + placaVideo + 
-               ", \ncapacidadeHD=" + capacidadeHD + 
-               ", \nprocessador=" + processador + 
-               ", \nmemoria=" + memoria + '}';
-    }
+        return "Computador{" + "\nsistemaOperacional=" + sistemaOperacional + 
+                "\nQuantidade: " + getQuantEstoque() +
+                "\nCategoria: " + getCategoria() +
+                ", \nplacaVideo=" + placaVideo + 
+                ", \ncapacidadeHD=" + capacidadeHD + 
+                ", \nprocessador=" + processador + 
+                ", \nmemoria=" + memoria + 
+                '}';
+    }   
     
     public boolean validaComputador(){
         return !sistemaOperacional.equals("") &&

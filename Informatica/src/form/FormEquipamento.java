@@ -5,14 +5,12 @@
  */
 package form;
 
-import java.awt.Component;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import model.Equipamento;
 
 /**
  *
- * @author Posto Figueira
+ * @author John Peter
  */
 public class FormEquipamento extends javax.swing.JFrame {
     
