@@ -21,15 +21,15 @@ public class Tablet extends Equipamento{
         super();
     }
 
-    public Tablet(String capacidade, String tamanhoTela, String memoriaRam, String sistemaOperacional, String bateria, String processador) {
-        this();
+    public Tablet(String capacidade, String tamanhoTela, String memoriaRam, String sistemaOperacional, String bateria, String processador, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, double valorDiaria) {
+        super(codEquipamento, modelo, marca, quantEstoque, categoria, valorDiaria);
         this.capacidade = capacidade;
         this.tamanhoTela = tamanhoTela;
         this.memoriaRam = memoriaRam;
         this.sistemaOperacional = sistemaOperacional;
         this.bateria = bateria;
         this.processador = processador;
-    }    
+    }
 
     public String getCapacidade() {
         return capacidade;
@@ -77,5 +77,14 @@ public class Tablet extends Equipamento{
 
     public void setCpu(String processador) {
         this.processador = processador;
+    }
+    
+    public boolean validaTablet(){
+        return !capacidade.equals("") &&
+               !tamanhoTela.equals("") &&
+               !memoriaRam.equals("") &&
+               !sistemaOperacional.equals("") &&
+               !bateria.equals("") &&
+               !processador.equals("");
     }
 }

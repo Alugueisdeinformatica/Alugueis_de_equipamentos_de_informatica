@@ -5,6 +5,11 @@
  */
 package form;
 
+import static form.FormEquipamento.equipamento;
+import javax.swing.JOptionPane;
+import model.Equipamento;
+import model.Tablet;
+
 /**
  *
  * @author John Peter
@@ -124,6 +129,11 @@ public class FormTablet extends javax.swing.JFrame {
         btCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btCadastrar.setName("btCadastrar"); // NOI18N
         btCadastrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btCadastrar);
         jToolBar1.add(jSeparator1);
 
@@ -229,6 +239,26 @@ public class FormTablet extends javax.swing.JFrame {
         tfProcessador.setText("");
         cbCapacidade.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
+
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        String capacidade = cbCapacidade.getSelectedItem().toString();
+        String tamanho = cbTamanhoTela.getSelectedItem().toString();
+        String memoria = tfMemoria.getText();
+        String sistema = cbSO.getSelectedItem().toString();
+        String bateria = tfBateria.getText();
+        String processador = tfProcessador.getText();
+        
+        Tablet tab = new Tablet(capacidade, tamanho, memoria, sistema, bateria, processador, 
+                equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
+                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
+        
+        if(tab.validaTablet()){
+            FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) tab); 
+            JOptionPane.showMessageDialog(null, "Tablet Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+        } 
+    }//GEN-LAST:event_btCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
