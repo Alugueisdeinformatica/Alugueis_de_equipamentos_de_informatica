@@ -107,6 +107,11 @@ public class FormAluguel extends javax.swing.JFrame {
         btLimpar.setMaximumSize(new java.awt.Dimension(85, 23));
         btLimpar.setName("btLimpar"); // NOI18N
         btLimpar.setPreferredSize(new java.awt.Dimension(85, 23));
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setText("Sair");
@@ -218,8 +223,18 @@ public class FormAluguel extends javax.swing.JFrame {
             aluguel.setValorTotal("");
             FormPrincipal.bdAluguel.adicionaAluguel(aluguel);
             JOptionPane.showMessageDialog(null, "Aluguel Adicionado!", "Cadastrado", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Adicione cliente e equipamento primeiro!", "", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btAdicionarActionPerformed
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        tfAdicionarCliente.setText("");
+        taInfo.setText("");
+        btInserirCliente.setEnabled(true);
+        cli = null;
+        eq = null;
+    }//GEN-LAST:event_btLimparActionPerformed
 
     /**
      * @param args the command line arguments
