@@ -56,12 +56,10 @@ public class FormCliente extends javax.swing.JFrame {
         rbUniaoEstavel = new javax.swing.JRadioButton();
         rbViuvo = new javax.swing.JRadioButton();
         jpEnderecoCompleto = new javax.swing.JPanel();
-        lbPais = new javax.swing.JLabel();
         lbCEP = new javax.swing.JLabel();
         tfCEP = new javax.swing.JFormattedTextField();
         lbCidade = new javax.swing.JLabel();
         tfCidade = new javax.swing.JTextField();
-        tfPais = new javax.swing.JTextField();
         lbEstado = new javax.swing.JLabel();
         cbEstado = new javax.swing.JComboBox<>();
         lbComplemento = new javax.swing.JLabel();
@@ -231,10 +229,6 @@ public class FormCliente extends javax.swing.JFrame {
 
         jpEnderecoCompleto.setName("jpEnderecoCompleto"); // NOI18N
 
-        lbPais.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbPais.setText("País:");
-        lbPais.setName("lbPais"); // NOI18N
-
         lbCEP.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbCEP.setText("CEP:");
         lbCEP.setName("lbCEP"); // NOI18N
@@ -251,8 +245,6 @@ public class FormCliente extends javax.swing.JFrame {
         lbCidade.setName("lbCidade"); // NOI18N
 
         tfCidade.setName("tfCidade"); // NOI18N
-
-        tfPais.setName("tfPais"); // NOI18N
 
         lbEstado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbEstado.setText("Estado:");
@@ -299,19 +291,13 @@ public class FormCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfPais, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbPais))
-                            .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
-                                .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(85, 85, 85)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                         .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lbCEP)
                             .addComponent(tfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(81, 81, 81)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbCidade))
@@ -330,7 +316,7 @@ public class FormCliente extends javax.swing.JFrame {
                             .addComponent(lbComplemento)
                             .addComponent(tfNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbNumero))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 129, Short.MAX_VALUE))
                     .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addComponent(tfRua, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,13 +328,11 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCidade)
-                    .addComponent(lbCEP)
-                    .addComponent(lbPais))
+                    .addComponent(lbCEP))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbNumero)
@@ -526,7 +510,6 @@ public class FormCliente extends javax.swing.JFrame {
                 cliente.setEstadoCivil(radio.getText());
             }
         }
-        cliente.getEndereco().setPais(tfPais.getText());
         cliente.getEndereco().setCep(tfCEP.getText());
         cliente.getEndereco().setCidade(tfCidade.getText());
         cliente.getEndereco().setEstado(cbEstado.getSelectedItem().toString());
@@ -564,7 +547,6 @@ public class FormCliente extends javax.swing.JFrame {
         cbSexo.setSelectedIndex(0);
         bgEstadoCivil.clearSelection();
         rbSolteiro.setSelected(true);
-        tfPais.setText("");
         tfCEP.setValue("");
         tfCidade.setText("");
         cbEstado.setSelectedIndex(0);
@@ -633,7 +615,6 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lbEstado;
     private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbNumero;
-    private javax.swing.JLabel lbPais;
     private javax.swing.JLabel lbRua;
     private javax.swing.JLabel lbSexo;
     private javax.swing.JLabel lbTelefone;
@@ -651,7 +632,6 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfNome;
     private javax.swing.JTextField tfNumero;
-    private javax.swing.JTextField tfPais;
     private javax.swing.JTextField tfRua;
     private javax.swing.JFormattedTextField tfTelefone;
     // End of variables declaration//GEN-END:variables

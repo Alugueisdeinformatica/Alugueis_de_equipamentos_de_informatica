@@ -12,7 +12,6 @@ package model;
 public class Endereco {
     private String cep;
     private String cidade;
-    private String pais;
     private String estado;
     private String complemento;
     private int numero;
@@ -22,10 +21,9 @@ public class Endereco {
     public Endereco() {
     }
 
-    public Endereco(String cep, String cidade, String pais, String estado, String complemento, int numero, String bairro, String rua) {
+    public Endereco(String cep, String cidade, String estado, String complemento, int numero, String bairro, String rua) {
         this.cep = cep;
         this.cidade = cidade;
-        this.pais = pais;
         this.estado = estado;
         this.complemento = complemento;
         this.numero = numero;
@@ -47,14 +45,6 @@ public class Endereco {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
-    }
-
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
     }
 
     public String getEstado() {
@@ -100,7 +90,6 @@ public class Endereco {
     public boolean validaEndereco(){ //Verifica se todos os campos foram preenchidos
         return !cep.equals("") &&
                 !cidade.equals("") &&
-                !pais.equals("") &&
                 !estado.equals("") &&
                 !complemento.equals("") &&
                 numero > 0 &&
