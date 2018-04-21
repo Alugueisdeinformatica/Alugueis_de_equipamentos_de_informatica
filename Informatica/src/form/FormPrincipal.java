@@ -7,6 +7,7 @@ package form;
 
 import dao.ClienteDao;
 import dao.EquipamentoDao;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -44,6 +45,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         btEquipamento = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         btAluguel = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JToolBar.Separator();
+        btSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenuCadastro = new javax.swing.JMenu();
         JMenuItemCliente = new javax.swing.JMenuItem();
@@ -128,6 +131,20 @@ public class FormPrincipal extends javax.swing.JFrame {
         btAluguel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btAluguel.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btAluguel);
+        jToolBar1.add(jSeparator5);
+
+        btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/symbol-delete-icon.png"))); // NOI18N
+        btSair.setText("Sair");
+        btSair.setFocusable(false);
+        btSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btSair);
 
         jPanel1.add(jToolBar1, java.awt.BorderLayout.PAGE_START);
         jToolBar1.getAccessibleContext().setAccessibleDescription("");
@@ -257,6 +274,13 @@ public class FormPrincipal extends javax.swing.JFrame {
         new FormBuscarEquipamento().setVisible(true);
     }//GEN-LAST:event_jMenuItemEquipamentosActionPerformed
 
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        Object[] options = {"Sim", "Não"}; 
+        int decisao = JOptionPane.showOptionDialog(null, "Tem certeza que deseja sair?", "ATENÇÃO", 
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]); 
+        if (decisao == JOptionPane.YES_OPTION) this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -302,6 +326,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btAluguel;
     private javax.swing.JButton btCliente;
     private javax.swing.JButton btEquipamento;
+    private javax.swing.JButton btSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenuAluguel;
@@ -322,6 +347,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
+    private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
