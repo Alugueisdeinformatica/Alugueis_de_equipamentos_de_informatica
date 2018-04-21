@@ -5,6 +5,12 @@
  */
 package form;
 
+import static form.FormEquipamento.equipamento;
+import javax.swing.JOptionPane;
+import model.Computador;
+import model.Equipamento;
+import model.Projetor;
+
 /**
  *
  * @author John Peter
@@ -105,6 +111,11 @@ public class FormProjetor extends javax.swing.JFrame {
         btCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btCadastrar.setName("btCadastrar"); // NOI18N
         btCadastrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadastrarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btCadastrar);
         jToolBar1.add(jSeparator1);
 
@@ -220,6 +231,25 @@ public class FormProjetor extends javax.swing.JFrame {
         tfLente.setText("");
         tfMaterial.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
+
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        String material = tfMaterial.getText();
+        String brilho = tfBrilho.getText();
+        String resolucao = tfResolucao.getText();
+        String lampada = tfLampada.getText();
+        String lente = tfLente.getText();
+        
+        Projetor proj = new Projetor(material, brilho, resolucao, lampada, lente, 
+                equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
+                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
+        
+        if(proj.validaProjetor()){
+            FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) proj); 
+            JOptionPane.showMessageDialog(null, "Projetor Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+        }     
+    }//GEN-LAST:event_btCadastrarActionPerformed
 
     /**
      * @param args the command line arguments

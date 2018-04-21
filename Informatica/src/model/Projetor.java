@@ -69,4 +69,12 @@ public class Projetor extends Equipamento{
     public void setLente(String lente) {
         this.lente = lente;
     }
+    
+    public boolean validaProjetor(){
+        return !material.equals("") &&
+               !brilho.equals("") &&
+               !resolucaoOptica.equals("") &&
+               !lampada.equals("") &&
+               !lente.equals("");
+    }
 }
