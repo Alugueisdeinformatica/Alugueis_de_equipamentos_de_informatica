@@ -5,15 +5,24 @@
  */
 package form;
 
+import model.Cliente;
+
 /**
  *
  * @author Luís Gustavo
  */
 public class FormAluguel extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormAluguel
-     */
+    private static Cliente cli = null;
+    
+    public static void setCliente(Cliente cli){
+        FormAluguel.cli = cli;
+    }
+    
+    public static Cliente getCliente(){
+        return cli;
+    }
+    
     public FormAluguel() {
         initComponents();
     }
@@ -40,10 +49,20 @@ public class FormAluguel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Novo Aluguel");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         btAdicionarCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btAdicionarCliente.setText("Adicionar Cliente");
         btAdicionarCliente.setName("btAdicionarCliente"); // NOI18N
+        btAdicionarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAdicionarClienteActionPerformed(evt);
+            }
+        });
 
         tfAdicionarCliente.setEditable(false);
         tfAdicionarCliente.setName("tfAdicionarCliente"); // NOI18N
@@ -127,8 +146,23 @@ public class FormAluguel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        cli = null;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarClienteActionPerformed
+        Cliente cliente = new Cliente();
+        FormBuscarCliente.setCliente(cliente);
+        new FormBuscarCliente().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btAdicionarClienteActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(cli != null){
+            tfAdicionarCliente.setText(cli.getNome());
+            btAdicionarCliente.setEnabled(false);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

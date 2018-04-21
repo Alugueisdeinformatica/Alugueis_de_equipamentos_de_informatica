@@ -15,9 +15,16 @@ import model.Cliente;
  */
 public class FormBuscarCliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormBuscarCliente
-     */
+    private static Cliente clien = null;
+    
+    public static void setCliente(Cliente clien){
+        FormBuscarCliente.clien = clien;
+    }
+    
+    public static Cliente getCliente(){
+        return clien;
+    }
+    
     public FormBuscarCliente() {
         initComponents();
     }
@@ -44,6 +51,11 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar Cliente");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lbCPF.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbCPF.setText("CPF:");
@@ -151,6 +163,12 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_cboBuscarTodosActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        clien = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
+        if(clien != null){
+            FormAluguel.setCliente(clien);
+            new FormAluguel().setVisible(true);
+        }
+        clien = null;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -180,6 +198,12 @@ public class FormBuscarCliente extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(clien != null){
+            cboBuscarTodos.setEnabled(false);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

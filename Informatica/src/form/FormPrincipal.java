@@ -143,6 +143,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         btAluguel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btAluguel.setName("btAluguel"); // NOI18N
         btAluguel.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btAluguel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAluguelActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btAluguel);
         jToolBar1.add(jSeparator5);
 
@@ -219,6 +224,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jMenuItemNovo.setText("Novo Aluguel");
         jMenuItemNovo.setName("jMenuItemNovo"); // NOI18N
+        jMenuItemNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemNovoActionPerformed(evt);
+            }
+        });
         jMenuAluguel.add(jMenuItemNovo);
 
         jMenuItemEmitir.setText("Emitir Contrato");
@@ -340,6 +350,14 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
         new FormBuscarCliente().setVisible(true);
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
+
+    private void jMenuItemNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNovoActionPerformed
+        new FormAluguel().setVisible(true);
+    }//GEN-LAST:event_jMenuItemNovoActionPerformed
+
+    private void btAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAluguelActionPerformed
+        new FormAluguel().setVisible(true);
+    }//GEN-LAST:event_btAluguelActionPerformed
 
     /**
      * @param args the command line arguments
