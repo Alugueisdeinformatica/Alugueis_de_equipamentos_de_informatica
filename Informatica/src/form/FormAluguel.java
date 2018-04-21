@@ -5,7 +5,13 @@
  */
 package form;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import model.Aluguel;
 import model.Cliente;
+import model.Equipamento;
 
 /**
  *
@@ -23,6 +29,18 @@ public class FormAluguel extends javax.swing.JFrame {
         return cli;
     }
     
+    private static Equipamento eq = null;
+    
+    public static void setEquipamento(Equipamento eq){
+        FormAluguel.eq = eq;
+    }
+    
+    public static Equipamento getEquipamento(){
+        return eq;
+    }
+    
+    public int cont = 0;
+    
     public FormAluguel() {
         initComponents();
     }
@@ -37,14 +55,14 @@ public class FormAluguel extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btAdicionarCliente = new javax.swing.JButton();
+        btInserirCliente = new javax.swing.JButton();
         tfAdicionarCliente = new javax.swing.JTextField();
-        btAdicionarEquipamento = new javax.swing.JButton();
-        tfAdicionarEquipamento = new javax.swing.JTextField();
+        btInserirEquipamento = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         taInfo = new javax.swing.JTextArea();
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
+        btAdicionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Novo Aluguel");
@@ -55,45 +73,58 @@ public class FormAluguel extends javax.swing.JFrame {
             }
         });
 
-        btAdicionarCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btAdicionarCliente.setText("Adicionar Cliente");
-        btAdicionarCliente.setName("btAdicionarCliente"); // NOI18N
-        btAdicionarCliente.addActionListener(new java.awt.event.ActionListener() {
+        btInserirCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btInserirCliente.setText("Inserir Cliente");
+        btInserirCliente.setName("btInserirCliente"); // NOI18N
+        btInserirCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAdicionarClienteActionPerformed(evt);
+                btInserirClienteActionPerformed(evt);
             }
         });
 
         tfAdicionarCliente.setEditable(false);
         tfAdicionarCliente.setName("tfAdicionarCliente"); // NOI18N
 
-        btAdicionarEquipamento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btAdicionarEquipamento.setText("Adicionar Equipamento");
-        btAdicionarEquipamento.setName("btAdicionarEquipamento"); // NOI18N
-
-        tfAdicionarEquipamento.setEditable(false);
-        tfAdicionarEquipamento.setName("tfAdicionarEquipamento"); // NOI18N
+        btInserirEquipamento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btInserirEquipamento.setText("Inserir Equipamento");
+        btInserirEquipamento.setName("btInserirEquipamento"); // NOI18N
+        btInserirEquipamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInserirEquipamentoActionPerformed(evt);
+            }
+        });
 
         taInfo.setEditable(false);
         taInfo.setColumns(20);
         taInfo.setLineWrap(true);
         taInfo.setRows(5);
-        taInfo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        taInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Equipamentos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
         taInfo.setName("taInfo"); // NOI18N
         jScrollPane1.setViewportView(taInfo);
 
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setText("Limpar");
+        btLimpar.setMaximumSize(new java.awt.Dimension(85, 23));
         btLimpar.setName("btLimpar"); // NOI18N
+        btLimpar.setPreferredSize(new java.awt.Dimension(85, 23));
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setText("Sair");
-        btSair.setMaximumSize(new java.awt.Dimension(71, 23));
+        btSair.setMaximumSize(new java.awt.Dimension(85, 23));
         btSair.setName("btSair"); // NOI18N
-        btSair.setPreferredSize(new java.awt.Dimension(71, 23));
+        btSair.setPreferredSize(new java.awt.Dimension(85, 23));
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairActionPerformed(evt);
+            }
+        });
+
+        btAdicionar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btAdicionar.setText("Adicionar");
+        btAdicionar.setName("btAdicionar"); // NOI18N
+        btAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAdicionarActionPerformed(evt);
             }
         });
 
@@ -104,38 +135,37 @@ public class FormAluguel extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btLimpar)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btAdicionar)
+                        .addGap(79, 79, 79)
+                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btAdicionarEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btAdicionarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btInserirEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btInserirCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(68, 68, 68)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfAdicionarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(tfAdicionarEquipamento))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addComponent(tfAdicionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btAdicionarCliente)
+                    .addComponent(btInserirCliente)
                     .addComponent(tfAdicionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btAdicionarEquipamento)
-                    .addComponent(tfAdicionarEquipamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btInserirEquipamento)
                 .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btLimpar)
-                    .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btAdicionar)
+                    .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -150,19 +180,46 @@ public class FormAluguel extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
-    private void btAdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarClienteActionPerformed
+    private void btInserirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirClienteActionPerformed
         Cliente cliente = new Cliente();
         FormBuscarCliente.setCliente(cliente);
         new FormBuscarCliente().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btAdicionarClienteActionPerformed
+    }//GEN-LAST:event_btInserirClienteActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(cli != null){
             tfAdicionarCliente.setText(cli.getNome());
-            btAdicionarCliente.setEnabled(false);
+            btInserirCliente.setEnabled(false);
+        }
+        if(eq != null){
+            taInfo.setText(eq.toString());
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void btInserirEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirEquipamentoActionPerformed
+        Equipamento equipamento = new Equipamento();
+        FormBuscarEquipamento.setEquipamento(equipamento);
+        new FormBuscarEquipamento().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btInserirEquipamentoActionPerformed
+
+    private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
+        Aluguel aluguel = new Aluguel();
+        if((cli != null) && (eq != null)){
+            aluguel.setCliente(cli);
+            aluguel.adicionaEquipamento(eq);
+            aluguel.setIdAluguel(Integer.toString(cont));
+            Calendar c = Calendar.getInstance();
+            Date data = c.getTime();
+            DateFormat formataData = DateFormat.getDateInstance();
+            aluguel.setDataAtual(formataData);
+            aluguel.setQtAluguel("");
+            aluguel.setValorTotal("");
+            FormPrincipal.bdAluguel.adicionaAluguel(aluguel);
+            JOptionPane.showMessageDialog(null, "Aluguel Adicionado!", "Cadastrado", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btAdicionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,14 +257,14 @@ public class FormAluguel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAdicionarCliente;
-    private javax.swing.JButton btAdicionarEquipamento;
+    private javax.swing.JButton btAdicionar;
+    private javax.swing.JButton btInserirCliente;
+    private javax.swing.JButton btInserirEquipamento;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea taInfo;
     private javax.swing.JTextField tfAdicionarCliente;
-    private javax.swing.JTextField tfAdicionarEquipamento;
     // End of variables declaration//GEN-END:variables
 }

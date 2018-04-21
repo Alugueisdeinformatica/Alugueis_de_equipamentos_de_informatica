@@ -5,6 +5,7 @@
  */
 package form;
 
+import dao.AluguelDao;
 import dao.ClienteDao;
 import dao.EquipamentoDao;
 import javax.swing.JOptionPane;
@@ -17,6 +18,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     
     public static EquipamentoDao bdEquipamento;
     public static ClienteDao bdCliente;
+    public static AluguelDao bdAluguel;
 
     /**
      * Creates new form FormPrincipal
@@ -24,6 +26,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     public FormPrincipal() {
         bdEquipamento = new EquipamentoDao();
         bdCliente = new ClienteDao();
+        bdAluguel = new AluguelDao();
         initComponents();
     }
 

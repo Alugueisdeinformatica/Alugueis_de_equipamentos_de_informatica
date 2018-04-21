@@ -15,9 +15,16 @@ import model.Equipamento;
  */
 public class FormBuscarEquipamento extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormBuscarEquipamento
-     */
+    private static Equipamento equi = null;
+    
+    public static void setEquipamento(Equipamento equi){
+        FormBuscarEquipamento.equi = equi;
+    }
+    
+    public static Equipamento getEquipamento(){
+        return equi;
+    }
+    
     public FormBuscarEquipamento() {
         initComponents();
     }
@@ -43,6 +50,11 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Equipamento");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         btBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btBuscar.setText("Buscar");
@@ -169,8 +181,20 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_cboBuscarTodosActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        equi = FormPrincipal.bdEquipamento.buscaEquipamento(Integer.parseInt(tfCodigo.getText()));
+        if(equi != null){
+            FormAluguel.setEquipamento(equi);
+            new FormAluguel().setVisible(true);
+        }
+        equi = null;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(equi != null){
+            cboBuscarTodos.setEnabled(false);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
