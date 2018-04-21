@@ -293,6 +293,9 @@ public class FormEquipamento extends javax.swing.JFrame {
                 case 4:
                     new FormProjetor().setVisible(true);
                     break;
+                case 5:
+                    new FormTablet().setVisible(true);
+                    break;
             }
             this.setVisible(false);
         }else{

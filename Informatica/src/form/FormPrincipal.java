@@ -276,7 +276,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         Object[] options = {"Sim", "Não"}; 
-        int decisao = JOptionPane.showOptionDialog(null, "Tem certeza que deseja sair?", "ATENÇÃO", 
+        int decisao = JOptionPane.showOptionDialog(null, "Deseja finalizar a aplicação?", "ATENÇÃO", 
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]); 
         if (decisao == JOptionPane.YES_OPTION) this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
