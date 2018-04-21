@@ -37,8 +37,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanelCentro = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanelNorte = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         btCliente = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
@@ -47,6 +49,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         btAluguel = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
         btSair = new javax.swing.JButton();
+        jPanelSul = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenuCadastro = new javax.swing.JMenu();
         JMenuItemCliente = new javax.swing.JMenuItem();
@@ -78,21 +81,28 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/my-computer-icon.png"))); // NOI18N
-        jLabel2.setText("J&L INFORMÁTICA");
-        jPanel1.add(jLabel2, java.awt.BorderLayout.CENTER);
+        jPanelCentro.setBackground(new java.awt.Color(0, 204, 204));
+        jPanelCentro.setLayout(new java.awt.BorderLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 70)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/computer-stuff-1-e1465742115813.png"))); // NOI18N
-        jLabel1.setToolTipText("");
-        jPanel1.add(jLabel1, java.awt.BorderLayout.PAGE_END);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/my-computer-icon.png"))); // NOI18N
+        jLabel1.setText("J&L INFORMÁTICA");
+        jPanelCentro.add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/computer-stuff-1-e1465742115813.png"))); // NOI18N
+        jPanelCentro.add(jLabel2, java.awt.BorderLayout.PAGE_END);
+
+        jPanel1.add(jPanelCentro, java.awt.BorderLayout.CENTER);
+
+        jPanelNorte.setBackground(new java.awt.Color(0, 204, 204));
+        jPanelNorte.setLayout(new javax.swing.BoxLayout(jPanelNorte, javax.swing.BoxLayout.LINE_AXIS));
 
         jToolBar1.setBackground(new java.awt.Color(204, 255, 255));
+        jToolBar1.setBorder(null);
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
@@ -146,10 +156,24 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         jToolBar1.add(btSair);
 
-        jPanel1.add(jToolBar1, java.awt.BorderLayout.PAGE_START);
-        jToolBar1.getAccessibleContext().setAccessibleDescription("");
+        jPanelNorte.add(jToolBar1);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        jPanel1.add(jPanelNorte, java.awt.BorderLayout.PAGE_START);
+
+        jPanelSul.setBackground(new java.awt.Color(0, 204, 204));
+
+        javax.swing.GroupLayout jPanelSulLayout = new javax.swing.GroupLayout(jPanelSul);
+        jPanelSul.setLayout(jPanelSulLayout);
+        jPanelSulLayout.setHorizontalGroup(
+            jPanelSulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 756, Short.MAX_VALUE)
+        );
+        jPanelSulLayout.setVerticalGroup(
+            jPanelSulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanelSul, java.awt.BorderLayout.PAGE_END);
 
         JMenuCadastro.setText("Cadastro");
         JMenuCadastro.setName("JMenuCadastro"); // NOI18N
@@ -242,6 +266,17 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
+        );
+
         setSize(new java.awt.Dimension(772, 669));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -262,6 +297,10 @@ public class FormPrincipal extends javax.swing.JFrame {
         new FormEquipamento().setVisible(true);
     }//GEN-LAST:event_jMenuItemEquipamentoActionPerformed
 
+    private void jMenuItemEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEquipamentosActionPerformed
+        new FormBuscarEquipamento().setVisible(true);
+    }//GEN-LAST:event_jMenuItemEquipamentosActionPerformed
+
     private void btClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClienteActionPerformed
         JMenuItemClienteActionPerformed(evt);
     }//GEN-LAST:event_btClienteActionPerformed
@@ -270,14 +309,10 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuItemEquipamentoActionPerformed(evt);
     }//GEN-LAST:event_btEquipamentoActionPerformed
 
-    private void jMenuItemEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEquipamentosActionPerformed
-        new FormBuscarEquipamento().setVisible(true);
-    }//GEN-LAST:event_jMenuItemEquipamentosActionPerformed
-
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        Object[] options = {"Sim", "Não"}; 
-        int decisao = JOptionPane.showOptionDialog(null, "Deseja finalizar a aplicação?", "ATENÇÃO", 
-        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]); 
+        Object[] options = {"Sim", "Não"};
+        int decisao = JOptionPane.showOptionDialog(null, "Deseja finalizar a aplicação?", "ATENÇÃO",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if (decisao == JOptionPane.YES_OPTION) this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -343,6 +378,9 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemNovo;
     private javax.swing.JMenuItem jMenuItemRealizados;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelCentro;
+    private javax.swing.JPanel jPanelNorte;
+    private javax.swing.JPanel jPanelSul;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
