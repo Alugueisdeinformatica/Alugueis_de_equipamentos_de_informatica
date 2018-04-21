@@ -79,4 +79,13 @@ public class Notebook extends Equipamento{
     public void setBateria(String bateria) {
         this.bateria = bateria;
     }    
+    
+    public boolean validaNotebook(){
+        return !sistemaOperacional.equals("") &&
+               !placaVideo.equals("") &&
+               !capacidadeHD.equals("") &&
+               !processador.equals("") &&
+               !memoria.equals("") &&
+               !bateria.equals("");
+    }
 }

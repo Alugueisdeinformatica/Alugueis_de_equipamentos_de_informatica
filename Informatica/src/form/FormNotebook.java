@@ -7,6 +7,7 @@ package form;
 
 import static form.FormEquipamento.equipamento;
 import java.util.Enumeration;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import model.Equipamento;
 import model.Notebook;
@@ -363,7 +364,12 @@ public class FormNotebook extends javax.swing.JFrame {
                 equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
                 equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
         
-        FormPrincipal.bdEquipamento.adicionaEquipamento( (Equipamento) note );
+        if(note.validaNotebook()){
+            FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) note); 
+            JOptionPane.showMessageDialog(null, "Notebook Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+        } 
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
