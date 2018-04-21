@@ -248,6 +248,11 @@ public class FormNotebook extends javax.swing.JFrame {
         btSair.setFocusable(false);
         btSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btSair);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -331,6 +336,10 @@ public class FormNotebook extends javax.swing.JFrame {
         
         FormPrincipal.bdEquipamento.adicionaEquipamento( (Equipamento) note );
     }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
 
     private String capturaMemoria() {
         JRadioButton radio;
