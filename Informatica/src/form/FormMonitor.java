@@ -32,12 +32,12 @@ public class FormMonitor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jcbTipo = new javax.swing.JComboBox<>();
-        jcbTamanho = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jcbResolucao = new javax.swing.JComboBox<>();
+        cbTipo = new javax.swing.JComboBox<>();
+        cbTamanho = new javax.swing.JComboBox<>();
+        lbTipo = new javax.swing.JLabel();
+        lbTamanho = new javax.swing.JLabel();
+        lbResolucao = new javax.swing.JLabel();
+        cbResolucao = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
@@ -51,20 +51,26 @@ public class FormMonitor extends javax.swing.JFrame {
         setTitle("Cadastro de Monitor");
         setResizable(false);
 
-        jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LCD", "LED", "PLASMA" }));
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LCD", "LED", "PLASMA" }));
+        cbTipo.setName("cbTipo"); // NOI18N
 
-        jcbTamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "14'", "16'", "17'", "20'", "43'" }));
+        cbTamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "14'", "16'", "17'", "20'", "43'" }));
+        cbTamanho.setName("cbTamanho"); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Tela Tipo:");
+        lbTipo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbTipo.setText("Tela Tipo:");
+        lbTipo.setName("lbTipo"); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Tela Tamanho:");
+        lbTamanho.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbTamanho.setText("Tela Tamanho:");
+        lbTamanho.setName("lbTamanho"); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("Tela Resolução:");
+        lbResolucao.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbResolucao.setText("Tela Resolução:");
+        lbResolucao.setName("lbResolucao"); // NOI18N
 
-        jcbResolucao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1280x1024", "1366x768", "1920x1200", "1920x1080", "2560x1440", "2560x1600" }));
+        cbResolucao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1280x1024", "1366x768", "1920x1200", "1920x1080", "2560x1440", "2560x1600" }));
+        cbResolucao.setName("cbResolucao"); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 204));
 
@@ -95,6 +101,7 @@ public class FormMonitor extends javax.swing.JFrame {
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
         btCadastrar.setText("Cadastrar");
+        btCadastrar.setName("btCadastrar"); // NOI18N
         btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastrarActionPerformed(evt);
@@ -106,6 +113,7 @@ public class FormMonitor extends javax.swing.JFrame {
         btCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
         btCancelar.setText("Cancelar");
+        btCancelar.setName("btCancelar"); // NOI18N
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCancelarActionPerformed(evt);
@@ -117,6 +125,7 @@ public class FormMonitor extends javax.swing.JFrame {
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
         btSair.setText("Sair");
+        btSair.setName("btSair"); // NOI18N
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairActionPerformed(evt);
@@ -132,16 +141,16 @@ public class FormMonitor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jcbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbTipo)
+                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcbTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(cbTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbTamanho))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jcbResolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbResolucao)
+                    .addComponent(cbResolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -154,14 +163,14 @@ public class FormMonitor extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(lbTipo)
+                    .addComponent(lbTamanho)
+                    .addComponent(lbResolucao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jcbTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbResolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbResolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -171,9 +180,9 @@ public class FormMonitor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        String tipo = jcbResolucao.getSelectedItem().toString();
-        String tamanhoTela = jcbTamanho.getSelectedItem().toString();
-        String resolucao = jcbResolucao.getSelectedItem().toString();
+        String tipo = cbResolucao.getSelectedItem().toString();
+        String tamanhoTela = cbTamanho.getSelectedItem().toString();
+        String resolucao = cbResolucao.getSelectedItem().toString();
         
         
         Monitor mon = new Monitor(tipo, tamanhoTela, resolucao, 
@@ -193,9 +202,9 @@ public class FormMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        jcbTipo.setSelectedIndex(0);
-        jcbTamanho.setSelectedIndex(0);
-        jcbResolucao.setSelectedIndex(0);
+        cbTipo.setSelectedIndex(0);
+        cbTamanho.setSelectedIndex(0);
+        cbResolucao.setSelectedIndex(0);
     }//GEN-LAST:event_btCancelarActionPerformed
 
     /**
@@ -238,16 +247,16 @@ public class FormMonitor extends javax.swing.JFrame {
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btSair;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JComboBox<String> cbResolucao;
+    private javax.swing.JComboBox<String> cbTamanho;
+    private javax.swing.JComboBox<String> cbTipo;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JComboBox<String> jcbResolucao;
-    private javax.swing.JComboBox<String> jcbTamanho;
-    private javax.swing.JComboBox<String> jcbTipo;
+    private javax.swing.JLabel lbResolucao;
+    private javax.swing.JLabel lbTamanho;
+    private javax.swing.JLabel lbTipo;
     // End of variables declaration//GEN-END:variables
 }

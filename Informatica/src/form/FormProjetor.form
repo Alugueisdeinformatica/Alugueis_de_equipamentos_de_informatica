@@ -36,23 +36,23 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbMaterial" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbLampada" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="tfMaterial" alignment="0" max="32767" attributes="0"/>
                           <Component id="tfLampada" alignment="0" pref="77" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbLente" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="tfLente" alignment="0" pref="79" max="32767" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbBrilho" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="tfBrilho" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel4" max="32767" attributes="0"/>
+                                  <Component id="lbResolucao" max="32767" attributes="0"/>
                                   <Component id="tfResolucao" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -73,9 +73,9 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbMaterial" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbBrilho" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbResolucao" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -85,8 +85,8 @@
               </Group>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbLampada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbLente" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -141,46 +141,54 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="lbMaterial">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Material:"/>
+        <Property name="name" type="java.lang.String" value="lbMaterial" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="lbBrilho">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Brilho:"/>
+        <Property name="name" type="java.lang.String" value="lbBrilho" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfMaterial">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="tfMaterial" noResource="true"/>
+      </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="lbResolucao">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Resolu&#xe7;&#xe3;o Optica:"/>
+        <Property name="name" type="java.lang.String" value="lbResolucao" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="lbLampada">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="L&#xe2;mpada:"/>
+        <Property name="name" type="java.lang.String" value="lbLampada" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="lbLente">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Lente:"/>
+        <Property name="name" type="java.lang.String" value="lbLente" noResource="true"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JToolBar" name="jToolBar1">
@@ -202,6 +210,7 @@
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="name" type="java.lang.String" value="btCadastrar" noResource="true"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
         </Component>
@@ -218,8 +227,12 @@
             <Property name="text" type="java.lang.String" value="Limpar"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="name" type="java.lang.String" value="btLimpar" noResource="true"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btLimparActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JToolBar$Separator" name="jSeparator2">
         </Component>
@@ -234,6 +247,7 @@
             <Property name="text" type="java.lang.String" value="Sair"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="name" type="java.lang.String" value="btSair" noResource="true"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
@@ -243,12 +257,24 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.JTextField" name="tfBrilho">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="tfBrilho" noResource="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfResolucao">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="tfResolucao" noResource="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfLampada">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="tfLampada" noResource="true"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tfLente">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="tfLente" noResource="true"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

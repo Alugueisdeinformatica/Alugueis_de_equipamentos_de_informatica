@@ -32,33 +32,42 @@ public class FormImpressora extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jtfTipo = new javax.swing.JTextField();
-        jtfTecn = new javax.swing.JTextField();
-        jtfEsp = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        tfTipo = new javax.swing.JTextField();
+        tfTecn = new javax.swing.JTextField();
+        tfEsp = new javax.swing.JTextField();
+        lbTipo = new javax.swing.JLabel();
+        lbEsp = new javax.swing.JLabel();
+        lbTecn = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jcbWifi = new javax.swing.JCheckBox();
+        cboWifi = new javax.swing.JCheckBox();
         jToolBar1 = new javax.swing.JToolBar();
-        jbCadastrar = new javax.swing.JButton();
+        btCadastrar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
-        jbCancelar = new javax.swing.JButton();
+        btCancelar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        jbSair = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Tipo:");
+        tfTipo.setName("tfTipo"); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Especificação:");
+        tfTecn.setName("tfTecn"); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("Tecnologia");
+        tfEsp.setName("tfEsp"); // NOI18N
+
+        lbTipo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbTipo.setText("Tipo:");
+        lbTipo.setName("lbTipo"); // NOI18N
+
+        lbEsp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbEsp.setText("Especificação:");
+        lbEsp.setName("lbEsp"); // NOI18N
+
+        lbTecn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbTecn.setText("Tecnologia");
+        lbTecn.setName("lbTecn"); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 204));
 
@@ -83,40 +92,44 @@ public class FormImpressora extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jcbWifi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jcbWifi.setText("Função Wi-Fi");
+        cboWifi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cboWifi.setText("Função Wi-Fi");
+        cboWifi.setName("cboWifi"); // NOI18N
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        jbCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
-        jbCadastrar.setText("Cadastrar");
-        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
+        btCadastrar.setText("Cadastrar");
+        btCadastrar.setName("btCadastrar"); // NOI18N
+        btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCadastrarActionPerformed(evt);
+                btCadastrarActionPerformed(evt);
             }
         });
-        jToolBar1.add(jbCadastrar);
+        jToolBar1.add(btCadastrar);
         jToolBar1.add(jSeparator2);
 
-        jbCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
-        jbCancelar.setText("Cancelar");
-        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
+        btCancelar.setText("Cancelar");
+        btCancelar.setName("btCancelar"); // NOI18N
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCancelarActionPerformed(evt);
+                btCancelarActionPerformed(evt);
             }
         });
-        jToolBar1.add(jbCancelar);
+        jToolBar1.add(btCancelar);
         jToolBar1.add(jSeparator1);
 
-        jbSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
-        jbSair.setText("Sair");
-        jbSair.addActionListener(new java.awt.event.ActionListener() {
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
+        btSair.setText("Sair");
+        btSair.setName("btSair"); // NOI18N
+        btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSairActionPerformed(evt);
+                btSairActionPerformed(evt);
             }
         });
-        jToolBar1.add(jbSair);
+        jToolBar1.add(btSair);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,17 +139,17 @@ public class FormImpressora extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(76, 76, 76)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(lbTecn)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addComponent(jtfTipo)
-                            .addComponent(jtfTecn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbTipo)
+                            .addComponent(tfTipo)
+                            .addComponent(tfTecn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(97, 97, 97)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jtfEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcbWifi))))
+                            .addComponent(lbEsp)
+                            .addComponent(tfEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboWifi))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -150,19 +163,19 @@ public class FormImpressora extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lbTipo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tfTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(lbEsp)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfEsp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tfEsp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24)
-                .addComponent(jLabel3)
+                .addComponent(lbTecn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfTecn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jcbWifi))
+                    .addComponent(tfTecn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboWifi))
                 .addGap(27, 27, 27)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -171,11 +184,11 @@ public class FormImpressora extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-        String tipo = jtfTipo.getText();
-        String tecnologia = jtfTecn.getText();
-        String especificacao = jtfEsp.getText();
-        boolean wifi = jcbWifi.isSelected();      
+    private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        String tipo = tfTipo.getText();
+        String tecnologia = tfTecn.getText();
+        String especificacao = tfEsp.getText();
+        boolean wifi = cboWifi.isSelected();      
         
         Impressora impres = new Impressora(tipo, tecnologia, especificacao, wifi,
                 equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
@@ -187,19 +200,19 @@ public class FormImpressora extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
         }                          
-    }//GEN-LAST:event_jbCadastrarActionPerformed
+    }//GEN-LAST:event_btCadastrarActionPerformed
 
-    private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jbSairActionPerformed
+    }//GEN-LAST:event_btSairActionPerformed
 
-    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        jtfTipo.setText("");
-        jtfEsp.setText("");
-        jtfTecn.setText("");
-        jcbWifi.setSelected(false);
-        jtfTipo.requestFocus();
-    }//GEN-LAST:event_jbCancelarActionPerformed
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        tfTipo.setText("");
+        tfEsp.setText("");
+        tfTecn.setText("");
+        cboWifi.setSelected(false);
+        tfTipo.requestFocus();
+    }//GEN-LAST:event_btCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,20 +251,20 @@ public class FormImpressora extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btCancelar;
+    private javax.swing.JButton btSair;
+    private javax.swing.JCheckBox cboWifi;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JButton jbCadastrar;
-    private javax.swing.JButton jbCancelar;
-    private javax.swing.JButton jbSair;
-    private javax.swing.JCheckBox jcbWifi;
-    private javax.swing.JTextField jtfEsp;
-    private javax.swing.JTextField jtfTecn;
-    private javax.swing.JTextField jtfTipo;
+    private javax.swing.JLabel lbEsp;
+    private javax.swing.JLabel lbTecn;
+    private javax.swing.JLabel lbTipo;
+    private javax.swing.JTextField tfEsp;
+    private javax.swing.JTextField tfTecn;
+    private javax.swing.JTextField tfTipo;
     // End of variables declaration//GEN-END:variables
 }

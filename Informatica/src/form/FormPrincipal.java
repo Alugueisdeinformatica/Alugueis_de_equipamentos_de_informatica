@@ -111,6 +111,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         btCliente.setText("Novo Cliente");
         btCliente.setFocusable(false);
         btCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btCliente.setName("btCliente"); // NOI18N
         btCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +126,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         btEquipamento.setText("Novo Equipamento");
         btEquipamento.setFocusable(false);
         btEquipamento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btEquipamento.setName("btEquipamento"); // NOI18N
         btEquipamento.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btEquipamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +141,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         btAluguel.setText("Novo Aluguel");
         btAluguel.setFocusable(false);
         btAluguel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btAluguel.setName("btAluguel"); // NOI18N
         btAluguel.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btAluguel);
         jToolBar1.add(jSeparator5);
@@ -148,6 +151,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         btSair.setText("Sair");
         btSair.setFocusable(false);
         btSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btSair.setName("btSair"); // NOI18N
         btSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,6 +194,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jMenuItemEquipamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/my-computer-icon 16.png"))); // NOI18N
         jMenuItemEquipamento.setText("Novo Equipamento");
+        jMenuItemEquipamento.setName("jMenuItemEquipamento"); // NOI18N
         jMenuItemEquipamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemEquipamentoActionPerformed(evt);
@@ -210,24 +215,31 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(JMenuCadastro);
 
         jMenuAluguel.setText("Aluguel");
+        jMenuAluguel.setName("jMenuAluguel"); // NOI18N
 
         jMenuItemNovo.setText("Novo Aluguel");
+        jMenuItemNovo.setName("jMenuItemNovo"); // NOI18N
         jMenuAluguel.add(jMenuItemNovo);
 
         jMenuItemEmitir.setText("Emitir Contrato");
+        jMenuItemEmitir.setName("jMenuItemEmitir"); // NOI18N
         jMenuAluguel.add(jMenuItemEmitir);
 
         jMenuItemEfetuar.setText("Efetuar Devolução");
+        jMenuItemEfetuar.setName("jMenuItemEfetuar"); // NOI18N
         jMenuAluguel.add(jMenuItemEfetuar);
 
         jMenuBar1.add(jMenuAluguel);
 
         jMenuConsulta.setText("Consulta");
+        jMenuConsulta.setName("jMenuConsulta"); // NOI18N
 
         jMenuItemCliente.setText("Cliente");
+        jMenuItemCliente.setName("jMenuItemCliente"); // NOI18N
         jMenuConsulta.add(jMenuItemCliente);
 
         jMenuItemEquipamentos.setText("Equipamentos");
+        jMenuItemEquipamentos.setName("jMenuItemEquipamentos"); // NOI18N
         jMenuItemEquipamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemEquipamentosActionPerformed(evt);
@@ -236,14 +248,18 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuConsulta.add(jMenuItemEquipamentos);
 
         jMenuCAluguel.setText("Aluguel");
+        jMenuCAluguel.setName("jMenuCAluguel"); // NOI18N
 
         jMenuItemAbertos.setText("Aluguel Aberto");
+        jMenuItemAbertos.setName("jMenuItemAbertos"); // NOI18N
         jMenuCAluguel.add(jMenuItemAbertos);
 
         jMenuItemRealizados.setText("Aluguel Realizado");
+        jMenuItemRealizados.setName("jMenuItemRealizados"); // NOI18N
         jMenuCAluguel.add(jMenuItemRealizados);
 
         jMenuItemAviso.setText("Aviso de Vencimento");
+        jMenuItemAviso.setName("jMenuItemAviso"); // NOI18N
         jMenuCAluguel.add(jMenuItemAviso);
 
         jMenuConsulta.add(jMenuCAluguel);

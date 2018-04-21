@@ -30,7 +30,7 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
     private void initComponents() {
 
         btBuscar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lbCodigo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taConsulta = new javax.swing.JTextArea();
         tfCodigo = new javax.swing.JTextField();
@@ -40,13 +40,15 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
         setResizable(false);
 
         btBuscar.setText("Buscar");
+        btBuscar.setName("btBuscar"); // NOI18N
         btBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btBuscarActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Codigo:");
+        lbCodigo.setText("Codigo:");
+        lbCodigo.setName("lbCodigo"); // NOI18N
 
         taConsulta.setColumns(20);
         taConsulta.setRows(5);
@@ -63,7 +65,7 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
                         .addGap(209, 209, 209))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lbCodigo)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -75,7 +77,7 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addComponent(jLabel1)
+                .addComponent(lbCodigo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -134,8 +136,8 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbCodigo;
     private javax.swing.JTextArea taConsulta;
     private javax.swing.JTextField tfCodigo;
     // End of variables declaration//GEN-END:variables

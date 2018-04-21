@@ -36,9 +36,9 @@ public class FormDesktop extends javax.swing.JFrame {
 
         bgSO = new javax.swing.ButtonGroup();
         bgPlaca = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbArmHD = new javax.swing.JLabel();
+        lbMemoria = new javax.swing.JLabel();
+        lbProcessador = new javax.swing.JLabel();
         tfMemoria = new javax.swing.JTextField();
         tfArmHD = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -65,21 +65,26 @@ public class FormDesktop extends javax.swing.JFrame {
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Armazenamento HD:");
+        lbArmHD.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbArmHD.setText("Armazenamento HD:");
+        lbArmHD.setName("lbArmHD"); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Memória:");
+        lbMemoria.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbMemoria.setText("Memória:");
+        lbMemoria.setName("lbMemoria"); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("Processador:");
+        lbProcessador.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbProcessador.setText("Processador:");
+        lbProcessador.setName("lbProcessador"); // NOI18N
 
+        tfMemoria.setName("tfMemoria"); // NOI18N
         tfMemoria.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfMemoriaKeyTyped(evt);
             }
         });
 
+        tfArmHD.setName("tfArmHD"); // NOI18N
         tfArmHD.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 tfArmHDKeyTyped(evt);
@@ -92,6 +97,7 @@ public class FormDesktop extends javax.swing.JFrame {
         rbWind.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbWind.setSelected(true);
         rbWind.setText("Windows 10");
+        rbWind.setName("rbWind"); // NOI18N
         rbWind.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbWindActionPerformed(evt);
@@ -101,10 +107,12 @@ public class FormDesktop extends javax.swing.JFrame {
         bgSO.add(rbUbuntu);
         rbUbuntu.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbUbuntu.setText("Ubuntu");
+        rbUbuntu.setName("rbUbuntu"); // NOI18N
 
         bgSO.add(rbMcOS);
         rbMcOS.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbMcOS.setText("Mc OS");
+        rbMcOS.setName("rbMcOS"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,6 +139,7 @@ public class FormDesktop extends javax.swing.JFrame {
         );
 
         cbProcessador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AMD Athlon™ X4", "AMD Ryzen™ 5", "Intel Core™ i3", "Intel Core™ i5", "Intel Core™ i7" }));
+        cbProcessador.setName("cbProcessador"); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 204));
         jPanel2.setPreferredSize(new java.awt.Dimension(520, 100));
@@ -162,18 +171,22 @@ public class FormDesktop extends javax.swing.JFrame {
         rbOnBoard.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbOnBoard.setSelected(true);
         rbOnBoard.setText("On-Board");
+        rbOnBoard.setName("rbOnBoard"); // NOI18N
 
         bgPlaca.add(rbAsus);
         rbAsus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbAsus.setText("Asus Geforce Gtx");
+        rbAsus.setName("rbAsus"); // NOI18N
 
         bgPlaca.add(rbNvidia);
         rbNvidia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbNvidia.setText("Nvidia Gt 210");
+        rbNvidia.setName("rbNvidia"); // NOI18N
 
         bgPlaca.add(rbRadeon);
         rbRadeon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbRadeon.setText("Radeon R5 230");
+        rbRadeon.setName("rbRadeon"); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -207,6 +220,7 @@ public class FormDesktop extends javax.swing.JFrame {
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
         btCadastrar.setText("Cadastrar");
+        btCadastrar.setName("btCadastrar"); // NOI18N
         btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastrarActionPerformed(evt);
@@ -218,6 +232,7 @@ public class FormDesktop extends javax.swing.JFrame {
         btCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
         btCancelar.setText("Cancelar");
+        btCancelar.setName("btCancelar"); // NOI18N
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCancelarActionPerformed(evt);
@@ -229,6 +244,7 @@ public class FormDesktop extends javax.swing.JFrame {
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
         btSair.setText("Sair");
+        btSair.setName("btSair"); // NOI18N
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairActionPerformed(evt);
@@ -246,16 +262,16 @@ public class FormDesktop extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbArmHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tfArmHD, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(lbMemoria)
                             .addComponent(tfMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
+                            .addComponent(lbProcessador)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,9 +290,9 @@ public class FormDesktop extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4))
+                    .addComponent(lbArmHD)
+                    .addComponent(lbMemoria)
+                    .addComponent(lbProcessador))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -440,16 +456,16 @@ public class FormDesktop extends javax.swing.JFrame {
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cbProcessador;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lbArmHD;
+    private javax.swing.JLabel lbMemoria;
+    private javax.swing.JLabel lbProcessador;
     private javax.swing.JRadioButton rbAsus;
     private javax.swing.JRadioButton rbMcOS;
     private javax.swing.JRadioButton rbNvidia;

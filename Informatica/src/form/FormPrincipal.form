@@ -28,6 +28,7 @@
                   <Image iconType="3" name="/logo/my-computer-icon 16.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Novo Equipamento"/>
+                <Property name="name" type="java.lang.String" value="jMenuItemEquipamento" noResource="true"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEquipamentoActionPerformed"/>
@@ -49,21 +50,25 @@
         <Menu class="javax.swing.JMenu" name="jMenuAluguel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Aluguel"/>
+            <Property name="name" type="java.lang.String" value="jMenuAluguel" noResource="true"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemNovo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Novo Aluguel"/>
+                <Property name="name" type="java.lang.String" value="jMenuItemNovo" noResource="true"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEmitir">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Emitir Contrato"/>
+                <Property name="name" type="java.lang.String" value="jMenuItemEmitir" noResource="true"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEfetuar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Efetuar Devolu&#xe7;&#xe3;o"/>
+                <Property name="name" type="java.lang.String" value="jMenuItemEfetuar" noResource="true"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -71,16 +76,19 @@
         <Menu class="javax.swing.JMenu" name="jMenuConsulta">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consulta"/>
+            <Property name="name" type="java.lang.String" value="jMenuConsulta" noResource="true"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCliente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cliente"/>
+                <Property name="name" type="java.lang.String" value="jMenuItemCliente" noResource="true"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEquipamentos">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Equipamentos"/>
+                <Property name="name" type="java.lang.String" value="jMenuItemEquipamentos" noResource="true"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEquipamentosActionPerformed"/>
@@ -89,21 +97,25 @@
             <Menu class="javax.swing.JMenu" name="jMenuCAluguel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Aluguel"/>
+                <Property name="name" type="java.lang.String" value="jMenuCAluguel" noResource="true"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAbertos">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Aluguel Aberto"/>
+                    <Property name="name" type="java.lang.String" value="jMenuItemAbertos" noResource="true"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemRealizados">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Aluguel Realizado"/>
+                    <Property name="name" type="java.lang.String" value="jMenuItemRealizados" noResource="true"/>
                   </Properties>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAviso">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Aviso de Vencimento"/>
+                    <Property name="name" type="java.lang.String" value="jMenuItemAviso" noResource="true"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
@@ -264,6 +276,7 @@
                     <Property name="text" type="java.lang.String" value="Novo Cliente"/>
                     <Property name="focusable" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
+                    <Property name="name" type="java.lang.String" value="btCliente" noResource="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
@@ -283,6 +296,7 @@
                     <Property name="text" type="java.lang.String" value="Novo Equipamento"/>
                     <Property name="focusable" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
+                    <Property name="name" type="java.lang.String" value="btEquipamento" noResource="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
@@ -302,6 +316,7 @@
                     <Property name="text" type="java.lang.String" value="Novo Aluguel"/>
                     <Property name="focusable" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
+                    <Property name="name" type="java.lang.String" value="btAluguel" noResource="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                 </Component>
@@ -318,6 +333,7 @@
                     <Property name="text" type="java.lang.String" value="Sair"/>
                     <Property name="focusable" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
+                    <Property name="name" type="java.lang.String" value="btSair" noResource="true"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>

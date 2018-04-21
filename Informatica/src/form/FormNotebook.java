@@ -35,10 +35,10 @@ public class FormNotebook extends javax.swing.JFrame {
 
         bgProcessador = new javax.swing.ButtonGroup();
         bgMemoria = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lbSistemaOp = new javax.swing.JLabel();
+        lbPlacaVideo = new javax.swing.JLabel();
+        lbCapacidade = new javax.swing.JLabel();
+        lbBateria = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         cbSistemaOp = new javax.swing.JComboBox<>();
@@ -68,17 +68,21 @@ public class FormNotebook extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Sistema Operacional:");
+        lbSistemaOp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbSistemaOp.setText("Sistema Operacional:");
+        lbSistemaOp.setName("lbSistemaOp"); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Placa de Vídeo:");
+        lbPlacaVideo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbPlacaVideo.setText("Placa de Vídeo:");
+        lbPlacaVideo.setName("lbPlacaVideo"); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("Capacidade HD:");
+        lbCapacidade.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbCapacidade.setText("Capacidade HD:");
+        lbCapacidade.setName("lbCapacidade"); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel6.setText("Bateria:");
+        lbBateria.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbBateria.setText("Bateria:");
+        lbBateria.setName("lbBateria"); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 204));
 
@@ -104,11 +108,16 @@ public class FormNotebook extends javax.swing.JFrame {
         );
 
         cbSistemaOp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mc OS", "Windows 10", "Ubuntu" }));
+        cbSistemaOp.setName("cbSistemaOp"); // NOI18N
 
         cbPlacaVideo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "On-Board", "Asus Geforce Gtx", "Nvidia Gt 210", "Radeon R5 230" }));
+        cbPlacaVideo.setName("cbPlacaVideo"); // NOI18N
+
+        tfCapacidade.setName("tfCapacidade"); // NOI18N
 
         taBateria.setColumns(20);
         taBateria.setRows(5);
+        taBateria.setName("taBateria"); // NOI18N
         jScrollPane1.setViewportView(taBateria);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Processador", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -116,22 +125,28 @@ public class FormNotebook extends javax.swing.JFrame {
         bgProcessador.add(rbAmdAthlon);
         rbAmdAthlon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbAmdAthlon.setText("AMD Athlon™ X4");
+        rbAmdAthlon.setName("rbAmdAthlon"); // NOI18N
 
         bgProcessador.add(rbAmdRyzen);
         rbAmdRyzen.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbAmdRyzen.setText("AMD Ryzen™ 5");
+        rbAmdRyzen.setName("rbAmdRyzen"); // NOI18N
 
         bgProcessador.add(rbInteli3);
         rbInteli3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbInteli3.setSelected(true);
         rbInteli3.setText("Intel Core™ i3");
+        rbInteli3.setName("rbInteli3"); // NOI18N
 
         bgProcessador.add(rbInteli5);
         rbInteli5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbInteli5.setText("Intel Core™ i5");
+        rbInteli5.setName("rbInteli5"); // NOI18N
 
         bgProcessador.add(rbInteli7);
         rbInteli7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbInteli7.setText("Intel Core™ i7");
+        rbInteli7.setName("rbInteli7"); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -168,23 +183,29 @@ public class FormNotebook extends javax.swing.JFrame {
 
         bgMemoria.add(rbDDR34g);
         rbDDR34g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbDDR34g.setSelected(true);
         rbDDR34g.setText("DDR 3 4Gb");
+        rbDDR34g.setName("rbDDR34g"); // NOI18N
 
         bgMemoria.add(rbDDR48g);
         rbDDR48g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbDDR48g.setText("DDR 4 8Gb");
+        rbDDR48g.setName("rbDDR48g"); // NOI18N
 
         bgMemoria.add(rbDDR22g);
         rbDDR22g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbDDR22g.setText("DDR 2 2Gb");
+        rbDDR22g.setName("rbDDR22g"); // NOI18N
 
         bgMemoria.add(rbDDR32g);
         rbDDR32g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbDDR32g.setText("DDR 3 2Gb");
+        rbDDR32g.setName("rbDDR32g"); // NOI18N
 
         bgMemoria.add(rbDDR38g);
         rbDDR38g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbDDR38g.setText("DDR 3 8GB");
+        rbDDR38g.setName("rbDDR38g"); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -224,6 +245,7 @@ public class FormNotebook extends javax.swing.JFrame {
         btCadastrar.setText("Cadastrar");
         btCadastrar.setFocusable(false);
         btCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btCadastrar.setName("btCadastrar"); // NOI18N
         btCadastrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,7 +260,13 @@ public class FormNotebook extends javax.swing.JFrame {
         btCancelar.setText("Cancelar");
         btCancelar.setFocusable(false);
         btCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btCancelar.setName("btCancelar"); // NOI18N
         btCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btCancelar);
         jToolBar1.add(jSeparator2);
 
@@ -247,6 +275,7 @@ public class FormNotebook extends javax.swing.JFrame {
         btSair.setText("Sair");
         btSair.setFocusable(false);
         btSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btSair.setName("btSair"); // NOI18N
         btSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,7 +294,7 @@ public class FormNotebook extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
+                            .addComponent(lbBateria)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(58, 58, 58)
@@ -275,15 +304,15 @@ public class FormNotebook extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbSistemaOp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbSistemaOp, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(lbPlacaVideo)
                             .addComponent(cbPlacaVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addComponent(lbCapacidade)
                             .addComponent(tfCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -297,16 +326,16 @@ public class FormNotebook extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(lbSistemaOp)
+                    .addComponent(lbPlacaVideo)
+                    .addComponent(lbCapacidade))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbSistemaOp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbPlacaVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addComponent(lbBateria)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -340,6 +369,18 @@ public class FormNotebook extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        cbSistemaOp.setSelectedIndex(0);
+        cbPlacaVideo.setSelectedIndex(0);
+        tfCapacidade.setText("");
+        taBateria.setText("");
+        bgProcessador.clearSelection();
+        rbInteli3.setSelected(true);
+        bgMemoria.clearSelection();
+        rbDDR34g.setSelected(true);
+        cbSistemaOp.requestFocus();
+    }//GEN-LAST:event_btCancelarActionPerformed
 
     private String capturaMemoria() {
         JRadioButton radio;
@@ -411,10 +452,6 @@ public class FormNotebook extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cbPlacaVideo;
     private javax.swing.JComboBox<String> cbSistemaOp;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -423,6 +460,10 @@ public class FormNotebook extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lbBateria;
+    private javax.swing.JLabel lbCapacidade;
+    private javax.swing.JLabel lbPlacaVideo;
+    private javax.swing.JLabel lbSistemaOp;
     private javax.swing.JRadioButton rbAmdAthlon;
     private javax.swing.JRadioButton rbAmdRyzen;
     private javax.swing.JRadioButton rbDDR22g;

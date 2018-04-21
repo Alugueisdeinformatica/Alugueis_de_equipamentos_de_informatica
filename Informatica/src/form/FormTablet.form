@@ -31,24 +31,24 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbCapacidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbSO" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="cbCapacidade" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
-                  <Component id="jComboBox2" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                  <Component id="cbSO" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jTextField1" max="32767" attributes="0"/>
-                  <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" max="32767" attributes="0"/>
+                  <Component id="tfBateria" max="32767" attributes="0"/>
+                  <Component id="lbTamanhoTela" alignment="0" max="32767" attributes="0"/>
+                  <Component id="lbBateria" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbTamanhoTela" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jTextField3" alignment="0" pref="88" max="32767" attributes="0"/>
+                  <Component id="lbMemoria" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbProcessador" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfProcessador" alignment="0" max="32767" attributes="0"/>
+                  <Component id="tfMemoria" alignment="0" pref="88" max="32767" attributes="0"/>
               </Group>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -63,27 +63,27 @@
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbCapacidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbTamanhoTela" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbMemoria" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cbCapacidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbTamanhoTela" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfMemoria" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbSO" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbBateria" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbProcessador" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfBateria" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbSO" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfProcessador" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Component id="jToolBar1" min="-2" pref="69" max="-2" attributes="0"/>
@@ -133,52 +133,58 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="lbCapacidade">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Capacidade:"/>
+        <Property name="name" type="java.lang.String" value="lbCapacidade" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="lbTamanhoTela">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Tamanho Tela:"/>
+        <Property name="name" type="java.lang.String" value="lbTamanhoTela" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="lbMemoria">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Mem&#xf3;ria:"/>
+        <Property name="name" type="java.lang.String" value="lbMemoria" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="lbSO">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Sistema Operacional:"/>
+        <Property name="name" type="java.lang.String" value="lbSO" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="lbBateria">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Bateria:"/>
+        <Property name="name" type="java.lang.String" value="lbBateria" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="lbProcessador">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Processador:"/>
+        <Property name="name" type="java.lang.String" value="lbProcessador" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cbCapacidade">
@@ -192,12 +198,13 @@
             <StringItem index="4" value="128 Gb"/>
           </StringArray>
         </Property>
+        <Property name="name" type="java.lang.String" value="cbCapacidade" noResource="true"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="cbTamanhoTela">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="5">
@@ -208,14 +215,18 @@
             <StringItem index="4" value="20&quot;"/>
           </StringArray>
         </Property>
+        <Property name="name" type="java.lang.String" value="cbTamanhoTela" noResource="true"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="tfBateria">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="tfBateria" noResource="true"/>
+      </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox2">
+    <Component class="javax.swing.JComboBox" name="cbSO">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -225,14 +236,21 @@
             <StringItem index="3" value="I.O.S. 6.0"/>
           </StringArray>
         </Property>
+        <Property name="name" type="java.lang.String" value="cbSO" noResource="true"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="tfProcessador">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="tfProcessador" noResource="true"/>
+      </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="tfMemoria">
+      <Properties>
+        <Property name="name" type="java.lang.String" value="tfMemoria" noResource="true"/>
+      </Properties>
     </Component>
     <Container class="javax.swing.JToolBar" name="jToolBar1">
       <Properties>
@@ -253,6 +271,7 @@
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="name" type="java.lang.String" value="btCadastrar" noResource="true"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
         </Component>
@@ -269,8 +288,12 @@
             <Property name="text" type="java.lang.String" value="Limpar"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="name" type="java.lang.String" value="btLimpar" noResource="true"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btLimparActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JToolBar$Separator" name="jSeparator2">
         </Component>
@@ -285,6 +308,7 @@
             <Property name="text" type="java.lang.String" value="Sair"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="name" type="java.lang.String" value="btSair" noResource="true"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>

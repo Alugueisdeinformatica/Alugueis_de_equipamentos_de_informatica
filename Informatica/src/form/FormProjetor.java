@@ -29,12 +29,12 @@ public class FormProjetor extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbMaterial = new javax.swing.JLabel();
+        lbBrilho = new javax.swing.JLabel();
         tfMaterial = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lbResolucao = new javax.swing.JLabel();
+        lbLampada = new javax.swing.JLabel();
+        lbLente = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         btCadastrar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
@@ -73,20 +73,27 @@ public class FormProjetor extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Material:");
+        lbMaterial.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbMaterial.setText("Material:");
+        lbMaterial.setName("lbMaterial"); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel3.setText("Brilho:");
+        lbBrilho.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbBrilho.setText("Brilho:");
+        lbBrilho.setName("lbBrilho"); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel4.setText("Resolução Optica:");
+        tfMaterial.setName("tfMaterial"); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("Lâmpada:");
+        lbResolucao.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbResolucao.setText("Resolução Optica:");
+        lbResolucao.setName("lbResolucao"); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel6.setText("Lente:");
+        lbLampada.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbLampada.setText("Lâmpada:");
+        lbLampada.setName("lbLampada"); // NOI18N
+
+        lbLente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbLente.setText("Lente:");
+        lbLente.setName("lbLente"); // NOI18N
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -96,6 +103,7 @@ public class FormProjetor extends javax.swing.JFrame {
         btCadastrar.setText("Cadastrar");
         btCadastrar.setFocusable(false);
         btCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btCadastrar.setName("btCadastrar"); // NOI18N
         btCadastrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btCadastrar);
         jToolBar1.add(jSeparator1);
@@ -105,7 +113,13 @@ public class FormProjetor extends javax.swing.JFrame {
         btLimpar.setText("Limpar");
         btLimpar.setFocusable(false);
         btLimpar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btLimpar.setName("btLimpar"); // NOI18N
         btLimpar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btLimpar);
         jToolBar1.add(jSeparator2);
 
@@ -114,6 +128,7 @@ public class FormProjetor extends javax.swing.JFrame {
         btSair.setText("Sair");
         btSair.setFocusable(false);
         btSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btSair.setName("btSair"); // NOI18N
         btSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +136,14 @@ public class FormProjetor extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btSair);
+
+        tfBrilho.setName("tfBrilho"); // NOI18N
+
+        tfResolucao.setName("tfResolucao"); // NOI18N
+
+        tfLampada.setName("tfLampada"); // NOI18N
+
+        tfLente.setName("tfLente"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,21 +157,21 @@ public class FormProjetor extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5)
+                            .addComponent(lbMaterial)
+                            .addComponent(lbLampada)
                             .addComponent(tfMaterial)
                             .addComponent(tfLampada, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
+                            .addComponent(lbLente)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(tfLente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbBrilho, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfBrilho, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(43, 43, 43)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lbResolucao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(tfResolucao)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(123, 123, 123)
@@ -161,9 +184,9 @@ public class FormProjetor extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(lbMaterial)
+                    .addComponent(lbBrilho)
+                    .addComponent(lbResolucao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -171,8 +194,8 @@ public class FormProjetor extends javax.swing.JFrame {
                     .addComponent(tfResolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(lbLampada)
+                    .addComponent(lbLente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfLampada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,6 +211,15 @@ public class FormProjetor extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        tfMaterial.setText("");
+        tfBrilho.setText("");
+        tfResolucao.setText("");
+        tfLampada.setText("");
+        tfLente.setText("");
+        tfMaterial.requestFocus();
+    }//GEN-LAST:event_btLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,15 +261,15 @@ public class FormProjetor extends javax.swing.JFrame {
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lbBrilho;
+    private javax.swing.JLabel lbLampada;
+    private javax.swing.JLabel lbLente;
+    private javax.swing.JLabel lbMaterial;
+    private javax.swing.JLabel lbResolucao;
     private javax.swing.JTextField tfBrilho;
     private javax.swing.JTextField tfLampada;
     private javax.swing.JTextField tfLente;
