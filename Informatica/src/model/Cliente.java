@@ -108,4 +108,22 @@ public class Cliente {
                 !cpf.equals("") &&
                 !estadoCivil.equals("");
     }
+    
+    @Override
+    public String toString(){
+        return "Nome: " + nome +
+               "\nEmail: " + email +
+               "\nTelefone: " + telefone +
+               "\nData de Nascimento: " + dataNascimento +
+               "\nSexo: " + sexo +
+               "\nCPF: " + cpf +
+               "\nEstado Civil: " + estadoCivil +
+               "\nCEP: " + endereco.getCep() +
+               "\nCidade: " + endereco.getCidade() +
+               "\nEstado: " + endereco.getEstado() +
+               "\nComplemento: " + endereco.getComplemento() +
+               "\nNúmero: " + Integer.toString(endereco.getNumero()) +
+               "\nBairro: " + endereco.getBairro() +
+               "\nRua: " + endereco.getRua();
+    }
 }

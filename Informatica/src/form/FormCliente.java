@@ -326,9 +326,9 @@ public class FormCliente extends javax.swing.JFrame {
             jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbCidade)
-                    .addComponent(lbCEP))
+                .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbCEP, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbCidade))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -551,9 +551,10 @@ public class FormCliente extends javax.swing.JFrame {
         tfCidade.setText("");
         cbEstado.setSelectedIndex(0);
         tfRua.setText("");
-        tfNumero.setText("");
+        tfNumero.setText("0");
         tfBairro.setText("");
         tfComplemento.setText("");
+        tfCPF.setEnabled(true);
         tfCPF.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
 

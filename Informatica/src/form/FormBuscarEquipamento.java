@@ -137,7 +137,7 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         if(cboBuscarTodos.isSelected()){
             List<Equipamento> eq = FormPrincipal.bdEquipamento.todosEquipamentos();
-            if(eq != null){
+            if(eq.size() > 0){
                 String recebe = "";
                 for(int i = 0; i < eq.size(); i++){
                     recebe = recebe + eq.get(i).toString() + "\n\n";
@@ -152,7 +152,7 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
                 if(equipamento != null){
                     taConsulta.setText(equipamento.toString());
                 }else{
-                    JOptionPane.showMessageDialog(null, "Equipamento não cadastrados!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Equipamento não cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Informe o Código!", "Campo não Preenchido", JOptionPane.ERROR_MESSAGE);

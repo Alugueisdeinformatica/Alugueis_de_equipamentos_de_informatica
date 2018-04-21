@@ -5,6 +5,10 @@
  */
 package form;
 
+import java.util.List;
+import javax.swing.JOptionPane;
+import model.Cliente;
+
 /**
  *
  * @author Luís Gustavo
@@ -57,11 +61,22 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         lbBuscarTodos.setName("lbBuscarTodos"); // NOI18N
 
         cboBuscarTodos.setName("cboBuscarTodos"); // NOI18N
+        cboBuscarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboBuscarTodosActionPerformed(evt);
+            }
+        });
 
         btBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btBuscar.setText("Buscar");
         btBuscar.setName("btBuscar"); // NOI18N
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
+        taBusca.setEditable(false);
         taBusca.setColumns(20);
         taBusca.setLineWrap(true);
         taBusca.setRows(5);
@@ -72,6 +87,11 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setText("Sair");
         btSair.setName("btSair"); // NOI18N
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,6 +141,45 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(614, 361));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cboBuscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboBuscarTodosActionPerformed
+        if(cboBuscarTodos.isSelected()){
+            tfCPF.setEnabled(false);
+        }else{
+            tfCPF.setEnabled(true);
+        }
+    }//GEN-LAST:event_cboBuscarTodosActionPerformed
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        if(cboBuscarTodos.isSelected()){
+            List<Cliente> cl = FormPrincipal.bdCliente.todosClientes();
+            if(cl.size() > 0){
+                String recebe = "";
+                for(int i = 0; i < cl.size(); i++){
+                    recebe = recebe + cl.get(i).toString() + "\n\n";
+                }
+                taBusca.setText(recebe);
+            }else{
+                JOptionPane.showMessageDialog(null, "Não existem clientes cadastrados!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }else{
+            String cpsSemMascara = tfCPF.getText().replace(".", "").replace("-", "");
+            if(!cpsSemMascara.trim().equals("")){
+                Cliente cliente = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
+                if(cliente != null){
+                    taBusca.setText(cliente.toString());
+                }else{
+                    JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Informe o CPF!", "Campo não Preenchido", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btBuscarActionPerformed
 
     /**
      * @param args the command line arguments

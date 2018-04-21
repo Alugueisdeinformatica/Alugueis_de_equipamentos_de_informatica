@@ -89,11 +89,11 @@ public class Endereco {
     
     public boolean validaEndereco(){ //Verifica se todos os campos foram preenchidos
         return !cep.equals("") &&
-                !cidade.equals("") &&
-                !estado.equals("") &&
-                !complemento.equals("") &&
-                numero > 0 &&
-                !bairro.equals("") &&
-                !rua.equals("");
+               !cidade.equals("") &&
+               !estado.equals("") &&
+               !complemento.equals("") &&
+               numero > 0 &&
+               !bairro.equals("") &&
+               !rua.equals("");
     }
 }
