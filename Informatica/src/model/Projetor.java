@@ -77,4 +77,19 @@ public class Projetor extends Equipamento{
                !lampada.equals("") &&
                !lente.equals("");
     }
+    
+    @Override
+    public String toString(){
+        return getCategoria() + "{" +
+               "\nModelo: " + getModelo() +
+               "\nMarca: " + getMarca() +
+               "\nQuantidade no Estoque: " + getQuantEstoque() +
+               "\nValor da Diária: " + getValorDiaria() +
+               "\nMaterial: " + material +
+               "\nBrilho: " + brilho +
+               "\nResolução Óptica: " + resolucaoOptica +
+               "\nLâmpada: " + lampada +
+               "\nLente: " + lente +
+               '}';
+    }
 }

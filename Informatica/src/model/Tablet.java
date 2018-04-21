@@ -87,4 +87,20 @@ public class Tablet extends Equipamento{
                !bateria.equals("") &&
                !processador.equals("");
     }
+    
+    @Override
+    public String toString(){
+        return getCategoria() + "{" +
+               "\nModelo: " + getModelo() +
+               "\nMarca: " + getMarca() +
+               "\nQuantidade no Estoque: " + getQuantEstoque() +
+               "\nValor da Diária: " + getValorDiaria() +
+               "\nCapacidade: " + capacidade +
+               "\nTamanho da Tela: " + tamanhoTela +
+               "\nMemória Ram: " + memoriaRam +
+               "\nSistema Operacional: " + sistemaOperacional +
+               "\nBateria: " + bateria +
+               "\nProcessador: " + processador +
+               '}';
+    }
 }

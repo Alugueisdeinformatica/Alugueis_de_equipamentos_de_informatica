@@ -63,10 +63,20 @@ public class Impressora extends Equipamento{
     
     @Override
     public String toString() {
-        return "\n\nImpressora{" + "\ntipo=" + tipo + 
-               "\n, tecnologia=" + tecnologia + 
-               ",\n especificacao=" + especificacao +
-                "\n Wifi: " + wifi +'}';
+        String w = "Não";
+        if(wifi){
+            w = "Sim";
+        }
+        return getCategoria() + "{" +
+               "\nModelo: " + getModelo() +
+               "\nMarca: " + getMarca() +
+               "\nQuantidade no Estoque: " + getQuantEstoque() +
+               "\nValor da Diária: " + getValorDiaria() +
+               "\nTipo: " + tipo + 
+               "\nTecnologia: " + tecnologia + 
+               "\nEspecificação: " + especificacao +
+               "\nWifi: " + w +
+               '}';
     }
     
     public boolean validaImpressora(){

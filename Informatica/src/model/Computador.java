@@ -72,13 +72,16 @@ public class Computador extends Equipamento{
 
     @Override
     public String toString() {
-        return "Computador{" + "\nsistemaOperacional=" + sistemaOperacional + 
-                "\nQuantidade: " + getQuantEstoque() +
-                "\nCategoria: " + getCategoria() +
-                ", \nplacaVideo=" + placaVideo + 
-                ", \ncapacidadeHD=" + capacidadeHD + 
-                ", \nprocessador=" + processador + 
-                ", \nmemoria=" + memoria + 
+        return  getCategoria() + "{" +
+                "\nModelo: " + getModelo() +
+                "\nMarca: " + getMarca() +
+                "\nQuantidade no Estoque: " + getQuantEstoque() +
+                "\nValor da Diária: " + getValorDiaria() +
+                "\nSistema Operacional: " + sistemaOperacional + 
+                "\nPlaca de Vídeo: " + placaVideo + 
+                "\nCapacidade de HD: " + capacidadeHD + 
+                "\nProcessador: " + processador + 
+                "\nMemória: " + memoria + 
                 '}';
     }   
     

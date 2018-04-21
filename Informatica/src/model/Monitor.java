@@ -55,4 +55,17 @@ public class Monitor extends Equipamento{
                !tamanhoTela.equals("") &&
                !resolucao.equals("");
     }
+    
+    @Override
+    public String toString(){
+        return getCategoria() + "{" +
+               "\nModelo: " + getModelo() +
+               "\nMarca: " + getMarca() +
+               "\nQuantidade no Estoque: " + getQuantEstoque() +
+               "\nValor da Diária: " + getValorDiaria() +
+               "\nTipo: " + tipo +
+               "\nTamanho da Tela: " + tamanhoTela +
+               "\nResolução: " + resolucao +
+               '}';
+    }
 }

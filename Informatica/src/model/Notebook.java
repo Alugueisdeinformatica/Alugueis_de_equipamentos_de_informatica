@@ -88,4 +88,20 @@ public class Notebook extends Equipamento{
                !memoria.equals("") &&
                !bateria.equals("");
     }
+    
+    @Override
+    public String toString(){
+        return getCategoria() + "{" +
+               "\nModelo: " + getModelo() +
+               "\nMarca: " + getMarca() +
+               "\nQuantidade no Estoque: " + getQuantEstoque() +
+               "\nValor da Diária: " + getValorDiaria() +
+               "\nSistema Operacional: " + sistemaOperacional +
+               "\nPlaca de Vídeo: " + placaVideo +
+               "\nCapacidade de HD: " + capacidadeHD +
+               "\nProcessador: " + processador +
+               "\nMemória: " + memoria +
+               "\nBateria: " + bateria +
+               '}';
+    }
 }
