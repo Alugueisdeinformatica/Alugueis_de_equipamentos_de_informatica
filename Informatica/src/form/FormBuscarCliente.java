@@ -122,8 +122,8 @@ public class FormBuscarCliente extends javax.swing.JFrame {
                             .addComponent(cboBuscarTodos)
                             .addGap(88, 88, 88)
                             .addComponent(btBuscar))
-                        .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane1)))
+                        .addComponent(jScrollPane1)
+                        .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(107, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(

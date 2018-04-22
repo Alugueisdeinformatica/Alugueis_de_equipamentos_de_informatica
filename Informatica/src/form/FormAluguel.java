@@ -189,7 +189,7 @@ public class FormAluguel extends javax.swing.JFrame {
         Cliente cliente = new Cliente();
         FormBuscarCliente.setCliente(cliente);
         new FormBuscarCliente().setVisible(true);
-        this.setVisible(false);
+        //this.setVisible(false);
     }//GEN-LAST:event_btInserirClienteActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

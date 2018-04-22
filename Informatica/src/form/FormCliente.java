@@ -6,7 +6,13 @@
 package form;
 
 import java.awt.Component;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -87,6 +93,7 @@ public class FormCliente extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
 
         jTabbedPane1.setBackground(new java.awt.Color(250, 250, 250));
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jpDadosPessoais.setBackground(new java.awt.Color(250, 250, 250));
         jpDadosPessoais.setName("jpDadosPessoais"); // NOI18N
@@ -118,6 +125,11 @@ public class FormCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         tfDataNascimento.setName("tfDataNascimento"); // NOI18N
+        tfDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfDataNascimentoKeyReleased(evt);
+            }
+        });
 
         cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
         cbSexo.setName("cbSexo"); // NOI18N
@@ -200,20 +212,22 @@ public class FormCliente extends javax.swing.JFrame {
                             .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbDataNescimento)
                             .addComponent(tfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jpDadosPessoaisLayout.setVerticalGroup(
             jpDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpDadosPessoaisLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jpDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbEmail)
-                    .addComponent(lbDataNescimento))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(16, 16, 16)
+                .addGroup(jpDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpDadosPessoaisLayout.createSequentialGroup()
+                        .addComponent(lbDataNescimento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDadosPessoaisLayout.createSequentialGroup()
+                        .addComponent(lbEmail)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(13, 13, 13)
                 .addGroup(jpDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpDadosPessoaisLayout.createSequentialGroup()
                         .addComponent(lbTelefone)
@@ -223,9 +237,9 @@ public class FormCliente extends javax.swing.JFrame {
                         .addComponent(lbSexo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dados Pessoais", jpDadosPessoais);
@@ -422,7 +436,7 @@ public class FormCliente extends javax.swing.JFrame {
             .addComponent(jTabbedPane1)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbCPF)
                     .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -435,7 +449,7 @@ public class FormCliente extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCPF)
                     .addComponent(lbNome))
@@ -443,16 +457,16 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(536, 456));
+        setSize(new java.awt.Dimension(536, 465));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -476,29 +490,8 @@ public class FormCliente extends javax.swing.JFrame {
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         Cliente cliente = new Cliente();
-        cliente.setCpf(tfCPF.getText());
-        cliente.setNome(tfNome.getText());
-        cliente.setEmail(tfEmail.getText());
-        cliente.setDataNascimento(tfDataNascimento.getText());
-        cliente.setTelefone(tfTelefone.getText());
-        cliente.setSexo(cbSexo.getSelectedItem().toString());
-        JRadioButton radio; 
-        Enumeration jr = bgEstadoCivil.getElements(); 
-        while ( jr.hasMoreElements() )
-        {
-            radio = (JRadioButton) jr.nextElement(); 
-            if (radio.isSelected())
-            {
-                cliente.setEstadoCivil(radio.getText());
-            }
-        }
-        cliente.getEndereco().setCep(tfCEP.getText());
-        cliente.getEndereco().setCidade(tfCidade.getText());
-        cliente.getEndereco().setEstado(cbEstado.getSelectedItem().toString());
-        cliente.getEndereco().setRua(tfRua.getText());
-        cliente.getEndereco().setNumero(Integer.parseInt(tfNumero.getText()));
-        cliente.getEndereco().setBairro(tfBairro.getText());
-        cliente.getEndereco().setComplemento(tfComplemento.getText());
+        
+        receberDadosCliente(cliente);
         
         if(cliente.validaCliente()){
             FormPrincipal.bdCliente.adicionaCliente(cliente);
@@ -509,6 +502,46 @@ public class FormCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void receberDadosCliente(Cliente cliente){
+        cliente.setCpf(tfCPF.getText());
+        cliente.setNome(tfNome.getText());
+        cliente.setEmail(tfEmail.getText());
+        
+        String txt = tfDataNascimento.getText();        
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        Date data = null;        
+        try {       
+            data = df.parse(txt);
+        } catch (ParseException ex) {
+            Logger.getLogger(FormCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        cliente.setDataNascimento( data );
+        cliente.setTelefone(tfTelefone.getText());
+        cliente.setSexo(cbSexo.getSelectedItem().toString());
+        radioEstadoCivil(cliente);
+        cliente.getEndereco().setCep(tfCEP.getText());
+        cliente.getEndereco().setCidade(tfCidade.getText());
+        cliente.getEndereco().setEstado(cbEstado.getSelectedItem().toString());
+        cliente.getEndereco().setRua(tfRua.getText());
+        cliente.getEndereco().setNumero(Integer.parseInt(tfNumero.getText()));
+        cliente.getEndereco().setBairro(tfBairro.getText());
+        cliente.getEndereco().setComplemento(tfComplemento.getText());
+    }
+
+    private void radioEstadoCivil(Cliente cliente) {
+        JRadioButton radio;
+        Enumeration jr = bgEstadoCivil.getElements();
+        while ( jr.hasMoreElements() )
+        {
+            radio = (JRadioButton) jr.nextElement();
+            if (radio.isSelected())
+            {
+                cliente.setEstadoCivil(radio.getText());
+            }
+        }
+    }
 
     private void tfCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCPFFocusLost
         Cliente cliente = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
@@ -548,6 +581,12 @@ public class FormCliente extends javax.swing.JFrame {
     private void tfCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCidadeActionPerformed
+
+    private void tfDataNascimentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDataNascimentoKeyReleased
+        
+        
+        
+    }//GEN-LAST:event_tfDataNascimentoKeyReleased
 
     /**
      * @param args the command line arguments

@@ -53,8 +53,8 @@
                               <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                               <Component id="btBuscar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tfCPF" min="-2" pref="90" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfCPF" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="107" max="32767" attributes="0"/>
