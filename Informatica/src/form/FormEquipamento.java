@@ -32,18 +32,7 @@ public class FormEquipamento extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tfCodigo = new javax.swing.JTextField();
-        lbCodigo = new javax.swing.JLabel();
-        tfModelo = new javax.swing.JTextField();
-        lbModelo = new javax.swing.JLabel();
-        lbMarca = new javax.swing.JLabel();
-        tfMarca = new javax.swing.JTextField();
-        tfQuantidade = new javax.swing.JTextField();
-        tfValor = new javax.swing.JTextField();
-        lbQuantidade = new javax.swing.JLabel();
-        lbValor = new javax.swing.JLabel();
-        lbCategoria = new javax.swing.JLabel();
-        cbCategoria = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -51,67 +40,26 @@ public class FormEquipamento extends javax.swing.JFrame {
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         btSeguinte = new javax.swing.JButton();
+        lbCodigo = new javax.swing.JLabel();
+        lbModelo = new javax.swing.JLabel();
+        lbMarca = new javax.swing.JLabel();
+        tfMarca = new javax.swing.JTextField();
+        tfModelo = new javax.swing.JTextField();
+        tfCodigo = new javax.swing.JTextField();
+        lbQuantidade = new javax.swing.JLabel();
+        tfQuantidade = new javax.swing.JTextField();
+        lbValor = new javax.swing.JLabel();
+        tfValor = new javax.swing.JTextField();
+        lbCategoria = new javax.swing.JLabel();
+        cbCategoria = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Equipamento");
         setResizable(false);
 
-        tfCodigo.setText("0");
-        tfCodigo.setName("tfCodigo"); // NOI18N
-        tfCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfCodigoKeyTyped(evt);
-            }
-        });
+        jPanel3.setBackground(new java.awt.Color(250, 250, 250));
 
-        lbCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbCodigo.setText("Código:");
-        lbCodigo.setName("lbCodigo"); // NOI18N
-
-        tfModelo.setName("tfModelo"); // NOI18N
-
-        lbModelo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbModelo.setText("Modelo:");
-        lbModelo.setName("lbModelo"); // NOI18N
-
-        lbMarca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbMarca.setText("Marca:");
-        lbMarca.setName("lbMarca"); // NOI18N
-
-        tfMarca.setName("tfMarca"); // NOI18N
-
-        tfQuantidade.setText("0");
-        tfQuantidade.setName("tfQuantidade"); // NOI18N
-        tfQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfQuantidadeKeyTyped(evt);
-            }
-        });
-
-        tfValor.setText("0");
-        tfValor.setName("tfValor"); // NOI18N
-        tfValor.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfValorKeyTyped(evt);
-            }
-        });
-
-        lbQuantidade.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbQuantidade.setText("Quantidade:");
-        lbQuantidade.setName("lbQuantidade"); // NOI18N
-
-        lbValor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbValor.setText("Valor:");
-        lbValor.setName("lbValor"); // NOI18N
-
-        lbCategoria.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lbCategoria.setText("Categoria:");
-        lbCategoria.setName("lbCategoria"); // NOI18N
-
-        cbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Desktop", "Impressora", "Monitor", "Notebook", "Projetor", "Tablet" }));
-        cbCategoria.setName("cbCategoria"); // NOI18N
-
-        jPanel1.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
@@ -134,6 +82,8 @@ public class FormEquipamento extends javax.swing.JFrame {
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jPanel2.setBackground(new java.awt.Color(250, 250, 250));
 
         btEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/edit-file-icon.png"))); // NOI18N
@@ -191,32 +141,87 @@ public class FormEquipamento extends javax.swing.JFrame {
         });
         jPanel2.add(btSeguinte);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        lbCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbCodigo.setText("Código:");
+        lbCodigo.setName("lbCodigo"); // NOI18N
+
+        lbModelo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbModelo.setText("Modelo:");
+        lbModelo.setName("lbModelo"); // NOI18N
+
+        lbMarca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbMarca.setText("Marca:");
+        lbMarca.setName("lbMarca"); // NOI18N
+
+        tfMarca.setName("tfMarca"); // NOI18N
+
+        tfModelo.setName("tfModelo"); // NOI18N
+
+        tfCodigo.setText("0");
+        tfCodigo.setName("tfCodigo"); // NOI18N
+        tfCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfCodigoKeyTyped(evt);
+            }
+        });
+
+        lbQuantidade.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbQuantidade.setText("Quantidade:");
+        lbQuantidade.setName("lbQuantidade"); // NOI18N
+
+        tfQuantidade.setText("0");
+        tfQuantidade.setName("tfQuantidade"); // NOI18N
+        tfQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfQuantidadeKeyTyped(evt);
+            }
+        });
+
+        lbValor.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbValor.setText("Valor:");
+        lbValor.setName("lbValor"); // NOI18N
+
+        tfValor.setText("0");
+        tfValor.setName("tfValor"); // NOI18N
+        tfValor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfValorKeyTyped(evt);
+            }
+        });
+
+        lbCategoria.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbCategoria.setText("Categoria:");
+        lbCategoria.setName("lbCategoria"); // NOI18N
+
+        cbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Desktop", "Impressora", "Monitor", "Notebook", "Projetor", "Tablet" }));
+        cbCategoria.setName("cbCategoria"); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbQuantidade))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbValor)
                             .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbCodigo))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbModelo)
                             .addComponent(tfModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbMarca)
                     .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbCategoria)
@@ -224,36 +229,47 @@ public class FormEquipamento extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCodigo)
                     .addComponent(lbModelo)
                     .addComponent(lbMarca))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbQuantidade)
                     .addComponent(lbValor)
                     .addComponent(lbCategoria))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(536, 369));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        setSize(new java.awt.Dimension(536, 353));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -382,6 +398,7 @@ public class FormEquipamento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbCategoria;
     private javax.swing.JLabel lbCodigo;
     private javax.swing.JLabel lbMarca;
