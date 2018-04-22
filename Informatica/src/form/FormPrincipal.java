@@ -86,7 +86,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jPanelCentro.setBackground(new java.awt.Color(0, 204, 204));
+        jPanelCentro.setBackground(new java.awt.Color(250, 250, 250));
         jPanelCentro.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 70)); // NOI18N
@@ -101,7 +101,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jPanel1.add(jPanelCentro, java.awt.BorderLayout.CENTER);
 
-        jPanelNorte.setBackground(new java.awt.Color(0, 204, 204));
+        jPanelNorte.setBackground(new java.awt.Color(250, 250, 250));
         jPanelNorte.setLayout(new javax.swing.BoxLayout(jPanelNorte, javax.swing.BoxLayout.LINE_AXIS));
 
         jToolBar1.setBackground(new java.awt.Color(204, 255, 255));
@@ -172,7 +172,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jPanel1.add(jPanelNorte, java.awt.BorderLayout.PAGE_START);
 
-        jPanelSul.setBackground(new java.awt.Color(0, 204, 204));
+        jPanelSul.setBackground(new java.awt.Color(250, 250, 250));
 
         javax.swing.GroupLayout jPanelSulLayout = new javax.swing.GroupLayout(jPanelSul);
         jPanelSul.setLayout(jPanelSulLayout);
