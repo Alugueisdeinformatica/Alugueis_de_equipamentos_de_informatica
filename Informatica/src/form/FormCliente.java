@@ -52,7 +52,7 @@ public class FormCliente extends javax.swing.JFrame {
         lbTelefone = new javax.swing.JLabel();
         tfTelefone = new javax.swing.JFormattedTextField();
         lbDataNescimento = new javax.swing.JLabel();
-        tfDataNascimento = new javax.swing.JFormattedTextField();
+        ftfDataNascimento = new javax.swing.JFormattedTextField();
         cbSexo = new javax.swing.JComboBox<>();
         lbSexo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -120,14 +120,14 @@ public class FormCliente extends javax.swing.JFrame {
         lbDataNescimento.setName("lbDataNescimento"); // NOI18N
 
         try {
-            tfDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            ftfDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        tfDataNascimento.setName("tfDataNascimento"); // NOI18N
-        tfDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
+        ftfDataNascimento.setName("ftfDataNascimento"); // NOI18N
+        ftfDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tfDataNascimentoKeyReleased(evt);
+                ftfDataNascimentoKeyReleased(evt);
             }
         });
 
@@ -211,7 +211,7 @@ public class FormCliente extends javax.swing.JFrame {
                             .addComponent(lbSexo)
                             .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbDataNescimento)
-                            .addComponent(tfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(ftfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jpDadosPessoaisLayout.setVerticalGroup(
@@ -222,7 +222,7 @@ public class FormCliente extends javax.swing.JFrame {
                     .addGroup(jpDadosPessoaisLayout.createSequentialGroup()
                         .addComponent(lbDataNescimento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ftfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDadosPessoaisLayout.createSequentialGroup()
                         .addComponent(lbEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -508,7 +508,7 @@ public class FormCliente extends javax.swing.JFrame {
         cliente.setNome(tfNome.getText());
         cliente.setEmail(tfEmail.getText());
         
-        String txt = tfDataNascimento.getText();        
+        String txt = ftfDataNascimento.getText();        
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         Date data = null;        
         try {       
@@ -557,7 +557,7 @@ public class FormCliente extends javax.swing.JFrame {
         tfCPF.setValue("");
         tfNome.setText("");
         tfEmail.setText("");
-        tfDataNascimento.setValue("");
+        ftfDataNascimento.setValue("");
         tfTelefone.setValue("");
         cbSexo.setSelectedIndex(0);
         bgEstadoCivil.clearSelection();
@@ -582,11 +582,21 @@ public class FormCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfCidadeActionPerformed
 
-    private void tfDataNascimentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDataNascimentoKeyReleased
+    private void ftfDataNascimentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftfDataNascimentoKeyReleased
+        if(ftfDataNascimento.getText().trim().length() == 10){
+            String _data = ftfDataNascimento.getText();
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                format.setLenient(false);
+                Date data = format.parse(_data);
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "Data inválida", "Aviso", JOptionPane.WARNING_MESSAGE);
+                ftfDataNascimento.setText("");
+            }
+        }
         
         
-        
-    }//GEN-LAST:event_tfDataNascimentoKeyReleased
+    }//GEN-LAST:event_ftfDataNascimentoKeyReleased
 
     /**
      * @param args the command line arguments
@@ -631,6 +641,7 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> cbSexo;
+    private javax.swing.JFormattedTextField ftfDataNascimento;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -660,7 +671,6 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField tfCPF;
     private javax.swing.JTextField tfCidade;
     private javax.swing.JTextField tfComplemento;
-    private javax.swing.JFormattedTextField tfDataNascimento;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfNome;
     private javax.swing.JTextField tfNumero;
