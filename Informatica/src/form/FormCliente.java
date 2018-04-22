@@ -5,7 +5,6 @@
  */
 package form;
 
-import java.awt.Component;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,12 +12,8 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
 import model.Cliente;
 
 /**
@@ -267,11 +262,6 @@ public class FormCliente extends javax.swing.JFrame {
         jpEnderecoCompleto.add(lbCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 139, -1, -1));
 
         tfCidade.setName("tfCidade"); // NOI18N
-        tfCidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfCidadeActionPerformed(evt);
-            }
-        });
         jpEnderecoCompleto.add(tfCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 159, 175, -1));
 
         lbEstado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -281,11 +271,6 @@ public class FormCliente extends javax.swing.JFrame {
 
         cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         cbEstado.setName("cbEstado"); // NOI18N
-        cbEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbEstadoActionPerformed(evt);
-            }
-        });
         jpEnderecoCompleto.add(cbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
 
         lbComplemento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -574,28 +559,18 @@ public class FormCliente extends javax.swing.JFrame {
         btCadastrar.setEnabled(false);
     }//GEN-LAST:event_btLimparActionPerformed
 
-    private void cbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbEstadoActionPerformed
-
-    private void tfCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfCidadeActionPerformed
-
     private void ftfDataNascimentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftfDataNascimentoKeyReleased
         if(ftfDataNascimento.getText().trim().length() == 10){
-            String _data = ftfDataNascimento.getText();
+            String txt = ftfDataNascimento.getText();
             SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
             try {
                 format.setLenient(false);
-                Date data = format.parse(_data);
+                Date data = format.parse(txt);
             } catch (ParseException e) {
                 JOptionPane.showMessageDialog(null, "Data inválida", "Aviso", JOptionPane.WARNING_MESSAGE);
                 ftfDataNascimento.setText("");
             }
-        }
-        
-        
+        }      
     }//GEN-LAST:event_ftfDataNascimentoKeyReleased
 
     /**
