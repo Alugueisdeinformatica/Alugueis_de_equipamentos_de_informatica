@@ -57,6 +57,8 @@ public class FormBuscarCliente extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(250, 250, 250));
+
         lbCPF.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbCPF.setText("CPF:");
         lbCPF.setName("lbCPF"); // NOI18N
@@ -80,6 +82,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         });
 
         btBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/user-search-icon.png"))); // NOI18N
         btBuscar.setText("Buscar");
         btBuscar.setName("btBuscar"); // NOI18N
         btBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +100,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         jScrollPane1.setViewportView(taBusca);
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
         btSair.setText("Sair");
         btSair.setName("btSair"); // NOI18N
         btSair.addActionListener(new java.awt.event.ActionListener() {
@@ -113,18 +117,18 @@ public class FormBuscarCliente extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btSair)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbCPF)
-                            .addGap(173, 173, 173)
-                            .addComponent(lbBuscarTodos)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cboBuscarTodos)
-                            .addGap(88, 88, 88)
-                            .addComponent(btBuscar))
-                        .addComponent(jScrollPane1)
-                        .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(107, Short.MAX_VALUE))
+                            .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(63, 63, 63)
+                        .addComponent(cboBuscarTodos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbBuscarTodos)
+                        .addGap(64, 64, 64)
+                        .addComponent(btBuscar)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,25 +136,27 @@ public class FormBuscarCliente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbCPF)
-                            .addComponent(lbBuscarTodos)
-                            .addComponent(cboBuscarTodos)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbCPF)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btBuscar)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btBuscar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbBuscarTodos)
+                            .addComponent(cboBuscarTodos))))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btSair)
-                .addGap(30, 30, 30))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(614, 361));
+        setSize(new java.awt.Dimension(536, 361));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
