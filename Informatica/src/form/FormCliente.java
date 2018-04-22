@@ -82,11 +82,13 @@ public class FormCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Cliente");
+        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(200, 200, 200));
+        jPanel1.setBackground(new java.awt.Color(250, 250, 250));
 
-        jTabbedPane1.setBackground(new java.awt.Color(200, 200, 200));
+        jTabbedPane1.setBackground(new java.awt.Color(250, 250, 250));
 
+        jpDadosPessoais.setBackground(new java.awt.Color(250, 250, 250));
         jpDadosPessoais.setName("jpDadosPessoais"); // NOI18N
 
         lbEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -124,6 +126,7 @@ public class FormCliente extends javax.swing.JFrame {
         lbSexo.setText("Sexo:");
         lbSexo.setName("lbSexo"); // NOI18N
 
+        jPanel2.setBackground(new java.awt.Color(250, 250, 250));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Estado Civil:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         bgEstadoCivil.add(rbSolteiro);
@@ -167,14 +170,14 @@ public class FormCliente extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbSolteiro)
                     .addComponent(rbCasado)
                     .addComponent(rbDivorciado)
                     .addComponent(rbUniaoEstavel)
                     .addComponent(rbViuvo))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jpDadosPessoaisLayout = new javax.swing.GroupLayout(jpDadosPessoais);
@@ -222,11 +225,12 @@ public class FormCliente extends javax.swing.JFrame {
                         .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dados Pessoais", jpDadosPessoais);
 
+        jpEnderecoCompleto.setBackground(new java.awt.Color(250, 250, 250));
         jpEnderecoCompleto.setName("jpEnderecoCompleto"); // NOI18N
         jpEnderecoCompleto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -337,6 +341,8 @@ public class FormCliente extends javax.swing.JFrame {
             }
         });
 
+        jPanel3.setBackground(new java.awt.Color(250, 250, 250));
+
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/user-add-icon.png"))); // NOI18N
         btCadastrar.setText("Cadastrar");
@@ -419,8 +425,8 @@ public class FormCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbCPF)
-                    .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                    .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbNome)
                     .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
