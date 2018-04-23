@@ -36,6 +36,7 @@ public class FormDesktop extends javax.swing.JFrame {
 
         bgSO = new javax.swing.ButtonGroup();
         bgPlaca = new javax.swing.ButtonGroup();
+        jPanel4 = new javax.swing.JPanel();
         lbArmHD = new javax.swing.JLabel();
         lbMemoria = new javax.swing.JLabel();
         lbProcessador = new javax.swing.JLabel();
@@ -65,6 +66,8 @@ public class FormDesktop extends javax.swing.JFrame {
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
         setResizable(false);
 
+        jPanel4.setBackground(new java.awt.Color(250, 250, 250));
+
         lbArmHD.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbArmHD.setText("Armazenamento HD:");
         lbArmHD.setName("lbArmHD"); // NOI18N
@@ -91,8 +94,10 @@ public class FormDesktop extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(250, 250, 250));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sistema Operacional", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
+        rbWind.setBackground(new java.awt.Color(250, 250, 250));
         bgSO.add(rbWind);
         rbWind.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbWind.setSelected(true);
@@ -104,11 +109,13 @@ public class FormDesktop extends javax.swing.JFrame {
             }
         });
 
+        rbUbuntu.setBackground(new java.awt.Color(250, 250, 250));
         bgSO.add(rbUbuntu);
         rbUbuntu.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbUbuntu.setText("Ubuntu");
         rbUbuntu.setName("rbUbuntu"); // NOI18N
 
+        rbMcOS.setBackground(new java.awt.Color(250, 250, 250));
         bgSO.add(rbMcOS);
         rbMcOS.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbMcOS.setText("Mc OS");
@@ -141,7 +148,8 @@ public class FormDesktop extends javax.swing.JFrame {
         cbProcessador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AMD Athlon™ X4", "AMD Ryzen™ 5", "Intel Core™ i3", "Intel Core™ i5", "Intel Core™ i7" }));
         cbProcessador.setName("cbProcessador"); // NOI18N
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jPanel2.setPreferredSize(new java.awt.Dimension(520, 100));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
@@ -155,34 +163,39 @@ public class FormDesktop extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel3)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
+        jPanel3.setBackground(new java.awt.Color(250, 250, 250));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Placa de Vídeo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
+        rbOnBoard.setBackground(new java.awt.Color(250, 250, 250));
         bgPlaca.add(rbOnBoard);
         rbOnBoard.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbOnBoard.setSelected(true);
         rbOnBoard.setText("On-Board");
         rbOnBoard.setName("rbOnBoard"); // NOI18N
 
+        rbAsus.setBackground(new java.awt.Color(250, 250, 250));
         bgPlaca.add(rbAsus);
         rbAsus.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbAsus.setText("Asus Geforce Gtx");
         rbAsus.setName("rbAsus"); // NOI18N
 
+        rbNvidia.setBackground(new java.awt.Color(250, 250, 250));
         bgPlaca.add(rbNvidia);
         rbNvidia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbNvidia.setText("Nvidia Gt 210");
         rbNvidia.setName("rbNvidia"); // NOI18N
 
+        rbRadeon.setBackground(new java.awt.Color(250, 250, 250));
         bgPlaca.add(rbRadeon);
         rbRadeon.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbRadeon.setText("Radeon R5 230");
@@ -214,9 +227,11 @@ public class FormDesktop extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jToolBar1.setBackground(new java.awt.Color(250, 250, 250));
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
+        btCadastrar.setBackground(new java.awt.Color(250, 250, 250));
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
         btCadastrar.setText("Cadastrar");
@@ -229,6 +244,7 @@ public class FormDesktop extends javax.swing.JFrame {
         jToolBar1.add(btCadastrar);
         jToolBar1.add(jSeparator2);
 
+        btCancelar.setBackground(new java.awt.Color(250, 250, 250));
         btCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
         btCancelar.setText("Cancelar");
@@ -241,6 +257,7 @@ public class FormDesktop extends javax.swing.JFrame {
         jToolBar1.add(btCancelar);
         jToolBar1.add(jSeparator1);
 
+        btSair.setBackground(new java.awt.Color(250, 250, 250));
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
         btSair.setText("Sair");
@@ -252,61 +269,71 @@ public class FormDesktop extends javax.swing.JFrame {
         });
         jToolBar1.add(btSair);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbArmHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tfArmHD, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbMemoria)
                             .addComponent(tfMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbProcessador)))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(40, 40, 40)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbArmHD)
                     .addComponent(lbMemoria)
                     .addComponent(lbProcessador))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfArmHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 9, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(536, 418));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        setSize(new java.awt.Dimension(536, 411));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -460,6 +487,7 @@ public class FormDesktop extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
