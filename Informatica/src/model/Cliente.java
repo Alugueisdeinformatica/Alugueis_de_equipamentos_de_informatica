@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author Luís Gustavo
@@ -14,7 +16,7 @@ public class Cliente {
     private String email;
     private String telefone;
     private Endereco endereco;
-    private String dataNascimento;
+    private Date dataNascimento;
     private String sexo;
     private String cpf;
     private String estadoCivil;
@@ -23,7 +25,7 @@ public class Cliente {
         endereco = new Endereco();
     }
 
-    public Cliente(String nome, String email, String telefone, Endereco endereco, String dataNascimento, String sexo, String cpf, String estadoCivil) {
+    public Cliente(String nome, String email, String telefone, Endereco endereco, Date dataNascimento, String sexo, String cpf, String estadoCivil) {
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
@@ -66,11 +68,11 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public String getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

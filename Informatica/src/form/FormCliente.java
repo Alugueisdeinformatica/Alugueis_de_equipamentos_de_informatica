@@ -241,12 +241,10 @@ public class FormCliente extends javax.swing.JFrame {
 
         jpEnderecoCompleto.setBackground(new java.awt.Color(250, 250, 250));
         jpEnderecoCompleto.setName("jpEnderecoCompleto"); // NOI18N
-        jpEnderecoCompleto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbCEP.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbCEP.setText("CEP:");
         lbCEP.setName("lbCEP"); // NOI18N
-        jpEnderecoCompleto.add(lbCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, -1, -1));
 
         try {
             tfCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
@@ -254,37 +252,29 @@ public class FormCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         tfCEP.setName("tfCEP"); // NOI18N
-        jpEnderecoCompleto.add(tfCEP, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 78, -1));
 
         lbCidade.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbCidade.setText("Cidade:");
         lbCidade.setName("lbCidade"); // NOI18N
-        jpEnderecoCompleto.add(lbCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 139, -1, -1));
 
         tfCidade.setName("tfCidade"); // NOI18N
-        jpEnderecoCompleto.add(tfCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 159, 175, -1));
 
         lbEstado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbEstado.setText("Estado:");
         lbEstado.setName("lbEstado"); // NOI18N
-        jpEnderecoCompleto.add(lbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, -1, -1));
 
         cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         cbEstado.setName("cbEstado"); // NOI18N
-        jpEnderecoCompleto.add(cbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
 
         lbComplemento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbComplemento.setText("Complemento:");
         lbComplemento.setName("lbComplemento"); // NOI18N
-        jpEnderecoCompleto.add(lbComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, -1, -1));
 
         tfComplemento.setName("tfComplemento"); // NOI18N
-        jpEnderecoCompleto.add(tfComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 99, -1));
 
         lbNumero.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNumero.setText("Número:");
         lbNumero.setName("lbNumero"); // NOI18N
-        jpEnderecoCompleto.add(lbNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
 
         tfNumero.setText("0");
         tfNumero.setName("tfNumero"); // NOI18N
@@ -293,23 +283,101 @@ public class FormCliente extends javax.swing.JFrame {
                 tfNumeroKeyTyped(evt);
             }
         });
-        jpEnderecoCompleto.add(tfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 41, -1));
 
         lbBairro.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbBairro.setText("Bairro:");
         lbBairro.setName("lbBairro"); // NOI18N
-        jpEnderecoCompleto.add(lbBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 87, -1, -1));
 
         tfBairro.setName("tfBairro"); // NOI18N
-        jpEnderecoCompleto.add(tfBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 107, 175, -1));
 
         lbRua.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbRua.setText("Endereço:");
         lbRua.setName("lbRua"); // NOI18N
-        jpEnderecoCompleto.add(lbRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 31, -1, -1));
 
         tfRua.setName("tfRua"); // NOI18N
-        jpEnderecoCompleto.add(tfRua, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 56, 172, -1));
+
+        javax.swing.GroupLayout jpEnderecoCompletoLayout = new javax.swing.GroupLayout(jpEnderecoCompleto);
+        jpEnderecoCompleto.setLayout(jpEnderecoCompletoLayout);
+        jpEnderecoCompletoLayout.setHorizontalGroup(
+            jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(lbRua)
+                .addGap(152, 152, 152)
+                .addComponent(lbNumero)
+                .addGap(53, 53, 53)
+                .addComponent(lbComplemento))
+            .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(tfRua, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(tfNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(tfComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lbBairro)
+                .addGap(173, 173, 173)
+                .addComponent(lbCEP))
+            .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(tfBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(tfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(lbCidade)
+                .addGap(169, 169, 169)
+                .addComponent(lbEstado))
+            .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(tfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jpEnderecoCompletoLayout.setVerticalGroup(
+            jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lbRua))
+                    .addComponent(lbNumero)
+                    .addComponent(lbComplemento))
+                .addGap(11, 11, 11)
+                .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(7, 7, 7)
+                .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbBairro)
+                    .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lbCEP)))
+                .addGap(3, 3, 3)
+                .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(tfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(9, 9, 9)
+                .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbCidade)
+                    .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(lbEstado)))
+                .addGap(5, 5, 5)
+                .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
 
         jTabbedPane1.addTab("Endereço Completo", jpEnderecoCompleto);
 
