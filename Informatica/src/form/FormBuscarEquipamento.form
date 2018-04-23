@@ -65,9 +65,9 @@
                                       <Component id="lbCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="tfCodigo" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                                   <Component id="cboBuscarTodos" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="lbBuscarTodos" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="80" max="32767" attributes="0"/>
                                   <Component id="btBuscar" min="-2" max="-2" attributes="0"/>
@@ -83,20 +83,18 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Component id="lbCodigo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="tfCodigo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbBuscarTodos" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="btBuscar" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="lbBuscarTodos" min="-2" max="-2" attributes="0"/>
                                   <Component id="cboBuscarTodos" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -106,7 +104,7 @@
                   <Component id="jScrollPane1" min="-2" pref="143" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btSair" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="27" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -162,6 +160,9 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="cboBuscarTodos">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fa" green="fa" red="fa" type="rgb"/>
+            </Property>
             <Property name="name" type="java.lang.String" value="cboBuscarTodos" noResource="true"/>
           </Properties>
           <Events>
