@@ -204,9 +204,7 @@ public class FormAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btInserirEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirEquipamentoActionPerformed
-        Equipamento equipamento = new Equipamento();
-        FormBuscarEquipamento.setEquipamento(equipamento);
-        new FormBuscarEquipamento().setVisible(true);
+        new FormSelecionarEquipamentos().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btInserirEquipamentoActionPerformed
 

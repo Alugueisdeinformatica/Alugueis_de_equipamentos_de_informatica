@@ -200,7 +200,7 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_cboBuscarTodosActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        equi = FormPrincipal.bdEquipamento.buscaEquipamento(Integer.parseInt(tfCodigo.getText()));
+        equi = (Equipamento) FormPrincipal.bdEquipamento.buscaEquipamento(Integer.parseInt(tfCodigo.getText()));
         if(equi != null){
             FormAluguel.setEquipamento(equi);
             new FormAluguel().setVisible(true);

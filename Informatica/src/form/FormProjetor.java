@@ -7,7 +7,6 @@ package form;
 
 import static form.FormEquipamento.equipamento;
 import javax.swing.JOptionPane;
-import model.Computador;
 import model.Equipamento;
 import model.Projetor;
 
