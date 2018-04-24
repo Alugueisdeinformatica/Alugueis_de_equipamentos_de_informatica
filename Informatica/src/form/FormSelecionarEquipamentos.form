@@ -128,7 +128,8 @@
             <Component class="javax.swing.JTable" name="tbInserir">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="0">
+                  <Table columnCount="6" rowCount="0">
+                    <Column editable="false" title="C&#xf3;digo" type="java.lang.Integer"/>
                     <Column editable="false" title="Modelo" type="java.lang.String"/>
                     <Column editable="false" title="Marca" type="java.lang.String"/>
                     <Column editable="false" title="Quantidade" type="java.lang.Integer"/>
@@ -138,6 +139,11 @@
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>
@@ -193,6 +199,9 @@
             <Property name="text" type="java.lang.String" value="Inserir"/>
             <Property name="name" type="java.lang.String" value="btInserir" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btInserirActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

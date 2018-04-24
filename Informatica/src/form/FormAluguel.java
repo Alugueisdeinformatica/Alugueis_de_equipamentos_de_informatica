@@ -5,13 +5,12 @@
  */
 package form;
 
-import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Aluguel;
 import model.Cliente;
-import model.Equipamento;
 
 /**
  *
@@ -29,14 +28,14 @@ public class FormAluguel extends javax.swing.JFrame {
         return cli;
     }
     
-    private static Equipamento eq = null;
+    private static Aluguel al = null;
     
-    public static void setEquipamento(Equipamento eq){
-        FormAluguel.eq = eq;
+    public static void setAluguel(Aluguel al){
+        FormAluguel.al = al;
     }
     
-    public static Equipamento getEquipamento(){
-        return eq;
+    public static Aluguel getAluguel(){
+        return al;
     }
     
     public int cont = 0;
@@ -58,11 +57,11 @@ public class FormAluguel extends javax.swing.JFrame {
         btInserirCliente = new javax.swing.JButton();
         tfAdicionarCliente = new javax.swing.JTextField();
         btInserirEquipamento = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        taInfo = new javax.swing.JTextArea();
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         btAdicionar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbInfo = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Novo Aluguel");
@@ -93,14 +92,6 @@ public class FormAluguel extends javax.swing.JFrame {
                 btInserirEquipamentoActionPerformed(evt);
             }
         });
-
-        taInfo.setEditable(false);
-        taInfo.setColumns(20);
-        taInfo.setLineWrap(true);
-        taInfo.setRows(5);
-        taInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Equipamentos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-        taInfo.setName("taInfo"); // NOI18N
-        jScrollPane1.setViewportView(taInfo);
 
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setText("Limpar");
@@ -133,27 +124,62 @@ public class FormAluguel extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        tbInfo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Categoria", "Modelo", "Marca", "Valor"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbInfo.setName("tbInfo"); // NOI18N
+        jScrollPane1.setViewportView(tbInfo);
+        if (tbInfo.getColumnModel().getColumnCount() > 0) {
+            tbInfo.getColumnModel().getColumn(0).setResizable(false);
+            tbInfo.getColumnModel().getColumn(1).setResizable(false);
+            tbInfo.getColumnModel().getColumn(2).setResizable(false);
+            tbInfo.getColumnModel().getColumn(3).setResizable(false);
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btAdicionar)
-                        .addGap(79, 79, 79)
-                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btInserirEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btInserirCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(68, 68, 68)
-                        .addComponent(tfAdicionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(btAdicionar)
+                            .addGap(79, 79, 79)
+                            .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btInserirEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btInserirCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(68, 68, 68)
+                            .addComponent(tfAdicionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,24 +190,26 @@ public class FormAluguel extends javax.swing.JFrame {
                     .addComponent(tfAdicionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addComponent(btInserirEquipamento)
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btAdicionar)
                     .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGap(53, 53, 53))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(533, 459));
+        setSize(new java.awt.Dimension(533, 491));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         cli = null;
+        al = null;
+        FormSelecionarEquipamentos.setAluguel(null);
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -198,8 +226,12 @@ public class FormAluguel extends javax.swing.JFrame {
             tfAdicionarCliente.setText(cli.getNome());
             btInserirCliente.setEnabled(false);
         }
-        if(eq != null){
-            taInfo.setText(eq.toString());
+        if(al != null){
+            DefaultTableModel modelo = (DefaultTableModel) tbInfo.getModel();
+            for(int i = 0; i < al.todosEquipamentos().size(); i++){
+                modelo.addRow(new Object[]{al.todosEquipamentos().get(i).getCategoria(), al.todosEquipamentos().get(i).getModelo(), 
+                al.todosEquipamentos().get(i).getMarca(), al.todosEquipamentos().get(i).getValorDiaria()});
+            }
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -209,16 +241,15 @@ public class FormAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_btInserirEquipamentoActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
-        Aluguel aluguel = new Aluguel();
-        if((cli != null) && (eq != null)){
-            aluguel.setCliente(cli);
-            aluguel.adicionaEquipamento(eq);
-            aluguel.setIdAluguel(Integer.toString(cont));
+        if((cli != null) && (al != null)){
+            al.setCliente(cli);
+            //aluguel.adicionaEquipamento(eq);
+            al.setIdAluguel(Integer.toString(cont));
             Calendar c = Calendar.getInstance();
             Date data = c.getTime();
-            aluguel.setDataAtual(data);
-            aluguel.setQtAluguel(0);
-            FormPrincipal.bdAluguel.adicionaAluguel(aluguel);
+            al.setDataAtual(data);
+            al.setQtAluguel(0);
+            FormPrincipal.bdAluguel.adicionaAluguel(al);
             JOptionPane.showMessageDialog(null, "Aluguel Adicionado!", "Cadastrado", JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(null, "Adicione cliente e equipamento primeiro!", "", JOptionPane.WARNING_MESSAGE);
@@ -227,10 +258,9 @@ public class FormAluguel extends javax.swing.JFrame {
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         tfAdicionarCliente.setText("");
-        taInfo.setText("");
         btInserirCliente.setEnabled(true);
         cli = null;
-        eq = null;
+        al = null;
     }//GEN-LAST:event_btLimparActionPerformed
 
     /**
@@ -276,7 +306,7 @@ public class FormAluguel extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea taInfo;
+    private javax.swing.JTable tbInfo;
     private javax.swing.JTextField tfAdicionarCliente;
     // End of variables declaration//GEN-END:variables
 }

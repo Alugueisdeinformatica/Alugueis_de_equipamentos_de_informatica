@@ -6,10 +6,9 @@
 package form;
 
 import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Equipamento;
-import javax.swing.JTable;
+import model.Aluguel;
 import model.Computador;
 import model.Impressora;
 import model.Monitor;
@@ -22,9 +21,16 @@ import model.Tablet;
  */
 public class FormSelecionarEquipamentos extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormListarEquipamentos
-     */
+    private static Aluguel alu = null;
+    
+    public static void setAluguel(Aluguel alu){
+        FormSelecionarEquipamentos.alu = alu;
+    }
+    
+    public static Aluguel getAluguel(){
+        return alu;
+    }
+    
     public FormSelecionarEquipamentos() {
         initComponents();
     }
@@ -65,14 +71,14 @@ public class FormSelecionarEquipamentos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Modelo", "Marca", "Quantidade", "Valor", "Selecionar"
+                "Código", "Modelo", "Marca", "Quantidade", "Valor", "Selecionar"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -92,6 +98,7 @@ public class FormSelecionarEquipamentos extends javax.swing.JFrame {
             tbInserir.getColumnModel().getColumn(2).setResizable(false);
             tbInserir.getColumnModel().getColumn(3).setResizable(false);
             tbInserir.getColumnModel().getColumn(4).setResizable(false);
+            tbInserir.getColumnModel().getColumn(5).setResizable(false);
         }
 
         btBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -106,6 +113,11 @@ public class FormSelecionarEquipamentos extends javax.swing.JFrame {
         btInserir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btInserir.setText("Inserir");
         btInserir.setName("btInserir"); // NOI18N
+        btInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInserirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -159,37 +171,37 @@ public class FormSelecionarEquipamentos extends javax.swing.JFrame {
                 switch(escolhe){
                     case 0:
                         if(equipamentos.get(i) instanceof Computador){
-                            modelo.addRow(new Object[]{equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
+                            modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
                             equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), false});
                         };
                         break;
                     case 1:
                         if(equipamentos.get(i) instanceof Impressora){
-                            modelo.addRow(new Object[]{equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
+                            modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
                             equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), false});
                         };
                         break;
                     case 2:
                         if(equipamentos.get(i) instanceof Monitor){
-                            modelo.addRow(new Object[]{equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
+                            modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
                             equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), false});
                         };
                         break;
                     case 3:
                         if(equipamentos.get(i) instanceof Notebook){
-                            modelo.addRow(new Object[]{equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
+                            modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
                             equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), false});
                         };
                         break;
                     case 4:
                         if(equipamentos.get(i) instanceof Projetor){
-                            modelo.addRow(new Object[]{equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
+                            modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
                             equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), false});
                         };
                         break;
                     case 5:
                         if(equipamentos.get(i) instanceof Tablet){
-                            modelo.addRow(new Object[]{equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
+                            modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
                             equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), false});
                         };
                         break;
@@ -197,6 +209,43 @@ public class FormSelecionarEquipamentos extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
+        if(alu == null){
+           if(tbInserir.getRowCount() > 0){
+            alu = new Aluguel();
+            for (int i = 0; i < tbInserir.getRowCount(); i++)
+            {
+                boolean selec = (boolean) tbInserir.getValueAt(i, 5);
+                if(selec){
+                    Object str = tbInserir.getValueAt(i, 0);
+                    Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) str);
+                    if(equipamento != null){
+                        alu.adicionaEquipamento(equipamento);
+                    }
+                }
+            }
+            FormAluguel.setAluguel(alu);
+            }
+        }else{
+            if(tbInserir.getRowCount() > 0){
+            for (int i = 0; i < tbInserir.getRowCount(); i++)
+            {
+                boolean selec = (boolean) tbInserir.getValueAt(i, 5);
+                if(selec){
+                    Object str = tbInserir.getValueAt(i, 0);
+                    Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) str);
+                    if(equipamento != null){
+                        alu.adicionaEquipamento(equipamento);
+                    }
+                }
+            }
+            FormAluguel.setAluguel(alu);
+            }
+        }
+        new FormAluguel().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btInserirActionPerformed
 
     /**
      * @param args the command line arguments
