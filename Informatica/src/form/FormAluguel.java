@@ -136,14 +136,14 @@ public class FormAluguel extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Categoria", "Modelo", "Marca", "Valor"
+                "Categoria", "Modelo", "Marca", "Valor", "Selecionar"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -161,6 +161,7 @@ public class FormAluguel extends javax.swing.JFrame {
             tbInfo.getColumnModel().getColumn(1).setResizable(false);
             tbInfo.getColumnModel().getColumn(2).setResizable(false);
             tbInfo.getColumnModel().getColumn(3).setResizable(false);
+            tbInfo.getColumnModel().getColumn(4).setResizable(false);
         }
 
         btRemover.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -171,6 +172,7 @@ public class FormAluguel extends javax.swing.JFrame {
         lbTotal.setText("Total:");
         lbTotal.setName("lbTotal"); // NOI18N
 
+        tfTotal.setEditable(false);
         tfTotal.setText("0");
         tfTotal.setName("tfTotal"); // NOI18N
 
