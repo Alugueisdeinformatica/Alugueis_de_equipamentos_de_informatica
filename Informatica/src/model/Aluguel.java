@@ -5,9 +5,10 @@
  */
 package model;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 /**
  *
@@ -17,20 +18,19 @@ public class Aluguel {
     private String idAluguel;
     private Cliente cliente;
     private List<Equipamento> equipamento = null;
-    private DateFormat dataAtual;
-    private String qtAluguel;
-    private String valorTotal;
+    private Date dataAtual;
+    private int qtAluguel;
+    private double valorTotal;
 
     public Aluguel() {
         equipamento = new ArrayList<Equipamento>();
     }
 
-    public Aluguel(String idAluguel, Cliente cliente, DateFormat dataAtual, String qtAluguel, String valorTotal) {
+    public Aluguel(String idAluguel, Cliente cliente, Date dataAtual, int qtAluguel) {
         this.idAluguel = idAluguel;
         this.cliente = cliente;
         this.dataAtual = dataAtual;
         this.qtAluguel = qtAluguel;
-        this.valorTotal = valorTotal;
     }
 
     public String getIdAluguel() {
@@ -49,28 +49,24 @@ public class Aluguel {
         this.cliente = cliente;
     }
 
-    public DateFormat getDataAtual() {
+    public Date getDataAtual() {
         return dataAtual;
     }
 
-    public void setDataAtual(DateFormat dataAtual) {
+    public void setDataAtual(Date dataAtual) {
         this.dataAtual = dataAtual;
     }
 
-    public String getQtAluguel() {
+    public int getQtAluguel() {
         return qtAluguel;
     }
 
-    public void setQtAluguel(String qtAluguel) {
+    public void setQtAluguel(int qtAluguel) {
         this.qtAluguel = qtAluguel;
     }
 
-    public String getValorTotal() {
+    public double getValorTotal() {
         return valorTotal;
-    }
-
-    public void setValorTotal(String valorTotal) {
-        this.valorTotal = valorTotal;
     }
     
     public void adicionaEquipamento(Equipamento equipamento){
@@ -107,9 +103,14 @@ public class Aluguel {
         return this.equipamento;
     }
     
-    public DateFormat dataDevolucao(int dias){
-        DateFormat entrega = dataAtual;        
-        //entrega.;        
-        return entrega;
+    public Date dataDevolucao(Date data, String dias) {
+	Calendar cal = new GregorianCalendar();
+	cal.setTime(data);
+	cal.add(Calendar.DAY_OF_MONTH, Integer.parseInt(dias));
+	return cal.getTime();
+    }
+    
+    public void total(Equipamento eq, String dias){
+        valorTotal = valorTotal + (eq.getValorDiaria() * Double.parseDouble(dias) * qtAluguel);
     }
 }

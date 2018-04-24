@@ -189,6 +189,7 @@ public class FormAluguel extends javax.swing.JFrame {
         Cliente cliente = new Cliente();
         FormBuscarCliente.setCliente(cliente);
         new FormBuscarCliente().setVisible(true);
+        this.setVisible(false);
         //this.setVisible(false);
     }//GEN-LAST:event_btInserirClienteActionPerformed
 
@@ -217,10 +218,8 @@ public class FormAluguel extends javax.swing.JFrame {
             aluguel.setIdAluguel(Integer.toString(cont));
             Calendar c = Calendar.getInstance();
             Date data = c.getTime();
-            DateFormat formataData = DateFormat.getDateInstance();
-            aluguel.setDataAtual(formataData);
-            aluguel.setQtAluguel("");
-            aluguel.setValorTotal("");
+            aluguel.setDataAtual(data);
+            aluguel.setQtAluguel(0);
             FormPrincipal.bdAluguel.adicionaAluguel(aluguel);
             JOptionPane.showMessageDialog(null, "Aluguel Adicionado!", "Cadastrado", JOptionPane.INFORMATION_MESSAGE);
         }else{
