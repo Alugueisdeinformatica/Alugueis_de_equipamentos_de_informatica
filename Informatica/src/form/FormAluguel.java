@@ -62,6 +62,11 @@ public class FormAluguel extends javax.swing.JFrame {
         btAdicionar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbInfo = new javax.swing.JTable();
+        btRemover = new javax.swing.JButton();
+        lbTotal = new javax.swing.JLabel();
+        tfTotal = new javax.swing.JTextField();
+        lbDias = new javax.swing.JLabel();
+        tfDias = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Novo Aluguel");
@@ -158,27 +163,63 @@ public class FormAluguel extends javax.swing.JFrame {
             tbInfo.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        btRemover.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btRemover.setText("Remover");
+        btRemover.setName("btRemover"); // NOI18N
+
+        lbTotal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbTotal.setText("Total:");
+        lbTotal.setName("lbTotal"); // NOI18N
+
+        tfTotal.setText("0");
+        tfTotal.setName("tfTotal"); // NOI18N
+
+        lbDias.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbDias.setText("Dias:");
+        lbDias.setName("lbDias"); // NOI18N
+
+        tfDias.setText("0");
+        tfDias.setName("tfDias"); // NOI18N
+        tfDias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfDiasKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(btAdicionar)
-                            .addGap(79, 79, 79)
-                            .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btInserirEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btInserirCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(68, 68, 68)
-                            .addComponent(tfAdicionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btInserirEquipamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btInserirCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(68, 68, 68)
+                        .addComponent(tfAdicionarCliente))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btAdicionar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(btRemover)
+                                .addGap(35, 35, 35))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbDias)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfDias, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbTotal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -191,12 +232,19 @@ public class FormAluguel extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(btInserirEquipamento)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbTotal)
+                    .addComponent(tfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbDias)
+                    .addComponent(tfDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btAdicionar)
-                    .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btRemover))
                 .addGap(53, 53, 53))
         );
 
@@ -243,12 +291,10 @@ public class FormAluguel extends javax.swing.JFrame {
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         if((cli != null) && (al != null)){
             al.setCliente(cli);
-            //aluguel.adicionaEquipamento(eq);
             al.setIdAluguel(Integer.toString(cont));
             Calendar c = Calendar.getInstance();
             Date data = c.getTime();
             al.setDataAtual(data);
-            al.setQtAluguel(0);
             FormPrincipal.bdAluguel.adicionaAluguel(al);
             JOptionPane.showMessageDialog(null, "Aluguel Adicionado!", "Cadastrado", JOptionPane.INFORMATION_MESSAGE);
         }else{
@@ -259,9 +305,24 @@ public class FormAluguel extends javax.swing.JFrame {
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         tfAdicionarCliente.setText("");
         btInserirCliente.setEnabled(true);
+        tfDias.setText("0");
+        tfTotal.setText("0");
+        DefaultTableModel modelo = (DefaultTableModel) tbInfo.getModel();
+        for (int i = tbInfo.getRowCount() - 1; i >= 0; --i) 
+        { 
+            modelo.removeRow(i); 
+        }
         cli = null;
         al = null;
+        FormSelecionarEquipamentos.setAluguel(null);
     }//GEN-LAST:event_btLimparActionPerformed
+
+    private void tfDiasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDiasKeyReleased
+        if(al != null){
+            al.total(tfDias.getText());
+            tfTotal.setText(Double.toString(al.getValorTotal()));
+        }
+    }//GEN-LAST:event_tfDiasKeyReleased
 
     /**
      * @param args the command line arguments
@@ -303,10 +364,15 @@ public class FormAluguel extends javax.swing.JFrame {
     private javax.swing.JButton btInserirCliente;
     private javax.swing.JButton btInserirEquipamento;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btRemover;
     private javax.swing.JButton btSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbDias;
+    private javax.swing.JLabel lbTotal;
     private javax.swing.JTable tbInfo;
     private javax.swing.JTextField tfAdicionarCliente;
+    private javax.swing.JTextField tfDias;
+    private javax.swing.JTextField tfTotal;
     // End of variables declaration//GEN-END:variables
 }

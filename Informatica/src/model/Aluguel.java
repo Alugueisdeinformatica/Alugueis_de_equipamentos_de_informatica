@@ -19,18 +19,16 @@ public class Aluguel {
     private Cliente cliente;
     private List<Equipamento> equipamento = null;
     private Date dataAtual;
-    private int qtAluguel;
     private double valorTotal;
 
     public Aluguel() {
         equipamento = new ArrayList<Equipamento>();
     }
 
-    public Aluguel(String idAluguel, Cliente cliente, Date dataAtual, int qtAluguel) {
+    public Aluguel(String idAluguel, Cliente cliente, Date dataAtual) {
         this.idAluguel = idAluguel;
         this.cliente = cliente;
         this.dataAtual = dataAtual;
-        this.qtAluguel = qtAluguel;
     }
 
     public String getIdAluguel() {
@@ -55,14 +53,6 @@ public class Aluguel {
 
     public void setDataAtual(Date dataAtual) {
         this.dataAtual = dataAtual;
-    }
-
-    public int getQtAluguel() {
-        return qtAluguel;
-    }
-
-    public void setQtAluguel(int qtAluguel) {
-        this.qtAluguel = qtAluguel;
     }
 
     public double getValorTotal() {
@@ -110,7 +100,11 @@ public class Aluguel {
 	return cal.getTime();
     }
     
-    public void total(Equipamento eq, String dias){
-        valorTotal = valorTotal + (eq.getValorDiaria() * Double.parseDouble(dias) * qtAluguel);
+    public void total(String dias){
+        double val = 0;
+        for(int i = 0; i < equipamento.size(); i++){
+            val = val + equipamento.get(i).getValorDiaria();
+        }
+        valorTotal = val * Double.parseDouble(dias);
     }
 }
