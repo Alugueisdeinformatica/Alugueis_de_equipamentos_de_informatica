@@ -291,7 +291,7 @@ public class FormAluguel extends javax.swing.JFrame {
             DefaultTableModel modelo = (DefaultTableModel) tbInfo.getModel();
             for(int i = 0; i < al.todosEquipamentos().size(); i++){
                 modelo.addRow(new Object[]{al.todosEquipamentos().get(i).getCodEquipamento(), al.todosEquipamentos().get(i).getCategoria(), al.todosEquipamentos().get(i).getModelo(), 
-                al.todosEquipamentos().get(i).getMarca(), al.todosEquipamentos().get(i).getValorDiaria()});
+                al.todosEquipamentos().get(i).getMarca(), al.todosEquipamentos().get(i).getValorDiaria(), false});
                 btRemover.setEnabled(true);
             }
         }
@@ -358,21 +358,23 @@ public class FormAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_tfDiasKeyTyped
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
+        boolean selec = false;
         if(al != null){
             DefaultTableModel modelo = (DefaultTableModel) tbInfo.getModel();
             for(int i = 0; i < modelo.getRowCount(); i++){
-                boolean selec = (boolean) modelo.getValueAt(i, 5);
+                selec = (boolean) modelo.getValueAt(i, 5);
                 if(selec){
-                    Object str = modelo.getValueAt(i, 0);
-                    Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) str);
-                    if(equipamento != null){
-                        al.removerEquipamento(equipamento.getCodEquipamento());
-                        modelo.removeRow(i);
-                    }
+                    int cod = (int) modelo.getValueAt(i, 0);
+                    al.removerEquipamento(cod);
+                    modelo.removeRow(i);
+                    i--;
                 }
             }
             if(modelo.getRowCount() == 0){
                 btRemover.setEnabled(false);
+            }
+            if(selec == false){
+                JOptionPane.showMessageDialog(null, "Selecione um equipamento para remover!", "Atenção", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btRemoverActionPerformed
