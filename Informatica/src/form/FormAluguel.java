@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Aluguel;
 import model.Cliente;
+import model.Equipamento;
 
 /**
  *
@@ -136,14 +137,14 @@ public class FormAluguel extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Categoria", "Modelo", "Marca", "Valor", "Selecionar"
+                "Código", "Categoria", "Modelo", "Marca", "Valor", "Selecionar"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -162,11 +163,18 @@ public class FormAluguel extends javax.swing.JFrame {
             tbInfo.getColumnModel().getColumn(2).setResizable(false);
             tbInfo.getColumnModel().getColumn(3).setResizable(false);
             tbInfo.getColumnModel().getColumn(4).setResizable(false);
+            tbInfo.getColumnModel().getColumn(5).setResizable(false);
         }
 
         btRemover.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btRemover.setText("Remover");
+        btRemover.setEnabled(false);
         btRemover.setName("btRemover"); // NOI18N
+        btRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRemoverActionPerformed(evt);
+            }
+        });
 
         lbTotal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbTotal.setText("Total:");
@@ -185,6 +193,9 @@ public class FormAluguel extends javax.swing.JFrame {
         tfDias.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 tfDiasKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfDiasKeyTyped(evt);
             }
         });
 
@@ -279,8 +290,9 @@ public class FormAluguel extends javax.swing.JFrame {
         if(al != null){
             DefaultTableModel modelo = (DefaultTableModel) tbInfo.getModel();
             for(int i = 0; i < al.todosEquipamentos().size(); i++){
-                modelo.addRow(new Object[]{al.todosEquipamentos().get(i).getCategoria(), al.todosEquipamentos().get(i).getModelo(), 
+                modelo.addRow(new Object[]{al.todosEquipamentos().get(i).getCodEquipamento(), al.todosEquipamentos().get(i).getCategoria(), al.todosEquipamentos().get(i).getModelo(), 
                 al.todosEquipamentos().get(i).getMarca(), al.todosEquipamentos().get(i).getValorDiaria()});
+                btRemover.setEnabled(true);
             }
         }
     }//GEN-LAST:event_formWindowOpened
@@ -292,13 +304,20 @@ public class FormAluguel extends javax.swing.JFrame {
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         if((cli != null) && (al != null)){
-            al.setCliente(cli);
-            al.setIdAluguel(Integer.toString(cont));
-            Calendar c = Calendar.getInstance();
-            Date data = c.getTime();
-            al.setDataAtual(data);
-            FormPrincipal.bdAluguel.adicionaAluguel(al);
-            JOptionPane.showMessageDialog(null, "Aluguel Adicionado!", "Cadastrado", JOptionPane.INFORMATION_MESSAGE);
+            int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar o aluguel?", "", JOptionPane.YES_NO_OPTION);
+            if(opcao == 0){
+                al.setCliente(cli);
+                al.setIdAluguel(Integer.toString(cont));
+                Calendar c = Calendar.getInstance();
+                Date data = c.getTime();
+                al.setDataAtual(data);
+                FormPrincipal.bdAluguel.adicionaAluguel(al);
+                JOptionPane.showMessageDialog(null, "Aluguel Adicionado!", "Cadastrado", JOptionPane.INFORMATION_MESSAGE);
+                tfDias.setEnabled(false);
+                btAdicionar.setEnabled(false);
+                btInserirEquipamento.setEnabled(false);
+                tbInfo.setEnabled(false);
+            }            
         }else{
             JOptionPane.showMessageDialog(null, "Adicione cliente e equipamento primeiro!", "", JOptionPane.WARNING_MESSAGE);
         }
@@ -309,6 +328,11 @@ public class FormAluguel extends javax.swing.JFrame {
         btInserirCliente.setEnabled(true);
         tfDias.setText("0");
         tfTotal.setText("0");
+        btRemover.setEnabled(false);
+        btAdicionar.setEnabled(true);
+        btInserirEquipamento.setEnabled(true);
+        tfDias.setEnabled(true);
+        tbInfo.setEnabled(true);
         DefaultTableModel modelo = (DefaultTableModel) tbInfo.getModel();
         for (int i = tbInfo.getRowCount() - 1; i >= 0; --i) 
         { 
@@ -325,6 +349,33 @@ public class FormAluguel extends javax.swing.JFrame {
             tfTotal.setText(Double.toString(al.getValorTotal()));
         }
     }//GEN-LAST:event_tfDiasKeyReleased
+
+    private void tfDiasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDiasKeyTyped
+        String caracteres= "0987654321";
+        if(!caracteres.contains(evt.getKeyChar() + "")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_tfDiasKeyTyped
+
+    private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
+        if(al != null){
+            DefaultTableModel modelo = (DefaultTableModel) tbInfo.getModel();
+            for(int i = 0; i < modelo.getRowCount(); i++){
+                boolean selec = (boolean) modelo.getValueAt(i, 5);
+                if(selec){
+                    Object str = modelo.getValueAt(i, 0);
+                    Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) str);
+                    if(equipamento != null){
+                        al.removerEquipamento(equipamento.getCodEquipamento());
+                        modelo.removeRow(i);
+                    }
+                }
+            }
+            if(modelo.getRowCount() == 0){
+                btRemover.setEnabled(false);
+            }
+        }
+    }//GEN-LAST:event_btRemoverActionPerformed
 
     /**
      * @param args the command line arguments
