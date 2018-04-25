@@ -304,20 +304,24 @@ public class FormAluguel extends javax.swing.JFrame {
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         if((cli != null) && (al != null)){
-            int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar o aluguel?", "", JOptionPane.YES_NO_OPTION);
-            if(opcao == 0){
-                al.setCliente(cli);
-                al.setIdAluguel(Integer.toString(cont));
-                Calendar c = Calendar.getInstance();
-                Date data = c.getTime();
-                al.setDataAtual(data);
-                FormPrincipal.bdAluguel.adicionaAluguel(al);
-                JOptionPane.showMessageDialog(null, "Aluguel Adicionado!", "Cadastrado", JOptionPane.INFORMATION_MESSAGE);
-                tfDias.setEnabled(false);
-                btAdicionar.setEnabled(false);
-                btInserirEquipamento.setEnabled(false);
-                tbInfo.setEnabled(false);
-            }            
+            if(Integer.parseInt(tfDias.getText()) > 0){
+                int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar o aluguel?", "", JOptionPane.YES_NO_OPTION);
+                if(opcao == 0){
+                    al.setCliente(cli);
+                    al.setIdAluguel(Integer.toString(cont));
+                    Calendar c = Calendar.getInstance();
+                    Date data = c.getTime();
+                    al.setDataAtual(data);
+                    FormPrincipal.bdAluguel.adicionaAluguel(al);
+                    JOptionPane.showMessageDialog(null, "Aluguel Adicionado!", "Cadastrado", JOptionPane.INFORMATION_MESSAGE);
+                    tfDias.setEnabled(false);
+                    btAdicionar.setEnabled(false);
+                    btInserirEquipamento.setEnabled(false);
+                    tbInfo.setEnabled(false);
+                }   
+            }else{
+                JOptionPane.showMessageDialog(null, "Preencha a quantidade de dias!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            }                     
         }else{
             JOptionPane.showMessageDialog(null, "Adicione cliente e equipamento primeiro!", "", JOptionPane.WARNING_MESSAGE);
         }
