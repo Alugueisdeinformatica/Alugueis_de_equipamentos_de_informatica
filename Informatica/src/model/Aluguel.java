@@ -20,6 +20,7 @@ public class Aluguel {
     private List<Equipamento> equipamento = null;
     private Date dataAtual;
     private double valorTotal;
+    private String dias;
 
     public Aluguel() {
         equipamento = new ArrayList<Equipamento>();
@@ -58,6 +59,14 @@ public class Aluguel {
     public double getValorTotal() {
         return valorTotal;
     }
+
+    public String getDias() {
+        return dias;
+    }
+
+    public void setDias(String dias) {
+        this.dias = dias;
+    }
     
     public void adicionaEquipamento(Equipamento equipamento){
         this.equipamento.add(equipamento);
@@ -93,9 +102,9 @@ public class Aluguel {
         return this.equipamento;
     }
     
-    public Date dataDevolucao(Date data, String dias) {
+    public Date dataDevolucao() {
 	Calendar cal = new GregorianCalendar();
-	cal.setTime(data);
+	cal.setTime(dataAtual);
 	cal.add(Calendar.DAY_OF_MONTH, Integer.parseInt(dias));
 	return cal.getTime();
     }

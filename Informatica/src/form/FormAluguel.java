@@ -315,6 +315,7 @@ public class FormAluguel extends javax.swing.JFrame {
                     Calendar c = Calendar.getInstance();
                     Date data = c.getTime();
                     al.setDataAtual(data);
+                    al.setDias(tfDias.getText());
                     FormPrincipal.bdAluguel.adicionaAluguel(al);
                     JOptionPane.showMessageDialog(null, "Aluguel Adicionado!", "Cadastrado", JOptionPane.INFORMATION_MESSAGE);
                     tfDias.setEnabled(false);

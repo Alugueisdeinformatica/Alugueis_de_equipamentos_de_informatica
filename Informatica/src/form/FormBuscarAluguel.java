@@ -5,17 +5,26 @@
  */
 package form;
 
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import model.Aluguel;
+
 /**
  *
  * @author Luís Gustavo
  */
 public class FormBuscarAluguel extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormBuscarAluguel
-     */
+   DefaultTableModel modelo1  = null;
+   DefaultTableModel modelo2  = null;
+    
     public FormBuscarAluguel() {
         initComponents();
+        modelo1 = (DefaultTableModel) tbAluguelRealizado.getModel();
+        modelo2 = (DefaultTableModel) tbAvisoVencimento.getModel();
     }
 
     /**
@@ -40,6 +49,11 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar Aluguel");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -54,14 +68,14 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Cliente", "Dia do Aluguel", "Dia do Vencimento"
+                "ID", "Cliente", "Data do Aluguel", "Data do Vencimento", "Valor do Aluguel"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -79,6 +93,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             tbAluguelRealizado.getColumnModel().getColumn(1).setResizable(false);
             tbAluguelRealizado.getColumnModel().getColumn(2).setResizable(false);
             tbAluguelRealizado.getColumnModel().getColumn(3).setResizable(false);
+            tbAluguelRealizado.getColumnModel().getColumn(4).setResizable(false);
         }
 
         javax.swing.GroupLayout jpAluguelRealizadoLayout = new javax.swing.GroupLayout(jpAluguelRealizado);
@@ -107,14 +122,14 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Cliente", "Dia do Aluguel", "Dia do Vencimento"
+                "ID", "Cliente", "Data do Aluguel", "Data do Vencimento", "Valor do Aluguel"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -130,6 +145,9 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         if (tbAvisoVencimento.getColumnModel().getColumnCount() > 0) {
             tbAvisoVencimento.getColumnModel().getColumn(0).setResizable(false);
             tbAvisoVencimento.getColumnModel().getColumn(1).setResizable(false);
+            tbAvisoVencimento.getColumnModel().getColumn(2).setResizable(false);
+            tbAvisoVencimento.getColumnModel().getColumn(3).setResizable(false);
+            tbAvisoVencimento.getColumnModel().getColumn(4).setResizable(false);
         }
 
         javax.swing.GroupLayout jpAvisoVencimentoLayout = new javax.swing.GroupLayout(jpAvisoVencimento);
@@ -184,9 +202,25 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        for(int i = 0; i < FormPrincipal.bdAluguel.todosAlugueis().size(); i++){
+            inserirTabela(FormPrincipal.bdAluguel.todosAlugueis(), i, modelo1);
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void limparTabela(JTable tabela, DefaultTableModel modelo){
+        for(int i = tabela.getRowCount()-1; i >= 0; i--){
+            modelo.removeRow(i);
+        }
+    }
+    
+    private void inserirTabela(List<Aluguel> alugueis, int i, DefaultTableModel modelo){
+        DateFormat formataData = DateFormat.getDateInstance();
+        modelo.addRow(new Object[]{alugueis.get(i).getIdAluguel(), alugueis.get(i).getCliente().getNome(),
+        formataData.format(alugueis.get(i).getDataAtual()), formataData.format(alugueis.get(i).dataDevolucao()), 
+        alugueis.get(i).getValorTotal()});
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
