@@ -64,12 +64,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuItemEmitir = new javax.swing.JMenuItem();
         jMenuItemEfetuar = new javax.swing.JMenuItem();
         jMenuConsulta = new javax.swing.JMenu();
-        jMenuItemCliente = new javax.swing.JMenuItem();
+        jMenuItemClientes = new javax.swing.JMenuItem();
         jMenuItemEquipamentos = new javax.swing.JMenuItem();
-        jMenuCAluguel = new javax.swing.JMenu();
-        jMenuItemAbertos = new javax.swing.JMenuItem();
-        jMenuItemRealizados = new javax.swing.JMenuItem();
-        jMenuItemAviso = new javax.swing.JMenuItem();
+        JMenuItemAlugueis = new javax.swing.JMenuItem();
         JMenuSuporte = new javax.swing.JMenu();
         JMenuItemAjuda = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
@@ -247,14 +244,14 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuConsulta.setText("Consulta");
         jMenuConsulta.setName("jMenuConsulta"); // NOI18N
 
-        jMenuItemCliente.setText("Cliente");
-        jMenuItemCliente.setName("jMenuItemCliente"); // NOI18N
-        jMenuItemCliente.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemClientes.setText("Clientes");
+        jMenuItemClientes.setName("jMenuItemClientes"); // NOI18N
+        jMenuItemClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemClienteActionPerformed(evt);
+                jMenuItemClientesActionPerformed(evt);
             }
         });
-        jMenuConsulta.add(jMenuItemCliente);
+        jMenuConsulta.add(jMenuItemClientes);
 
         jMenuItemEquipamentos.setText("Equipamentos");
         jMenuItemEquipamentos.setName("jMenuItemEquipamentos"); // NOI18N
@@ -265,22 +262,14 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         jMenuConsulta.add(jMenuItemEquipamentos);
 
-        jMenuCAluguel.setText("Aluguel");
-        jMenuCAluguel.setName("jMenuCAluguel"); // NOI18N
-
-        jMenuItemAbertos.setText("Aluguel Aberto");
-        jMenuItemAbertos.setName("jMenuItemAbertos"); // NOI18N
-        jMenuCAluguel.add(jMenuItemAbertos);
-
-        jMenuItemRealizados.setText("Aluguel Realizado");
-        jMenuItemRealizados.setName("jMenuItemRealizados"); // NOI18N
-        jMenuCAluguel.add(jMenuItemRealizados);
-
-        jMenuItemAviso.setText("Aviso de Vencimento");
-        jMenuItemAviso.setName("jMenuItemAviso"); // NOI18N
-        jMenuCAluguel.add(jMenuItemAviso);
-
-        jMenuConsulta.add(jMenuCAluguel);
+        JMenuItemAlugueis.setText("Aluguéis");
+        JMenuItemAlugueis.setName("JMenuItemAlugueis"); // NOI18N
+        JMenuItemAlugueis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemAlugueisActionPerformed(evt);
+            }
+        });
+        jMenuConsulta.add(JMenuItemAlugueis);
 
         jMenuBar1.add(jMenuConsulta);
 
@@ -350,9 +339,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         if (decisao == JOptionPane.YES_OPTION) this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
-    private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
+    private void jMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClientesActionPerformed
         new FormBuscarCliente().setVisible(true);
-    }//GEN-LAST:event_jMenuItemClienteActionPerformed
+    }//GEN-LAST:event_jMenuItemClientesActionPerformed
 
     private void jMenuItemNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNovoActionPerformed
         new FormAluguel().setVisible(true);
@@ -361,6 +350,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void btAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAluguelActionPerformed
         new FormAluguel().setVisible(true);
     }//GEN-LAST:event_btAluguelActionPerformed
+
+    private void JMenuItemAlugueisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAlugueisActionPerformed
+        new FormBuscarAluguel().setVisible(true);
+    }//GEN-LAST:event_JMenuItemAlugueisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,6 +393,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMenuCadastro;
     private javax.swing.JMenuItem JMenuItemAjuda;
+    private javax.swing.JMenuItem JMenuItemAlugueis;
     private javax.swing.JMenuItem JMenuItemCliente;
     private javax.swing.JMenuItem JMenuItemSair;
     private javax.swing.JMenuItem JMenuItemSobre;
@@ -412,17 +406,13 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenuAluguel;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuCAluguel;
     private javax.swing.JMenu jMenuConsulta;
-    private javax.swing.JMenuItem jMenuItemAbertos;
-    private javax.swing.JMenuItem jMenuItemAviso;
-    private javax.swing.JMenuItem jMenuItemCliente;
+    private javax.swing.JMenuItem jMenuItemClientes;
     private javax.swing.JMenuItem jMenuItemEfetuar;
     private javax.swing.JMenuItem jMenuItemEmitir;
     private javax.swing.JMenuItem jMenuItemEquipamento;
     private javax.swing.JMenuItem jMenuItemEquipamentos;
     private javax.swing.JMenuItem jMenuItemNovo;
-    private javax.swing.JMenuItem jMenuItemRealizados;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelCentro;
     private javax.swing.JPanel jPanelNorte;

@@ -370,6 +370,8 @@ public class FormAluguel extends javax.swing.JFrame {
                         al.removerEquipamento(cod);
                         modelo.removeRow(i);
                         i--;
+                        al.total(tfDias.getText());
+                        tfTotal.setText(Double.toString(al.getValorTotal()));
                     }
                 }
             }else{

@@ -82,13 +82,13 @@
             <Property name="name" type="java.lang.String" value="jMenuConsulta" noResource="true"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCliente">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemClientes">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cliente"/>
-                <Property name="name" type="java.lang.String" value="jMenuItemCliente" noResource="true"/>
+                <Property name="text" type="java.lang.String" value="Clientes"/>
+                <Property name="name" type="java.lang.String" value="jMenuItemClientes" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemClienteActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemClientesActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEquipamentos">
@@ -100,32 +100,15 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEquipamentosActionPerformed"/>
               </Events>
             </MenuItem>
-            <Menu class="javax.swing.JMenu" name="jMenuCAluguel">
+            <MenuItem class="javax.swing.JMenuItem" name="JMenuItemAlugueis">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Aluguel"/>
-                <Property name="name" type="java.lang.String" value="jMenuCAluguel" noResource="true"/>
+                <Property name="text" type="java.lang.String" value="Alugu&#xe9;is"/>
+                <Property name="name" type="java.lang.String" value="JMenuItemAlugueis" noResource="true"/>
               </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAbertos">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Aluguel Aberto"/>
-                    <Property name="name" type="java.lang.String" value="jMenuItemAbertos" noResource="true"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItemRealizados">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Aluguel Realizado"/>
-                    <Property name="name" type="java.lang.String" value="jMenuItemRealizados" noResource="true"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAviso">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Aviso de Vencimento"/>
-                    <Property name="name" type="java.lang.String" value="jMenuItemAviso" noResource="true"/>
-                  </Properties>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JMenuItemAlugueisActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="JMenuSuporte">
