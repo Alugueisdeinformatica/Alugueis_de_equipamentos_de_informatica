@@ -7,6 +7,7 @@ package form;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Aluguel;
@@ -39,10 +40,13 @@ public class FormAluguel extends javax.swing.JFrame {
         return al;
     }
     
+    DefaultTableModel modelo  = null;
+    
     public int cont = 0;
     
     public FormAluguel() {
         initComponents();
+        modelo = (DefaultTableModel) tbInfo.getModel();
     }
 
     /**
@@ -288,16 +292,15 @@ public class FormAluguel extends javax.swing.JFrame {
             btInserirCliente.setEnabled(false);
         }
         if(al != null){
-            DefaultTableModel modelo = (DefaultTableModel) tbInfo.getModel();
             for(int i = 0; i < al.todosEquipamentos().size(); i++){
-                modelo.addRow(new Object[]{al.todosEquipamentos().get(i).getCodEquipamento(), al.todosEquipamentos().get(i).getCategoria(), al.todosEquipamentos().get(i).getModelo(), 
-                al.todosEquipamentos().get(i).getMarca(), al.todosEquipamentos().get(i).getValorDiaria(), false});
+                inserirTabela(al.todosEquipamentos(), i);
                 btRemover.setEnabled(true);
             }
         }
     }//GEN-LAST:event_formWindowOpened
 
     private void btInserirEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirEquipamentoActionPerformed
+        FormAluguel.setAluguel(al);
         new FormSelecionarEquipamentos().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btInserirEquipamentoActionPerformed
@@ -337,11 +340,7 @@ public class FormAluguel extends javax.swing.JFrame {
         btInserirEquipamento.setEnabled(true);
         tfDias.setEnabled(true);
         tbInfo.setEnabled(true);
-        DefaultTableModel modelo = (DefaultTableModel) tbInfo.getModel();
-        for (int i = tbInfo.getRowCount() - 1; i >= 0; --i) 
-        { 
-            modelo.removeRow(i); 
-        }
+        limparTabela();
         cli = null;
         al = null;
         FormSelecionarEquipamentos.setAluguel(null);
@@ -362,30 +361,53 @@ public class FormAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_tfDiasKeyTyped
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-        boolean selec = false;
-        if(al != null){
-            DefaultTableModel modelo = (DefaultTableModel) tbInfo.getModel();
-            for(int i = 0; i < modelo.getRowCount(); i++){
-                selec = (boolean) modelo.getValueAt(i, 5);
-                if(selec){
-                    int cod = (int) modelo.getValueAt(i, 0);
-                    al.removerEquipamento(cod);
-                    modelo.removeRow(i);
-                    i--;
+        if(al != null){            
+            if(verificaSelecionado()){
+                for(int i = 0; i < modelo.getRowCount(); i++){
+                    boolean selec = (boolean) modelo.getValueAt(i, 5);
+                    if(selec){
+                        int cod = (int) modelo.getValueAt(i, 0);
+                        al.removerEquipamento(cod);
+                        modelo.removeRow(i);
+                        i--;
+                    }
                 }
-            }
+            }else{
+                JOptionPane.showMessageDialog(null, "Selecione um equipamento para remover!", "Atenção", JOptionPane.ERROR_MESSAGE);
+            }            
             if(modelo.getRowCount() == 0){
                 btRemover.setEnabled(false);
-            }
-            if(selec == false){
-                JOptionPane.showMessageDialog(null, "Selecione um equipamento para remover!", "Atenção", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btRemoverActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void limparTabela(){
+        for(int i = tbInfo.getRowCount()-1; i >= 0; i--){
+            modelo.removeRow(i);
+        }
+    }
+    
+    private void inserirTabela(List<Equipamento> equipamentos, int i){
+        modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getCategoria(), 
+        equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(), equipamentos.get(i).getValorDiaria(),
+        false});
+    }
+    
+    private Equipamento getEquipamento(){
+        return null;
+    }
+    
+    private boolean verificaSelecionado(){
+        boolean recebe = false;
+        for(int i = 0; i < modelo.getRowCount(); i++){
+            boolean selec = (boolean) modelo.getValueAt(i, 5);
+            if(selec){
+                recebe = true;
+            }
+        }
+        return recebe;
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

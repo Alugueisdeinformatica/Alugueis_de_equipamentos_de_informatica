@@ -31,8 +31,11 @@ public class FormSelecionarEquipamentos extends javax.swing.JFrame {
         return alu;
     }
     
+    DefaultTableModel modelo  = null;
+    
     public FormSelecionarEquipamentos() {
         initComponents();
+        modelo = (DefaultTableModel) tbInserir.getModel();
     }
 
     /**
@@ -165,44 +168,37 @@ public class FormSelecionarEquipamentos extends javax.swing.JFrame {
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         List<Equipamento> equipamentos = FormPrincipal.bdEquipamento.todosEquipamentos();
         if(equipamentos.size() > 0){
-            DefaultTableModel modelo = (DefaultTableModel) tbInserir.getModel();
             for (int i = 0; i < equipamentos.size(); i++){
                 int escolhe = cbCategoria.getSelectedIndex();
                 switch(escolhe){
                     case 0:
                         if(equipamentos.get(i) instanceof Computador){
-                            modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
-                            equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), false});
+                            inserirTabela(equipamentos, i);
                         };
                         break;
                     case 1:
                         if(equipamentos.get(i) instanceof Impressora){
-                            modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
-                            equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), false});
+                            inserirTabela(equipamentos, i);
                         };
                         break;
                     case 2:
                         if(equipamentos.get(i) instanceof Monitor){
-                            modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
-                            equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), false});
+                            inserirTabela(equipamentos, i);
                         };
                         break;
                     case 3:
                         if(equipamentos.get(i) instanceof Notebook){
-                            modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
-                            equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), false});
+                            inserirTabela(equipamentos, i);
                         };
                         break;
                     case 4:
                         if(equipamentos.get(i) instanceof Projetor){
-                            modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
-                            equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), false});
+                            inserirTabela(equipamentos, i);
                         };
                         break;
                     case 5:
                         if(equipamentos.get(i) instanceof Tablet){
-                            modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(),
-                            equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), false});
+                            inserirTabela(equipamentos, i);
                         };
                         break;
                 }
@@ -212,44 +208,40 @@ public class FormSelecionarEquipamentos extends javax.swing.JFrame {
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         if(alu == null){
-           if(tbInserir.getRowCount() > 0){
             alu = new Aluguel();
-            for (int i = 0; i < tbInserir.getRowCount(); i++)
-            {
-                boolean selec = (boolean) tbInserir.getValueAt(i, 5);
-                if(selec){
-                    Object str = tbInserir.getValueAt(i, 0);
-                    Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) str);
-                    if(equipamento != null){
-                        alu.adicionaEquipamento(equipamento);
-                    }
+        }
+        for (int i = 0; i < modelo.getRowCount(); i++)
+        {
+            boolean selec = (boolean) modelo.getValueAt(i, 5);
+            if(selec){
+                Object codigo = modelo.getValueAt(i, 0);
+                Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) codigo);
+                if(equipamento != null){
+                    alu.adicionaEquipamento(equipamento);
                 }
-            }
-            FormAluguel.setAluguel(alu);
-            }
-        }else{
-            if(tbInserir.getRowCount() > 0){
-            for (int i = 0; i < tbInserir.getRowCount(); i++)
-            {
-                boolean selec = (boolean) tbInserir.getValueAt(i, 5);
-                if(selec){
-                    Object str = tbInserir.getValueAt(i, 0);
-                    Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) str);
-                    if(equipamento != null){
-                        alu.adicionaEquipamento(equipamento);
-                    }
-                }
-            }
-            FormAluguel.setAluguel(alu);
             }
         }
+        FormAluguel.setAluguel(alu);
         new FormAluguel().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btInserirActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void limparTabela(){
+        for(int i = tbInserir.getRowCount()-1; i >= 0; i--){
+            modelo.removeRow(i);
+        }
+    }
+    
+    private void inserirTabela(List<Equipamento> equipamentos, int i){
+        modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), 
+        equipamentos.get(i).getMarca(), equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), 
+        false});
+    }
+    
+    private Equipamento getEquipamento(){
+        return null;
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
