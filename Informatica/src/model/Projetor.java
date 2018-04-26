@@ -80,16 +80,18 @@ public class Projetor extends Equipamento{
     
     @Override
     public String toString(){
-        return getCategoria() + "{" +
+        return getCategoria().toUpperCase() +
+               "\n----------------------------------------" +
                "\nModelo: " + getModelo() +
                "\nMarca: " + getMarca() +
                "\nQuantidade no Estoque: " + getQuantEstoque() +
                "\nValor da Diária: " + getValorDiaria() +
+               "\n------------------------------" +
                "\nMaterial: " + material +
                "\nBrilho: " + brilho +
                "\nResolução Óptica: " + resolucaoOptica +
                "\nLâmpada: " + lampada +
                "\nLente: " + lente +
-               '}';
+               "\n****************************************************\n\n";
     }
 }

@@ -154,11 +154,9 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
         if(cboBuscarTodos.isSelected()){
             List<Equipamento> eq = FormPrincipal.bdEquipamento.todosEquipamentos();
             if(eq.size() > 0){
-                String recebe = "";
                 for(int i = 0; i < eq.size(); i++){
-                    recebe = recebe + eq.get(i).toString() + "\n\n";
+                    taConsulta.append(eq.get(i).toString());
                 }
-                taConsulta.setText(recebe);
             }else{
                 JOptionPane.showMessageDialog(null, "Não existem equipamentos cadastrados!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
             }

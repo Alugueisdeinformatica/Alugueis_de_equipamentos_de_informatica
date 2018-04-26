@@ -67,16 +67,18 @@ public class Impressora extends Equipamento{
         if(wifi){
             w = "Sim";
         }
-        return getCategoria() + "{" +
+        return getCategoria().toUpperCase() +
+               "\n----------------------------------------" +
                "\nModelo: " + getModelo() +
                "\nMarca: " + getMarca() +
                "\nQuantidade no Estoque: " + getQuantEstoque() +
                "\nValor da Diária: " + getValorDiaria() +
+               "\n----------------------------------------" +
                "\nTipo: " + tipo + 
                "\nTecnologia: " + tecnologia + 
                "\nEspecificação: " + especificacao +
                "\nWifi: " + w +
-               '}';
+               "\n****************************************************\n\n";
     }
     
     public boolean validaImpressora(){

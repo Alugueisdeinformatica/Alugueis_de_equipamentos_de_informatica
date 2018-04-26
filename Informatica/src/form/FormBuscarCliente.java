@@ -174,8 +174,8 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_cboBuscarTodosActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        clien = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
         if(clien != null){
+            clien = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
             FormAluguel.setCliente(clien);
             new FormAluguel().setVisible(true);
         }
@@ -187,11 +187,9 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         if(cboBuscarTodos.isSelected()){
             List<Cliente> cl = FormPrincipal.bdCliente.todosClientes();
             if(cl.size() > 0){
-                String recebe = "";
                 for(int i = 0; i < cl.size(); i++){
-                    recebe = recebe + cl.get(i).toString() + "\n\n";
+                    taBusca.append(cl.get(i).toString());
                 }
-                taBusca.setText(recebe);
             }else{
                 JOptionPane.showMessageDialog(null, "Não existem clientes cadastrados!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
             }

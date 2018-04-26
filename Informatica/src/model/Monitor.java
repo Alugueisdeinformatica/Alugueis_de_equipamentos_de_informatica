@@ -58,14 +58,16 @@ public class Monitor extends Equipamento{
     
     @Override
     public String toString(){
-        return getCategoria() + "{" +
+        return getCategoria().toUpperCase() +
+               "\n----------------------------------------" +
                "\nModelo: " + getModelo() +
                "\nMarca: " + getMarca() +
                "\nQuantidade no Estoque: " + getQuantEstoque() +
                "\nValor da Diária: " + getValorDiaria() +
+               "\n----------------------------------------" +
                "\nTipo: " + tipo +
                "\nTamanho da Tela: " + tamanhoTela +
                "\nResolução: " + resolucao +
-               '}';
+               "\n****************************************************\n\n";
     }
 }

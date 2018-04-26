@@ -120,12 +120,14 @@ public class Cliente {
                "\nSexo: " + sexo +
                "\nCPF: " + cpf +
                "\nEstado Civil: " + estadoCivil +
+               "\n----------------------------------------" +
                "\nCEP: " + endereco.getCep() +
                "\nCidade: " + endereco.getCidade() +
                "\nEstado: " + endereco.getEstado() +
                "\nComplemento: " + endereco.getComplemento() +
                "\nNúmero: " + Integer.toString(endereco.getNumero()) +
                "\nBairro: " + endereco.getBairro() +
-               "\nRua: " + endereco.getRua();
+               "\nRua: " + endereco.getRua() +
+               "\n****************************************************\n\n";
     }
 }
