@@ -22,7 +22,7 @@ import model.Item;
 public class FormAluguel extends javax.swing.JFrame {
 
     private static Cliente cli = null;
-    private static int codItem;
+    public static int codItem;
     
     public static void setCliente(Cliente cli){
         FormAluguel.cli = cli;
