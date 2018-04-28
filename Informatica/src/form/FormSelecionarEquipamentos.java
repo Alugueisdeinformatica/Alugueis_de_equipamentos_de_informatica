@@ -6,11 +6,12 @@
 package form;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Equipamento;
-import model.Aluguel;
 import model.Computador;
 import model.Impressora;
+import model.Item;
 import model.Monitor;
 import model.Notebook;
 import model.Projetor;
@@ -21,15 +22,15 @@ import model.Tablet;
  */
 public class FormSelecionarEquipamentos extends javax.swing.JFrame {
 
-    private static Aluguel alu = null;
+    //private static Aluguel alu = null;
     
-    public static void setAluguel(Aluguel alu){
+    /*public static void setAluguel(Aluguel alu){
         FormSelecionarEquipamentos.alu = alu;
     }
     
     public static Aluguel getAluguel(){
-        return alu;
-    }
+        return alu;*/
+    //}
     
     DefaultTableModel modelo  = null;
     
@@ -207,9 +208,9 @@ public class FormSelecionarEquipamentos extends javax.swing.JFrame {
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
-        if(alu == null){
+        /*if(alu == null){
             alu = new Aluguel();
-        }
+        }*/
         for (int i = 0; i < modelo.getRowCount(); i++)
         {
             boolean selec = (boolean) modelo.getValueAt(i, 5);
@@ -217,11 +218,17 @@ public class FormSelecionarEquipamentos extends javax.swing.JFrame {
                 Object codigo = modelo.getValueAt(i, 0);
                 Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) codigo);
                 if(equipamento != null){
-                    alu.adicionaEquipamento(equipamento);
+                    Item item = new Item();
+                    String valor = JOptionPane.showInputDialog(null, "Digite o valor");
+                    
+                    item.setQuantidade(Integer.parseInt(valor));
+                    item.setEquipamento(equipamento);
+                    FormAluguel.getAluguel().adicionaItem(item);
+                    //alu.adicionaEquipamento(equipamento);
                 }
             }
         }
-        FormAluguel.setAluguel(alu);
+        //FormAluguel.setAluguel(alu);
         new FormAluguel().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btInserirActionPerformed
