@@ -19,6 +19,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     public static EquipamentoDao bdEquipamento;
     public static ClienteDao bdCliente;
     public static AluguelDao bdAluguel;
+    public static int codAluguel;
 
     /**
      * Creates new form FormPrincipal
@@ -27,6 +28,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         bdEquipamento = new EquipamentoDao();
         bdCliente = new ClienteDao();
         bdAluguel = new AluguelDao();
+        codAluguel = 10000;
         initComponents();
     }
 
