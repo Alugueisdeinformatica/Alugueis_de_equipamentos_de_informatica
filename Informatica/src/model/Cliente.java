@@ -104,8 +104,7 @@ public class Cliente {
         return !nome.equals("") &&
                 !email.equals("") &&
                 !telefone.equals("") &&
-                endereco.validaEndereco() &&
-                !dataNascimento.equals("") &&
+                endereco.validaEndereco() &&                
                 !sexo.equals("") &&
                 !cpf.equals("") &&
                 !estadoCivil.equals("");
