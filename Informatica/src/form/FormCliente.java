@@ -549,8 +549,16 @@ public class FormCliente extends javax.swing.JFrame {
         if(cliente.validaCliente()){
             FormPrincipal.bdCliente.adicionaCliente(cliente);
             JOptionPane.showMessageDialog(null, "Cliente Cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
-            btCadastrar.setEnabled(false);
-            tfCPF.setEnabled(false);
+            
+            int opcao = JOptionPane.showConfirmDialog(null, "Deseja Alugar?", "Confirmação de Aluguel", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(opcao == 0){
+                cliente = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
+                FormAluguel.setCliente(cliente);
+                new FormAluguel().setVisible(true);
+                btSairActionPerformed(evt);
+            }else{
+                btLimparActionPerformed(evt);
+            }            
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
         }
