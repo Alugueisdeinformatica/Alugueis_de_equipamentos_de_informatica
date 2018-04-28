@@ -577,8 +577,10 @@ public class FormCliente extends javax.swing.JFrame {
         cliente = new Cliente();
         
         receberDadosCliente(cliente);
+        validarData(cliente);
         
-        if(cliente.validaCliente()){
+        String data = ftfDataNascimento.getText().replace("/", "");
+        if(cliente.validaCliente() && validarData(cliente)){
             FormPrincipal.bdCliente.adicionaCliente(cliente);
             JOptionPane.showMessageDialog(null, "Cliente Cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
             
@@ -602,18 +604,7 @@ public class FormCliente extends javax.swing.JFrame {
     private void receberDadosCliente(Cliente cliente){
         cliente.setCpf(ftfCPF.getText());
         cliente.setNome(tfNome.getText());
-        cliente.setEmail(tfEmail.getText());
-        
-        String txt = ftfDataNascimento.getText();        
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        Date data = null;        
-        try {       
-            data = df.parse(txt);
-        } catch (ParseException ex) {
-            Logger.getLogger(FormCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        cliente.setDataNascimento( data );
+        cliente.setEmail(tfEmail.getText());        
         cliente.setTelefone(ftfTelefone.getText());
         cliente.setSexo(cbSexo.getSelectedItem().toString());
         radioEstadoCivil(cliente);
@@ -624,6 +615,23 @@ public class FormCliente extends javax.swing.JFrame {
         cliente.getEndereco().setNumero(Integer.parseInt(tfNumero.getText()));
         cliente.getEndereco().setBairro(tfBairro.getText());
         cliente.getEndereco().setComplemento(tfComplemento.getText());
+    }
+
+    private boolean validarData(Cliente cliente1) {
+        String txt = ftfDataNascimento.getText();
+        String dataNula = ftfDataNascimento.getText().replace("/", "");
+        if (!dataNula.trim().equals("")) {
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Date data = null;
+            try {
+                data = df.parse(txt);
+                cliente1.setDataNascimento(data);
+                return true;
+            }catch (ParseException ex) {
+                Logger.getLogger(FormCliente.class.getName()).log(Level.SEVERE, null, ex);                
+            }
+        }
+        return false;
     }
 
     private void radioEstadoCivil(Cliente cliente) {
