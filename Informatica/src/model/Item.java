@@ -16,7 +16,7 @@ public class Item {
     private int quantidade;
 
     public Item() {
-        
+        equipamento = new Equipamento();
     }
 
     public int getCodItem() {
