@@ -479,6 +479,11 @@ public class FormCliente extends javax.swing.JFrame {
         btAtualizar.setEnabled(false);
         btAtualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btAtualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAtualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -712,6 +717,12 @@ public class FormCliente extends javax.swing.JFrame {
             ftfCPF.setEnabled(true);        
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
+        receberDadosCliente(cliente);
+        
+        FormPrincipal.bdCliente.atualizarCliente(cliente);
+    }//GEN-LAST:event_btAtualizarActionPerformed
 
     /**
      * @param args the command line arguments
