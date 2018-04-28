@@ -17,13 +17,13 @@ import java.util.List;
 public class Aluguel {
     private String idAluguel;
     private Cliente cliente;
-    private List<Equipamento> equipamento = null;
+    private List<Item> item = null;
     private Date dataAtual;
     private double valorTotal;
     private String dias;
 
     public Aluguel() {
-        equipamento = new ArrayList<Equipamento>();
+        item = new ArrayList<Item>();
     }
 
     public Aluguel(String idAluguel, Cliente cliente, Date dataAtual) {
@@ -68,11 +68,11 @@ public class Aluguel {
         this.dias = dias;
     }
     
-    public void adicionaEquipamento(Equipamento equipamento){
-        this.equipamento.add(equipamento);
+    public void adicionaItem(Item item){
+        this.item.add(item);
     }
     
-    public Equipamento buscaEquipamento(int codEquipamento){
+    /*public Equipamento buscaEquipamento(int codEquipamento){
         Equipamento eq = null;
         for(int i = 0; i < this.equipamento.size(); i++){
             if(codEquipamento == this.equipamento.get(i).getCodEquipamento()){
@@ -89,17 +89,17 @@ public class Aluguel {
         }
     }
     
-    public void atualizarEquipamento(Equipamento equipamento){
+    /*public void atualizarEquipamento(Equipamento equipamento){
         int codigo = equipamento.getCodEquipamento();
         Equipamento eq = buscaEquipamento( codigo );
         if(eq != null){
             int idx = this.equipamento.indexOf(eq);
             this.equipamento.set(idx, eq);
         }
-    }
+    }*/
     
-    public List<Equipamento> todosEquipamentos(){
-        return this.equipamento;
+    public List<Item> todosEquipamentos(){
+        return this.item;
     }
     
     public Date dataDevolucao() {
@@ -111,8 +111,8 @@ public class Aluguel {
     
     public void total(String dias){
         double val = 0;
-        for(int i = 0; i < equipamento.size(); i++){
-            val = val + equipamento.get(i).getValorDiaria();
+        for(int i = 0; i < item.size(); i++){
+            val = val + item.get(i).subValor();
         }
         valorTotal = val * Double.parseDouble(dias);
     }
