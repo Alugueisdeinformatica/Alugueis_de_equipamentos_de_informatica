@@ -11,12 +11,21 @@ package model;
  */
 public class Item {
     
+    private int codItem;
     private Equipamento equipamento;
     private int quantidade;
 
     public Item() {
         
     }
+
+    public int getCodItem() {
+        return codItem;
+    }
+
+    public void setCodItem(int codItem) {
+        this.codItem = codItem;
+    }    
 
     public Equipamento getEquipamento() {
         return equipamento;
