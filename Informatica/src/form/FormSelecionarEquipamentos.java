@@ -219,11 +219,13 @@ public class FormSelecionarEquipamentos extends javax.swing.JFrame {
                 Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) codigo);
                 if(equipamento != null){
                     Item item = new Item();
+                    item.setCodItem(FormAluguel.codItem);
                     String valor = JOptionPane.showInputDialog(null, "Digite o valor");
                     
                     item.setQuantidade(Integer.parseInt(valor));
                     item.setEquipamento(equipamento);
                     FormAluguel.getAluguel().adicionaItem(item);
+                    FormAluguel.codItem++;
                     //alu.adicionaEquipamento(equipamento);
                 }
             }
