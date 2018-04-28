@@ -45,6 +45,7 @@ public class FormAluguel extends javax.swing.JFrame {
     DefaultTableModel modelo  = null;    
     
     public FormAluguel() {
+        al = new Aluguel();
         initComponents();
         modelo = (DefaultTableModel) tbInfo.getModel();
         codItem = 1;
