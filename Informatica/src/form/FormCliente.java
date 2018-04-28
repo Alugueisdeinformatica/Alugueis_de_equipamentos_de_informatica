@@ -617,7 +617,7 @@ public class FormCliente extends javax.swing.JFrame {
         cliente.getEndereco().setComplemento(tfComplemento.getText());
     }
 
-    private boolean validarData(Cliente cliente1) {
+    private boolean validarData(Cliente cliente) {
         String txt = ftfDataNascimento.getText();
         String dataNula = ftfDataNascimento.getText().replace("/", "");
         if (!dataNula.trim().equals("")) {
@@ -625,7 +625,7 @@ public class FormCliente extends javax.swing.JFrame {
             Date data = null;
             try {
                 data = df.parse(txt);
-                cliente1.setDataNascimento(data);
+                cliente.setDataNascimento(data);
                 return true;
             }catch (ParseException ex) {
                 Logger.getLogger(FormCliente.class.getName()).log(Level.SEVERE, null, ex);                
@@ -738,7 +738,8 @@ public class FormCliente extends javax.swing.JFrame {
 
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
         receberDadosCliente(cliente);
-        if(cliente.validaCliente()){
+        validarData(cliente);
+        if(cliente.validaCliente() && validarData(cliente)){
             FormPrincipal.bdCliente.atualizarCliente(cliente);
             JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso!", "Atualização de Cliente", JOptionPane.INFORMATION_MESSAGE);
             alterarParaFormAluguel(evt);
