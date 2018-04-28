@@ -239,6 +239,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         new FormCliente().setVisible(true);
         FormCliente.setCliente(getCliente());
+        this.dispose();
     }//GEN-LAST:event_btEditarActionPerformed
 
     /**
