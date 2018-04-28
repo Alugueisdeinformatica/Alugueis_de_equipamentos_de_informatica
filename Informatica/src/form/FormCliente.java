@@ -21,11 +21,22 @@ import model.Cliente;
  * @author Luís Gustavo
  */
 public class FormCliente extends javax.swing.JFrame {
+    
+    public static Cliente cliente;
 
+    public static Cliente getCliente() {
+        return cliente;
+    }
+
+    public static void setCliente(Cliente cliente) {
+        FormCliente.cliente = cliente;
+    }    
+    
     /**
      * Creates new form FormCliente
      */
     public FormCliente() {
+        cliente = null;
         initComponents();
     }
 
@@ -79,11 +90,16 @@ public class FormCliente extends javax.swing.JFrame {
         btCadastrar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
-        btEditar = new javax.swing.JButton();
+        btAtualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Cliente");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
 
@@ -448,12 +464,12 @@ public class FormCliente extends javax.swing.JFrame {
             }
         });
 
-        btEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/edit-file-icon.png"))); // NOI18N
-        btEditar.setText("Editar");
-        btEditar.setEnabled(false);
-        btEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btAtualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/edit-file-icon.png"))); // NOI18N
+        btAtualizar.setText("Atualizar");
+        btAtualizar.setEnabled(false);
+        btAtualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btAtualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -463,7 +479,7 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGap(65, 65, 65)
                 .addComponent(btCadastrar)
                 .addGap(18, 18, 18)
-                .addComponent(btEditar)
+                .addComponent(btAtualizar)
                 .addGap(18, 18, 18)
                 .addComponent(btLimpar)
                 .addGap(18, 18, 18)
@@ -477,7 +493,7 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btCadastrar)
                     .addComponent(btSair)
-                    .addComponent(btEditar)
+                    .addComponent(btAtualizar)
                     .addComponent(btLimpar))
                 .addGap(35, 35, 35))
         );
@@ -542,7 +558,7 @@ public class FormCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        Cliente cliente = new Cliente();
+        cliente = new Cliente();
         
         receberDadosCliente(cliente);
         
@@ -605,8 +621,8 @@ public class FormCliente extends javax.swing.JFrame {
     }
 
     private void ftfCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ftfCPFFocusLost
-        Cliente cliente = FormPrincipal.bdCliente.buscaCliente(ftfCPF.getText());
-        if(cliente != null){
+        Cliente clienteBuscar = FormPrincipal.bdCliente.buscaCliente(ftfCPF.getText());
+        if(clienteBuscar != null){
             JOptionPane.showMessageDialog(null, "Já existe este CPF cadastrado!", "Informação de Cliente", JOptionPane.ERROR_MESSAGE);
             ftfCPF.setValue("");
             btCadastrar.setEnabled(false);
@@ -651,6 +667,12 @@ public class FormCliente extends javax.swing.JFrame {
         }      
     }//GEN-LAST:event_ftfDataNascimentoKeyReleased
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(cliente != null){
+            ftfCPF.setText(cliente.getCpf());        
+        }
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -688,8 +710,8 @@ public class FormCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgEstadoCivil;
+    private javax.swing.JButton btAtualizar;
     private javax.swing.JButton btCadastrar;
-    private javax.swing.JButton btEditar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cbEstado;
