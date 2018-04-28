@@ -56,7 +56,7 @@ public class FormCliente extends javax.swing.JFrame {
         lbEmail = new javax.swing.JLabel();
         tfEmail = new javax.swing.JTextField();
         lbTelefone = new javax.swing.JLabel();
-        tfTelefone = new javax.swing.JFormattedTextField();
+        ftfTelefone = new javax.swing.JFormattedTextField();
         lbDataNescimento = new javax.swing.JLabel();
         ftfDataNascimento = new javax.swing.JFormattedTextField();
         cbSexo = new javax.swing.JComboBox<>();
@@ -69,7 +69,7 @@ public class FormCliente extends javax.swing.JFrame {
         rbViuvo = new javax.swing.JRadioButton();
         jpEnderecoCompleto = new javax.swing.JPanel();
         lbCEP = new javax.swing.JLabel();
-        tfCEP = new javax.swing.JFormattedTextField();
+        ftfCEP = new javax.swing.JFormattedTextField();
         lbCidade = new javax.swing.JLabel();
         tfCidade = new javax.swing.JTextField();
         lbEstado = new javax.swing.JLabel();
@@ -81,7 +81,7 @@ public class FormCliente extends javax.swing.JFrame {
         lbBairro = new javax.swing.JLabel();
         tfBairro = new javax.swing.JTextField();
         lbRua = new javax.swing.JLabel();
-        tfRua = new javax.swing.JTextField();
+        tfEndereco = new javax.swing.JTextField();
         lbCPF = new javax.swing.JLabel();
         ftfCPF = new javax.swing.JFormattedTextField();
         lbNome = new javax.swing.JLabel();
@@ -120,11 +120,11 @@ public class FormCliente extends javax.swing.JFrame {
         lbTelefone.setName("lbTelefone"); // NOI18N
 
         try {
-            tfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            ftfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        tfTelefone.setName("tfTelefone"); // NOI18N
+        ftfTelefone.setName("ftfTelefone"); // NOI18N
 
         lbDataNescimento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbDataNescimento.setText("Data de Nascimento:");
@@ -152,23 +152,28 @@ public class FormCliente extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(250, 250, 250));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Estado Civil:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
+        rbSolteiro.setBackground(new java.awt.Color(250, 250, 250));
         bgEstadoCivil.add(rbSolteiro);
         rbSolteiro.setSelected(true);
         rbSolteiro.setText("Solteiro");
         rbSolteiro.setName("rbSolteiro"); // NOI18N
 
+        rbCasado.setBackground(new java.awt.Color(250, 250, 250));
         bgEstadoCivil.add(rbCasado);
         rbCasado.setText("Casado");
         rbCasado.setName("rbCasado"); // NOI18N
 
+        rbDivorciado.setBackground(new java.awt.Color(250, 250, 250));
         bgEstadoCivil.add(rbDivorciado);
         rbDivorciado.setText("Divorciado");
         rbDivorciado.setName("rbDivorciado"); // NOI18N
 
+        rbUniaoEstavel.setBackground(new java.awt.Color(250, 250, 250));
         bgEstadoCivil.add(rbUniaoEstavel);
         rbUniaoEstavel.setText("União Estável");
         rbUniaoEstavel.setName("rbUniaoEstavel"); // NOI18N
 
+        rbViuvo.setBackground(new java.awt.Color(250, 250, 250));
         bgEstadoCivil.add(rbViuvo);
         rbViuvo.setText("Viúvo");
         rbViuvo.setName("rbViuvo"); // NOI18N
@@ -216,7 +221,7 @@ public class FormCliente extends javax.swing.JFrame {
                             .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbEmail)
                             .addComponent(lbTelefone)
-                            .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ftfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(37, 37, 37)
                         .addGroup(jpDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbSexo)
@@ -243,7 +248,7 @@ public class FormCliente extends javax.swing.JFrame {
                     .addGroup(jpDadosPessoaisLayout.createSequentialGroup()
                         .addComponent(lbTelefone)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ftfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpDadosPessoaisLayout.createSequentialGroup()
                         .addComponent(lbSexo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -263,11 +268,11 @@ public class FormCliente extends javax.swing.JFrame {
         lbCEP.setName("lbCEP"); // NOI18N
 
         try {
-            tfCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            ftfCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        tfCEP.setName("tfCEP"); // NOI18N
+        ftfCEP.setName("ftfCEP"); // NOI18N
 
         lbCidade.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbCidade.setText("Cidade:");
@@ -310,7 +315,7 @@ public class FormCliente extends javax.swing.JFrame {
         lbRua.setText("Endereço:");
         lbRua.setName("lbRua"); // NOI18N
 
-        tfRua.setName("tfRua"); // NOI18N
+        tfEndereco.setName("tfEndereco"); // NOI18N
 
         javax.swing.GroupLayout jpEnderecoCompletoLayout = new javax.swing.GroupLayout(jpEnderecoCompleto);
         jpEnderecoCompleto.setLayout(jpEnderecoCompletoLayout);
@@ -325,7 +330,7 @@ public class FormCliente extends javax.swing.JFrame {
                 .addComponent(lbComplemento))
             .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(tfRua, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(tfNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
@@ -339,7 +344,7 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(tfBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addComponent(tfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ftfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(lbCidade)
@@ -363,7 +368,7 @@ public class FormCliente extends javax.swing.JFrame {
                     .addComponent(lbComplemento))
                 .addGap(11, 11, 11)
                 .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,7 +385,7 @@ public class FormCliente extends javax.swing.JFrame {
                     .addComponent(tfBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpEnderecoCompletoLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(tfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ftfCEP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(9, 9, 9)
                 .addGroup(jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbCidade)
@@ -426,6 +431,7 @@ public class FormCliente extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(250, 250, 250));
 
+        btCadastrar.setBackground(new java.awt.Color(250, 250, 250));
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/user-add-icon.png"))); // NOI18N
         btCadastrar.setText("Cadastrar");
@@ -439,6 +445,7 @@ public class FormCliente extends javax.swing.JFrame {
             }
         });
 
+        btLimpar.setBackground(new java.awt.Color(250, 250, 250));
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Magic-eraser-tool-icon.png"))); // NOI18N
         btLimpar.setText("Limpar");
@@ -452,6 +459,7 @@ public class FormCliente extends javax.swing.JFrame {
             }
         });
 
+        btSair.setBackground(new java.awt.Color(250, 250, 250));
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
         btSair.setText("Sair");
@@ -464,6 +472,7 @@ public class FormCliente extends javax.swing.JFrame {
             }
         });
 
+        btAtualizar.setBackground(new java.awt.Color(250, 250, 250));
         btAtualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/edit-file-icon.png"))); // NOI18N
         btAtualizar.setText("Atualizar");
@@ -595,13 +604,13 @@ public class FormCliente extends javax.swing.JFrame {
         }
         
         cliente.setDataNascimento( data );
-        cliente.setTelefone(tfTelefone.getText());
+        cliente.setTelefone(ftfTelefone.getText());
         cliente.setSexo(cbSexo.getSelectedItem().toString());
         radioEstadoCivil(cliente);
-        cliente.getEndereco().setCep(tfCEP.getText());
+        cliente.getEndereco().setCep(ftfCEP.getText());
         cliente.getEndereco().setCidade(tfCidade.getText());
         cliente.getEndereco().setEstado(cbEstado.getSelectedItem().toString());
-        cliente.getEndereco().setRua(tfRua.getText());
+        cliente.getEndereco().setRua(tfEndereco.getText());
         cliente.getEndereco().setNumero(Integer.parseInt(tfNumero.getText()));
         cliente.getEndereco().setBairro(tfBairro.getText());
         cliente.getEndereco().setComplemento(tfComplemento.getText());
@@ -637,14 +646,14 @@ public class FormCliente extends javax.swing.JFrame {
         tfNome.setText("");
         tfEmail.setText("");
         ftfDataNascimento.setValue("");
-        tfTelefone.setValue("");
+        ftfTelefone.setValue("");
         cbSexo.setSelectedIndex(0);
         bgEstadoCivil.clearSelection();
         rbSolteiro.setSelected(true);
-        tfCEP.setValue("");
+        ftfCEP.setValue("");
         tfCidade.setText("");
         cbEstado.setSelectedIndex(0);
-        tfRua.setText("");
+        tfEndereco.setText("");
         tfNumero.setText("0");
         tfBairro.setText("");
         tfComplemento.setText("");
@@ -669,7 +678,38 @@ public class FormCliente extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(cliente != null){
-            ftfCPF.setText(cliente.getCpf());        
+            ftfCPF.setText(cliente.getCpf());
+            ftfCPF.setEditable(false);
+            ftfCPF.setEnabled(false);
+            tfNome.setText(cliente.getNome());
+            tfEmail.setText(cliente.getEmail());
+            
+            SimpleDateFormat f = new SimpleDateFormat("ddMMyyyy");
+            String data = f.format( cliente.getDataNascimento());
+            ftfDataNascimento.setText(data);
+            
+            ftfTelefone.setText(cliente.getTelefone());
+            cbSexo.setSelectedItem(cliente.getSexo());
+            
+            JRadioButton radio;
+            String status = cliente.getEstadoCivil();
+            Enumeration jr = bgEstadoCivil.getElements();
+            while( jr.hasMoreElements() ){
+                radio = (JRadioButton) jr.nextElement();
+                if(radio.getText().equals(status))
+                    radio.setSelected(true);
+            }
+            
+            tfEndereco.setText(cliente.getEndereco().getRua());
+            tfNumero.setText(String.valueOf(cliente.getEndereco().getNumero()));
+            tfComplemento.setText(cliente.getEndereco().getComplemento());
+            tfBairro.setText(cliente.getEndereco().getBairro());
+            ftfCEP.setText(cliente.getEndereco().getCep());
+            tfCidade.setText(cliente.getEndereco().getCidade());
+            cbEstado.setSelectedItem(cliente.getEndereco().getEstado());
+        }else{
+            ftfCPF.setEditable(true);
+            ftfCPF.setEnabled(true);        
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -716,8 +756,10 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> cbSexo;
+    private javax.swing.JFormattedTextField ftfCEP;
     private javax.swing.JFormattedTextField ftfCPF;
     private javax.swing.JFormattedTextField ftfDataNascimento;
+    private javax.swing.JFormattedTextField ftfTelefone;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -743,13 +785,11 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbUniaoEstavel;
     private javax.swing.JRadioButton rbViuvo;
     private javax.swing.JTextField tfBairro;
-    private javax.swing.JFormattedTextField tfCEP;
     private javax.swing.JTextField tfCidade;
     private javax.swing.JTextField tfComplemento;
     private javax.swing.JTextField tfEmail;
+    private javax.swing.JTextField tfEndereco;
     private javax.swing.JTextField tfNome;
     private javax.swing.JTextField tfNumero;
-    private javax.swing.JTextField tfRua;
-    private javax.swing.JFormattedTextField tfTelefone;
     // End of variables declaration//GEN-END:variables
 }

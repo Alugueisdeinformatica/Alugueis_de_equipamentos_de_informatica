@@ -129,7 +129,7 @@
                                       <Component id="tfEmail" min="-2" pref="190" max="-2" attributes="0"/>
                                       <Component id="lbEmail" min="-2" max="-2" attributes="0"/>
                                       <Component id="lbTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="tfTelefone" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                      <Component id="ftfTelefone" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -165,7 +165,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lbTelefone" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tfTelefone" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ftfTelefone" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lbSexo" min="-2" max="-2" attributes="0"/>
@@ -204,12 +204,12 @@
                     <Property name="name" type="java.lang.String" value="lbTelefone" noResource="true"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JFormattedTextField" name="tfTelefone">
+                <Component class="javax.swing.JFormattedTextField" name="ftfTelefone">
                   <Properties>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                       <Format format="(##)####-####" subtype="-1" type="5"/>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="tfTelefone" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="ftfTelefone" noResource="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbDataNescimento">
@@ -309,6 +309,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JRadioButton" name="rbSolteiro">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="fa" green="fa" red="fa" type="rgb"/>
+                        </Property>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="bgEstadoCivil"/>
                         </Property>
@@ -319,6 +322,9 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="rbCasado">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="fa" green="fa" red="fa" type="rgb"/>
+                        </Property>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="bgEstadoCivil"/>
                         </Property>
@@ -328,6 +334,9 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="rbDivorciado">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="fa" green="fa" red="fa" type="rgb"/>
+                        </Property>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="bgEstadoCivil"/>
                         </Property>
@@ -337,6 +346,9 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="rbUniaoEstavel">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="fa" green="fa" red="fa" type="rgb"/>
+                        </Property>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="bgEstadoCivil"/>
                         </Property>
@@ -346,6 +358,9 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="rbViuvo">
                       <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="fa" green="fa" red="fa" type="rgb"/>
+                        </Property>
                         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                           <ComponentRef name="bgEstadoCivil"/>
                         </Property>
@@ -385,7 +400,7 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
-                          <Component id="tfRua" min="-2" pref="172" max="-2" attributes="0"/>
+                          <Component id="tfEndereco" min="-2" pref="172" max="-2" attributes="0"/>
                           <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
                           <Component id="tfNumero" min="-2" pref="41" max="-2" attributes="0"/>
                           <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
@@ -401,7 +416,7 @@
                           <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                           <Component id="tfBairro" min="-2" pref="175" max="-2" attributes="0"/>
                           <EmptySpace min="35" pref="35" max="-2" attributes="0"/>
-                          <Component id="tfCEP" min="-2" pref="78" max="-2" attributes="0"/>
+                          <Component id="ftfCEP" min="-2" pref="78" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
@@ -431,7 +446,7 @@
                           </Group>
                           <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tfRua" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfEndereco" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -453,7 +468,7 @@
                               <Component id="tfBairro" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                  <Component id="tfCEP" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ftfCEP" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
@@ -486,12 +501,12 @@
                     <Property name="name" type="java.lang.String" value="lbCEP" noResource="true"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JFormattedTextField" name="tfCEP">
+                <Component class="javax.swing.JFormattedTextField" name="ftfCEP">
                   <Properties>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                       <Format format="#####-###" subtype="-1" type="5"/>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="tfCEP" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="ftfCEP" noResource="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lbCidade">
@@ -611,9 +626,9 @@
                     <Property name="name" type="java.lang.String" value="lbRua" noResource="true"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfRua">
+                <Component class="javax.swing.JTextField" name="tfEndereco">
                   <Properties>
-                    <Property name="name" type="java.lang.String" value="tfRua" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="tfEndereco" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -698,6 +713,9 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btCadastrar">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fa" green="fa" red="fa" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
@@ -716,6 +734,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btLimpar">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fa" green="fa" red="fa" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
@@ -734,6 +755,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btSair">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fa" green="fa" red="fa" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
@@ -751,6 +775,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="btAtualizar">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fa" green="fa" red="fa" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
