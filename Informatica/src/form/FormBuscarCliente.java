@@ -123,6 +123,11 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/edit-file-icon.png"))); // NOI18N
         btEditar.setText("Editar");
         btEditar.setEnabled(false);
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -230,6 +235,11 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         FormAluguel.setCliente(getCliente());
         btSairActionPerformed(evt);
     }//GEN-LAST:event_btSelecionarActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        new FormCliente().setVisible(true);
+        FormCliente.setCliente(getCliente());
+    }//GEN-LAST:event_btEditarActionPerformed
 
     /**
      * @param args the command line arguments
