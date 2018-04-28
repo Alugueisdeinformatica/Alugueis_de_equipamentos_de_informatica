@@ -41,12 +41,13 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lbCPF = new javax.swing.JLabel();
         tfCPF = new javax.swing.JFormattedTextField();
-        lbBuscarTodos = new javax.swing.JLabel();
         cboBuscarTodos = new javax.swing.JCheckBox();
         btBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         taBusca = new javax.swing.JTextArea();
         btSair = new javax.swing.JButton();
+        btSelecionar = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar Cliente");
@@ -70,11 +71,9 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         }
         tfCPF.setName("tfCPF"); // NOI18N
 
-        lbBuscarTodos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbBuscarTodos.setText("Buscar Todos");
-        lbBuscarTodos.setName("lbBuscarTodos"); // NOI18N
-
         cboBuscarTodos.setBackground(new java.awt.Color(250, 250, 250));
+        cboBuscarTodos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cboBuscarTodos.setText("Buscar Todos");
         cboBuscarTodos.setName("cboBuscarTodos"); // NOI18N
         cboBuscarTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,29 +109,43 @@ public class FormBuscarCliente extends javax.swing.JFrame {
             }
         });
 
+        btSelecionar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/user-add-icon.png"))); // NOI18N
+        btSelecionar.setText("Selecionar");
+        btSelecionar.setEnabled(false);
+        btSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSelecionarActionPerformed(evt);
+            }
+        });
+
+        btEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/edit-file-icon.png"))); // NOI18N
+        btEditar.setText("Editar");
+        btEditar.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbCPF)
-                                    .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(63, 63, 63)
-                                .addComponent(cboBuscarTodos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbBuscarTodos)
-                                .addGap(64, 64, 64)
-                                .addComponent(btBuscar))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(btSair)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbCPF)
+                            .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(63, 63, 63)
+                        .addComponent(cboBuscarTodos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btBuscar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btEditar)
+                        .addGap(37, 37, 37)
+                        .addComponent(btSelecionar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btSair))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -149,14 +162,15 @@ public class FormBuscarCliente extends javax.swing.JFrame {
                             .addComponent(btBuscar)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbBuscarTodos)
-                            .addComponent(cboBuscarTodos))))
+                        .addComponent(cboBuscarTodos)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btSair)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(btEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btSelecionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -174,12 +188,6 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_cboBuscarTodosActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        if(clien != null){
-            clien = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
-            FormAluguel.setCliente(clien);
-            new FormAluguel().setVisible(true);
-        }
-        clien = null;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -188,7 +196,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
             List<Cliente> cl = FormPrincipal.bdCliente.todosClientes();
             if(cl.size() > 0){
                 for(int i = 0; i < cl.size(); i++){
-                    taBusca.append(cl.get(i).toString());
+                    taBusca.append(cl.get(i).toString());                    
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Não existem clientes cadastrados!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
@@ -199,6 +207,9 @@ public class FormBuscarCliente extends javax.swing.JFrame {
                 Cliente cliente = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
                 if(cliente != null){
                     taBusca.setText(cliente.toString());
+                    setCliente(cliente);
+                    btEditar.setEnabled(true);
+                    btSelecionar.setEnabled(true);
                 }else{
                     JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
                 }
@@ -213,6 +224,12 @@ public class FormBuscarCliente extends javax.swing.JFrame {
             cboBuscarTodos.setEnabled(false);
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
+        new FormAluguel().setVisible(true);
+        FormAluguel.setCliente(getCliente());
+        btSairActionPerformed(evt);
+    }//GEN-LAST:event_btSelecionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,11 +268,12 @@ public class FormBuscarCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btEditar;
     private javax.swing.JButton btSair;
+    private javax.swing.JButton btSelecionar;
     private javax.swing.JCheckBox cboBuscarTodos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbBuscarTodos;
     private javax.swing.JLabel lbCPF;
     private javax.swing.JTextArea taBusca;
     private javax.swing.JFormattedTextField tfCPF;

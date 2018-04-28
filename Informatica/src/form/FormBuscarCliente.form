@@ -46,8 +46,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="457" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lbCPF" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -55,12 +54,17 @@
                           </Group>
                           <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                           <Component id="cboBuscarTodos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="lbBuscarTodos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="btBuscar" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="btSair" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="btEditar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="btSelecionar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btSair" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jScrollPane1" alignment="0" min="-2" pref="457" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
@@ -83,17 +87,18 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lbBuscarTodos" min="-2" max="-2" attributes="0"/>
-                              <Component id="cboBuscarTodos" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="cboBuscarTodos" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="140" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btSair" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" max="-2" attributes="0">
+                      <Component id="btEditar" alignment="3" max="32767" attributes="0"/>
+                      <Component id="btSelecionar" alignment="3" max="32767" attributes="0"/>
+                      <Component id="btSair" alignment="3" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="15" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -116,20 +121,15 @@
             <Property name="name" type="java.lang.String" value="tfCPF" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbBuscarTodos">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Buscar Todos"/>
-            <Property name="name" type="java.lang.String" value="lbBuscarTodos" noResource="true"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JCheckBox" name="cboBuscarTodos">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fa" green="fa" red="fa" type="rgb"/>
             </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Buscar Todos"/>
             <Property name="name" type="java.lang.String" value="cboBuscarTodos" noResource="true"/>
           </Properties>
           <Events>
@@ -188,6 +188,33 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSairActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btSelecionar">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon/user-add-icon.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Selecionar"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSelecionarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btEditar">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/icon/edit-file-icon.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Editar"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
