@@ -80,13 +80,10 @@ public class Aluguel {
             }
         }
         return eq;
-    }
+    }*/
     
-    public void removerEquipamento(int codEquipamento){
-        Equipamento eq = buscaEquipamento(codEquipamento);
-        if(eq != null){
-            this.equipamento.remove(eq);
-        }
+    public void removerItem(int codItem){
+        item.remove(item);
     }
     
     /*public void atualizarEquipamento(Equipamento equipamento){
@@ -98,7 +95,7 @@ public class Aluguel {
         }
     }*/
     
-    public List<Item> todosEquipamentos(){
+    public List<Item> todosItens(){
         return this.item;
     }
     
