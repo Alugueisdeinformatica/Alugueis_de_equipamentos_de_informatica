@@ -72,7 +72,7 @@ public class FormCliente extends javax.swing.JFrame {
         lbRua = new javax.swing.JLabel();
         tfRua = new javax.swing.JTextField();
         lbCPF = new javax.swing.JLabel();
-        tfCPF = new javax.swing.JFormattedTextField();
+        ftfCPF = new javax.swing.JFormattedTextField();
         lbNome = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -386,14 +386,14 @@ public class FormCliente extends javax.swing.JFrame {
         lbCPF.setName("lbCPF"); // NOI18N
 
         try {
-            tfCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            ftfCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        tfCPF.setName("tfCPF"); // NOI18N
-        tfCPF.addFocusListener(new java.awt.event.FocusAdapter() {
+        ftfCPF.setName("ftfCPF"); // NOI18N
+        ftfCPF.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                tfCPFFocusLost(evt);
+                ftfCPFFocusLost(evt);
             }
         });
 
@@ -492,7 +492,7 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbCPF)
-                    .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ftfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbNome)
@@ -508,7 +508,7 @@ public class FormCliente extends javax.swing.JFrame {
                     .addComponent(lbNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -552,7 +552,7 @@ public class FormCliente extends javax.swing.JFrame {
             
             int opcao = JOptionPane.showConfirmDialog(null, "Deseja Alugar?", "Confirmação de Aluguel", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(opcao == 0){
-                cliente = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
+                cliente = FormPrincipal.bdCliente.buscaCliente(ftfCPF.getText());
                 FormAluguel.setCliente(cliente);
                 new FormAluguel().setVisible(true);
                 btSairActionPerformed(evt);
@@ -565,7 +565,7 @@ public class FormCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void receberDadosCliente(Cliente cliente){
-        cliente.setCpf(tfCPF.getText());
+        cliente.setCpf(ftfCPF.getText());
         cliente.setNome(tfNome.getText());
         cliente.setEmail(tfEmail.getText());
         
@@ -604,18 +604,20 @@ public class FormCliente extends javax.swing.JFrame {
         }
     }
 
-    private void tfCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfCPFFocusLost
-        Cliente cliente = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
+    private void ftfCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ftfCPFFocusLost
+        Cliente cliente = FormPrincipal.bdCliente.buscaCliente(ftfCPF.getText());
         if(cliente != null){
             JOptionPane.showMessageDialog(null, "Já existe este CPF cadastrado!", "Informação de Cliente", JOptionPane.ERROR_MESSAGE);
+            ftfCPF.setValue("");
             btCadastrar.setEnabled(false);
+            ftfCPF.requestFocus();
         }else{
             btCadastrar.setEnabled(true);
         }
-    }//GEN-LAST:event_tfCPFFocusLost
+    }//GEN-LAST:event_ftfCPFFocusLost
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        tfCPF.setValue("");
+        ftfCPF.setValue("");
         tfNome.setText("");
         tfEmail.setText("");
         ftfDataNascimento.setValue("");
@@ -630,8 +632,8 @@ public class FormCliente extends javax.swing.JFrame {
         tfNumero.setText("0");
         tfBairro.setText("");
         tfComplemento.setText("");
-        tfCPF.setEnabled(true);
-        tfCPF.requestFocus();
+        ftfCPF.setEnabled(true);
+        ftfCPF.requestFocus();
         btCadastrar.setEnabled(false);
     }//GEN-LAST:event_btLimparActionPerformed
 
@@ -692,6 +694,7 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> cbSexo;
+    private javax.swing.JFormattedTextField ftfCPF;
     private javax.swing.JFormattedTextField ftfDataNascimento;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -719,7 +722,6 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbViuvo;
     private javax.swing.JTextField tfBairro;
     private javax.swing.JFormattedTextField tfCEP;
-    private javax.swing.JFormattedTextField tfCPF;
     private javax.swing.JTextField tfCidade;
     private javax.swing.JTextField tfComplemento;
     private javax.swing.JTextField tfEmail;
