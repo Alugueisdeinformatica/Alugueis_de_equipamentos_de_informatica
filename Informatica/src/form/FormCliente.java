@@ -5,6 +5,8 @@
  */
 package form;
 
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -580,19 +582,22 @@ public class FormCliente extends javax.swing.JFrame {
             FormPrincipal.bdCliente.adicionaCliente(cliente);
             JOptionPane.showMessageDialog(null, "Cliente Cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
             
-            int opcao = JOptionPane.showConfirmDialog(null, "Deseja Alugar?", "Confirmação de Aluguel", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            if(opcao == 0){
-                cliente = FormPrincipal.bdCliente.buscaCliente(ftfCPF.getText());
-                FormAluguel.setCliente(cliente);
-                new FormAluguel().setVisible(true);
-                btSairActionPerformed(evt);
-            }else{
-                btLimparActionPerformed(evt);
-            }            
+            alterarParaFormAluguel(evt);            
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void alterarParaFormAluguel(ActionEvent evt) throws HeadlessException {
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja Alugar?", "Confirmação de Aluguel", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if(opcao == 0){
+            FormAluguel.setCliente(cliente);
+            new FormAluguel().setVisible(true);
+            btSairActionPerformed(evt);
+        }else{
+            btLimparActionPerformed(evt);
+        }
+    }
 
     private void receberDadosCliente(Cliente cliente){
         cliente.setCpf(ftfCPF.getText());
@@ -665,6 +670,7 @@ public class FormCliente extends javax.swing.JFrame {
         ftfCPF.setEnabled(true);
         ftfCPF.requestFocus();
         btCadastrar.setEnabled(false);
+        btAtualizar.setEnabled(false);
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void ftfDataNascimentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftfDataNascimentoKeyReleased
@@ -683,6 +689,8 @@ public class FormCliente extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(cliente != null){
+            btAtualizar.setEnabled(true);
+            btLimpar.setEnabled(false);
             ftfCPF.setText(cliente.getCpf());
             ftfCPF.setEditable(false);
             ftfCPF.setEnabled(false);
@@ -714,14 +722,21 @@ public class FormCliente extends javax.swing.JFrame {
             cbEstado.setSelectedItem(cliente.getEndereco().getEstado());
         }else{
             ftfCPF.setEditable(true);
-            ftfCPF.setEnabled(true);        
+            ftfCPF.setEnabled(true);
+            btAtualizar.setEnabled(false);
+            btLimpar.setEnabled(true);            
         }
     }//GEN-LAST:event_formWindowOpened
 
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
         receberDadosCliente(cliente);
-        
-        FormPrincipal.bdCliente.atualizarCliente(cliente);
+        if(cliente.validaCliente()){
+            FormPrincipal.bdCliente.atualizarCliente(cliente);
+            JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso!", "Atualização de Cliente", JOptionPane.INFORMATION_MESSAGE);
+            alterarParaFormAluguel(evt);
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);            
+        }      
     }//GEN-LAST:event_btAtualizarActionPerformed
 
     /**
