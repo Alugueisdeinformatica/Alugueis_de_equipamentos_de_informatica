@@ -22,6 +22,7 @@ import model.Item;
 public class FormAluguel extends javax.swing.JFrame {
 
     private static Cliente cli = null;
+    private static int codItem;
     
     public static void setCliente(Cliente cli){
         FormAluguel.cli = cli;
@@ -46,6 +47,7 @@ public class FormAluguel extends javax.swing.JFrame {
     public FormAluguel() {
         initComponents();
         modelo = (DefaultTableModel) tbInfo.getModel();
+        codItem = 1;
     }
 
     /**
@@ -140,14 +142,14 @@ public class FormAluguel extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Categoria", "Modelo", "Marca", "Valor", "Selecionar"
+                "Código", "Categoria", "Modelo", "Marca", "Valor", "Quant", "Selecionar"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Boolean.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -167,6 +169,7 @@ public class FormAluguel extends javax.swing.JFrame {
             tbInfo.getColumnModel().getColumn(3).setResizable(false);
             tbInfo.getColumnModel().getColumn(4).setResizable(false);
             tbInfo.getColumnModel().getColumn(5).setResizable(false);
+            tbInfo.getColumnModel().getColumn(6).setResizable(false);
         }
 
         btRemover.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -291,8 +294,8 @@ public class FormAluguel extends javax.swing.JFrame {
             btInserirCliente.setEnabled(false);
         }
         if(al != null){
-            for(int i = 0; i < al.todosEquipamentos().size(); i++){
-                inserirTabela(al.todosEquipamentos(), i);
+            for(int i = 0; i < al.todosItens().size(); i++){
+                inserirTabela(al.todosItens(), i);
                 btRemover.setEnabled(true);
             }
         }
@@ -391,9 +394,14 @@ public class FormAluguel extends javax.swing.JFrame {
     }
     
     private void inserirTabela(List<Item> item, int i){
-        modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getCategoria(), 
-        equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(), equipamentos.get(i).getValorDiaria(),
-        false});
+        modelo.addRow(new Object[]{
+            item.get(i).getEquipamento().getCodEquipamento(),
+            item.get(i).getEquipamento().getCategoria(),
+            item.get(i).getEquipamento().getModelo(),
+            item.get(i).getEquipamento().getMarca(),
+            item.get(i).getEquipamento().getValorDiaria(),
+            item.get(i).getQuantidade(),
+            false});
     }
     
     private Equipamento getEquipamento(){
