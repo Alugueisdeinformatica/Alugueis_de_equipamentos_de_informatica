@@ -52,11 +52,6 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Buscar Cliente");
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
 
@@ -223,12 +218,6 @@ public class FormBuscarCliente extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btBuscarActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(clien != null){
-            cboBuscarTodos.setEnabled(false);
-        }
-    }//GEN-LAST:event_formWindowOpened
 
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
         new FormAluguel().setVisible(true);
