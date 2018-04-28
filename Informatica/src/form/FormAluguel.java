@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Aluguel;
 import model.Cliente;
 import model.Equipamento;
+import model.Item;
 
 /**
  *
@@ -272,7 +273,7 @@ public class FormAluguel extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         cli = null;
         al = null;
-        FormSelecionarEquipamentos.setAluguel(null);
+        //FormSelecionarEquipamentos.setAluguel(null);
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -343,7 +344,7 @@ public class FormAluguel extends javax.swing.JFrame {
         limparTabela();
         cli = null;
         al = null;
-        FormSelecionarEquipamentos.setAluguel(null);
+        //FormSelecionarEquipamentos.setAluguel(null);
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void tfDiasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDiasKeyReleased
@@ -361,7 +362,7 @@ public class FormAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_tfDiasKeyTyped
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-        if(al != null){            
+        /*if(al != null){            
             if(verificaSelecionado()){
                 for(int i = 0; i < modelo.getRowCount(); i++){
                     boolean selec = (boolean) modelo.getValueAt(i, 5);
@@ -380,7 +381,7 @@ public class FormAluguel extends javax.swing.JFrame {
             if(modelo.getRowCount() == 0){
                 btRemover.setEnabled(false);
             }
-        }
+        }*/
     }//GEN-LAST:event_btRemoverActionPerformed
 
     private void limparTabela(){
@@ -389,7 +390,7 @@ public class FormAluguel extends javax.swing.JFrame {
         }
     }
     
-    private void inserirTabela(List<Equipamento> equipamentos, int i){
+    private void inserirTabela(List<Item> item, int i){
         modelo.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getCategoria(), 
         equipamentos.get(i).getModelo(), equipamentos.get(i).getMarca(), equipamentos.get(i).getValorDiaria(),
         false});
