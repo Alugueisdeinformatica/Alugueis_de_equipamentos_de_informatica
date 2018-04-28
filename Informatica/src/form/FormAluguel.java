@@ -40,9 +40,7 @@ public class FormAluguel extends javax.swing.JFrame {
         return al;
     }
     
-    DefaultTableModel modelo  = null;
-    
-    public int cont = 0;
+    DefaultTableModel modelo  = null;    
     
     public FormAluguel() {
         initComponents();
@@ -311,7 +309,7 @@ public class FormAluguel extends javax.swing.JFrame {
                 int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar o aluguel?", "", JOptionPane.YES_NO_OPTION);
                 if(opcao == 0){
                     al.setCliente(cli);
-                    al.setIdAluguel(Integer.toString(cont));
+                    al.setIdAluguel(Integer.toString(FormPrincipal.codAluguel));
                     Calendar c = Calendar.getInstance();
                     Date data = c.getTime();
                     al.setDataAtual(data);
@@ -322,6 +320,7 @@ public class FormAluguel extends javax.swing.JFrame {
                     btAdicionar.setEnabled(false);
                     btInserirEquipamento.setEnabled(false);
                     tbInfo.setEnabled(false);
+                    FormPrincipal.codAluguel++;
                 }   
             }else{
                 JOptionPane.showMessageDialog(null, "Preencha a quantidade de dias!", "Atenção", JOptionPane.WARNING_MESSAGE);
@@ -400,15 +399,14 @@ public class FormAluguel extends javax.swing.JFrame {
         return null;
     }
     
-    private boolean verificaSelecionado(){
-        boolean recebe = false;
+    private boolean verificaSelecionado(){        
         for(int i = 0; i < modelo.getRowCount(); i++){
             boolean selec = (boolean) modelo.getValueAt(i, 5);
             if(selec){
-                recebe = true;
+                return true;
             }
         }
-        return recebe;
+        return false;
     }
     
     public static void main(String args[]) {
