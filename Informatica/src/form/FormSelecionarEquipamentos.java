@@ -22,7 +22,7 @@ import model.Tablet;
  */
 public class FormSelecionarEquipamentos extends javax.swing.JFrame {
 
-    //private static Aluguel alu = null;
+    public static Item item = null;
     
     /*public static void setAluguel(Aluguel alu){
         FormSelecionarEquipamentos.alu = alu;
@@ -211,26 +211,26 @@ public class FormSelecionarEquipamentos extends javax.swing.JFrame {
         /*if(alu == null){
             alu = new Aluguel();
         }*/
-        for (int i = 0; i < modelo.getRowCount(); i++)
-        {
+        //Item item = null;
+        for (int i = 0; i < modelo.getRowCount(); i++) {
             boolean selec = (boolean) modelo.getValueAt(i, 5);
             if(selec){
                 Object codigo = modelo.getValueAt(i, 0);
                 Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) codigo);
                 if(equipamento != null){
-                    Item item = new Item();
+                    item = new Item();
                     item.setCodItem(FormAluguel.codItem);
-                    String valor = JOptionPane.showInputDialog(null, "Digite o valor");
-                    
+                    String valor = JOptionPane.showInputDialog(null, 
+                            "Informe a quantidade que Deseja alugar\nDisponivel: " + equipamento.getQuantEstoque(),
+                            "Informe o Valor",
+                            JOptionPane.INFORMATION_MESSAGE);                    
                     item.setQuantidade(Integer.parseInt(valor));
                     item.setEquipamento(equipamento);
-                    FormAluguel.getAluguel().adicionaItem(item);
+                    FormAluguel.aluguel.adicionaItem(item);
                     FormAluguel.codItem++;
-                    //alu.adicionaEquipamento(equipamento);
                 }
             }
-        }
-        //FormAluguel.setAluguel(alu);
+        }               
         new FormAluguel().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btInserirActionPerformed
@@ -247,9 +247,9 @@ public class FormSelecionarEquipamentos extends javax.swing.JFrame {
         false});
     }
     
-    private Equipamento getEquipamento(){
+    /*private Equipamento getEquipamento(){
         return null;
-    }
+    }*/
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
