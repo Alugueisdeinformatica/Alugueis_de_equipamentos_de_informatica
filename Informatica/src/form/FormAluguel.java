@@ -12,8 +12,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Aluguel;
 import model.Cliente;
-import model.Equipamento;
-import model.Item;
 
 /**
  *
@@ -32,23 +30,19 @@ public class FormAluguel extends javax.swing.JFrame {
         return cli;
     }
     
-    private static Aluguel al = null;
-    
-    public static void setAluguel(Aluguel al){
-        FormAluguel.al = al;
-    }
-    
+    public static Aluguel aluguel;
+        
     public static Aluguel getAluguel(){
-        return al;
+        return aluguel;
     }
     
     DefaultTableModel modelo  = null;    
     
     public FormAluguel() {
-        al = new Aluguel();
+        aluguel = new Aluguel();
         initComponents();
         modelo = (DefaultTableModel) tbInfo.getModel();
-        codItem = 1;
+        codItem = 1;        
     }
 
     /**
@@ -276,7 +270,7 @@ public class FormAluguel extends javax.swing.JFrame {
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         cli = null;
-        al = null;
+        aluguel = null;
         //FormSelecionarEquipamentos.setAluguel(null);
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
@@ -293,39 +287,50 @@ public class FormAluguel extends javax.swing.JFrame {
         if(cli != null){
             tfAdicionarCliente.setText(cli.getNome());
             btInserirCliente.setEnabled(false);
-        }
-        if(al != null){
-            for(int i = 0; i < al.todosItens().size(); i++){
-                inserirTabela(al.todosItens(), i);
+        }        
+        //if(aluguel != null){
+            for(int i = 0; i < aluguel.todosItens().size(); i++){
+                inserirTabela(i);                
                 btRemover.setEnabled(true);
-            }
+            //}
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void inserirTabela(int i) {
+        modelo.addRow(new Object[]{
+            aluguel.todosItens().get(i).getEquipamento().getCodEquipamento(),
+            aluguel.todosItens().get(i).getEquipamento().getCategoria(),
+            aluguel.todosItens().get(i).getEquipamento().getModelo(),
+            aluguel.todosItens().get(i).getEquipamento().getMarca(),
+            aluguel.todosItens().get(i).getEquipamento().getValorDiaria(),
+            aluguel.todosItens().get(i).getQuantidade(),
+            false});
+    }
+
     private void btInserirEquipamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirEquipamentoActionPerformed
-        FormAluguel.setAluguel(al);
+        //FormAluguel.setAluguel(al);
         new FormSelecionarEquipamentos().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btInserirEquipamentoActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
-        if((cli != null) && (al != null)){
+        if((cli != null) && (aluguel != null)){
             if(Integer.parseInt(tfDias.getText()) > 0){
                 int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar o aluguel?", "", JOptionPane.YES_NO_OPTION);
                 if(opcao == 0){
-                    al.setCliente(cli);
-                    al.setIdAluguel(Integer.toString(FormPrincipal.codAluguel));
+                    aluguel.setCliente(cli);
+                    aluguel.setIdAluguel(Integer.toString(FormPrincipal.codAluguel));
                     Calendar c = Calendar.getInstance();
                     Date data = c.getTime();
-                    al.setDataAtual(data);
-                    al.setDias(tfDias.getText());
-                    FormPrincipal.bdAluguel.adicionaAluguel(al);
+                    aluguel.setDataAtual(data);
+                    aluguel.setDias(tfDias.getText());
+                    FormPrincipal.bdAluguel.adicionaAluguel(aluguel);
                     JOptionPane.showMessageDialog(null, "Aluguel Adicionado!", "Cadastrado", JOptionPane.INFORMATION_MESSAGE);
                     tfDias.setEnabled(false);
                     btAdicionar.setEnabled(false);
                     btInserirEquipamento.setEnabled(false);
                     tbInfo.setEnabled(false);
-                    FormPrincipal.codAluguel++;
+                    FormPrincipal.codAluguel++;                    
                 }   
             }else{
                 JOptionPane.showMessageDialog(null, "Preencha a quantidade de dias!", "Atenção", JOptionPane.WARNING_MESSAGE);
@@ -347,14 +352,15 @@ public class FormAluguel extends javax.swing.JFrame {
         tbInfo.setEnabled(true);
         limparTabela();
         cli = null;
-        al = null;
+        aluguel.todosItens().isEmpty();
+        limparTabela();
         //FormSelecionarEquipamentos.setAluguel(null);
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void tfDiasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDiasKeyReleased
-        if(al != null){
-            al.total(tfDias.getText());
-            tfTotal.setText(Double.toString(al.getValorTotal()));
+        if(aluguel != null){
+            aluguel.total(tfDias.getText());
+            tfTotal.setText(Double.toString(aluguel.getValorTotal()));
         }
     }//GEN-LAST:event_tfDiasKeyReleased
 
@@ -366,17 +372,17 @@ public class FormAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_tfDiasKeyTyped
 
     private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
-        /*if(al != null){            
+        if(aluguel != null){            
             if(verificaSelecionado()){
                 for(int i = 0; i < modelo.getRowCount(); i++){
-                    boolean selec = (boolean) modelo.getValueAt(i, 5);
+                    boolean selec = (boolean) modelo.getValueAt(i, 6);
                     if(selec){
                         int cod = (int) modelo.getValueAt(i, 0);
-                        al.removerEquipamento(cod);
+                        aluguel.removerItem(cod);
                         modelo.removeRow(i);
                         i--;
-                        al.total(tfDias.getText());
-                        tfTotal.setText(Double.toString(al.getValorTotal()));
+                        aluguel.total(tfDias.getText());
+                        tfTotal.setText(Double.toString(aluguel.getValorTotal()));
                     }
                 }
             }else{
@@ -385,29 +391,18 @@ public class FormAluguel extends javax.swing.JFrame {
             if(modelo.getRowCount() == 0){
                 btRemover.setEnabled(false);
             }
-        }*/
+        }
     }//GEN-LAST:event_btRemoverActionPerformed
 
     private void limparTabela(){
         for(int i = tbInfo.getRowCount()-1; i >= 0; i--){
             modelo.removeRow(i);
         }
-    }
+    }    
     
-    private void inserirTabela(List<Item> item, int i){
-        modelo.addRow(new Object[]{
-            item.get(i).getEquipamento().getCodEquipamento(),
-            item.get(i).getEquipamento().getCategoria(),
-            item.get(i).getEquipamento().getModelo(),
-            item.get(i).getEquipamento().getMarca(),
-            item.get(i).getEquipamento().getValorDiaria(),
-            item.get(i).getQuantidade(),
-            false});
-    }
-    
-    private Equipamento getEquipamento(){
+    /*private Equipamento getEquipamento(){
         return null;
-    }
+    }*/
     
     private boolean verificaSelecionado(){        
         for(int i = 0; i < modelo.getRowCount(); i++){
