@@ -17,6 +17,7 @@ public class Equipamento {
     private int quantEstoque;
     private String categoria;
     private double valorDiaria;
+    private int quantDisponivel;
 
     public Equipamento() {
     }
@@ -78,11 +79,15 @@ public class Equipamento {
         this.valorDiaria = valorDiaria;
     }   
     
-    public int quantDisponivel(int quant) {
-        int total = getQuantEstoque();//atualizando a quantidade disponivel aumentando ou diminuindo        
-        total += quantEstoque;        
-        return total;        
+    public void setQuantDisponivel(int quant) {
+        quantDisponivel = getQuantEstoque();//atualizando a quantidade disponivel aumentando ou diminuindo        
+        quantDisponivel += quant;        
+        //return total;        
     }
+
+    public int getQuantDisponivel() {
+        return quantDisponivel;
+    }   
     
     public boolean validaEquipamento(){
         return codEquipamento > 0 &&

@@ -622,7 +622,7 @@ public class FormAluguelTeste extends javax.swing.JFrame {
                 Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) codigo);
         
         int valor = Integer.parseInt(JOptionPane.showInputDialog(null, 
-                            "Informe a quantidade que Deseja alugar\nDisponivel: " + equipamento.getQuantEstoque(),
+                            "Informe a quantidade que Deseja alugar\nDisponivel: " + equipamento.getQuantDisponivel(),
                             "Informe o Valor",
                             JOptionPane.INFORMATION_MESSAGE));        
         
@@ -686,6 +686,7 @@ public class FormAluguelTeste extends javax.swing.JFrame {
         //aluguel.total();
         
         FormPrincipal.bdAluguel.adicionaAluguel(aluguel);
+        FormPrincipal.codAluguel++;
         JOptionPane.showMessageDialog(null, "Aluguel Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btCadastrarActionPerformed
 
@@ -696,7 +697,7 @@ public class FormAluguelTeste extends javax.swing.JFrame {
             itemCod = (int) modeloPedido.getValueAt(i, 1);
             quant = (int) modeloPedido.getValueAt(i, 4);
             equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(itemCod);
-            equipamento.quantDisponivel(-quant);
+            equipamento.setQuantDisponivel(-quant);
             FormPrincipal.bdEquipamento.atualizarEquipamento(equipamento); 
             JOptionPane.showMessageDialog(null, "Pedido Fechado!", "", JOptionPane.INFORMATION_MESSAGE);
         }
