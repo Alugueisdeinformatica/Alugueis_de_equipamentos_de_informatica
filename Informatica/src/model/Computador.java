@@ -72,19 +72,12 @@ public class Computador extends Equipamento{
 
     @Override
     public String toString() {
-        return  getCategoria().toUpperCase() +
-                "\n----------------------------------------" +
-                "\nModelo: " + getModelo() +
-                "\nMarca: " + getMarca() +
-                "\nQuantidade no Estoque: " + getQuantEstoque() +
-                "\nValor da Diária: " + getValorDiaria() +
-                "\n----------------------------------------" +
-                "\nSistema Operacional: " + sistemaOperacional + 
+        return  "Sistema Operacional: " + sistemaOperacional + 
                 "\nPlaca de Vídeo: " + placaVideo + 
                 "\nCapacidade de HD: " + capacidadeHD + 
                 "\nProcessador: " + processador + 
                 "\nMemória: " + memoria + 
-                "\n****************************************************\n\n";
+                "";
     }   
     
     public boolean validaComputador(){
