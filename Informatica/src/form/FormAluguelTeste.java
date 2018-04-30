@@ -301,7 +301,7 @@ public class FormAluguelTeste extends javax.swing.JFrame {
 
         btSelecionar.setBackground(new java.awt.Color(250, 250, 250));
         btSelecionar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
+        btSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/symbol-check-icon.png"))); // NOI18N
         btSelecionar.setText("Selecionar");
         btSelecionar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btSelecionar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -322,21 +322,18 @@ public class FormAluguelTeste extends javax.swing.JFrame {
             .addGroup(PanelEstoqueLayout.createSequentialGroup()
                 .addGroup(PanelEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelEstoqueLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jScrollPane3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(btSelecionar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(PanelEstoqueLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(PanelEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelEstoqueLayout.createSequentialGroup()
-                                .addGroup(PanelEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(106, 106, 106)
-                                .addComponent(btBuscar)))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addGroup(PanelEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btBuscar)))
+                .addContainerGap())
         );
         PanelEstoqueLayout.setVerticalGroup(
             PanelEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,13 +346,13 @@ public class FormAluguelTeste extends javax.swing.JFrame {
                         .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
                     .addGroup(PanelEstoqueLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btSelecionar)))
+                        .addComponent(btSelecionar))
+                    .addComponent(jScrollPane3))
                 .addContainerGap())
         );
 
@@ -397,7 +394,7 @@ public class FormAluguelTeste extends javax.swing.JFrame {
 
         btRemoverItem.setBackground(new java.awt.Color(250, 250, 250));
         btRemoverItem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btRemoverItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
+        btRemoverItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Shopping-basket-remove-icon.png"))); // NOI18N
         btRemoverItem.setText("Remover Item");
         btRemoverItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -424,7 +421,7 @@ public class FormAluguelTeste extends javax.swing.JFrame {
         tfTotal.setEditable(false);
 
         btFecharPedido.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btFecharPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
+        btFecharPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/shopping-basket-full-icon.png"))); // NOI18N
         btFecharPedido.setText("Fechar Pedido");
         btFecharPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -579,6 +576,7 @@ public class FormAluguelTeste extends javax.swing.JFrame {
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         limparTabela();
+        taDescricao.setText("");
         List<Equipamento> equipamentos = FormPrincipal.bdEquipamento.todosEquipamentos();
         if(equipamentos.size() > 0){
             for (int i = 0; i < equipamentos.size(); i++){
