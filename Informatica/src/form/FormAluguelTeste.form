@@ -274,16 +274,34 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfNome">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfEmail">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfEndereco">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfNumero">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfBairro">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfCidade">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btInserir">
               <Properties>
@@ -321,10 +339,19 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfUf">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfTelefone">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfCpf">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -466,6 +493,7 @@
                     <StringItem index="5" value="Tablet"/>
                   </StringArray>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -483,6 +511,7 @@
                   <Image iconType="3" name="/icon/computer-search-icon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btBuscarActionPerformed"/>
@@ -500,6 +529,7 @@
                   <Image iconType="3" name="/icon/symbol-check-icon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Selecionar"/>
+                <Property name="enabled" type="boolean" value="false"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
@@ -516,6 +546,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTextArea" name="taDescricao">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
@@ -668,6 +699,7 @@
                   <Image iconType="3" name="/icon/Shopping-basket-remove-icon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Remover Item"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btRemoverItemActionPerformed"/>
@@ -684,6 +716,7 @@
             <Component class="javax.swing.JTextField" name="tfDias">
               <Properties>
                 <Property name="text" type="java.lang.String" value="0"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfDiasKeyReleased"/>
@@ -701,6 +734,7 @@
             <Component class="javax.swing.JTextField" name="tfTotal">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btFecharPedido">
@@ -712,6 +746,7 @@
                   <Image iconType="3" name="/icon/shopping-basket-full-icon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Fechar Pedido"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btFecharPedidoActionPerformed"/>
@@ -740,6 +775,7 @@
                   <Image iconType="3" name="/icon/Accept-icon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cadastrar"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCadastrarActionPerformed"/>
