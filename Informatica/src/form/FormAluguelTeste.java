@@ -33,6 +33,8 @@ public class FormAluguelTeste extends javax.swing.JFrame {
     DefaultTableModel modeloEstoque  = null;
     DefaultTableModel modeloPedido = null;
     private int codItem;
+    Equipamento equipamento;
+    int valor;
 
     public static Cliente getCliente() {
         return cliente;
@@ -619,28 +621,45 @@ public class FormAluguelTeste extends javax.swing.JFrame {
 
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
         Object codigo = modeloEstoque.getValueAt(tbInserir.getSelectedRow(), 0);
-                Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) codigo);
+                equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) codigo);   
         
-        int valor = Integer.parseInt(JOptionPane.showInputDialog(null, 
-                            "Informe a quantidade que Deseja alugar\nDisponivel: " + equipamento.getQuantDisponivel(),
-                            "Informe o Valor",
-                            JOptionPane.INFORMATION_MESSAGE));        
-        
-        modeloPedido.addRow(new Object[]{
-                codItem,
-                equipamento.getCodEquipamento(),
-                equipamento.getCategoria(),
-                equipamento.getModelo(),
-                valor,
-                valor * equipamento.getValorDiaria()
-        }); 
-        atualizaTotal();
-        codItem++;
+                if(equipamento.getQuantEstoque() <= 0){
+                    JOptionPane.showMessageDialog(null, "Não existe estoque suficiente!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    try{
+                        valor = Integer.parseInt(JOptionPane.showInputDialog(null, 
+                                    "Informe a quantidade que Deseja alugar\nDisponivel: " + equipamento.getQuantEstoque(),
+                                    "Informe o Valor",
+                                    JOptionPane.INFORMATION_MESSAGE)); 
+                        if(valor <= equipamento.getQuantEstoque()){
+                            if(valor <= 0){
+                                JOptionPane.showMessageDialog(null, "Valor Inválido!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                            }else{
+                                modeloPedido.addRow(new Object[]{
+                                codItem,
+                                equipamento.getCodEquipamento(),
+                                equipamento.getCategoria(),
+                                equipamento.getModelo(),
+                                valor,
+                                valor * equipamento.getValorDiaria()
+                                }); 
+                                atualizaTotal();
+                                codItem++;
+                                int qt = equipamento.getQuantEstoque() - valor;
+                                equipamento.setQuantEstoque(qt);
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Não existe estoque suficiente!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                        }                
+                    }catch(NumberFormatException e){
+                        JOptionPane.showMessageDialog(null, "Informe um valor!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    }
+                }                
     }//GEN-LAST:event_btSelecionarActionPerformed
 
     private void tbInserirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbInserirMousePressed
         int codigo = (int) (modeloEstoque.getValueAt(tbInserir.getSelectedRow(), 0));
-        Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(codigo);        
+        equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(codigo);        
         taDescricao.setText(equipamento.toString());
     }//GEN-LAST:event_tbInserirMousePressed
 
@@ -658,6 +677,9 @@ public class FormAluguelTeste extends javax.swing.JFrame {
     private void btRemoverItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverItemActionPerformed
         modeloPedido.removeRow(tbPedido.getSelectedRow());
         atualizaTotal();
+        int qt = equipamento.getQuantEstoque() + valor;
+        equipamento.setQuantEstoque(qt);
+        codItem = 1;
     }//GEN-LAST:event_btRemoverItemActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
@@ -674,7 +696,7 @@ public class FormAluguelTeste extends javax.swing.JFrame {
         for(int i = tbPedido.getRowCount()-1; i >= 0; i--){
             itemCod = (int) modeloPedido.getValueAt(i, 1);
             quant = (int) modeloPedido.getValueAt(i, 4);
-            Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(itemCod);            
+            equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(itemCod);            
             item = new Item();
             item.setCodItem((int) modeloPedido.getValueAt(i, 0));
             item.setEquipamento(equipamento);
@@ -686,18 +708,16 @@ public class FormAluguelTeste extends javax.swing.JFrame {
         //aluguel.total();
         
         FormPrincipal.bdAluguel.adicionaAluguel(aluguel);
-        FormPrincipal.codAluguel++;
         JOptionPane.showMessageDialog(null, "Aluguel Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void btFecharPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharPedidoActionPerformed
         int quant, itemCod;
-        Equipamento equipamento;
         for(int i = tbPedido.getRowCount()-1; i >= 0; i--){
             itemCod = (int) modeloPedido.getValueAt(i, 1);
             quant = (int) modeloPedido.getValueAt(i, 4);
             equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(itemCod);
-            equipamento.setQuantDisponivel(-quant);
+            equipamento.quantDisponivel(-quant);
             FormPrincipal.bdEquipamento.atualizarEquipamento(equipamento); 
             JOptionPane.showMessageDialog(null, "Pedido Fechado!", "", JOptionPane.INFORMATION_MESSAGE);
         }
