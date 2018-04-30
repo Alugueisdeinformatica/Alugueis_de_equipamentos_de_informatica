@@ -15,7 +15,7 @@ import java.util.List;
  * @author Luís Gustavo
  */
 public class Aluguel {
-    private String idAluguel;
+    private int idAluguel;
     private Cliente cliente;
     private List<Item> lista = null;
     private Date dataAtual;
@@ -26,7 +26,7 @@ public class Aluguel {
         lista = new ArrayList<Item>();
     }
 
-    public Aluguel(String idAluguel, Cliente cliente, Date dataAtual, double valorTotal, String dias) {
+    public Aluguel(int idAluguel, Cliente cliente, Date dataAtual, double valorTotal, String dias) {
         lista = new ArrayList<Item>();
         this.idAluguel = idAluguel;
         this.cliente = cliente;
@@ -37,11 +37,11 @@ public class Aluguel {
 
     
 
-    public String getIdAluguel() {
+    public int getIdAluguel() {
         return idAluguel;
     }
 
-    public void setIdAluguel(String idAluguel) {
+    public void setIdAluguel(int idAluguel) {
         this.idAluguel = idAluguel;
     }
 
