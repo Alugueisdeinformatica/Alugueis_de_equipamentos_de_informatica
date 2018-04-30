@@ -220,8 +220,8 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
-        new FormAluguel().setVisible(true);
-        FormAluguel.setCliente(getCliente());
+        new FormAluguelTeste().setVisible(true);
+        FormAluguelTeste.setCliente(getCliente());
         btSairActionPerformed(evt);
     }//GEN-LAST:event_btSelecionarActionPerformed
 
