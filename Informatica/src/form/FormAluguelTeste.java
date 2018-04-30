@@ -715,9 +715,12 @@ public class FormAluguelTeste extends javax.swing.JFrame {
     }
     
     private void inserirTabela(List<Equipamento> equipamentos, int i){
-        modeloEstoque.addRow(new Object[]{equipamentos.get(i).getCodEquipamento(), equipamentos.get(i).getModelo(), 
-        equipamentos.get(i).getMarca(), equipamentos.get(i).getQuantEstoque(),equipamentos.get(i).getValorDiaria(), 
-        false});
+        modeloEstoque.addRow(new Object[]{
+            equipamentos.get(i).getCodEquipamento(), 
+            equipamentos.get(i).getMarca(), 
+            equipamentos.get(i).getModelo(), 
+            equipamentos.get(i).getValorDiaria()
+        });
     }
     
     private void limparTabela(){
