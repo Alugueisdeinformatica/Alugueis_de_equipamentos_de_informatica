@@ -64,6 +64,10 @@ public class Aluguel {
     public double getValorTotal() {
         return valorTotal;
     }
+    
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
+    }
 
     public String getDias() {
         return dias;
@@ -114,7 +118,7 @@ public class Aluguel {
 	return cal.getTime();
     }
     
-    public void total(String dias){
+    public void total(){
         double val = 0;
         for(int i = 0; i < lista.size(); i++){
             val = val + lista.get(i).subValor();

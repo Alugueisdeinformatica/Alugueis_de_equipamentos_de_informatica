@@ -683,8 +683,10 @@ public class FormAluguelTeste extends javax.swing.JFrame {
         }       
         
         aluguel.setDias(tfDias.getText());
+        //aluguel.total();
         
-        FormPrincipal.bdAluguel.adicionaAluguel(aluguel);       
+        FormPrincipal.bdAluguel.adicionaAluguel(aluguel);
+        JOptionPane.showMessageDialog(null, "Aluguel Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void btFecharPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharPedidoActionPerformed
@@ -695,7 +697,8 @@ public class FormAluguelTeste extends javax.swing.JFrame {
             quant = (int) modeloPedido.getValueAt(i, 4);
             equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(itemCod);
             equipamento.quantDisponivel(-quant);
-            FormPrincipal.bdEquipamento.atualizarEquipamento(equipamento);            
+            FormPrincipal.bdEquipamento.atualizarEquipamento(equipamento); 
+            JOptionPane.showMessageDialog(null, "Pedido Fechado!", "", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btFecharPedidoActionPerformed
 
@@ -711,6 +714,7 @@ public class FormAluguelTeste extends javax.swing.JFrame {
             }
             valorTotal *= Integer.parseInt(tfDias.getText());
         }
+        aluguel.setValorTotal(valorTotal);
         tfTotal.setText(String.valueOf(valorTotal));
     }
     

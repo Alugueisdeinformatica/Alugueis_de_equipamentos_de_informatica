@@ -172,6 +172,11 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setText("Sair");
         btSair.setName("btSair"); // NOI18N
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -207,6 +212,10 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             inserirTabela(FormPrincipal.bdAluguel.todosAlugueis(), i, modelo1);
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btSairActionPerformed
 
     private void limparTabela(JTable tabela, DefaultTableModel modelo){
         for(int i = tabela.getRowCount()-1; i >= 0; i--){

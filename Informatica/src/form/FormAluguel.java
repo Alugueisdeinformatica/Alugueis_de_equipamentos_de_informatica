@@ -359,7 +359,7 @@ public class FormAluguel extends javax.swing.JFrame {
 
     private void tfDiasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDiasKeyReleased
         if(aluguel != null){
-            aluguel.total(tfDias.getText());
+            //aluguel.total(tfDias.getText());
             tfTotal.setText(Double.toString(aluguel.getValorTotal()));
         }
     }//GEN-LAST:event_tfDiasKeyReleased
@@ -381,7 +381,7 @@ public class FormAluguel extends javax.swing.JFrame {
                         aluguel.removerItem(cod);
                         modelo.removeRow(i);
                         i--;
-                        aluguel.total(tfDias.getText());
+                        //aluguel.total(tfDias.getText());
                         tfTotal.setText(Double.toString(aluguel.getValorTotal()));
                     }
                 }
