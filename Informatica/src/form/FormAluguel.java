@@ -319,7 +319,7 @@ public class FormAluguel extends javax.swing.JFrame {
                 int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar o aluguel?", "", JOptionPane.YES_NO_OPTION);
                 if(opcao == 0){
                     aluguel.setCliente(cli);
-                    aluguel.setIdAluguel(Integer.toString(FormPrincipal.codAluguel));
+                    aluguel.setIdAluguel(FormPrincipal.codAluguel);
                     Calendar c = Calendar.getInstance();
                     Date data = c.getTime();
                     aluguel.setDataAtual(data);
