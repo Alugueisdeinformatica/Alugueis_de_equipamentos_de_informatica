@@ -593,8 +593,8 @@ public class FormCliente extends javax.swing.JFrame {
     private void alterarParaFormAluguel(ActionEvent evt) throws HeadlessException {
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja Alugar?", "Confirmação de Aluguel", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(opcao == 0){
-            FormAluguelTeste.setCliente(cliente);
-            new FormAluguelTeste().setVisible(true);
+            FormAluguel.setCliente(cliente);
+            new FormAluguel().setVisible(true);
             btSairActionPerformed(evt);
         }else{
             btLimparActionPerformed(evt);

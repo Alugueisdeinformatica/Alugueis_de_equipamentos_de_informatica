@@ -346,11 +346,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNovoActionPerformed
         //new FormAluguel().setVisible(true);
-        new FormAluguelTeste().setVisible(true);
+        new FormAluguel().setVisible(true);
     }//GEN-LAST:event_jMenuItemNovoActionPerformed
 
     private void btAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAluguelActionPerformed
-        new FormAluguelTeste().setVisible(true);
+        new FormAluguel().setVisible(true);
     }//GEN-LAST:event_btAluguelActionPerformed
 
     private void JMenuItemAlugueisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAlugueisActionPerformed
