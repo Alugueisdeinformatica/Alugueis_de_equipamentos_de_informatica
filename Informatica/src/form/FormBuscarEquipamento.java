@@ -35,7 +35,6 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
         taConsulta = new javax.swing.JTextArea();
         tfCodigo = new javax.swing.JTextField();
         cboBuscarTodos = new javax.swing.JCheckBox();
-        lbBuscarTodos = new javax.swing.JLabel();
         btSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -66,16 +65,14 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
         jScrollPane1.setViewportView(taConsulta);
 
         cboBuscarTodos.setBackground(new java.awt.Color(250, 250, 250));
+        cboBuscarTodos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cboBuscarTodos.setText("Buscar Todos");
         cboBuscarTodos.setName("cboBuscarTodos"); // NOI18N
         cboBuscarTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboBuscarTodosActionPerformed(evt);
             }
         });
-
-        lbBuscarTodos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbBuscarTodos.setText("Buscar Todos");
-        lbBuscarTodos.setName("lbBuscarTodos"); // NOI18N
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
@@ -106,9 +103,7 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
                                     .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(53, 53, 53)
                                 .addComponent(cboBuscarTodos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbBuscarTodos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                                 .addComponent(btBuscar)))))
                 .addGap(35, 35, 35))
         );
@@ -125,9 +120,7 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btBuscar)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbBuscarTodos)
-                                .addComponent(cboBuscarTodos)))
+                            .addComponent(cboBuscarTodos))
                         .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -227,7 +220,6 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
     private javax.swing.JCheckBox cboBuscarTodos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbBuscarTodos;
     private javax.swing.JLabel lbCodigo;
     private javax.swing.JTextArea taConsulta;
     private javax.swing.JTextField tfCodigo;

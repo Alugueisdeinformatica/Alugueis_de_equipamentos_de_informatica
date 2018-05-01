@@ -5,13 +5,12 @@
  */
 package form;
 
-import java.awt.Component;
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.Aluguel;
 import model.Cliente;
@@ -109,7 +108,7 @@ public class FormAluguel extends javax.swing.JFrame {
         PanelOpcoes = new javax.swing.JPanel();
         btCadastrar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
-        BtSair = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Aluguel");
@@ -158,7 +157,6 @@ public class FormAluguel extends javax.swing.JFrame {
 
         tfCidade.setEditable(false);
 
-        btInserir.setBackground(new java.awt.Color(250, 250, 250));
         btInserir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/user-add-icon.png"))); // NOI18N
         btInserir.setText("Inserir");
@@ -314,7 +312,6 @@ public class FormAluguel extends javax.swing.JFrame {
         cbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Desktop", "Impressora", "Monitor", "Notebook", "Projetor", "Tablet" }));
         cbCategoria.setEnabled(false);
 
-        btBuscar.setBackground(new java.awt.Color(250, 250, 250));
         btBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/computer-search-icon.png"))); // NOI18N
         btBuscar.setText("Buscar");
@@ -325,7 +322,6 @@ public class FormAluguel extends javax.swing.JFrame {
             }
         });
 
-        btSelecionar.setBackground(new java.awt.Color(250, 250, 250));
         btSelecionar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/symbol-check-icon.png"))); // NOI18N
         btSelecionar.setText("Selecionar");
@@ -421,7 +417,6 @@ public class FormAluguel extends javax.swing.JFrame {
             tbPedido.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        btRemoverItem.setBackground(new java.awt.Color(250, 250, 250));
         btRemoverItem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btRemoverItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Shopping-basket-remove-icon.png"))); // NOI18N
         btRemoverItem.setText("Remover Item");
@@ -509,7 +504,6 @@ public class FormAluguel extends javax.swing.JFrame {
 
         PanelOpcoes.setBackground(new java.awt.Color(250, 250, 250));
 
-        btCadastrar.setBackground(new java.awt.Color(250, 250, 250));
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
         btCadastrar.setText("Cadastrar");
@@ -521,7 +515,6 @@ public class FormAluguel extends javax.swing.JFrame {
         });
         PanelOpcoes.add(btCadastrar);
 
-        btLimpar.setBackground(new java.awt.Color(250, 250, 250));
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Magic-eraser-tool-icon.png"))); // NOI18N
         btLimpar.setText("Limpar");
@@ -532,16 +525,15 @@ public class FormAluguel extends javax.swing.JFrame {
         });
         PanelOpcoes.add(btLimpar);
 
-        BtSair.setBackground(new java.awt.Color(250, 250, 250));
-        BtSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
-        BtSair.setText("Sair");
-        BtSair.addActionListener(new java.awt.event.ActionListener() {
+        btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
+        btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtSairActionPerformed(evt);
+                btSairActionPerformed(evt);
             }
         });
-        PanelOpcoes.add(BtSair);
+        PanelOpcoes.add(btSair);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -618,6 +610,7 @@ public class FormAluguel extends javax.swing.JFrame {
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         limparTabelaInserir();
         taDescricao.setText("");
+        btSelecionar.setEnabled(false);
         List<Equipamento> equipamentos = FormPrincipal.bdEquipamento.todosEquipamentos();
         if(equipamentos.size() > 0){
             for (int i = 0; i < equipamentos.size(); i++){
@@ -674,29 +667,33 @@ public class FormAluguel extends javax.swing.JFrame {
                             if(valor <= 0){
                                 JOptionPane.showMessageDialog(null, "Valor Inválido!", "Atenção", JOptionPane.ERROR_MESSAGE);
                             }else{
-                                modeloPedido.addRow(new Object[]{
-                                codItem,
-                                equipamento.getCodEquipamento(),
-                                equipamento.getCategoria(),
-                                equipamento.getModelo(),
-                                valor,
-                                valor * equipamento.getValorDiaria()
-                                }); 
-                                atualizaTotal();
-                                codItem++;
-                                int qt = equipamento.getQuantEstoque() - valor;
-                                equipamento.setQuantEstoque(qt);
-                                btRemoverItem.setEnabled(true);
-                                tfDias.setEnabled(true);
+                                adicionaEquipamentoPedido();
                             }
                         }else{
-                            JOptionPane.showMessageDialog(null, "Não existe estoque suficiente!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Não existe estoque suficiente!", "Atenção", JOptionPane.WARNING_MESSAGE);
                         }                
                     }catch(NumberFormatException e){
-                        JOptionPane.showMessageDialog(null, "Informe um valor!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Informe um valor!", "Erro", JOptionPane.ERROR_MESSAGE);
                     }
                 }                
     }//GEN-LAST:event_btSelecionarActionPerformed
+
+    private void adicionaEquipamentoPedido() throws NumberFormatException {
+        modeloPedido.addRow(new Object[]{
+            codItem,
+            equipamento.getCodEquipamento(),
+            equipamento.getCategoria(),
+            equipamento.getModelo(),
+            valor,
+            valor * equipamento.getValorDiaria()
+        });
+        atualizaTotal();
+        codItem++;
+        int qt = equipamento.getQuantEstoque() - valor;
+        equipamento.setQuantEstoque(qt);
+        btRemoverItem.setEnabled(true);
+        tfDias.setEnabled(true);
+    }
 
     private void tbInserirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbInserirMousePressed
         int codigo = (int) (modeloEstoque.getValueAt(tbInserir.getSelectedRow(), 0));
@@ -724,7 +721,7 @@ public class FormAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_btRemoverItemActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja Cadastrar?", "Cadastro", JOptionPane.YES_NO_OPTION);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja Cadastrar?", "Confirmação de Cadastro", JOptionPane.YES_NO_OPTION);
         if(opcao == 0){
             aluguel.setIdAluguel(FormPrincipal.codAluguel );
             aluguel.setCliente(cliente);        
@@ -733,22 +730,40 @@ public class FormAluguel extends javax.swing.JFrame {
             aluguel.setDataAtual(data);
             int quant, itemCod;             
             Item item;
-            for(int i = tbPedido.getRowCount()-1; i >= 0; i--){
-                itemCod = (int) modeloPedido.getValueAt(i, 1);
-                quant = (int) modeloPedido.getValueAt(i, 4);
-                equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(itemCod);            
-                item = new Item();
-                item.setCodItem((int) modeloPedido.getValueAt(i, 0));
-                item.setEquipamento(equipamento);
-                item.setQuantidade(quant);
-                aluguel.adicionaItem(item);
-            }             
+            cadastrarItemdoAluguel();             
             aluguel.setDias(tfDias.getText());        
             FormPrincipal.bdAluguel.adicionaAluguel(aluguel);
-            JOptionPane.showMessageDialog(null, "Aluguel Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
-            btCadastrar.setEnabled(false);
+            JOptionPane.showMessageDialog(null, "Aluguel Cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+            FormPrincipal.codAluguel++;
+            btCadastrar.setEnabled(false);            
+            novoAluguel(evt);
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void novoAluguel(ActionEvent evt) throws HeadlessException {
+        int novoAluguel = JOptionPane.showConfirmDialog(null, "Deseja Fazer um Novo Aluguel?", "Novo Aluguel", JOptionPane.YES_NO_OPTION);
+        if(novoAluguel == 0){
+            btLimparActionPerformed(evt);
+        }else{
+            btSairActionPerformed(evt);
+        }
+    }
+
+    private void cadastrarItemdoAluguel() {
+        int itemCod;
+        int quant;
+        Item item;
+        for(int i = tbPedido.getRowCount()-1; i >= 0; i--){
+            itemCod = (int) modeloPedido.getValueAt(i, 1);
+            quant = (int) modeloPedido.getValueAt(i, 4);
+            equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(itemCod);
+            item = new Item();
+            item.setCodItem((int) modeloPedido.getValueAt(i, 0));
+            item.setEquipamento(equipamento);
+            item.setQuantidade(quant);
+            aluguel.adicionaItem(item);
+        }
+    }
 
     private void btFecharPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharPedidoActionPerformed
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja fechar o pedido?", "Fechamento de pedido", JOptionPane.YES_NO_OPTION);
@@ -759,26 +774,26 @@ public class FormAluguel extends javax.swing.JFrame {
                 quant = (int) modeloPedido.getValueAt(i, 4);
                 equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(itemCod);
                 equipamento.quantDisponivel(-quant);
-                FormPrincipal.bdEquipamento.atualizarEquipamento(equipamento); 
-                JOptionPane.showMessageDialog(null, "Pedido Fechado!", "", JOptionPane.INFORMATION_MESSAGE);
-                btCadastrar.setEnabled(true);
-                btInserir.setEnabled(false);
-                btBuscar.setEnabled(false);
-                btSelecionar.setEnabled(false);
-                btRemoverItem.setEnabled(false);
-                btFecharPedido.setEnabled(false);
-                cbCategoria.setEnabled(false);
-                tfDias.setEnabled(false);
-                tbInserir.setEnabled(false);
-                tbPedido.setEnabled(false);
+                FormPrincipal.bdEquipamento.atualizarEquipamento(equipamento);                
             }
+            JOptionPane.showMessageDialog(null, "Pedido Fechado!", "Informaçao de Pedido", JOptionPane.INFORMATION_MESSAGE);
+            btCadastrar.setEnabled(true);
+            btInserir.setEnabled(false);
+            btBuscar.setEnabled(false);
+            btSelecionar.setEnabled(false);
+            btRemoverItem.setEnabled(false);
+            btFecharPedido.setEnabled(false);
+            cbCategoria.setEnabled(false);
+            tfDias.setEnabled(false);
+            tbInserir.setEnabled(false);
+            tbPedido.setEnabled(false);
         }        
     }//GEN-LAST:event_btFecharPedidoActionPerformed
 
-    private void BtSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSairActionPerformed
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         cliente = null;
         this.dispose();
-    }//GEN-LAST:event_BtSairActionPerformed
+    }//GEN-LAST:event_btSairActionPerformed
 
     private void tfDiasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDiasKeyTyped
         String caracteres= "0987654321";
@@ -895,7 +910,6 @@ public class FormAluguel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtSair;
     private javax.swing.JPanel PanelCliente;
     private javax.swing.JPanel PanelDadosCliente;
     private javax.swing.JPanel PanelEstoque;
@@ -906,6 +920,7 @@ public class FormAluguel extends javax.swing.JFrame {
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btRemoverItem;
+    private javax.swing.JButton btSair;
     private javax.swing.JButton btSelecionar;
     private javax.swing.JComboBox<String> cbCategoria;
     private javax.swing.JLabel jLabel1;
