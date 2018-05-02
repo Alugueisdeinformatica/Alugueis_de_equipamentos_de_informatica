@@ -6,6 +6,7 @@
 package form;
 
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.Cliente;
 
@@ -28,6 +29,8 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     public FormBuscarCliente() {
         initComponents();
     }
+    
+    public static boolean janela = false;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -193,6 +196,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_cboBuscarTodosActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        janela = false;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -225,9 +229,15 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
-        new FormAluguel().setVisible(true);
-        FormAluguel.setCliente(getCliente());
-        btSairActionPerformed(evt);
+        if(janela == true){
+            new FormDevolucao().setVisible(true);
+            FormDevolucao.setCliente(getCliente());
+            btSairActionPerformed(evt); 
+        }else{
+            new FormAluguel().setVisible(true);
+            FormAluguel.setCliente(getCliente());
+            btSairActionPerformed(evt);   
+        }
     }//GEN-LAST:event_btSelecionarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed

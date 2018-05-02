@@ -34,6 +34,16 @@ public class AluguelDao {
         return al;
     }
     
+    public Aluguel buscaAluguelNome(String nome){
+        Aluguel al = null;
+        for(int i = 0; i < lista.size(); i++){
+            if(nome.equals(lista.get(i).getCliente().getNome())){
+                al = lista.get(i);
+            }
+        }
+        return al;
+    }
+    
     public void removerAluguel(int id){
         Aluguel al = buscaAluguel(id);
         if(al != null){

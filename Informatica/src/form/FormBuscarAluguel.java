@@ -87,6 +87,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             }
         });
         tbAluguelRealizado.setName("tbAluguelRealizado"); // NOI18N
+        tbAluguelRealizado.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbAluguelRealizado);
         if (tbAluguelRealizado.getColumnModel().getColumnCount() > 0) {
             tbAluguelRealizado.getColumnModel().getColumn(0).setResizable(false);
@@ -141,6 +142,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             }
         });
         tbAvisoVencimento.setName("tbAvisoVencimento"); // NOI18N
+        tbAvisoVencimento.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tbAvisoVencimento);
         if (tbAvisoVencimento.getColumnModel().getColumnCount() > 0) {
             tbAvisoVencimento.getColumnModel().getColumn(0).setResizable(false);

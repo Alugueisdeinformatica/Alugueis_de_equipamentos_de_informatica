@@ -239,6 +239,11 @@ public class FormPrincipal extends javax.swing.JFrame {
 
         jMenuItemEfetuar.setText("Efetuar Devolução");
         jMenuItemEfetuar.setName("jMenuItemEfetuar"); // NOI18N
+        jMenuItemEfetuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEfetuarActionPerformed(evt);
+            }
+        });
         jMenuAluguel.add(jMenuItemEfetuar);
 
         jMenuBar1.add(jMenuAluguel);
@@ -356,6 +361,10 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void JMenuItemAlugueisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAlugueisActionPerformed
         new FormBuscarAluguel().setVisible(true);
     }//GEN-LAST:event_JMenuItemAlugueisActionPerformed
+
+    private void jMenuItemEfetuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEfetuarActionPerformed
+        new FormDevolucao().setVisible(true);
+    }//GEN-LAST:event_jMenuItemEfetuarActionPerformed
 
     /**
      * @param args the command line arguments
