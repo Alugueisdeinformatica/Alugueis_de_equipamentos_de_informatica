@@ -114,6 +114,9 @@ public class FormAluguel extends javax.swing.JFrame {
         setTitle("Cadastro de Aluguel");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -839,6 +842,15 @@ public class FormAluguel extends javax.swing.JFrame {
         btRemoverItem.setEnabled(false);
         btFecharPedido.setEnabled(false);
     }//GEN-LAST:event_btLimparActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja finalizar a aplicação?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            cliente = null;
+            this.dispose();        
+        }else
+            setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+    }//GEN-LAST:event_formWindowClosing
 
     private void atualizaTotal() throws NumberFormatException {
         double valorTotal = 0;
