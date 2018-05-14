@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,36 +16,19 @@ import java.util.List;
  * @author Luís Gustavo
  */
 public class Aluguel {
-    private int idAluguel;
+    private static int numero = 0;
     private Cliente cliente;
-    private List<Item> lista = null;
-    private Date dataAtual;
+    private List<Item> lista;
+    private Date dataAluguel;
     private double valorTotal;
-    private String dias;
+    private int dias;
 
     public Aluguel() {
+        numero++;
         lista = new ArrayList<Item>();
-    }
-
-    public Aluguel(int idAluguel, Cliente cliente, Date dataAtual, double valorTotal, String dias) {
-        lista = new ArrayList<Item>();
-        this.idAluguel = idAluguel;
-        this.cliente = cliente;
-        this.dataAtual = dataAtual;
-        this.valorTotal = valorTotal;
-        this.dias = dias;
-    }
-
+        dataAluguel = new Date();
+    }    
     
-
-    public int getIdAluguel() {
-        return idAluguel;
-    }
-
-    public void setIdAluguel(int idAluguel) {
-        this.idAluguel = idAluguel;
-    }
-
     public Cliente getCliente() {
         return cliente;
     }
@@ -53,12 +37,12 @@ public class Aluguel {
         this.cliente = cliente;
     }
 
-    public Date getDataAtual() {
-        return dataAtual;
+    public Date getDataAluguel() {
+        return dataAluguel;
     }
 
-    public void setDataAtual(Date dataAtual) {
-        this.dataAtual = dataAtual;
+    public void setDataAluguel(Date dataAluguel) {
+        this.dataAluguel = dataAluguel;
     }
 
     public double getValorTotal() {
@@ -69,60 +53,60 @@ public class Aluguel {
         this.valorTotal = valorTotal;
     }
 
-    public String getDias() {
+    public int getDias() {
         return dias;
     }
 
-    public void setDias(String dias) {
+    public void setDias(int dias) {
         this.dias = dias;
+    }
+
+    public int getNumero() {
+        return numero;
     }
     
     public void adicionaItem(Item item){
         lista.add(item);
     }
     
-    /*public Equipamento buscaEquipamento(int codEquipamento){
-        Equipamento eq = null;
-        for(int i = 0; i < this.equipamento.size(); i++){
-            if(codEquipamento == this.equipamento.get(i).getCodEquipamento()){
-                eq = this.equipamento.get(i);
-            }
+    public Item buscarItem(int codigo)
+    {
+        Item it = null;
+        for(Item item : lista)
+        {
+            if(item.getEquipamento().getCodEquipamento() == codigo)
+                it = item;
         }
-        return eq;
-    }*/
-    
-    public void removerItem(int cod){
-        for(int i = 0; i < lista.size(); i++){
-            if(lista.get(i).getCodItem() == cod)
-                lista.remove(lista.get(i));     
-        }        
+        
+        return it;
     }
     
-    /*public void atualizarEquipamento(Equipamento equipamento){
-        int codigo = equipamento.getCodEquipamento();
-        Equipamento eq = buscaEquipamento( codigo );
-        if(eq != null){
-            int idx = this.equipamento.indexOf(eq);
-            this.equipamento.set(idx, eq);
+    public void removerItem(int codigo)
+    {
+        Item item = buscarItem(codigo);
+        if(item != null)
+        {
+            lista.remove(item);
         }
-    }*/
+    }
     
     public List<Item> todosItens(){
         return lista;
     }
     
-    public Date dataDevolucao() {
-	Calendar cal = new GregorianCalendar();
-	cal.setTime(dataAtual);
-	cal.add(Calendar.DAY_OF_MONTH, Integer.parseInt(dias));
-	return cal.getTime();
+    public float calcularValorTotal(){
+        float soma = 0;
+        for(Item item : lista){
+            soma += item.getValorItem();
+        }
+        soma = soma * dias;
+        return soma;
     }
     
-    public void total(){
-        double val = 0;
-        for(int i = 0; i < lista.size(); i++){
-            val = val + lista.get(i).subValor();
-        }
-        valorTotal = val * Double.parseDouble(dias);
+    public Date dataDevolucao() {
+	Calendar cal = new GregorianCalendar();
+	cal.setTime(dataAluguel);
+	cal.add(Calendar.DAY_OF_MONTH, Integer.parseInt(Integer.toString(dias)));
+	return cal.getTime();
     }
 }

@@ -27,7 +27,7 @@ public class AluguelDao {
     public Aluguel buscaAluguel(int id){
         Aluguel al = null;
         for(int i = 0; i < lista.size(); i++){
-            if(id == lista.get(i).getIdAluguel()){
+            if(id == lista.get(i).getNumero()){
                 al = lista.get(i);
             }
         }
@@ -52,7 +52,7 @@ public class AluguelDao {
     }
     
     public void alteraAluguel(Aluguel aluguel){
-        Aluguel al = buscaAluguel(aluguel.getIdAluguel());
+        Aluguel al = buscaAluguel(aluguel.getNumero());
         if(al != null){
             int idx = lista.indexOf(al);
             lista.set(idx, aluguel);

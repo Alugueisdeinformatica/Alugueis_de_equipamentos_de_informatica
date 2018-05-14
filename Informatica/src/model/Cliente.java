@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -115,7 +116,7 @@ public class Cliente {
         return "Nome: " + nome +
                "\nEmail: " + email +
                "\nTelefone: " + telefone +
-               "\nData de Nascimento: " + dataNascimento +
+               "\nData de Nascimento: " + formataData(dataNascimento) +
                "\nSexo: " + sexo +
                "\nCPF: " + cpf +
                "\nEstado Civil: " + estadoCivil +
@@ -128,5 +129,11 @@ public class Cliente {
                "\nBairro: " + endereco.getBairro() +
                "\nRua: " + endereco.getRua() +
                "\n****************************************************\n\n";
+    }
+    
+    private String formataData(Date data){
+        SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
+        String str = fm.format(data);
+        return str;
     }
 }

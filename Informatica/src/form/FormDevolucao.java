@@ -500,7 +500,7 @@ public class FormDevolucao extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btEfetuarDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEfetuarDevolucaoActionPerformed
-        int id = aluguel.getIdAluguel();
+        int id = aluguel.getNumero();
         FormPrincipal.bdAluguel.removerAluguel(id);
         int linha = tbAluguel.getSelectedRow(); 
         modeloAluguel.removeRow(linha);
@@ -544,8 +544,8 @@ public class FormDevolucao extends javax.swing.JFrame {
 
     private void inserirTabelaAluguel(Aluguel al){
         DateFormat formataData = DateFormat.getDateInstance();
-        modeloAluguel.addRow(new Object[]{al.getIdAluguel(), al.getValorTotal(), 
-        formataData.format(al.getDataAtual()), formataData.format(al.dataDevolucao())});
+        modeloAluguel.addRow(new Object[]{al.getNumero(), al.getValorTotal(), 
+        formataData.format(al.getDataAluguel()), formataData.format(al.dataDevolucao())});
     }
     
     private void inserirTabelaEquipamentos(Aluguel al, int i){

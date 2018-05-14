@@ -13,10 +13,15 @@ public class Item {
     
     private int codItem;
     private Equipamento equipamento;
+    private double valorItem;
     private int quantidade;
 
     public Item() {
         equipamento = new Equipamento();
+    }
+
+    public Item(Equipamento equipamento) {
+        this.equipamento = equipamento;
     }
 
     public int getCodItem() {
@@ -42,8 +47,16 @@ public class Item {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }    
+
+    public double getValorItem() {
+        return valorItem;
+    }
+
+    public void setValorItem(double valorItem) {
+        this.valorItem = valorItem;
+    }
     
-    public double subValor(){
-        return getQuantidade() * getEquipamento().getValorDiaria();    
-    }    
+    public void calcularValorItem(){
+        valorItem = equipamento.getValorDiaria() * quantidade;
+    }   
 }

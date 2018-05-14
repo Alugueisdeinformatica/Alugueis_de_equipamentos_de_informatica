@@ -6,6 +6,7 @@
 package form;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JTable;
@@ -227,9 +228,15 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
     
     private void inserirTabela(List<Aluguel> alugueis, int i, DefaultTableModel modelo){
         DateFormat formataData = DateFormat.getDateInstance();
-        modelo.addRow(new Object[]{alugueis.get(i).getIdAluguel(), alugueis.get(i).getCliente().getNome(),
-        formataData.format(alugueis.get(i).getDataAtual()), formataData.format(alugueis.get(i).dataDevolucao()), 
+        modelo.addRow(new Object[]{alugueis.get(i).getNumero(), alugueis.get(i).getCliente().getNome(),
+        formataData.format(alugueis.get(i).getDataAluguel()), formataData(alugueis.get(i).dataDevolucao()), 
         alugueis.get(i).getValorTotal()});
+    }
+    
+    private String formataData(Date data){
+        SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
+        String str = fm.format(data);
+        return str;
     }
     
     public static void main(String args[]) {
