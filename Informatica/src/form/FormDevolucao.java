@@ -5,7 +5,10 @@
  */
 package form;
 
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Aluguel;
@@ -13,6 +16,7 @@ import model.Cliente;
 import model.Computador;
 import model.Equipamento;
 import model.Impressora;
+import model.Item;
 import model.Monitor;
 import model.Notebook;
 import model.Projetor;
@@ -24,8 +28,9 @@ import model.Tablet;
  */
 public class FormDevolucao extends javax.swing.JFrame {
     
-    private static Cliente cliente;
+    private static Cliente cliente = null;
     private static Aluguel aluguel;
+    List<Aluguel> al = null;
     DefaultTableModel modeloAluguel = null;
     DefaultTableModel modeloEquipamentos = null;
 
@@ -42,7 +47,6 @@ public class FormDevolucao extends javax.swing.JFrame {
      */
     public FormDevolucao() {        
         initComponents();
-        aluguel = new Aluguel();
         modeloAluguel = (DefaultTableModel) tbAluguel.getModel();
         modeloEquipamentos = (DefaultTableModel) tbEquipamentos.getModel();
     }
@@ -473,7 +477,7 @@ public class FormDevolucao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
-        cliente = new Cliente();
+        //cliente = new Cliente();
         FormBuscarCliente.janela = true;
         new FormBuscarCliente().setVisible(true);
         this.setVisible(false);
@@ -481,6 +485,7 @@ public class FormDevolucao extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(cliente != null){
+            btInserir.setEnabled(false);
             tfNome.setText(cliente.getNome());
             tfCpf.setText(cliente.getCpf());
             tfEmail.setText(cliente.getEmail());
@@ -490,24 +495,25 @@ public class FormDevolucao extends javax.swing.JFrame {
             tfNumero.setText(String.valueOf(cliente.getEndereco().getNumero()));
             tfTelefone.setText(cliente.getTelefone());
             tfUf.setText(cliente.getEndereco().getEstado());
-            try{
-                aluguel = FormPrincipal.bdAluguel.buscaAluguelNome(cliente.getNome());
-                inserirTabelaAluguel(aluguel);
-            }catch(NullPointerException e){
-                
+            al = FormPrincipal.bdAluguel.buscaAluguel(cliente.getCpf());
+            for(Aluguel a : al){
+                inserirTabelaAluguel(a);
             }
         }
     }//GEN-LAST:event_formWindowOpened
 
     private void btEfetuarDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEfetuarDevolucaoActionPerformed
-        int id = aluguel.getNumero();
-        FormPrincipal.bdAluguel.removerAluguel(id);
-        int linha = tbAluguel.getSelectedRow(); 
-        modeloAluguel.removeRow(linha);
-        btEfetuarDevolucao.setEnabled(false);
-        devolveEstoque(aluguel);
-        limparTabelaEquipamentos();
-        JOptionPane.showMessageDialog(null, "Devolução Efetuada!", "Devolução de Equipamentos", JOptionPane.INFORMATION_MESSAGE);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja efetuar a devolução?", "Atenção!", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            btEfetuarDevolucao.setEnabled(false);
+            aluguel = FormPrincipal.bdAluguel.buscaAluguel(getId());
+            devolveEstoque(aluguel);
+            FormPrincipal.bdAluguel.removerAluguel(getId());
+            int linha = tbAluguel.getSelectedRow(); 
+            modeloAluguel.removeRow(linha);
+            limparTabelaEquipamentos();
+            JOptionPane.showMessageDialog(null, "Devolução efetuada com sucesso!", "Devolução de Equipamentos", JOptionPane.INFORMATION_MESSAGE);
+        }        
     }//GEN-LAST:event_btEfetuarDevolucaoActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
@@ -533,25 +539,34 @@ public class FormDevolucao extends javax.swing.JFrame {
 
     private void tbAluguelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAluguelMousePressed
         if(cliente != null){
-            Object id = modeloAluguel.getValueAt(tbAluguel.getSelectedRow(), 0);
-            aluguel = FormPrincipal.bdAluguel.buscaAluguel((int) id);
-            for(int i = 0; i < aluguel.todosItens().size(); i++){
-                inserirTabelaEquipamentos(aluguel, i);
+            for(int i = 0; i < al.size(); i++){
+                if(getId() == al.get(i).getNumero()){
+                    limparTabelaEquipamentos();
+                    inserirTabelaEquipamentos(al.get(i).todosItens());
+                }
             }
             btEfetuarDevolucao.setEnabled(true);
         }
     }//GEN-LAST:event_tbAluguelMousePressed
 
     private void inserirTabelaAluguel(Aluguel al){
-        DateFormat formataData = DateFormat.getDateInstance();
         modeloAluguel.addRow(new Object[]{al.getNumero(), al.getValorTotal(), 
-        formataData.format(al.getDataAluguel()), formataData.format(al.dataDevolucao())});
+        formataData(al.getDataAluguel()), formataData(al.dataDevolucao())});
     }
     
-    private void inserirTabelaEquipamentos(Aluguel al, int i){
-        modeloEquipamentos.addRow(new Object[]{al.todosItens().get(i).getEquipamento().getCodEquipamento(),
-        al.todosItens().get(i).getEquipamento().getModelo(), al.todosItens().get(i).getEquipamento().getMarca(),
-        al.todosItens().get(i).getEquipamento().getCategoria(), al.todosItens().get(i).getQuantidade()});
+    private void inserirTabelaEquipamentos(List<Item> it){
+        for(Item i : it){
+            modeloEquipamentos.addRow(new Object[]{i.getEquipamento().getCodEquipamento(),
+            i.getEquipamento().getModelo(), i.getEquipamento().getMarca(),
+            i.getEquipamento().getCategoria(), i.getQuantidade()});
+        }        
+    }
+    
+    private int getId(){
+        int linha = tbAluguel.getSelectedRow();
+        int id;        
+        id = ((Integer) tbAluguel.getModel().getValueAt(linha, 0));        
+        return id;
     }
     
     private void limparTabelaAluguel(){
@@ -566,35 +581,49 @@ public class FormDevolucao extends javax.swing.JFrame {
         }
     }
      
-     private void devolveEstoque(Aluguel al){
-         for(int i = 0; i < al.todosItens().size(); i++){
-            int qt = al.todosItens().get(i).getQuantidade();
-            if(al.todosItens().get(i).getEquipamento() instanceof Computador){
-                Computador computador = (Computador) al.todosItens().get(i).getEquipamento();
-                computador.setQuantEstoque(computador.getQuantEstoque() + qt);
-            }
-            if(al.todosItens().get(i).getEquipamento() instanceof Impressora){
-                Impressora impressora = (Impressora) al.todosItens().get(i).getEquipamento();
-                impressora.setQuantEstoque(impressora.getQuantEstoque() + qt);
-            }
-            if(al.todosItens().get(i).getEquipamento() instanceof Monitor){
-                Monitor monitor = (Monitor) al.todosItens().get(i).getEquipamento();
-                monitor.setQuantEstoque(monitor.getQuantEstoque() + qt);
-            }
-            if(al.todosItens().get(i).getEquipamento() instanceof Notebook){
-                Notebook notebook = (Notebook) al.todosItens().get(i).getEquipamento();
-                notebook.setQuantEstoque(notebook.getQuantEstoque() + qt);
-            }
-            if(al.todosItens().get(i).getEquipamento() instanceof Projetor){
-                Projetor projetor = (Projetor) al.todosItens().get(i).getEquipamento();
-                projetor.setQuantEstoque(projetor.getQuantEstoque() + qt);
-            }
-            if(al.todosItens().get(i).getEquipamento() instanceof Tablet){
-                Tablet tablet = (Tablet) al.todosItens().get(i).getEquipamento();
-                tablet.setQuantEstoque(tablet.getQuantEstoque() + qt);
-            }
-        }
+     private void devolveEstoque(Aluguel aluguel){
+         List<Equipamento> eq = new ArrayList<Equipamento>();
+         for(Item i : aluguel.todosItens()){
+             int qt = i.getQuantidade();
+             if(i.getEquipamento() instanceof Computador){
+                 Computador computador = (Computador) i.getEquipamento();
+                 computador.setQuantEstoque(computador.getQuantEstoque() + qt);
+                 eq.add(computador);
+             }
+             if(i.getEquipamento() instanceof Impressora){
+                 Impressora impressora = (Impressora) i.getEquipamento();
+                 impressora.setQuantEstoque(impressora.getQuantEstoque() + qt);
+                 eq.add(impressora);
+             }
+             if(i.getEquipamento() instanceof Monitor){
+                 Monitor monitor = (Monitor) i.getEquipamento();
+                 monitor.setQuantEstoque(monitor.getQuantEstoque() + qt);
+                 eq.add(monitor);
+             }
+             if(i.getEquipamento() instanceof Notebook){
+                 Notebook notebook = (Notebook) i.getEquipamento();
+                 notebook.setQuantEstoque(notebook.getQuantEstoque() + qt);
+                 eq.add(notebook);
+             }
+             if(i.getEquipamento() instanceof Projetor){
+                 Projetor projetor =(Projetor) i.getEquipamento();
+                 projetor.setQuantEstoque(projetor.getQuantEstoque() + qt);
+                 eq.add(projetor);
+             }
+             if(i.getEquipamento() instanceof Tablet){
+                 Tablet tablet =(Tablet) i.getEquipamento();
+                 tablet.setQuantEstoque(tablet.getQuantEstoque() + qt);
+                 eq.add(tablet);
+             }
+         }
+         FormPrincipal.bdEquipamento.setLista(eq);
      }
+     
+     private String formataData(Date data){
+        SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
+        String str = fm.format(data);
+        return str;
+    }
     
     /**
      * @param args the command line arguments

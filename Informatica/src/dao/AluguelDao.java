@@ -34,11 +34,11 @@ public class AluguelDao {
         return al;
     }
     
-    public Aluguel buscaAluguelNome(String nome){
-        Aluguel al = null;
+    public List<Aluguel> buscaAluguel(String cpf){
+        List<Aluguel> al = new ArrayList<Aluguel>();
         for(int i = 0; i < lista.size(); i++){
-            if(nome.equals(lista.get(i).getCliente().getNome())){
-                al = lista.get(i);
+            if(cpf.equals(lista.get(i).getCliente().getCpf())){
+                al.add(lista.get(i));
             }
         }
         return al;

@@ -6,7 +6,6 @@
 package form;
 
 import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.Cliente;
 
@@ -205,7 +204,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
             List<Cliente> cl = FormPrincipal.bdCliente.todosClientes();
             if(cl.size() > 0){
                 for(int i = 0; i < cl.size(); i++){
-                    taBusca.append(cl.get(i).toString());                    
+                    taBusca.append(cl.get(i).toString() + cl.get(i).getEndereco().toString() + "\n");                    
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Não existem clientes cadastrados!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
@@ -215,7 +214,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
             if(!cpsSemMascara.trim().equals("")){
                 Cliente cliente = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
                 if(cliente != null){
-                    taBusca.setText(cliente.toString());
+                    taBusca.setText(cliente.toString() + cliente.getEndereco().toString() + "\n");
                     setCliente(cliente);
                     btEditar.setEnabled(true);
                     btSelecionar.setEnabled(true);

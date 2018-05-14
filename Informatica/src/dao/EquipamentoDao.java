@@ -53,4 +53,8 @@ public class EquipamentoDao {
     public List<Equipamento> todosEquipamentos(){
         return lista;
     }
+
+    public void setLista(List<Equipamento> lista) {
+        this.lista = lista;
+    }
 }
