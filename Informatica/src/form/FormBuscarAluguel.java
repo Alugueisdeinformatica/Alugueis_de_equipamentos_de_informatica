@@ -186,6 +186,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         tpMenu.addTab("Avisos de Vencimento", jpAvisoVencimento);
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
         btSair.setText("Sair");
         btSair.setName("btSair"); // NOI18N
         btSair.addActionListener(new java.awt.event.ActionListener() {
@@ -219,7 +220,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(631, 398));
+        setSize(new java.awt.Dimension(631, 430));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

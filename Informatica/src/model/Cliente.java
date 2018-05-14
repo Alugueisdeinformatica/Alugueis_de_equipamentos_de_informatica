@@ -113,22 +113,15 @@ public class Cliente {
     
     @Override
     public String toString(){
-        return "Nome: " + nome +
-               "\nEmail: " + email +
-               "\nTelefone: " + telefone +
-               "\nData de Nascimento: " + formataData(dataNascimento) +
-               "\nSexo: " + sexo +
-               "\nCPF: " + cpf +
-               "\nEstado Civil: " + estadoCivil +
-               "\n----------------------------------------" +
-               "\nCEP: " + endereco.getCep() +
-               "\nCidade: " + endereco.getCidade() +
-               "\nEstado: " + endereco.getEstado() +
-               "\nComplemento: " + endereco.getComplemento() +
-               "\nNúmero: " + Integer.toString(endereco.getNumero()) +
-               "\nBairro: " + endereco.getBairro() +
-               "\nRua: " + endereco.getRua() +
-               "\n****************************************************\n\n";
+        String str = "";
+        str += "\nNome: " + nome;
+        str += "\nEmail: " + email;
+        str += "\nTelefone: " + telefone;
+        str += "\nData de Nascimento: " + formataData(dataNascimento);
+        str += "\nSexo: " + sexo;
+        str += "\nCPF: " + cpf;
+        str += "\nEstado Civil: " + estadoCivil;
+        return str;
     }
     
     private String formataData(Date data){

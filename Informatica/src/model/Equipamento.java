@@ -92,4 +92,16 @@ public class Equipamento {
                !categoria.equals("") &&
                valorDiaria > 0;
     }
+    
+    @Override
+    public String toString(){
+        String str = "";
+        str += "\nCódigo do Equipamento: " + codEquipamento;
+        str += "\nModelo: " + modelo;
+        str += "\nMarca: " + marca;
+        str += "\nQuantidade em Estoque: " + quantEstoque;
+        str += "\nCategoria: " + categoria;
+        str += "\nValor da Diária: " + valorDiaria;
+        return str;
+    }
 }

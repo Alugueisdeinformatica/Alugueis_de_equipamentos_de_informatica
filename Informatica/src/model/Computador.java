@@ -72,12 +72,13 @@ public class Computador extends Equipamento{
 
     @Override
     public String toString() {
-        return  "Sistema Operacional: " + sistemaOperacional + 
-                "\nPlaca de Vídeo: " + placaVideo + 
-                "\nCapacidade de HD: " + capacidadeHD + 
-                "\nProcessador: " + processador + 
-                "\nMemória: " + memoria + 
-                "";
+        String str = "";
+        str += "\nSistema Operacional: " + sistemaOperacional; 
+        str += "\nPlaca de Vídeo: " + placaVideo;
+        str += "\nCapacidade de HD: " + capacidadeHD;
+        str += "\nProcessador: " + processador;
+        str += "\nMemória: " + memoria;
+        return str;
     }   
     
     public boolean validaComputador(){

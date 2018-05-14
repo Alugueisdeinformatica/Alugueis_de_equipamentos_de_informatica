@@ -90,19 +90,13 @@ public class Tablet extends Equipamento{
     
     @Override
     public String toString(){
-        return getCategoria().toUpperCase() +
-               "\n----------------------------------------" +
-               "\nModelo: " + getModelo() +
-               "\nMarca: " + getMarca() +
-               "\nQuantidade no Estoque: " + getQuantEstoque() +
-               "\nValor da Diária: " + getValorDiaria() +
-               "\n----------------------------------------" +
-               "\nCapacidade: " + capacidade +
-               "\nTamanho da Tela: " + tamanhoTela +
-               "\nMemória Ram: " + memoriaRam +
-               "\nSistema Operacional: " + sistemaOperacional +
-               "\nBateria: " + bateria +
-               "\nProcessador: " + processador +
-               "\n****************************************************\n\n";
+        String str = "";
+        str += "\nCapacidade: " + capacidade;
+        str += "\nTamanho da Tela: " + tamanhoTela;
+        str += "\nMemória Ram: " + memoriaRam;
+        str += "\nSistema Operacional: " + sistemaOperacional;
+        str += "\nBateria: " + bateria;
+        str += "\nProcessador: " + processador;
+        return str;
     }
 }

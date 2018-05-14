@@ -96,4 +96,17 @@ public class Endereco {
                !bairro.equals("") &&
                !rua.equals("");
     }
+    
+    @Override
+    public String toString(){
+        String str = "";
+        str += "\nCEP: " + cep;
+        str += "\nCidade: " + cidade;
+        str += "\nEstado: " + estado;
+        str += "\nComplemento: " + complemento;
+        str += "\nNúmero: " + Integer.toString(numero);
+        str += "\nBairro: " + bairro;
+        str += "\nRua: " + rua;
+        return str;
+    }
 }

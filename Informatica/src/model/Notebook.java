@@ -91,11 +91,13 @@ public class Notebook extends Equipamento{
     
     @Override
     public String toString(){
-        return "Sistema Operacional: " + sistemaOperacional +
-               "\nPlaca de Vídeo: " + placaVideo +
-               "\nCapacidade de HD: " + capacidadeHD +
-               "\nProcessador: " + processador +
-               "\nMemória: " + memoria +
-               "\nBateria: " + bateria;
+        String str = "";
+        str += "Sistema Operacional: " + sistemaOperacional;
+        str += "\nPlaca de Vídeo: " + placaVideo;
+        str += "\nCapacidade de HD: " + capacidadeHD;
+        str += "\nProcessador: " + processador;
+        str += "\nMemória: " + memoria;
+        str += "\nBateria: " + bateria;
+        return str;
     }
 }
