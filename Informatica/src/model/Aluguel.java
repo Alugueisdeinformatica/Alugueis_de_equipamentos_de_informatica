@@ -5,7 +5,6 @@
  */
 package model;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,7 +15,7 @@ import java.util.List;
  * @author Luís Gustavo
  */
 public class Aluguel {
-    private static int numero = 0;
+    public static int numero = 0;
     private Cliente cliente;
     private List<Item> lista;
     private Date dataAluguel;
@@ -94,13 +93,13 @@ public class Aluguel {
         return lista;
     }
     
-    public float calcularValorTotal(){
+    public void calcularValorTotal(){
         float soma = 0;
         for(Item item : lista){
             soma += item.getValorItem();
         }
         soma = soma * dias;
-        return soma;
+        valorTotal = soma;
     }
     
     public Date dataDevolucao() {

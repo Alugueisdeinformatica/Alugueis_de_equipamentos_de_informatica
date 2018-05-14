@@ -42,7 +42,6 @@ public class FormAluguel extends javax.swing.JFrame {
     
     public FormAluguel() {        
         initComponents();
-        aluguel = new Aluguel();
         modeloEstoque = (DefaultTableModel) tbInserir.getModel();
         modeloPedido = (DefaultTableModel) tbPedido.getModel();
     }
@@ -571,6 +570,8 @@ public class FormAluguel extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(cliente != null){
+            aluguel = new Aluguel();
+            aluguel.setCliente(cliente);
             tfNome.setText(cliente.getNome());
             tfCpf.setText(cliente.getCpf());
             tfEmail.setText(cliente.getEmail());
@@ -767,7 +768,8 @@ public class FormAluguel extends javax.swing.JFrame {
     private void tfDiasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDiasKeyReleased
         try{
             aluguel.setDias(Integer.parseInt(tfDias.getText()));
-            tfTotal.setText(Float.toString(aluguel.calcularValorTotal()));
+            aluguel.calcularValorTotal();
+            tfTotal.setText(Double.toString(aluguel.getValorTotal()));
             if(Integer.parseInt(tfDias.getText()) > 0){
                 btFecharPedido.setEnabled(true);
                 tfDataDevolucao.setText("Data de Devolução: " + formataData(aluguel.dataDevolucao()));
@@ -861,7 +863,7 @@ public class FormAluguel extends javax.swing.JFrame {
         btSelecionar.setEnabled(false);
         btRemoverItem.setEnabled(false);
         btFecharPedido.setEnabled(false);
-        aluguel = new Aluguel();
+        aluguel = null;
     }
     
     private String formataData(Date data){

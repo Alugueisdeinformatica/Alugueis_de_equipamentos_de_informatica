@@ -5,8 +5,9 @@
  */
 package form;
 
-import java.text.DateFormat;
+import java.awt.Color;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JTable;
@@ -87,15 +88,21 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbAluguelRealizado.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tbAluguelRealizado.setName("tbAluguelRealizado"); // NOI18N
         tbAluguelRealizado.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbAluguelRealizado);
         if (tbAluguelRealizado.getColumnModel().getColumnCount() > 0) {
             tbAluguelRealizado.getColumnModel().getColumn(0).setResizable(false);
+            tbAluguelRealizado.getColumnModel().getColumn(0).setPreferredWidth(65);
             tbAluguelRealizado.getColumnModel().getColumn(1).setResizable(false);
+            tbAluguelRealizado.getColumnModel().getColumn(1).setPreferredWidth(150);
             tbAluguelRealizado.getColumnModel().getColumn(2).setResizable(false);
+            tbAluguelRealizado.getColumnModel().getColumn(2).setPreferredWidth(120);
             tbAluguelRealizado.getColumnModel().getColumn(3).setResizable(false);
+            tbAluguelRealizado.getColumnModel().getColumn(3).setPreferredWidth(140);
             tbAluguelRealizado.getColumnModel().getColumn(4).setResizable(false);
+            tbAluguelRealizado.getColumnModel().getColumn(4).setPreferredWidth(100);
         }
 
         javax.swing.GroupLayout jpAluguelRealizadoLayout = new javax.swing.GroupLayout(jpAluguelRealizado);
@@ -142,15 +149,21 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbAvisoVencimento.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tbAvisoVencimento.setName("tbAvisoVencimento"); // NOI18N
         tbAvisoVencimento.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tbAvisoVencimento);
         if (tbAvisoVencimento.getColumnModel().getColumnCount() > 0) {
             tbAvisoVencimento.getColumnModel().getColumn(0).setResizable(false);
+            tbAvisoVencimento.getColumnModel().getColumn(0).setPreferredWidth(65);
             tbAvisoVencimento.getColumnModel().getColumn(1).setResizable(false);
+            tbAvisoVencimento.getColumnModel().getColumn(1).setPreferredWidth(150);
             tbAvisoVencimento.getColumnModel().getColumn(2).setResizable(false);
+            tbAvisoVencimento.getColumnModel().getColumn(2).setPreferredWidth(120);
             tbAvisoVencimento.getColumnModel().getColumn(3).setResizable(false);
+            tbAvisoVencimento.getColumnModel().getColumn(3).setPreferredWidth(140);
             tbAvisoVencimento.getColumnModel().getColumn(4).setResizable(false);
+            tbAvisoVencimento.getColumnModel().getColumn(4).setPreferredWidth(100);
         }
 
         javax.swing.GroupLayout jpAvisoVencimentoLayout = new javax.swing.GroupLayout(jpAvisoVencimento);
@@ -211,8 +224,14 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        for(int i = 0; i < FormPrincipal.bdAluguel.todosAlugueis().size(); i++){
-            inserirTabela(FormPrincipal.bdAluguel.todosAlugueis(), i, modelo1);
+        List<Aluguel> alugueis = FormPrincipal.bdAluguel.todosAlugueis();
+        for(int i = 0; i < alugueis.size(); i++){
+            inserirTabela(alugueis, i, modelo1);
+            Date dataAtual = new Date();
+            if(verificaVencimento(alugueis.get(i).dataDevolucao(), dataAtual)){
+                inserirTabela(alugueis, i, modelo2);
+                tbAvisoVencimento.setBackground(new Color(255,99,71));
+            }
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -227,9 +246,8 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
     }
     
     private void inserirTabela(List<Aluguel> alugueis, int i, DefaultTableModel modelo){
-        DateFormat formataData = DateFormat.getDateInstance();
         modelo.addRow(new Object[]{alugueis.get(i).getNumero(), alugueis.get(i).getCliente().getNome(),
-        formataData.format(alugueis.get(i).getDataAluguel()), formataData(alugueis.get(i).dataDevolucao()), 
+        formataData(alugueis.get(i).getDataAluguel()), formataData(alugueis.get(i).dataDevolucao()), 
         alugueis.get(i).getValorTotal()});
     }
     
@@ -238,6 +256,18 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         String str = fm.format(data);
         return str;
     }
+    
+    private boolean verificaVencimento(Date emissao, Date vencimento){
+	boolean data;
+	if (emissao.before(vencimento)){
+            data = true;
+	}
+	else if (emissao.after(vencimento))
+            data = false;
+	else
+            data = true;
+	return data;
+}
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
