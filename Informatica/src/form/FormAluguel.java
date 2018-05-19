@@ -1,8 +1,12 @@
 package form;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Aluguel;
@@ -27,6 +31,7 @@ public class FormAluguel extends javax.swing.JFrame {
     Equipamento equipamento;
     DefaultTableModel modeloEstoque  = null;
     DefaultTableModel modeloPedido = null;
+    NumberFormat nf;
     double soma;
     int codItem = 0;
 
@@ -43,6 +48,7 @@ public class FormAluguel extends javax.swing.JFrame {
         modeloEstoque = (DefaultTableModel) tbInserir.getModel();
         modeloPedido = (DefaultTableModel) tbPedido.getModel();
         aluguel = new Aluguel();
+        nf = new DecimalFormat ("R$ #,##0.00", new DecimalFormatSymbols (new Locale ("pt", "BR")));
     }
     
     @SuppressWarnings("unchecked")
@@ -461,7 +467,7 @@ public class FormAluguel extends javax.swing.JFrame {
                             .addGroup(PanelClienteLayout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lbValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(PanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btRemoverItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -474,7 +480,7 @@ public class FormAluguel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(PanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(PanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelClienteLayout.createSequentialGroup()
                         .addComponent(btRemoverItem)
                         .addGap(12, 12, 12)
@@ -483,10 +489,13 @@ public class FormAluguel extends javax.swing.JFrame {
                         .addGroup(PanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))
-                        .addGap(26, 26, 26)
-                        .addGroup(PanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(lbValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(PanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(PanelClienteLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel12))
+                            .addGroup(PanelClienteLayout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(lbValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -710,7 +719,7 @@ public class FormAluguel extends javax.swing.JFrame {
 
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
         tfDias.setText("0");
-        lbValorTotal.setText("0");
+        lbValorTotal.setText(nf.format(0));        
         Object codigo = modeloEstoque.getValueAt(tbInserir.getSelectedRow(), 0);
                 equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) codigo);         
                 if(equipamento.getQuantEstoque() <= 0){
@@ -732,7 +741,7 @@ public class FormAluguel extends javax.swing.JFrame {
                                 item.setQuantidade(valor);                                
                                 item.setCodItem(++codItem);
                                 item.calcularValorItem();
-                                soma = soma + item.getValorItem();
+                                soma = soma + item.getValorItem();                                
                                 inserirTabelaPedido(item, equipamento);
                                 equipamento.setQuantEstoque(equipamento.getQuantEstoque() - valor);
                                 aluguel.adicionaItem(item);
@@ -763,7 +772,7 @@ public class FormAluguel extends javax.swing.JFrame {
             double subTotal = (Double) tbPedido.getModel().getValueAt(linha, 4);            
             soma = soma - subTotal;
             equipamento.setQuantEstoque(equipamento.getQuantEstoque() + quantidade);
-            lbValorTotal.setText(Double.toString(soma));
+            lbValorTotal.setText(nf.format(soma));
             aluguel.removerItem(codigo);
             modeloPedido.removeRow(linha);
             if(tbPedido.getRowCount() < 1){
@@ -786,6 +795,7 @@ public class FormAluguel extends javax.swing.JFrame {
                 FormPrincipal.bdAluguel.adicionaAluguel(aluguel);
                 JOptionPane.showMessageDialog(null, "Pedido fechado com sucesso!", "Informaçao de Pedido", JOptionPane.INFORMATION_MESSAGE);
                 limparFormulario();
+                FormPrincipal.nroAluguel++;
                 btNovaVenda.setEnabled(true);
                 btInserir.setEnabled(false);
             }      
@@ -810,7 +820,7 @@ public class FormAluguel extends javax.swing.JFrame {
         try{
             aluguel.setDias(Integer.parseInt(tfDias.getText()));
             aluguel.calcularValorTotal();
-            lbValorTotal.setText(Double.toString(aluguel.getValorTotal()));
+            lbValorTotal.setText(nf.format(aluguel.getValorTotal()));
             if(Integer.parseInt(tfDias.getText()) > 0){
                 btFecharPedido.setEnabled(true);
                 tfDataDevolucao.setText("Data de Devolução: " + formataData(aluguel.dataDevolucao()));
@@ -823,7 +833,7 @@ public class FormAluguel extends javax.swing.JFrame {
             btFecharPedido.setEnabled(false);
         }
     }//GEN-LAST:event_tfDiasKeyReleased
-
+   
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         btInserir.setEnabled(true);
         limparFormulario();
@@ -839,8 +849,7 @@ public class FormAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void btNovaVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovaVendaActionPerformed
-        aluguel = new Aluguel();
-        FormPrincipal.nroAluguel++;
+        aluguel = new Aluguel();        
         mostrarDataNro();
         btInserir.setEnabled(true);
         btNovaVenda.setEnabled(false);
@@ -895,12 +904,14 @@ public class FormAluguel extends javax.swing.JFrame {
         tfDias.setText("0");
         tfDias.setEnabled(false);
         tfDataDevolucao.setText("");
-        lbValorTotal.setText("0");
+        lbValorTotal.setText(nf.format(0));
         cbCategoria.setEnabled(false);
         btBuscar.setEnabled(false);
         btSelecionar.setEnabled(false);
         btRemoverItem.setEnabled(false);
-        btFecharPedido.setEnabled(false);        
+        btFecharPedido.setEnabled(false);
+        lbData.setText("");
+        lbNroAluguel.setText("");
         aluguel = null;
     }
     
