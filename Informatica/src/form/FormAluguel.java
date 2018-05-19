@@ -386,14 +386,14 @@ public class FormAluguel extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Cod", "Categoria", "Modelo", "Quantidade", "Sub-Total"
+                "Cod", "Cod Equip.", "Categoria", "Modelo", "Quantidade", "Sub-Total"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -412,6 +412,7 @@ public class FormAluguel extends javax.swing.JFrame {
             tbPedido.getColumnModel().getColumn(2).setResizable(false);
             tbPedido.getColumnModel().getColumn(3).setResizable(false);
             tbPedido.getColumnModel().getColumn(4).setResizable(false);
+            tbPedido.getColumnModel().getColumn(5).setResizable(false);
         }
 
         btRemoverItem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -574,6 +575,7 @@ public class FormAluguel extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btNovaVenda.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btNovaVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Shoppingcart-13-plus-icon.png"))); // NOI18N
         btNovaVenda.setText("Nova Venda");
         btNovaVenda.setEnabled(false);
@@ -677,6 +679,7 @@ public class FormAluguel extends javax.swing.JFrame {
     }
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        limparTabelaInserir();
         List<Equipamento> equipamentos = FormPrincipal.bdEquipamento.todosEquipamentos();
         if(equipamentos.size() > 0){
             for (int i = 0; i < equipamentos.size(); i++){
@@ -768,9 +771,11 @@ public class FormAluguel extends javax.swing.JFrame {
         try{
             int linha = tbPedido.getSelectedRow();
             int codigo = (Integer) tbPedido.getModel().getValueAt(linha, 0);
-            int quantidade = (Integer) tbPedido.getModel().getValueAt(linha, 3);
-            double subTotal = (Double) tbPedido.getModel().getValueAt(linha, 4);            
+            int codEquip = (Integer) tbPedido.getModel().getValueAt(linha, 1);            
+            int quantidade = (Integer) tbPedido.getModel().getValueAt(linha, 4);
+            double subTotal = (Double) tbPedido.getModel().getValueAt(linha, 5);            
             soma = soma - subTotal;
+            equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(codEquip);
             equipamento.setQuantEstoque(equipamento.getQuantEstoque() + quantidade);
             lbValorTotal.setText(nf.format(soma));
             aluguel.removerItem(codigo);
@@ -795,6 +800,8 @@ public class FormAluguel extends javax.swing.JFrame {
                 FormPrincipal.bdAluguel.adicionaAluguel(aluguel);
                 JOptionPane.showMessageDialog(null, "Pedido fechado com sucesso!", "Informaçao de Pedido", JOptionPane.INFORMATION_MESSAGE);
                 limparFormulario();
+                lbData.setText("");
+                lbNroAluguel.setText("");
                 FormPrincipal.nroAluguel++;
                 btNovaVenda.setEnabled(true);
                 btInserir.setEnabled(false);
@@ -867,6 +874,7 @@ public class FormAluguel extends javax.swing.JFrame {
     private void inserirTabelaPedido(Item item, Equipamento equipamento){
         modeloPedido.addRow(new Object[]{
             item.getCodItem(),
+            equipamento.getCodEquipamento(),
             equipamento.getCategoria(),
             equipamento.getModelo(),
             item.getQuantidade(),
@@ -909,9 +917,7 @@ public class FormAluguel extends javax.swing.JFrame {
         btBuscar.setEnabled(false);
         btSelecionar.setEnabled(false);
         btRemoverItem.setEnabled(false);
-        btFecharPedido.setEnabled(false);
-        lbData.setText("");
-        lbNroAluguel.setText("");
+        btFecharPedido.setEnabled(false);        
         aluguel = null;
     }
     
