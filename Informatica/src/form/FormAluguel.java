@@ -27,7 +27,7 @@ public class FormAluguel extends javax.swing.JFrame {
     Equipamento equipamento;
     DefaultTableModel modeloEstoque  = null;
     DefaultTableModel modeloPedido = null;
-    double soma = 0;
+    double soma;
     int codItem = 0;
 
     public static Cliente getCliente() {
@@ -42,6 +42,7 @@ public class FormAluguel extends javax.swing.JFrame {
         initComponents();
         modeloEstoque = (DefaultTableModel) tbInserir.getModel();
         modeloPedido = (DefaultTableModel) tbPedido.getModel();
+        aluguel = new Aluguel();
     }
     
     @SuppressWarnings("unchecked")
@@ -85,12 +86,18 @@ public class FormAluguel extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         tfDias = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        tfTotal = new javax.swing.JTextField();
         tfDataDevolucao = new javax.swing.JLabel();
+        lbValorTotal = new javax.swing.JLabel();
         PanelOpcoes = new javax.swing.JPanel();
         btFecharPedido = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        lbNroAluguel = new javax.swing.JLabel();
+        lbData = new javax.swing.JLabel();
+        btNovaVenda = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Aluguel");
@@ -361,7 +368,7 @@ public class FormAluguel extends javax.swing.JFrame {
                     .addGroup(PanelEstoqueLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btSelecionar))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -428,11 +435,11 @@ public class FormAluguel extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setText("Valor Total:");
 
-        tfTotal.setEditable(false);
-        tfTotal.setText("0");
-
         tfDataDevolucao.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         tfDataDevolucao.setName("tfDataDevolucao"); // NOI18N
+
+        lbValorTotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbValorTotal.setForeground(new java.awt.Color(255, 102, 0));
 
         javax.swing.GroupLayout PanelClienteLayout = new javax.swing.GroupLayout(PanelCliente);
         PanelCliente.setLayout(PanelClienteLayout);
@@ -446,10 +453,15 @@ public class FormAluguel extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelClienteLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(PanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(tfDias, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(tfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PanelClienteLayout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(jLabel11)
+                                .addGap(18, 18, 18)
+                                .addComponent(tfDias, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(PanelClienteLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lbValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(PanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btRemoverItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -462,19 +474,20 @@ public class FormAluguel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(PanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btRemoverItem)
+                .addGroup(PanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(PanelClienteLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfDataDevolucao)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btRemoverItem)
+                        .addGap(12, 12, 12)
+                        .addComponent(tfDataDevolucao))
+                    .addGroup(PanelClienteLayout.createSequentialGroup()
+                        .addGroup(PanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addGap(26, 26, 26)
+                        .addGroup(PanelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(lbValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         PanelOpcoes.setBackground(new java.awt.Color(250, 250, 250));
@@ -510,36 +523,100 @@ public class FormAluguel extends javax.swing.JFrame {
         });
         PanelOpcoes.add(btSair);
 
+        jPanel2.setBackground(new java.awt.Color(250, 250, 250));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel13.setText("Aluguel Nro:");
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel14.setText("Data do Aluguel:");
+
+        lbNroAluguel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbNroAluguel.setForeground(new java.awt.Color(255, 102, 0));
+
+        lbData.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbData.setForeground(new java.awt.Color(255, 102, 0));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbNroAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbData, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbNroAluguel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btNovaVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Shoppingcart-13-plus-icon.png"))); // NOI18N
+        btNovaVenda.setText("Nova Venda");
+        btNovaVenda.setEnabled(false);
+        btNovaVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btNovaVendaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
                                 .addComponent(PanelEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(PanelCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(PanelDadosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(PanelOpcoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(PanelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 4, Short.MAX_VALUE))
+                            .addComponent(PanelOpcoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(PanelDadosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btNovaVenda)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanelDadosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PanelEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btNovaVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(PanelDadosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PanelEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PanelOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -550,25 +627,21 @@ public class FormAluguel extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        setSize(new java.awt.Dimension(926, 656));
+        setSize(new java.awt.Dimension(926, 744));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
-        //cliente = new Cliente();
-        //FormBuscarCliente.setCliente(cliente);
         new FormBuscarCliente().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(cliente != null){
-            aluguel = new Aluguel();
+        mostrarDataNro();        
+        if(cliente != null){            
             aluguel.setCliente(cliente);
             tfNome.setText(cliente.getNome());
             tfCpf.setText(cliente.getCpf());
@@ -584,6 +657,15 @@ public class FormAluguel extends javax.swing.JFrame {
             btBuscar.setEnabled(true);
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void mostrarDataNro() {
+        soma = 0;
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+        String data;
+        data = f.format( new Date() );
+        lbNroAluguel.setText(String.valueOf(FormPrincipal.nroAluguel));
+        lbData.setText(data);
+    }
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         List<Equipamento> equipamentos = FormPrincipal.bdEquipamento.todosEquipamentos();
@@ -628,7 +710,7 @@ public class FormAluguel extends javax.swing.JFrame {
 
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
         tfDias.setText("0");
-        tfTotal.setText("0");
+        lbValorTotal.setText("0");
         Object codigo = modeloEstoque.getValueAt(tbInserir.getSelectedRow(), 0);
                 equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) codigo);         
                 if(equipamento.getQuantEstoque() <= 0){
@@ -666,23 +748,6 @@ public class FormAluguel extends javax.swing.JFrame {
                 }                
     }//GEN-LAST:event_btSelecionarActionPerformed
 
-    /*private void adicionaEquipamentoPedido() throws NumberFormatException {
-        modeloPedido.addRow(new Object[]{
-            codItem,
-            equipamento.getCodEquipamento(),
-            equipamento.getCategoria(),
-            equipamento.getModelo(),
-            valor,
-            valor * equipamento.getValorDiaria()
-        });
-        atualizaTotal();
-        codItem++;
-        int qt = equipamento.getQuantEstoque() - valor;
-        equipamento.setQuantEstoque(qt);
-        btRemoverItem.setEnabled(true);
-        tfDias.setEnabled(true);
-    }*/
-
     private void tbInserirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbInserirMousePressed
         int codigo = (int) (modeloEstoque.getValueAt(tbInserir.getSelectedRow(), 0));
         equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(codigo);        
@@ -698,7 +763,7 @@ public class FormAluguel extends javax.swing.JFrame {
             double subTotal = (Double) tbPedido.getModel().getValueAt(linha, 4);            
             soma = soma - subTotal;
             equipamento.setQuantEstoque(equipamento.getQuantEstoque() + quantidade);
-            tfTotal.setText(Double.toString(soma));
+            lbValorTotal.setText(Double.toString(soma));
             aluguel.removerItem(codigo);
             modeloPedido.removeRow(linha);
             if(tbPedido.getRowCount() < 1){
@@ -712,39 +777,17 @@ public class FormAluguel extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione um equipamento para remover!", "Atenção", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btRemoverItemActionPerformed
-
-    /*private void novoAluguel(ActionEvent evt) throws HeadlessException {
-        int novoAluguel = JOptionPane.showConfirmDialog(null, "Deseja Fazer um Novo Aluguel?", "Novo Aluguel", JOptionPane.YES_NO_OPTION);
-        if(novoAluguel == 0){
-            btLimparActionPerformed(evt);
-        }else{
-            btSairActionPerformed(evt);
-        }
-    }*/
-
-    /*private void cadastrarItemdoAluguel() {
-        int itemCod;
-        int quant;
-        Item item;
-        for(int i = tbPedido.getRowCount()-1; i >= 0; i--){
-            itemCod = (int) modeloPedido.getValueAt(i, 1);
-            quant = (int) modeloPedido.getValueAt(i, 4);
-            equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(itemCod);
-            item = new Item();
-            item.setCodItem((int) modeloPedido.getValueAt(i, 0));
-            item.setEquipamento(equipamento);
-            item.setQuantidade(quant);
-            aluguel.adicionaItem(item);
-        }
-    }*/
-
+   
     private void btFecharPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharPedidoActionPerformed
         if(aluguel.todosItens().size() > 0){
             int opcao = JOptionPane.showConfirmDialog(null, "Deseja fechar o pedido?", "Fechamento de pedido", JOptionPane.YES_NO_OPTION);
             if(opcao == 0){
+                aluguel.setNumero(FormPrincipal.nroAluguel);
                 FormPrincipal.bdAluguel.adicionaAluguel(aluguel);
                 JOptionPane.showMessageDialog(null, "Pedido fechado com sucesso!", "Informaçao de Pedido", JOptionPane.INFORMATION_MESSAGE);
                 limparFormulario();
+                btNovaVenda.setEnabled(true);
+                btInserir.setEnabled(false);
             }      
         }else{
             JOptionPane.showMessageDialog(null, "Adicione pelo menos um item!", "Atenção!", JOptionPane.ERROR_MESSAGE);
@@ -767,7 +810,7 @@ public class FormAluguel extends javax.swing.JFrame {
         try{
             aluguel.setDias(Integer.parseInt(tfDias.getText()));
             aluguel.calcularValorTotal();
-            tfTotal.setText(Double.toString(aluguel.getValorTotal()));
+            lbValorTotal.setText(Double.toString(aluguel.getValorTotal()));
             if(Integer.parseInt(tfDias.getText()) > 0){
                 btFecharPedido.setEnabled(true);
                 tfDataDevolucao.setText("Data de Devolução: " + formataData(aluguel.dataDevolucao()));
@@ -782,6 +825,7 @@ public class FormAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_tfDiasKeyReleased
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        btInserir.setEnabled(true);
         limparFormulario();
     }//GEN-LAST:event_btLimparActionPerformed
 
@@ -794,17 +838,13 @@ public class FormAluguel extends javax.swing.JFrame {
             setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
     }//GEN-LAST:event_formWindowClosing
 
-    /*private void atualizaTotal() throws NumberFormatException {
-        double valorTotal = 0;
-        if(tbPedido.getRowCount() > 0){
-            for(int i = tbPedido.getRowCount()-1; i >= 0; i--){
-                valorTotal +=   (double)  modeloPedido.getValueAt(i, 5);
-            }
-            valorTotal *= Integer.parseInt(tfDias.getText());
-        }
-        aluguel.setValorTotal(valorTotal);
-        tfTotal.setText(String.valueOf(valorTotal));
-    }*/
+    private void btNovaVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btNovaVendaActionPerformed
+        aluguel = new Aluguel();
+        FormPrincipal.nroAluguel++;
+        mostrarDataNro();
+        btInserir.setEnabled(true);
+        btNovaVenda.setEnabled(false);
+    }//GEN-LAST:event_btNovaVendaActionPerformed
     
     private void inserirTabelaEstoque(List<Equipamento> equipamentos, int i){
         modeloEstoque.addRow(new Object[]{
@@ -855,12 +895,12 @@ public class FormAluguel extends javax.swing.JFrame {
         tfDias.setText("0");
         tfDias.setEnabled(false);
         tfDataDevolucao.setText("");
-        tfTotal.setText("0");
+        lbValorTotal.setText("0");
         cbCategoria.setEnabled(false);
         btBuscar.setEnabled(false);
         btSelecionar.setEnabled(false);
         btRemoverItem.setEnabled(false);
-        btFecharPedido.setEnabled(false);
+        btFecharPedido.setEnabled(false);        
         aluguel = null;
     }
     
@@ -915,6 +955,7 @@ public class FormAluguel extends javax.swing.JFrame {
     private javax.swing.JButton btFecharPedido;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btNovaVenda;
     private javax.swing.JButton btRemoverItem;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSelecionar;
@@ -923,6 +964,8 @@ public class FormAluguel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -932,9 +975,13 @@ public class FormAluguel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lbData;
+    private javax.swing.JLabel lbNroAluguel;
+    private javax.swing.JLabel lbValorTotal;
     private javax.swing.JTextArea taDescricao;
     private javax.swing.JTable tbInserir;
     private javax.swing.JTable tbPedido;
@@ -948,7 +995,6 @@ public class FormAluguel extends javax.swing.JFrame {
     private javax.swing.JTextField tfNome;
     private javax.swing.JTextField tfNumero;
     private javax.swing.JTextField tfTelefone;
-    private javax.swing.JTextField tfTotal;
     private javax.swing.JTextField tfUf;
     // End of variables declaration//GEN-END:variables
 }

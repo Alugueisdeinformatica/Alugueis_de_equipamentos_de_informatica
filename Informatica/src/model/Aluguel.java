@@ -15,7 +15,7 @@ import java.util.List;
  * @author Luís Gustavo
  */
 public class Aluguel {
-    public static int numero = 0;
+    public int numero;
     private Cliente cliente;
     private List<Item> lista;
     private Date dataAluguel;
@@ -23,7 +23,6 @@ public class Aluguel {
     private int dias;
 
     public Aluguel() {
-        numero++;
         lista = new ArrayList<Item>();
         dataAluguel = new Date();
     }    
@@ -63,6 +62,10 @@ public class Aluguel {
     public int getNumero() {
         return numero;
     }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }    
     
     public void adicionaItem(Item item){
         lista.add(item);
