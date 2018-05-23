@@ -8,18 +8,19 @@ package form;
 import dao.AluguelDao;
 import dao.ClienteDao;
 import dao.EquipamentoDao;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author John Peter
  */
-public class FormPrincipal extends javax.swing.JFrame {
+public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     
     public static EquipamentoDao bdEquipamento;
     public static ClienteDao bdCliente;
     public static AluguelDao bdAluguel;
-    public static int codAluguel;
     public static int nroAluguel = 1;
 
     /**
@@ -29,7 +30,6 @@ public class FormPrincipal extends javax.swing.JFrame {
         bdEquipamento = new EquipamentoDao();
         bdCliente = new ClienteDao();
         bdAluguel = new AluguelDao();
-        codAluguel = 10000;
         initComponents();
     }
 
@@ -56,6 +56,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JToolBar.Separator();
         btSair = new javax.swing.JButton();
         jPanelSul = new javax.swing.JPanel();
+        jPanelRelogio = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        lbData = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lbHora = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenuCadastro = new javax.swing.JMenu();
         JMenuItemCliente = new javax.swing.JMenuItem();
@@ -173,17 +178,53 @@ public class FormPrincipal extends javax.swing.JFrame {
         jPanel1.add(jPanelNorte, java.awt.BorderLayout.PAGE_START);
 
         jPanelSul.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelSul.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
+        jPanelSul.setLayout(new java.awt.BorderLayout());
 
-        javax.swing.GroupLayout jPanelSulLayout = new javax.swing.GroupLayout(jPanelSul);
-        jPanelSul.setLayout(jPanelSulLayout);
-        jPanelSulLayout.setHorizontalGroup(
-            jPanelSulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 756, Short.MAX_VALUE)
+        jPanelRelogio.setBackground(new java.awt.Color(250, 250, 250));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Data:");
+
+        lbData.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbData.setForeground(new java.awt.Color(51, 51, 255));
+        lbData.setText("18/02/2018");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setText("Hora:");
+
+        lbHora.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbHora.setForeground(new java.awt.Color(51, 51, 255));
+        lbHora.setText("19:38");
+
+        javax.swing.GroupLayout jPanelRelogioLayout = new javax.swing.GroupLayout(jPanelRelogio);
+        jPanelRelogio.setLayout(jPanelRelogioLayout);
+        jPanelRelogioLayout.setHorizontalGroup(
+            jPanelRelogioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRelogioLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbData)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbHora)
+                .addContainerGap(437, Short.MAX_VALUE))
         );
-        jPanelSulLayout.setVerticalGroup(
-            jPanelSulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        jPanelRelogioLayout.setVerticalGroup(
+            jPanelRelogioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRelogioLayout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addGroup(jPanelRelogioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(lbData)
+                    .addComponent(lbHora))
+                .addContainerGap())
         );
+
+        jPanelSul.add(jPanelRelogio, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanelSul, java.awt.BorderLayout.PAGE_END);
 
@@ -305,7 +346,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(772, 669));
@@ -314,6 +355,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setExtendedState(this.MAXIMIZED_BOTH);
+        executarDataHora();
     }//GEN-LAST:event_formWindowOpened
 
     private void JMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemSairActionPerformed
@@ -366,7 +408,34 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void jMenuItemEfetuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEfetuarActionPerformed
         new FormDevolucao().setVisible(true);
     }//GEN-LAST:event_jMenuItemEfetuarActionPerformed
-
+    
+    public void executarDataHora(){
+        new Thread(){
+            @Override
+            public void run(){
+                for(;;){
+                    dataEHora();
+                    try{
+                        sleep(1000);
+                    }catch(InterruptedException ie){
+                        ie.printStackTrace();
+                    }
+                }
+            }
+        }.start();       
+    }
+    
+    public void dataEHora(){
+        Date data;        
+        SimpleDateFormat fmd = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat fmh = new SimpleDateFormat("HH:mm:ss");
+        data = new Date();
+        String str = fmd.format(data);
+        String hora = fmh.format(data);        
+        lbData.setText(str);
+        lbHora.setText(hora);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -397,7 +466,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormPrincipal().setVisible(true);
+                new FormPrincipal().setVisible(true);                
             }
         });
     }
@@ -416,6 +485,8 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenuAluguel;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuConsulta;
@@ -428,6 +499,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelCentro;
     private javax.swing.JPanel jPanelNorte;
+    private javax.swing.JPanel jPanelRelogio;
     private javax.swing.JPanel jPanelSul;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
@@ -435,5 +507,12 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lbData;
+    private javax.swing.JLabel lbHora;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
