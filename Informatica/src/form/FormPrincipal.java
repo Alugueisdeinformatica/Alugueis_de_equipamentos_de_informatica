@@ -413,7 +413,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         new Thread(){
             @Override
             public void run(){
-                for(;;){
+                while(true){
                     dataEHora();
                     try{
                         sleep(1000);
