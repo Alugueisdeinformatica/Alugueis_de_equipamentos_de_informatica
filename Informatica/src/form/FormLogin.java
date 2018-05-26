@@ -5,6 +5,9 @@
  */
 package form;
 
+import javax.swing.JOptionPane;
+import model.Usuario;
+
 /**
  *
  * @author Luís Gustavo
@@ -36,7 +39,7 @@ public class FormLogin extends javax.swing.JFrame {
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
         setResizable(false);
 
@@ -55,6 +58,11 @@ public class FormLogin extends javax.swing.JFrame {
         btAcessar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btAcessar.setText("Acessar");
         btAcessar.setName("btAcessar"); // NOI18N
+        btAcessar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAcessarActionPerformed(evt);
+            }
+        });
 
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setText("Limpar");
@@ -130,6 +138,28 @@ public class FormLogin extends javax.swing.JFrame {
         tfSenha.setText("");
         tfNome.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
+
+    private void btAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAcessarActionPerformed
+        Usuario usuario = new Usuario();
+                
+        if(tfNome.getText().isEmpty() || tfSenha.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha todos os dados!", "Atenção", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            if(usuario.validarNome(tfNome.getText()) && usuario.validarSenha(tfSenha.getText())){
+                if(usuario.efetuarLogin(tfNome.getText(), tfSenha.getText())){
+                    new FormPrincipal().setVisible(true);
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Dados de login não conferem! \nPor favor, tente novamente!", "Problema Encontrado", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else{        
+                JOptionPane.showMessageDialog(null, "Dados de login incorretos! \nFavor preenche-los novamente", "Atenção", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btAcessarActionPerformed
 
     /**
      * @param args the command line arguments
