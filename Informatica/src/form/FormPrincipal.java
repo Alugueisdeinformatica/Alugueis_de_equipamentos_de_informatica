@@ -337,6 +337,11 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
 
         JMenuItemSobre.setText("Sobre");
         JMenuItemSobre.setName("JMenuItemSobre"); // NOI18N
+        JMenuItemSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemSobreActionPerformed(evt);
+            }
+        });
         JMenuSuporte.add(JMenuItemSobre);
 
         jMenuBar1.add(JMenuSuporte);
@@ -417,6 +422,15 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     private void jMenuItemEmitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEmitirActionPerformed
         new FormNota().setVisible(true);
     }//GEN-LAST:event_jMenuItemEmitirActionPerformed
+
+    private void JMenuItemSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemSobreActionPerformed
+        String str = "Trabalho da disciplina de Laboratório de Programação de Interface com o Usuário";
+        str += "\nProfessor: Giuliano Prado de Morais Giglio";
+        str += "\nAlunos: João Pedro Guedes Presto e Luís Gustavo da Cunha Cipriani";
+        str += "\nBacharelado em Sistemas de Informação - 4° Período";
+        str += "\nCES-JF Junho de 2018";
+        JOptionPane.showMessageDialog(null, str, "", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_JMenuItemSobreActionPerformed
     
     public void executarDataHora(){
         new Thread(){
