@@ -28,8 +28,8 @@ public class FormLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lbUsuario = new javax.swing.JLabel();
-        tfUsuario = new javax.swing.JTextField();
+        lbNome = new javax.swing.JLabel();
+        tfNome = new javax.swing.JTextField();
         lbSenha = new javax.swing.JLabel();
         tfSenha = new javax.swing.JPasswordField();
         btAcessar = new javax.swing.JButton();
@@ -40,11 +40,11 @@ public class FormLogin extends javax.swing.JFrame {
         setTitle("Login");
         setResizable(false);
 
-        lbUsuario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbUsuario.setText("Usuário:");
-        lbUsuario.setName("lbUsuario"); // NOI18N
+        lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbNome.setText("Nome:");
+        lbNome.setName("lbNome"); // NOI18N
 
-        tfUsuario.setName("tfUsuario"); // NOI18N
+        tfNome.setName("tfNome"); // NOI18N
 
         lbSenha.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbSenha.setText("Senha:");
@@ -92,17 +92,17 @@ public class FormLogin extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbSenha)
                             .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbUsuario))))
+                            .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbNome))))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addComponent(lbUsuario)
+                .addComponent(lbNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(lbSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -126,9 +126,9 @@ public class FormLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        tfUsuario.setText("");
+        tfNome.setText("");
         tfSenha.setText("");
-        tfUsuario.requestFocus();
+        tfNome.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
 
     /**
@@ -171,9 +171,9 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbSenha;
-    private javax.swing.JLabel lbUsuario;
+    private javax.swing.JTextField tfNome;
     private javax.swing.JPasswordField tfSenha;
-    private javax.swing.JTextField tfUsuario;
     // End of variables declaration//GEN-END:variables
 }
