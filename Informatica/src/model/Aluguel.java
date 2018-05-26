@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -110,5 +111,20 @@ public class Aluguel {
 	cal.setTime(dataAluguel);
 	cal.add(Calendar.DAY_OF_MONTH, Integer.parseInt(Integer.toString(dias)));
 	return cal.getTime();
+    }
+    
+    @Override
+    public String toString(){
+        SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
+        String str = "";
+        str += "\nNúmero do Aluguel: " + numero;
+        str += "\nData do Aluguel " + fm.format(dataAluguel);
+        str += "\nData da Devolução: " + fm.format(dataDevolucao());
+        str += "\nValor Total: " + valorTotal;
+        str += cliente.toString();
+        for(Item i : lista){
+            str += i.toString();
+        }
+        return str;
     }
 }
