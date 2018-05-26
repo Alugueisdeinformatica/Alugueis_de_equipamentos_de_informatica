@@ -5,15 +5,18 @@
  */
 package form;
 
+import java.util.List;
+import javax.swing.JOptionPane;
+import model.Aluguel;
+
 /**
  *
  * @author Luís Gustavo
  */
 public class FormNota extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormNota
-     */
+    Aluguel aluguel = null;
+    
     public FormNota() {
         initComponents();
     }
@@ -30,7 +33,6 @@ public class FormNota extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lbNumero = new javax.swing.JLabel();
         tfNumero = new javax.swing.JTextField();
-        boTodos = new javax.swing.JCheckBox();
         btBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         taDados = new javax.swing.JTextArea();
@@ -48,13 +50,14 @@ public class FormNota extends javax.swing.JFrame {
 
         tfNumero.setName("tfNumero"); // NOI18N
 
-        boTodos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        boTodos.setText("Selecionar Todos");
-        boTodos.setName("boTodos"); // NOI18N
-
         btBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btBuscar.setText("Buscar");
         btBuscar.setName("btBuscar"); // NOI18N
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
 
         taDados.setEditable(false);
         taDados.setColumns(20);
@@ -100,8 +103,6 @@ public class FormNota extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(lbNumero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(tfNumero))
-                                .addGap(93, 93, 93)
-                                .addComponent(boTodos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btBuscar))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -114,9 +115,7 @@ public class FormNota extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(boTodos)
-                        .addComponent(btBuscar))
+                    .addComponent(btBuscar)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lbNumero)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -140,6 +139,21 @@ public class FormNota extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        try{
+            aluguel = FormPrincipal.bdAluguel.buscaAluguel(Integer.parseInt(tfNumero.getText()));
+            if(aluguel != null){
+                taDados.setText(aluguel.toString());
+                btEmitir.setEnabled(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Aluguel não encontrado!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                btEmitir.setEnabled(false);
+            }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Informe o número!", "Atenção", JOptionPane.ERROR_MESSAGE);
+        }  
+    }//GEN-LAST:event_btBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,7 +191,6 @@ public class FormNota extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox boTodos;
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btEmitir;
     private javax.swing.JButton btLimpar;
