@@ -59,6 +59,11 @@ public class FormLogin extends javax.swing.JFrame {
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setText("Limpar");
         btLimpar.setName("btLimpar"); // NOI18N
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setText("Sair");
@@ -119,6 +124,12 @@ public class FormLogin extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        tfUsuario.setText("");
+        tfSenha.setText("");
+        tfUsuario.requestFocus();
+    }//GEN-LAST:event_btLimparActionPerformed
 
     /**
      * @param args the command line arguments
