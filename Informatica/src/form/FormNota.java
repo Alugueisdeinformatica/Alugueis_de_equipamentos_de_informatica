@@ -74,6 +74,11 @@ public class FormNota extends javax.swing.JFrame {
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setText("Limpar");
         btLimpar.setName("btLimpar"); // NOI18N
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setText("Sair");
@@ -154,6 +159,13 @@ public class FormNota extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Informe o número!", "Atenção", JOptionPane.ERROR_MESSAGE);
         }  
     }//GEN-LAST:event_btBuscarActionPerformed
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        tfNumero.setText("");
+        taDados.setText("");
+        btEmitir.setEnabled(false);
+        tfNumero.requestFocus();
+    }//GEN-LAST:event_btLimparActionPerformed
 
     /**
      * @param args the command line arguments
