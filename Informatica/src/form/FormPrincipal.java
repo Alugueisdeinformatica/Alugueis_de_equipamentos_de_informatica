@@ -275,8 +275,13 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         });
         jMenuAluguel.add(jMenuItemNovo);
 
-        jMenuItemEmitir.setText("Emitir Contrato");
+        jMenuItemEmitir.setText("Emitir Nota Fiscal");
         jMenuItemEmitir.setName("jMenuItemEmitir"); // NOI18N
+        jMenuItemEmitir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEmitirActionPerformed(evt);
+            }
+        });
         jMenuAluguel.add(jMenuItemEmitir);
 
         jMenuItemEfetuar.setText("Efetuar Devolução");
@@ -408,6 +413,10 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     private void jMenuItemEfetuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEfetuarActionPerformed
         new FormDevolucao().setVisible(true);
     }//GEN-LAST:event_jMenuItemEfetuarActionPerformed
+
+    private void jMenuItemEmitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEmitirActionPerformed
+        new FormNota().setVisible(true);
+    }//GEN-LAST:event_jMenuItemEmitirActionPerformed
     
     public void executarDataHora(){
         new Thread(){
