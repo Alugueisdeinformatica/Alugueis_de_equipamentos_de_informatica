@@ -116,14 +116,19 @@ public class Aluguel {
     @Override
     public String toString(){
         SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat fmh = new SimpleDateFormat("HH:mm:ss");
         String str = "";
         str += "\nNúmero do Aluguel: " + numero;
         str += "\nData do Aluguel " + fm.format(dataAluguel);
+        str += "\nHorário do Aluguel: " + fmh.format(dataAluguel);
         str += "\nData da Devolução: " + fm.format(dataDevolucao());
         str += "\nValor Total: " + valorTotal;
+        str += "\n\n*******Informações do Cliente*******\n";
         str += cliente.toString();
+        str += "\n\n********Informações ds Itens********\n";
         for(Item i : lista){
             str += i.toString();
+            str += "\n------------------------------------";
         }
         return str;
     }

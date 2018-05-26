@@ -93,8 +93,7 @@ public class Equipamento {
                valorDiaria > 0;
     }
     
-    @Override
-    public String toString(){
+    public String toString_(){
         String str = "";
         str += "\nCódigo do Equipamento: " + codEquipamento;
         str += "\nModelo: " + modelo;

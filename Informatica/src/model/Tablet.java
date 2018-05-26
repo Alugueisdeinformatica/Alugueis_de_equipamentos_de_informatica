@@ -90,7 +90,7 @@ public class Tablet extends Equipamento{
     
     @Override
     public String toString(){
-        String str = "";
+        String str = toString_();
         str += "\nCapacidade: " + capacidade;
         str += "\nTamanho da Tela: " + tamanhoTela;
         str += "\nMemória Ram: " + memoriaRam;

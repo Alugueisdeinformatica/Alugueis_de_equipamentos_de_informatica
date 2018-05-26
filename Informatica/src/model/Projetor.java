@@ -80,7 +80,7 @@ public class Projetor extends Equipamento{
     
     @Override
     public String toString(){
-        String str = "";
+        String str = toString_();
         str += "\nMaterial: " + material;
         str += "\nBrilho: " + brilho;
         str += "\nResolução Óptica: " + resolucaoOptica;
