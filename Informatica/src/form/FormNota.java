@@ -5,7 +5,13 @@
  */
 package form;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Aluguel;
 
@@ -70,6 +76,11 @@ public class FormNota extends javax.swing.JFrame {
         btEmitir.setText("Emitir Nota Fiscal");
         btEmitir.setEnabled(false);
         btEmitir.setName("btEmitir"); // NOI18N
+        btEmitir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEmitirActionPerformed(evt);
+            }
+        });
 
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setText("Limpar");
@@ -166,6 +177,27 @@ public class FormNota extends javax.swing.JFrame {
         btEmitir.setEnabled(false);
         tfNumero.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
+
+    private void btEmitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEmitirActionPerformed
+        File arq = new File("src\\notas\\NotaFiscal_" + Integer.toString(aluguel.getNumero()) + ".txt");
+        if(!arq.exists()){
+            try {
+                arq.createNewFile();
+                FileWriter fw = new FileWriter(arq);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String str[] = taDados.getText().split("\n");
+                for(String linha : str){
+                    bw.write(linha);
+                    bw.newLine();
+                }
+                bw.close();
+                fw.close();
+                JOptionPane.showMessageDialog(null, "Nota fiscal gerada com sucesso!", "Concluído", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException ex) {
+                Logger.getLogger(FormNota.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btEmitirActionPerformed
 
     /**
      * @param args the command line arguments
