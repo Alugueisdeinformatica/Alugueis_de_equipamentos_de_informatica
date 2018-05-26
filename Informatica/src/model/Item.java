@@ -59,4 +59,14 @@ public class Item {
     public void calcularValorItem(){
         valorItem = equipamento.getValorDiaria() * quantidade;
     }   
+    
+    @Override
+    public String toString(){
+        String str = "";
+        str += "\nCódigo do Item: " + codItem;
+        str += "\nValor do Item: " + valorItem;
+        str += "\nQuantidade: " + quantidade;
+        str += equipamento.toString();
+        return str;
+    }
 }
