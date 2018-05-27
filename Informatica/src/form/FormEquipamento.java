@@ -100,7 +100,7 @@ public class FormEquipamento extends javax.swing.JFrame {
         jPanel2.add(btEditar);
 
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Magic-eraser-tool-icon.png"))); // NOI18N
+        btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
         btLimpar.setText("Limpar");
         btLimpar.setFocusable(false);
         btLimpar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

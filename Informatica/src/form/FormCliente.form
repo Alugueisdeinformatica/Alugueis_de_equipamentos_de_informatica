@@ -741,7 +741,7 @@
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icon/Magic-eraser-tool-icon.png"/>
+                  <Image iconType="3" name="/icon/Refresh-icon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Limpar"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>

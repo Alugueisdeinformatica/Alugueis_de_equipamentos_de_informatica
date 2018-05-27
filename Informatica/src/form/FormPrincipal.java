@@ -89,6 +89,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(250, 250, 250));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanelCentro.setBackground(new java.awt.Color(250, 250, 250));
@@ -100,6 +101,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         jLabel1.setText("J&L INFORMÁTICA");
         jPanelCentro.add(jLabel1, java.awt.BorderLayout.CENTER);
 
+        jLabel2.setBackground(new java.awt.Color(250, 250, 250));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/computer-stuff-1-e1465742115813.png"))); // NOI18N
         jPanelCentro.add(jLabel2, java.awt.BorderLayout.PAGE_END);
@@ -114,6 +116,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
+        btCliente.setBackground(new java.awt.Color(250, 250, 250));
         btCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/user-add-icon.png"))); // NOI18N
         btCliente.setText("Novo Cliente");
@@ -129,6 +132,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         jToolBar1.add(btCliente);
         jToolBar1.add(jSeparator4);
 
+        btEquipamento.setBackground(new java.awt.Color(250, 250, 250));
         btEquipamento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btEquipamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/my-computer-icon.png"))); // NOI18N
         btEquipamento.setText("Novo Equipamento");
@@ -144,6 +148,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         jToolBar1.add(btEquipamento);
         jToolBar1.add(jSeparator3);
 
+        btAluguel.setBackground(new java.awt.Color(250, 250, 250));
         btAluguel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btAluguel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/02-Basket-icon.png"))); // NOI18N
         btAluguel.setText("Novo Aluguel");
@@ -159,6 +164,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         jToolBar1.add(btAluguel);
         jToolBar1.add(jSeparator5);
 
+        btSair.setBackground(new java.awt.Color(250, 250, 250));
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/symbol-delete-icon.png"))); // NOI18N
         btSair.setText("Sair");
