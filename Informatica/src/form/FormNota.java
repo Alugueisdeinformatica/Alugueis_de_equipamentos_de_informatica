@@ -42,6 +42,7 @@ public class FormNota extends javax.swing.JFrame {
         btBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         taDados = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
         btEmitir = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
@@ -54,6 +55,8 @@ public class FormNota extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+
+        jPanel1.setBackground(new java.awt.Color(250, 250, 250));
 
         lbNumero.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNumero.setText("Número do Aluguel:");
@@ -77,6 +80,8 @@ public class FormNota extends javax.swing.JFrame {
         taDados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         taDados.setName("taDados"); // NOI18N
         jScrollPane1.setViewportView(taDados);
+
+        jPanel2.setBackground(new java.awt.Color(250, 250, 250));
 
         btEmitir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btEmitir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/invoice-icon.png"))); // NOI18N
@@ -109,13 +114,35 @@ public class FormNota extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btEmitir)
+                .addGap(18, 18, 18)
+                .addComponent(btLimpar)
+                .addGap(18, 18, 18)
+                .addComponent(btSair)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(btEmitir)
+                .addComponent(btLimpar)
+                .addComponent(btSair))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(lbNumero)
@@ -124,13 +151,7 @@ public class FormNota extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addComponent(btBuscar)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btEmitir)
-                        .addGap(27, 27, 27)
-                        .addComponent(btLimpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(btSair)))
+                    .addComponent(jScrollPane1))
                 .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
@@ -141,19 +162,16 @@ public class FormNota extends javax.swing.JFrame {
                     .addComponent(lbNumero)
                     .addComponent(tfNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btBuscar))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btEmitir)
-                    .addComponent(btLimpar)
-                    .addComponent(btSair))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(536, 437));
+        setSize(new java.awt.Dimension(536, 424));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -184,7 +202,8 @@ public class FormNota extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btEmitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEmitirActionPerformed
-        File arq = new File("src\\notas\\NotaFiscal_" + Integer.toString(aluguel.getNumero()) + ".txt");
+        String nro = Integer.toString(aluguel.getNumero());
+        File arq = new File("src\\notas\\NotaFiscal_" + nro + ".txt");
         if(!arq.exists()){
             try {
                 arq.createNewFile();
@@ -201,6 +220,9 @@ public class FormNota extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(FormNota.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Nota fiscal nro "+nro+" já foi gerada!\nConsulte a pasta de Notas",
+                    "Informação de Nota", JOptionPane.INFORMATION_MESSAGE);         
         }
     }//GEN-LAST:event_btEmitirActionPerformed
 
@@ -249,6 +271,7 @@ public class FormNota extends javax.swing.JFrame {
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbNumero;
     private javax.swing.JTextArea taDados;
