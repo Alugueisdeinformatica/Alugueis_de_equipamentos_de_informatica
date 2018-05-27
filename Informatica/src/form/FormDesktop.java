@@ -7,6 +7,7 @@ package form;
 
 import static form.FormEquipamento.equipamento;
 import java.util.Enumeration;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import model.Computador;
@@ -65,6 +66,11 @@ public class FormDesktop extends javax.swing.JFrame {
         setTitle("Cadastro de Desktop");
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.TOOLKIT_EXCLUDE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(250, 250, 250));
 
@@ -103,11 +109,6 @@ public class FormDesktop extends javax.swing.JFrame {
         rbWind.setSelected(true);
         rbWind.setText("Windows 10");
         rbWind.setName("rbWind"); // NOI18N
-        rbWind.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbWindActionPerformed(evt);
-            }
-        });
 
         rbUbuntu.setBackground(new java.awt.Color(250, 250, 250));
         bgSO.add(rbUbuntu);
@@ -339,10 +340,6 @@ public class FormDesktop extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rbWindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbWindActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbWindActionPerformed
-
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         String capacidadeHD = tfArmHD.getText();
         String memoria = tfMemoria.getText();
@@ -357,6 +354,14 @@ public class FormDesktop extends javax.swing.JFrame {
         if(comp.validaComputador()){
             FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) comp); 
             JOptionPane.showMessageDialog(null, "Desktop Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+            FormPrincipal.codEquipamento++;
+            int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
+            if(opcao == 0){
+                this.dispose();
+                new FormEquipamento().setVisible(true);
+            }else{
+                this.dispose();
+            }            
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
         }       
@@ -414,6 +419,10 @@ public class FormDesktop extends javax.swing.JFrame {
         rbOnBoard.setSelected(true);
         tfArmHD.requestFocus();
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src\\logo\\my-computer-icon 16.png").getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     private void capturarRadioSO(Computador comp) {
         //Radio Button SO

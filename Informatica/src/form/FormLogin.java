@@ -5,6 +5,7 @@
  */
 package form;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Usuario;
 
@@ -44,6 +45,11 @@ public class FormLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
 
@@ -202,6 +208,10 @@ public class FormLogin extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btAcessarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src\\logo\\my-computer-icon 16.png").getImage());        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

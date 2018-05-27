@@ -6,6 +6,7 @@
 package form;
 
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Cliente;
 
@@ -246,6 +247,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src\\logo\\user-search-icon 16.png").getImage());
         tfCPF.requestFocus();
     }//GEN-LAST:event_formWindowOpened
 

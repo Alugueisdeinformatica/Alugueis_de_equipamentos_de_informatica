@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Aluguel;
@@ -230,6 +231,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src\\logo\\02-Basket-icon 16.png").getImage());
         List<Aluguel> alugueis = FormPrincipal.bdAluguel.todosAlugueis();
         for(int i = 0; i < alugueis.size(); i++){
             inserirTabela(alugueis, i, modelo1);

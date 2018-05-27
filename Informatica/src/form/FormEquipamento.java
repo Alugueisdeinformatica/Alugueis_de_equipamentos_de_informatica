@@ -5,6 +5,7 @@
  */
 package form;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Equipamento;
 
@@ -56,6 +57,11 @@ public class FormEquipamento extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Equipamento");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(250, 250, 250));
 
@@ -157,7 +163,8 @@ public class FormEquipamento extends javax.swing.JFrame {
 
         tfModelo.setName("tfModelo"); // NOI18N
 
-        tfCodigo.setText("0");
+        tfCodigo.setEditable(false);
+        tfCodigo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         tfCodigo.setName("tfCodigo"); // NOI18N
         tfCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -299,9 +306,8 @@ public class FormEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btSeguinteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeguinteActionPerformed
-        equipamento = new Equipamento();
-        
-        equipamento.setCodEquipamento( Integer.parseInt(tfCodigo.getText()) );
+        equipamento = new Equipamento();        
+        equipamento.setCodEquipamento(FormPrincipal.codEquipamento);
         equipamento.setCategoria( cbCategoria.getSelectedItem().toString() );
         equipamento.setModelo( tfModelo.getText() );
         equipamento.setMarca( tfMarca.getText() );
@@ -331,7 +337,7 @@ public class FormEquipamento extends javax.swing.JFrame {
                     new FormTablet().setVisible(true);
                     break;
             }
-            this.setVisible(false);
+            this.dispose();            
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
         }
@@ -342,14 +348,19 @@ public class FormEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        tfCodigo.setText("0");
         tfModelo.setText("");
         tfMarca.setText("");
         tfQuantidade.setText("0");
         tfValor.setText("0");
         cbCategoria.setSelectedIndex(0);
-        tfCodigo.requestFocus();
+        tfModelo.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src\\logo\\my-computer-icon 16.png").getImage());
+        tfCodigo.setText(String.valueOf(FormPrincipal.codEquipamento));
+        tfModelo.requestFocus();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

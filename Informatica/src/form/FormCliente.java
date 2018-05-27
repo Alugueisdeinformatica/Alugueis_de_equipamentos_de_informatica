@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import model.Cliente;
@@ -696,6 +697,7 @@ public class FormCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_ftfDataNascimentoKeyReleased
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src\\logo\\user-add-icon 16.png").getImage());
         if(cliente != null){
             btAtualizar.setEnabled(true);
             btLimpar.setEnabled(false);

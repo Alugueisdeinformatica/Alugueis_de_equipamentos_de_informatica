@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Aluguel;
 
@@ -227,6 +228,7 @@ public class FormNota extends javax.swing.JFrame {
     }//GEN-LAST:event_btEmitirActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src\\logo\\invoice-icon 16.png").getImage());
         tfNumero.requestFocus();
     }//GEN-LAST:event_formWindowOpened
 

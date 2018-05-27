@@ -6,6 +6,7 @@
 package form;
 
 import static form.FormEquipamento.equipamento;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Equipamento;
 import model.Projetor;
@@ -55,6 +56,11 @@ public class FormProjetor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Projetor");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(250, 250, 250));
 
@@ -264,10 +270,22 @@ public class FormProjetor extends javax.swing.JFrame {
         if(proj.validaProjetor()){
             FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) proj); 
             JOptionPane.showMessageDialog(null, "Projetor Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+            FormPrincipal.codEquipamento++;
+            int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
+            if(opcao == 0){
+                this.dispose();
+                new FormEquipamento().setVisible(true);
+            }else{
+                this.dispose();
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
         }     
     }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src\\logo\\film-projector-icon 16.png").getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

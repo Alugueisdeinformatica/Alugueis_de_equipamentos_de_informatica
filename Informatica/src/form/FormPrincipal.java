@@ -10,6 +10,7 @@ import dao.ClienteDao;
 import dao.EquipamentoDao;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     public static ClienteDao bdCliente;
     public static AluguelDao bdAluguel;
     public static int nroAluguel = 1;
+    public static int codEquipamento = 1;
 
     /**
      * Creates new form FormPrincipal
@@ -370,6 +372,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src\\logo\\my-computer-icon 16.png").getImage());
         this.setExtendedState(this.MAXIMIZED_BOTH);
         executarDataHora();
     }//GEN-LAST:event_formWindowOpened

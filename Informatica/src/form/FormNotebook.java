@@ -7,6 +7,7 @@ package form;
 
 import static form.FormEquipamento.equipamento;
 import java.util.Enumeration;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import model.Equipamento;
@@ -69,6 +70,11 @@ public class FormNotebook extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(250, 250, 250));
 
@@ -398,6 +404,14 @@ public class FormNotebook extends javax.swing.JFrame {
         if(note.validaNotebook()){
             FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) note); 
             JOptionPane.showMessageDialog(null, "Notebook Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+            FormPrincipal.codEquipamento++;
+            int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
+            if(opcao == 0){
+                this.dispose();
+                new FormEquipamento().setVisible(true);
+            }else{
+                this.dispose();
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
         } 
@@ -418,6 +432,10 @@ public class FormNotebook extends javax.swing.JFrame {
         rbDDR34g.setSelected(true);
         cbSistemaOp.requestFocus();
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(new ImageIcon("src\\logo\\blue-laptop-icon 16.png").getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     private String capturaMemoria() {
         JRadioButton radio;
