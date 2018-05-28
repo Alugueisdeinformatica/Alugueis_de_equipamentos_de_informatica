@@ -15,7 +15,7 @@ public class Usuario {
 
     public Usuario() {
         this.nome = "ADMIN";
-        this.senha = "JL123456";
+        this.senha = "ADMIN";
     }
 
     public String getNome() {
@@ -36,7 +36,7 @@ public class Usuario {
     
     public boolean validarSenha(String senha){
         boolean retorna = false;
-        if(senha.length() == 8 && !senha.isEmpty()){
+        if(senha.length() == 5 && !senha.isEmpty()){
             retorna = true;
         }
         return retorna;
