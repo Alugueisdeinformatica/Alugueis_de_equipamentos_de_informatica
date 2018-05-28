@@ -38,6 +38,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMenuItemSair">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/logo/Apps-Dialog-Close-icon 16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Sair"/>
                 <Property name="name" type="java.lang.String" value="JMenuItemSair" noResource="true"/>
               </Properties>
@@ -55,6 +58,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemNovo">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/logo/02-Basket-icon 16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Novo Aluguel"/>
                 <Property name="name" type="java.lang.String" value="jMenuItemNovo" noResource="true"/>
               </Properties>
@@ -64,6 +70,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEmitir">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/logo/invoice-icon 16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Emitir Nota Fiscal"/>
                 <Property name="name" type="java.lang.String" value="jMenuItemEmitir" noResource="true"/>
               </Properties>
@@ -73,6 +82,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEfetuar">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/logo/Shopping-basket-remove-icon 16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Efetuar Devolu&#xe7;&#xe3;o"/>
                 <Property name="name" type="java.lang.String" value="jMenuItemEfetuar" noResource="true"/>
               </Properties>
@@ -90,6 +102,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemClientes">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/logo/user-search-icon 16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Clientes"/>
                 <Property name="name" type="java.lang.String" value="jMenuItemClientes" noResource="true"/>
               </Properties>
@@ -99,6 +114,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEquipamentos">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/logo/computer-search-icon 16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Equipamentos"/>
                 <Property name="name" type="java.lang.String" value="jMenuItemEquipamentos" noResource="true"/>
               </Properties>
@@ -108,6 +126,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMenuItemAlugueis">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/logo/02-Basket-icon 16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Alugu&#xe9;is"/>
                 <Property name="name" type="java.lang.String" value="JMenuItemAlugueis" noResource="true"/>
               </Properties>
@@ -125,6 +146,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="JMenuItemAjuda">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/logo/Button-Help-icon 16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ajuda"/>
                 <Property name="name" type="java.lang.String" value="JMenuItemAjuda" noResource="true"/>
               </Properties>
@@ -133,6 +157,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JMenuItemSobre">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/logo/Info-icon 16.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Sobre"/>
                 <Property name="name" type="java.lang.String" value="JMenuItemSobre" noResource="true"/>
               </Properties>

@@ -260,6 +260,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         JMenuCadastro.add(jMenuItemEquipamento);
         JMenuCadastro.add(jSeparator1);
 
+        JMenuItemSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/Apps-Dialog-Close-icon 16.png"))); // NOI18N
         JMenuItemSair.setText("Sair");
         JMenuItemSair.setName("JMenuItemSair"); // NOI18N
         JMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
@@ -274,6 +275,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         jMenuAluguel.setText("Aluguel");
         jMenuAluguel.setName("jMenuAluguel"); // NOI18N
 
+        jMenuItemNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/02-Basket-icon 16.png"))); // NOI18N
         jMenuItemNovo.setText("Novo Aluguel");
         jMenuItemNovo.setName("jMenuItemNovo"); // NOI18N
         jMenuItemNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -283,6 +285,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         });
         jMenuAluguel.add(jMenuItemNovo);
 
+        jMenuItemEmitir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/invoice-icon 16.png"))); // NOI18N
         jMenuItemEmitir.setText("Emitir Nota Fiscal");
         jMenuItemEmitir.setName("jMenuItemEmitir"); // NOI18N
         jMenuItemEmitir.addActionListener(new java.awt.event.ActionListener() {
@@ -292,6 +295,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         });
         jMenuAluguel.add(jMenuItemEmitir);
 
+        jMenuItemEfetuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/Shopping-basket-remove-icon 16.png"))); // NOI18N
         jMenuItemEfetuar.setText("Efetuar Devolução");
         jMenuItemEfetuar.setName("jMenuItemEfetuar"); // NOI18N
         jMenuItemEfetuar.addActionListener(new java.awt.event.ActionListener() {
@@ -306,6 +310,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         jMenuConsulta.setText("Consulta");
         jMenuConsulta.setName("jMenuConsulta"); // NOI18N
 
+        jMenuItemClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/user-search-icon 16.png"))); // NOI18N
         jMenuItemClientes.setText("Clientes");
         jMenuItemClientes.setName("jMenuItemClientes"); // NOI18N
         jMenuItemClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -315,6 +320,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         });
         jMenuConsulta.add(jMenuItemClientes);
 
+        jMenuItemEquipamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/computer-search-icon 16.png"))); // NOI18N
         jMenuItemEquipamentos.setText("Equipamentos");
         jMenuItemEquipamentos.setName("jMenuItemEquipamentos"); // NOI18N
         jMenuItemEquipamentos.addActionListener(new java.awt.event.ActionListener() {
@@ -324,6 +330,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         });
         jMenuConsulta.add(jMenuItemEquipamentos);
 
+        JMenuItemAlugueis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/02-Basket-icon 16.png"))); // NOI18N
         JMenuItemAlugueis.setText("Aluguéis");
         JMenuItemAlugueis.setName("JMenuItemAlugueis"); // NOI18N
         JMenuItemAlugueis.addActionListener(new java.awt.event.ActionListener() {
@@ -338,11 +345,13 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         JMenuSuporte.setText("Suporte");
         JMenuSuporte.setName("JMenuSuporte"); // NOI18N
 
+        JMenuItemAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/Button-Help-icon 16.png"))); // NOI18N
         JMenuItemAjuda.setText("Ajuda");
         JMenuItemAjuda.setName("JMenuItemAjuda"); // NOI18N
         JMenuSuporte.add(JMenuItemAjuda);
         JMenuSuporte.add(jSeparator2);
 
+        JMenuItemSobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/Info-icon 16.png"))); // NOI18N
         JMenuItemSobre.setText("Sobre");
         JMenuItemSobre.setName("JMenuItemSobre"); // NOI18N
         JMenuItemSobre.addActionListener(new java.awt.event.ActionListener() {
