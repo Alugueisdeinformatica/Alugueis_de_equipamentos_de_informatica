@@ -583,24 +583,12 @@ public class FormCliente extends javax.swing.JFrame {
         String data = ftfDataNascimento.getText().replace("/", "");
         if(cliente.validaCliente() && validarData(cliente)){
             FormPrincipal.bdCliente.adicionaCliente(cliente);
-            JOptionPane.showMessageDialog(null, "Cliente Cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
-            
-            alterarParaFormAluguel(evt);            
+            JOptionPane.showMessageDialog(null, "Cliente Cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);            
+            btLimparActionPerformed(evt);            
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
-
-    private void alterarParaFormAluguel(ActionEvent evt) throws HeadlessException {
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja Alugar?", "Confirmação de Aluguel", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if(opcao == 0){
-            FormAluguel.setCliente(cliente);
-            new FormAluguel().setVisible(true);
-            btSairActionPerformed(evt);
-        }else{
-            btLimparActionPerformed(evt);
-        }
-    }
 
     private void receberDadosCliente(Cliente cliente){
         cliente.setCpf(ftfCPF.getText());
@@ -744,7 +732,7 @@ public class FormCliente extends javax.swing.JFrame {
         if(cliente.validaCliente() && validarData(cliente)){
             FormPrincipal.bdCliente.atualizarCliente(cliente);
             JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso!", "Atualização de Cliente", JOptionPane.INFORMATION_MESSAGE);
-            alterarParaFormAluguel(evt);
+            btLimparActionPerformed(evt);
             btLimpar.setEnabled(true);
             ftfCPF.setEditable(true);
         }else{
