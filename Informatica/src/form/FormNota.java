@@ -64,6 +64,11 @@ public class FormNota extends javax.swing.JFrame {
         lbNumero.setName("lbNumero"); // NOI18N
 
         tfNumero.setName("tfNumero"); // NOI18N
+        tfNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tfNumeroKeyTyped(evt);
+            }
+        });
 
         btBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Document-search-icon.png"))); // NOI18N
@@ -231,6 +236,13 @@ public class FormNota extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon("src\\logo\\invoice-icon 16.png").getImage());
         tfNumero.requestFocus();
     }//GEN-LAST:event_formWindowOpened
+
+    private void tfNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNumeroKeyTyped
+        String caracteres = "0987654321";
+        if(!caracteres.contains(evt.getKeyChar() + "")){
+            evt.consume();
+        }
+    }//GEN-LAST:event_tfNumeroKeyTyped
 
     /**
      * @param args the command line arguments
