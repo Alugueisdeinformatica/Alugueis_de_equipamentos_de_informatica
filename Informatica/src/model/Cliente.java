@@ -7,6 +7,7 @@ package model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.InputMismatchException;
 
 /**
  *
@@ -103,12 +104,12 @@ public class Cliente {
     
     public boolean validaCliente(){ //Verifica se todos os campos foram preenchidos
         return !nome.equals("") &&
-                !email.equals("") &&
-                !telefone.equals("") &&
-                endereco.validaEndereco() &&                
-                !sexo.equals("") &&
-                !cpf.equals("") &&
-                !estadoCivil.equals("");
+               !email.equals("") &&
+               !telefone.equals("") &&
+               endereco.validaEndereco() &&                
+               !sexo.equals("") &&
+               !cpf.equals("   .   .   -  ") &&
+               !estadoCivil.equals("");
     }
     
     @Override

@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.InputMismatchException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -86,7 +87,7 @@ public class FormCliente extends javax.swing.JFrame {
         lbRua = new javax.swing.JLabel();
         tfEndereco = new javax.swing.JTextField();
         lbCPF = new javax.swing.JLabel();
-        ftfCPF = new javax.swing.JFormattedTextField();
+        tfCPF = new javax.swing.JFormattedTextField();
         lbNome = new javax.swing.JLabel();
         tfNome = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -410,16 +411,11 @@ public class FormCliente extends javax.swing.JFrame {
         lbCPF.setName("lbCPF"); // NOI18N
 
         try {
-            ftfCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            tfCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftfCPF.setName("ftfCPF"); // NOI18N
-        ftfCPF.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                ftfCPFFocusLost(evt);
-            }
-        });
+        tfCPF.setName("tfCPF"); // NOI18N
 
         lbNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNome.setText("Nome:");
@@ -438,7 +434,6 @@ public class FormCliente extends javax.swing.JFrame {
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/user-add-icon.png"))); // NOI18N
         btCadastrar.setText("Cadastrar");
-        btCadastrar.setEnabled(false);
         btCadastrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btCadastrar.setName("btCadastrar"); // NOI18N
         btCadastrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -525,7 +520,7 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbCPF)
-                    .addComponent(ftfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbNome)
@@ -541,7 +536,7 @@ public class FormCliente extends javax.swing.JFrame {
                     .addComponent(lbNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ftfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -581,17 +576,33 @@ public class FormCliente extends javax.swing.JFrame {
         validarData(cliente);
         
         String data = ftfDataNascimento.getText().replace("/", "");
-        if(cliente.validaCliente() && validarData(cliente)){
-            FormPrincipal.bdCliente.adicionaCliente(cliente);
-            JOptionPane.showMessageDialog(null, "Cliente Cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);            
-            btLimparActionPerformed(evt);            
+        if(!validarCPF(tfCPF.getText().replace(".", "").replace("-", ""))){
+            tfCPF.setValue("");
+            JOptionPane.showMessageDialog(null, "CPF Inválido!", "Atenção", JOptionPane.ERROR_MESSAGE);
         }else{
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+            Cliente clienteBuscar = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
+            if(clienteBuscar != null){
+                JOptionPane.showMessageDialog(null, "Já existe este CPF cadastrado!", "Informação de Cliente", JOptionPane.ERROR_MESSAGE);
+                tfCPF.setValue("");
+                tfCPF.requestFocus();
+            }else{
+                if(cliente.validaCliente() && validarData(cliente) && validarCPF(tfCPF.getText().replace(".", "").replace("-", ""))){
+                    int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar o cliente?", "Atenção", JOptionPane.YES_NO_OPTION);
+                    if(opcao == 0){
+                        FormPrincipal.bdCliente.adicionaCliente(cliente);
+                        JOptionPane.showMessageDialog(null, "Cliente Cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);            
+                        btLimparActionPerformed(evt);
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+                    btCadastrar.setEnabled(true);
+                }
+            }
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void receberDadosCliente(Cliente cliente){
-        cliente.setCpf(ftfCPF.getText());
+        cliente.setCpf(tfCPF.getText());
         cliente.setNome(tfNome.getText());
         cliente.setEmail(tfEmail.getText());        
         cliente.setTelefone(ftfTelefone.getText());
@@ -636,20 +647,8 @@ public class FormCliente extends javax.swing.JFrame {
         }
     }
 
-    private void ftfCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ftfCPFFocusLost
-        Cliente clienteBuscar = FormPrincipal.bdCliente.buscaCliente(ftfCPF.getText());
-        if(clienteBuscar != null){
-            JOptionPane.showMessageDialog(null, "Já existe este CPF cadastrado!", "Informação de Cliente", JOptionPane.ERROR_MESSAGE);
-            ftfCPF.setValue("");
-            btCadastrar.setEnabled(false);
-            ftfCPF.requestFocus();
-        }else{
-            btCadastrar.setEnabled(true);
-        }
-    }//GEN-LAST:event_ftfCPFFocusLost
-
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        ftfCPF.setValue("");
+        tfCPF.setValue("");
         tfNome.setText("");
         tfEmail.setText("");
         ftfDataNascimento.setValue("");
@@ -664,9 +663,8 @@ public class FormCliente extends javax.swing.JFrame {
         tfNumero.setText("0");
         tfBairro.setText("");
         tfComplemento.setText("");
-        ftfCPF.setEnabled(true);
-        ftfCPF.requestFocus();
-        btCadastrar.setEnabled(false);
+        tfCPF.setEnabled(true);
+        tfCPF.requestFocus();
         btAtualizar.setEnabled(false);
     }//GEN-LAST:event_btLimparActionPerformed
 
@@ -689,9 +687,9 @@ public class FormCliente extends javax.swing.JFrame {
         if(cliente != null){
             btAtualizar.setEnabled(true);
             btLimpar.setEnabled(false);
-            ftfCPF.setText(cliente.getCpf());
-            ftfCPF.setEditable(false);
-            ftfCPF.setEnabled(false);
+            tfCPF.setText(cliente.getCpf());
+            tfCPF.setEditable(false);
+            tfCPF.setEnabled(false);
             tfNome.setText(cliente.getNome());
             tfEmail.setText(cliente.getEmail());
             
@@ -719,8 +717,8 @@ public class FormCliente extends javax.swing.JFrame {
             tfCidade.setText(cliente.getEndereco().getCidade());
             cbEstado.setSelectedItem(cliente.getEndereco().getEstado());
         }else{
-            ftfCPF.setEditable(true);
-            ftfCPF.setEnabled(true);
+            tfCPF.setEditable(true);
+            tfCPF.setEnabled(true);
             btAtualizar.setEnabled(false);
             btLimpar.setEnabled(true);            
         }
@@ -734,15 +732,53 @@ public class FormCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso!", "Atualização de Cliente", JOptionPane.INFORMATION_MESSAGE);
             btLimparActionPerformed(evt);
             btLimpar.setEnabled(true);
-            ftfCPF.setEditable(true);
+            tfCPF.setEditable(true);
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);            
         }      
     }//GEN-LAST:event_btAtualizarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    public boolean validarCPF(String CPF) {
+    if (CPF.equals("00000000000") || CPF.equals("11111111111") ||
+        CPF.equals("22222222222") || CPF.equals("33333333333") ||
+        CPF.equals("44444444444") || CPF.equals("55555555555") ||
+        CPF.equals("66666666666") || CPF.equals("77777777777") ||
+        CPF.equals("88888888888") || CPF.equals("99999999999") ||
+       (CPF.length() != 11))
+       return(false);
+    char dig10, dig11;
+    int sm, i, r, num, peso;
+    try {
+      sm = 0;
+      peso = 10;
+      for (i=0; i<9; i++) {       
+        num = (int)(CPF.charAt(i) - 48); 
+        sm = sm + (num * peso);
+        peso = peso - 1;
+      }
+      r = 11 - (sm % 11);
+      if ((r == 10) || (r == 11))
+         dig10 = '0';
+      else dig10 = (char)(r + 48);
+      sm = 0;
+      peso = 11;
+      for(i=0; i<10; i++) {
+        num = (int)(CPF.charAt(i) - 48);
+        sm = sm + (num * peso);
+        peso = peso - 1;
+      }
+      r = 11 - (sm % 11);
+      if ((r == 10) || (r == 11))
+         dig11 = '0';
+      else dig11 = (char)(r + 48);
+      if ((dig10 == CPF.charAt(9)) && (dig11 == CPF.charAt(10)))
+         return(true);
+      else return(false);
+    } catch (InputMismatchException erro) {
+        return(false);
+    }
+  }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -784,7 +820,6 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JComboBox<String> cbSexo;
     private javax.swing.JFormattedTextField ftfCEP;
-    private javax.swing.JFormattedTextField ftfCPF;
     private javax.swing.JFormattedTextField ftfDataNascimento;
     private javax.swing.JFormattedTextField ftfTelefone;
     private javax.swing.JPanel jPanel1;
@@ -812,6 +847,7 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbUniaoEstavel;
     private javax.swing.JRadioButton rbViuvo;
     private javax.swing.JTextField tfBairro;
+    private javax.swing.JFormattedTextField tfCPF;
     private javax.swing.JTextField tfCidade;
     private javax.swing.JTextField tfComplemento;
     private javax.swing.JTextField tfEmail;
