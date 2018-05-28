@@ -69,21 +69,21 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         jMenuItemEquipamento = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         JMenuItemSair = new javax.swing.JMenuItem();
-        jMenuAluguel = new javax.swing.JMenu();
-        jMenuItemNovo = new javax.swing.JMenuItem();
-        jMenuItemEmitir = new javax.swing.JMenuItem();
-        jMenuItemEfetuar = new javax.swing.JMenuItem();
         jMenuConsulta = new javax.swing.JMenu();
         jMenuItemClientes = new javax.swing.JMenuItem();
         jMenuItemEquipamentos = new javax.swing.JMenuItem();
         JMenuItemAlugueis = new javax.swing.JMenuItem();
+        jMenuAluguel = new javax.swing.JMenu();
+        jMenuItemNovo = new javax.swing.JMenuItem();
+        jMenuItemEmitir = new javax.swing.JMenuItem();
+        jMenuItemEfetuar = new javax.swing.JMenuItem();
         JMenuSuporte = new javax.swing.JMenu();
         JMenuItemAjuda = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         JMenuItemSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Equipamentos de Informática");
+        setTitle("J&L Informática");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -272,41 +272,6 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
 
         jMenuBar1.add(JMenuCadastro);
 
-        jMenuAluguel.setText("Aluguel");
-        jMenuAluguel.setName("jMenuAluguel"); // NOI18N
-
-        jMenuItemNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/02-Basket-icon 16.png"))); // NOI18N
-        jMenuItemNovo.setText("Novo Aluguel");
-        jMenuItemNovo.setName("jMenuItemNovo"); // NOI18N
-        jMenuItemNovo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemNovoActionPerformed(evt);
-            }
-        });
-        jMenuAluguel.add(jMenuItemNovo);
-
-        jMenuItemEmitir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/invoice-icon 16.png"))); // NOI18N
-        jMenuItemEmitir.setText("Emitir Nota Fiscal");
-        jMenuItemEmitir.setName("jMenuItemEmitir"); // NOI18N
-        jMenuItemEmitir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemEmitirActionPerformed(evt);
-            }
-        });
-        jMenuAluguel.add(jMenuItemEmitir);
-
-        jMenuItemEfetuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/Shopping-basket-remove-icon 16.png"))); // NOI18N
-        jMenuItemEfetuar.setText("Efetuar Devolução");
-        jMenuItemEfetuar.setName("jMenuItemEfetuar"); // NOI18N
-        jMenuItemEfetuar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemEfetuarActionPerformed(evt);
-            }
-        });
-        jMenuAluguel.add(jMenuItemEfetuar);
-
-        jMenuBar1.add(jMenuAluguel);
-
         jMenuConsulta.setText("Consulta");
         jMenuConsulta.setName("jMenuConsulta"); // NOI18N
 
@@ -341,6 +306,41 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         jMenuConsulta.add(JMenuItemAlugueis);
 
         jMenuBar1.add(jMenuConsulta);
+
+        jMenuAluguel.setText("Aluguel");
+        jMenuAluguel.setName("jMenuAluguel"); // NOI18N
+
+        jMenuItemNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/02-Basket-icon 16.png"))); // NOI18N
+        jMenuItemNovo.setText("Novo Aluguel");
+        jMenuItemNovo.setName("jMenuItemNovo"); // NOI18N
+        jMenuItemNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemNovoActionPerformed(evt);
+            }
+        });
+        jMenuAluguel.add(jMenuItemNovo);
+
+        jMenuItemEmitir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/invoice-icon 16.png"))); // NOI18N
+        jMenuItemEmitir.setText("Emitir Nota Fiscal");
+        jMenuItemEmitir.setName("jMenuItemEmitir"); // NOI18N
+        jMenuItemEmitir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEmitirActionPerformed(evt);
+            }
+        });
+        jMenuAluguel.add(jMenuItemEmitir);
+
+        jMenuItemEfetuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/Shopping-basket-remove-icon 16.png"))); // NOI18N
+        jMenuItemEfetuar.setText("Efetuar Devolução");
+        jMenuItemEfetuar.setName("jMenuItemEfetuar"); // NOI18N
+        jMenuItemEfetuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEfetuarActionPerformed(evt);
+            }
+        });
+        jMenuAluguel.add(jMenuItemEfetuar);
+
+        jMenuBar1.add(jMenuAluguel);
 
         JMenuSuporte.setText("Suporte");
         JMenuSuporte.setName("JMenuSuporte"); // NOI18N

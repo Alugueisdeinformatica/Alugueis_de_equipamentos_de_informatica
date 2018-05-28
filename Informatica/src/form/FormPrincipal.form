@@ -50,50 +50,6 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenuAluguel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Aluguel"/>
-            <Property name="name" type="java.lang.String" value="jMenuAluguel" noResource="true"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemNovo">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/logo/02-Basket-icon 16.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Novo Aluguel"/>
-                <Property name="name" type="java.lang.String" value="jMenuItemNovo" noResource="true"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemNovoActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEmitir">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/logo/invoice-icon 16.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Emitir Nota Fiscal"/>
-                <Property name="name" type="java.lang.String" value="jMenuItemEmitir" noResource="true"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEmitirActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEfetuar">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/logo/Shopping-basket-remove-icon 16.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Efetuar Devolu&#xe7;&#xe3;o"/>
-                <Property name="name" type="java.lang.String" value="jMenuItemEfetuar" noResource="true"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEfetuarActionPerformed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuConsulta">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consulta"/>
@@ -138,6 +94,50 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenuAluguel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Aluguel"/>
+            <Property name="name" type="java.lang.String" value="jMenuAluguel" noResource="true"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemNovo">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/logo/02-Basket-icon 16.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Novo Aluguel"/>
+                <Property name="name" type="java.lang.String" value="jMenuItemNovo" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemNovoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEmitir">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/logo/invoice-icon 16.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Emitir Nota Fiscal"/>
+                <Property name="name" type="java.lang.String" value="jMenuItemEmitir" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEmitirActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEfetuar">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/logo/Shopping-basket-remove-icon 16.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Efetuar Devolu&#xe7;&#xe3;o"/>
+                <Property name="name" type="java.lang.String" value="jMenuItemEfetuar" noResource="true"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEfetuarActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="JMenuSuporte">
           <Properties>
             <Property name="text" type="java.lang.String" value="Suporte"/>
@@ -174,7 +174,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Equipamentos de Inform&#xe1;tica"/>
+    <Property name="title" type="java.lang.String" value="J&amp;L Inform&#xe1;tica"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>

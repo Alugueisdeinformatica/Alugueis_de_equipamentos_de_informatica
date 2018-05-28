@@ -731,7 +731,7 @@ public class FormAluguel extends javax.swing.JFrame {
                         int valor;
                         valor = Integer.parseInt(JOptionPane.showInputDialog(null, 
                                     "Informe a quantidade que Deseja alugar\nDisponivel: " + equipamento.getQuantEstoque(),
-                                    "Informe o Valor",
+                                    "Atenção",
                                     JOptionPane.INFORMATION_MESSAGE)); 
                         if(valor <= equipamento.getQuantEstoque()){
                             if(valor <= 0){

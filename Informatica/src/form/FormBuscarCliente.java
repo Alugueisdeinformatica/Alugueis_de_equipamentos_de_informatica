@@ -53,7 +53,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         btEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Buscar Cliente");
+        setTitle("Consulta de Cliente");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
