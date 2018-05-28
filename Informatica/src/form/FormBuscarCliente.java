@@ -212,18 +212,21 @@ public class FormBuscarCliente extends javax.swing.JFrame {
             }
         }else{
             String cpsSemMascara = tfCPF.getText().replace(".", "").replace("-", "");
-            if(!cpsSemMascara.trim().equals("")){
-                Cliente cliente = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
-                if(cliente != null){
-                    taBusca.setText(cliente.toString() + cliente.getEndereco().toString() + "\n");
-                    setCliente(cliente);
-                    btEditar.setEnabled(true);
-                    btSelecionar.setEnabled(true);
-                }else{
-                    JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+            if(FormCliente.validarCPF(cpsSemMascara)){
+                if(!cpsSemMascara.trim().equals("")){
+                    Cliente cliente = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
+                    if(cliente != null){
+                        taBusca.setText(cliente.toString() + cliente.getEndereco().toString() + "\n");
+                        setCliente(cliente);
+                        btEditar.setEnabled(true);
+                        btSelecionar.setEnabled(true);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Informe o CPF!", "Campo não Preenchido", JOptionPane.ERROR_MESSAGE);
+                tfCPF.setValue("");
+                JOptionPane.showMessageDialog(null, "CPF Inválido!", "Atenção", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btBuscarActionPerformed
