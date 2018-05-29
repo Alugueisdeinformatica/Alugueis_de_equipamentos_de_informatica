@@ -367,30 +367,33 @@ public class FormDesktop extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        String capacidadeHD = tfArmHD.getText();
-        String memoria = tfMemoria.getText();
-        String processador = cbProcessador.getSelectedItem().toString();        
-        String sistemaOp = capturarSO();        
-        String placaVideo = captuarPlaca();    
-        
-        Computador comp = new Computador(sistemaOp, placaVideo, capacidadeHD, processador, memoria, 
-                equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
-                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria()); 
-        
-        if(comp.validaComputador()){
-            FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) comp); 
-            JOptionPane.showMessageDialog(null, "Desktop Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
-            FormPrincipal.codEquipamento++;
-            int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
-            if(opcao == 0){
-                this.dispose();
-                new FormEquipamento().setVisible(true);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja efetuar o cadastro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            String capacidadeHD = tfArmHD.getText();
+            String memoria = tfMemoria.getText();
+            String processador = cbProcessador.getSelectedItem().toString();        
+            String sistemaOp = capturarSO();        
+            String placaVideo = captuarPlaca();    
+
+            Computador comp = new Computador(sistemaOp, placaVideo, capacidadeHD, processador, memoria, 
+                    equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
+                    equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria()); 
+
+            if(comp.validaComputador()){
+                FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) comp); 
+                JOptionPane.showMessageDialog(null, "Desktop Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+                FormPrincipal.codEquipamento++;
+                opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
+                if(opcao == 0){
+                    this.dispose();
+                    new FormEquipamento().setVisible(true);
+                }else{
+                    this.dispose();
+                }            
             }else{
-                this.dispose();
-            }            
-        }else{
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
-        }       
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+            }       
+        }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private String captuarPlaca() {
@@ -432,6 +435,9 @@ public class FormDesktop extends javax.swing.JFrame {
     }//GEN-LAST:event_tfMemoriaKeyTyped
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        FormEquipamento.eq = null;
+        FormEquipamento.equipamento = null;
+        eq = null;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -474,6 +480,9 @@ public class FormDesktop extends javax.swing.JFrame {
                     eq.getQuantEstoque(), eq.getCategoria(), eq.getValorDiaria());
             FormPrincipal.bdEquipamento.atualizarEquipamento((Equipamento) comp);
             JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!", "Informações Alteradas", JOptionPane.INFORMATION_MESSAGE);
+            FormEquipamento.eq = null;
+            FormEquipamento.equipamento = null;
+            eq = null;
             this.dispose();
         }
     }//GEN-LAST:event_btEditarActionPerformed

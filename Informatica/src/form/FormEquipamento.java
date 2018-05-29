@@ -5,16 +5,11 @@
  */
 package form;
 
-import java.awt.Desktop;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Computador;
 import model.Equipamento;
 import model.Impressora;
-import model.Monitor;
-import model.Notebook;
-import model.Projetor;
-import model.Tablet;
 
 /**
  *
@@ -22,7 +17,7 @@ import model.Tablet;
  */
 public class FormEquipamento extends javax.swing.JFrame {
     
-    public static Equipamento equipamento ;   
+    public static Equipamento equipamento = null;   
     public static Equipamento eq = null;
     
     /**
@@ -321,6 +316,7 @@ public class FormEquipamento extends javax.swing.JFrame {
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         equipamento = null;
+        eq = null;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -358,6 +354,7 @@ public class FormEquipamento extends javax.swing.JFrame {
             FormDesktop.eq = (Computador) eq;
             new FormDesktop().setVisible(true); 
         }else if(opcao.equals("Impressora")){
+            FormImpressora.imp = (Impressora) eq;
             new FormImpressora().setVisible(true);
         }else if(opcao.equals("Monitor")){
             new FormMonitor().setVisible(true); 

@@ -17,9 +17,8 @@ import model.Impressora;
  */
 public class FormImpressora extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormImpressora
-     */
+    public static Impressora imp = null;
+    
     public FormImpressora() {
         initComponents();
     }
@@ -121,9 +120,9 @@ public class FormImpressora extends javax.swing.JFrame {
         btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
         btCadastrar.setText("Cadastrar");
         btCadastrar.setEnabled(false);
-        btCadastrar.setMaximumSize(new java.awt.Dimension(115, 55));
+        btCadastrar.setMaximumSize(new java.awt.Dimension(120, 55));
         btCadastrar.setName("btCadastrar"); // NOI18N
-        btCadastrar.setPreferredSize(new java.awt.Dimension(115, 55));
+        btCadastrar.setPreferredSize(new java.awt.Dimension(120, 55));
         btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastrarActionPerformed(evt);
@@ -156,6 +155,11 @@ public class FormImpressora extends javax.swing.JFrame {
         btEditar.setMaximumSize(new java.awt.Dimension(115, 55));
         btEditar.setName("btEditar"); // NOI18N
         btEditar.setPreferredSize(new java.awt.Dimension(115, 55));
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btEditar);
         jToolBar1.add(jSeparator3);
 
@@ -179,35 +183,32 @@ public class FormImpressora extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(139, 139, 139)
-                            .addComponent(lbTipo)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbEsp)
-                            .addGap(62, 62, 62))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(122, 122, 122)
-                            .addComponent(lbTecn)
-                            .addGap(0, 0, Short.MAX_VALUE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(61, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(101, 101, 101)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tfTecn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(cboWifi)
-                        .addGap(112, 112, 112))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(tfEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(99, 99, 99))))
+                        .addGap(13, 13, 13)))
+                .addGap(109, 109, 109))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(139, 139, 139)
+                .addComponent(lbTipo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbEsp)
+                .addGap(130, 130, 130))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(lbTecn))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,9 +228,9 @@ public class FormImpressora extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfTecn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboWifi))
-                .addGap(27, 27, 27)
+                .addGap(31, 31, 31)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -250,32 +251,38 @@ public class FormImpressora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        String tipo = tfTipo.getText();
-        String tecnologia = tfTecn.getText();
-        String especificacao = tfEsp.getText();
-        boolean wifi = cboWifi.isSelected();      
-        
-        Impressora impres = new Impressora(tipo, tecnologia, especificacao, wifi,
-                equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
-                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
-        
-        if(impres.validaImpressora()){
-            FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) impres); 
-            JOptionPane.showMessageDialog(null, "Impressora Cadastrada!", "", JOptionPane.INFORMATION_MESSAGE);
-            FormPrincipal.codEquipamento++;
-            int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
-            if(opcao == 0){
-                this.dispose();
-                new FormEquipamento().setVisible(true);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja efetuar o cadastro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            String tipo = tfTipo.getText();
+            String tecnologia = tfTecn.getText();
+            String especificacao = tfEsp.getText();
+            boolean wifi = cboWifi.isSelected();      
+
+            Impressora impres = new Impressora(tipo, tecnologia, especificacao, wifi,
+                    equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
+                    equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
+
+            if(impres.validaImpressora()){
+                FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) impres); 
+                JOptionPane.showMessageDialog(null, "Impressora Cadastrada!", "", JOptionPane.INFORMATION_MESSAGE);
+                FormPrincipal.codEquipamento++;
+                opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
+                if(opcao == 0){
+                    this.dispose();
+                    new FormEquipamento().setVisible(true);
+                }else{
+                    this.dispose();
+                }
             }else{
-                this.dispose();
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
-        }                          
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+            }             
+        }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        FormEquipamento.eq = null;
+        FormEquipamento.equipamento = null;
+        imp = null;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -288,8 +295,39 @@ public class FormImpressora extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(imp != null){
+            btEditar.setEnabled(true);
+            tfTipo.setText(imp.getTipo());
+            tfEsp.setText(imp.getEspecificacao());
+            tfTecn.setText(imp.getTecnologia());
+            if(imp.isWifi()){
+                cboWifi.setSelected(true);
+            }
+        }else{
+            btCadastrar.setEnabled(true);
+            btLimpar.setEnabled(true);
+        }
         this.setIconImage(new ImageIcon("src\\logo\\printer-icon 16.png").getImage());
     }//GEN-LAST:event_formWindowOpened
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja editar os dados?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            String tipo = tfTipo.getText();
+            String tecnologia = tfTecn.getText();
+            String especificacao = tfEsp.getText();
+            boolean wifi = cboWifi.isSelected();   
+            Impressora impres = new Impressora(tipo, tecnologia, especificacao, wifi,
+                imp.getCodEquipamento(), imp.getModelo(), imp.getMarca(),
+                imp.getQuantEstoque(), imp.getCategoria(), imp.getValorDiaria());
+            FormPrincipal.bdEquipamento.atualizarEquipamento((Equipamento) impres);
+            JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!", "Informações Alteradas", JOptionPane.INFORMATION_MESSAGE);
+            FormEquipamento.eq = null;
+            FormEquipamento.equipamento = null;
+            imp = null;
+            this.dispose();
+        }
+    }//GEN-LAST:event_btEditarActionPerformed
 
     /**
      * @param args the command line arguments
