@@ -128,6 +128,11 @@ public class FormMonitor extends javax.swing.JFrame {
         btEditar.setMaximumSize(new java.awt.Dimension(115, 55));
         btEditar.setName("btEditar"); // NOI18N
         btEditar.setPreferredSize(new java.awt.Dimension(115, 55));
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btEditar);
         jToolBar1.add(jSeparator3);
 
@@ -230,31 +235,37 @@ public class FormMonitor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        String tipo = cbResolucao.getSelectedItem().toString();
-        String tamanhoTela = cbTamanho.getSelectedItem().toString();
-        String resolucao = cbResolucao.getSelectedItem().toString();        
-        
-        Monitor mon = new Monitor(tipo, tamanhoTela, resolucao, 
-                equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
-                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());  
-        
-        if(mon.validaMonitor()){
-            FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) mon); 
-            JOptionPane.showMessageDialog(null, "Monitor Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
-            FormPrincipal.codEquipamento++;
-            int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
-            if(opcao == 0){
-                this.dispose();
-                new FormEquipamento().setVisible(true);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja efetuar o cadastro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            String tipo = cbTipo.getSelectedItem().toString();
+            String tamanhoTela = cbTamanho.getSelectedItem().toString();
+            String resolucao = cbResolucao.getSelectedItem().toString();        
+
+            Monitor mon = new Monitor(tipo, tamanhoTela, resolucao, 
+                    equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
+                    equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());  
+
+            if(mon.validaMonitor()){
+                FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) mon); 
+                JOptionPane.showMessageDialog(null, "Monitor Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+                FormPrincipal.codEquipamento++;
+                opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
+                if(opcao == 0){
+                    this.dispose();
+                    new FormEquipamento().setVisible(true);
+                }else{
+                    this.dispose();
+                }
             }else{
-                this.dispose();
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
-        }  
+        }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        FormEquipamento.eq = null;
+        FormEquipamento.equipamento = null;
+        mo = null;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -265,8 +276,35 @@ public class FormMonitor extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(mo != null){
+            btEditar.setEnabled(true);
+            cbTipo.setSelectedItem(mo.getTipo());
+            cbTamanho.setSelectedItem(mo.getTamanhoTela());
+            cbResolucao.setSelectedItem(mo.getResolucao());
+        }else{
+            btCadastrar.setEnabled(true);
+            btLimpar.setEnabled(true);
+        }
         this.setIconImage(new ImageIcon("src\\logo\\monitor-icon 16.png").getImage());
     }//GEN-LAST:event_formWindowOpened
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja editar os dados?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            String tipo = cbTipo.getSelectedItem().toString();
+            String tamanhoTela = cbTamanho.getSelectedItem().toString();
+            String resolucao = cbResolucao.getSelectedItem().toString(); 
+            Monitor mon = new Monitor(tipo, tamanhoTela, resolucao, 
+                    mo.getCodEquipamento(), mo.getModelo(), mo.getMarca(),
+                    mo.getQuantEstoque(), mo.getCategoria(), mo.getValorDiaria());
+            FormPrincipal.bdEquipamento.atualizarEquipamento((Equipamento) mon);
+            JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!", "Informações Alteradas", JOptionPane.INFORMATION_MESSAGE);
+            FormEquipamento.eq = null;
+            FormEquipamento.equipamento = null;
+            mo = null;
+            this.dispose();
+        }
+    }//GEN-LAST:event_btEditarActionPerformed
 
     /**
      * @param args the command line arguments
