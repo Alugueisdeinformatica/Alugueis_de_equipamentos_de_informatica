@@ -17,9 +17,8 @@ import model.Tablet;
  */
 public class FormTablet extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormTablet
-     */
+    public static Tablet ta = null;
+    
     public FormTablet() {
         initComponents();
     }
@@ -177,6 +176,11 @@ public class FormTablet extends javax.swing.JFrame {
         btEditar.setMaximumSize(new java.awt.Dimension(115, 55));
         btEditar.setName("btEditar"); // NOI18N
         btEditar.setPreferredSize(new java.awt.Dimension(115, 55));
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btEditar);
         jToolBar1.add(jSeparator3);
 
@@ -289,6 +293,9 @@ public class FormTablet extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        FormEquipamento.eq = null;
+        FormEquipamento.equipamento = null;
+        ta = null;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -303,36 +310,72 @@ public class FormTablet extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        String capacidade = cbCapacidade.getSelectedItem().toString();
-        String tamanho = cbTamanhoTela.getSelectedItem().toString();
-        String memoria = tfMemoria.getText();
-        String sistema = cbSO.getSelectedItem().toString();
-        String bateria = tfBateria.getText();
-        String processador = tfProcessador.getText();
-        
-        Tablet tab = new Tablet(capacidade, tamanho, memoria, sistema, bateria, processador, 
-                equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
-                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
-        
-        if(tab.validaTablet()){
-            FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) tab); 
-            JOptionPane.showMessageDialog(null, "Tablet Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
-            FormPrincipal.codEquipamento++;
-            int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
-            if(opcao == 0){
-                this.dispose();
-                new FormEquipamento().setVisible(true);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja efetuar o cadastro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            String capacidade = cbCapacidade.getSelectedItem().toString();
+            String tamanho = cbTamanhoTela.getSelectedItem().toString();
+            String memoria = tfMemoria.getText();
+            String sistema = cbSO.getSelectedItem().toString();
+            String bateria = tfBateria.getText();
+            String processador = tfProcessador.getText();
+
+            Tablet tab = new Tablet(capacidade, tamanho, memoria, sistema, bateria, processador, 
+                    equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
+                    equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
+
+            if(tab.validaTablet()){
+                FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) tab); 
+                JOptionPane.showMessageDialog(null, "Tablet Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+                FormPrincipal.codEquipamento++;
+                opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
+                if(opcao == 0){
+                    this.dispose();
+                    new FormEquipamento().setVisible(true);
+                }else{
+                    this.dispose();
+                }
             }else{
-                this.dispose();
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
-        } 
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+            } 
+        }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(ta != null){
+            btEditar.setEnabled(true);
+            cbCapacidade.setSelectedItem(ta.getCapacidade());
+            cbTamanhoTela.setSelectedItem(ta.getTamanhoTela());
+            tfMemoria.setText(ta.getMemoriaRam());
+            cbSO.setSelectedItem(ta.getSistemaOperacional());
+            tfBateria.setText(ta.getBateria());
+            tfProcessador.setText(ta.getProcessador());
+        }else{
+            btCadastrar.setEnabled(true);
+            btLimpar.setEnabled(true);
+        }
         this.setIconImage(new ImageIcon("src\\logo\\ipad-white-icon 16.png").getImage());
     }//GEN-LAST:event_formWindowOpened
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja editar os dados?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            String capacidade = cbCapacidade.getSelectedItem().toString();
+            String tamanho = cbTamanhoTela.getSelectedItem().toString();
+            String memoria = tfMemoria.getText();
+            String sistema = cbSO.getSelectedItem().toString();
+            String bateria = tfBateria.getText();
+            String processador = tfProcessador.getText();
+            Tablet tab = new Tablet(capacidade, tamanho, memoria, sistema, bateria, processador, 
+                    ta.getCodEquipamento(), ta.getModelo(), ta.getMarca(),
+                    ta.getQuantEstoque(), ta.getCategoria(), ta.getValorDiaria());
+            FormPrincipal.bdEquipamento.atualizarEquipamento((Equipamento) tab);
+            JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!", "Informações Alteradas", JOptionPane.INFORMATION_MESSAGE);
+            FormEquipamento.eq = null;
+            FormEquipamento.equipamento = null;
+            ta = null;
+            this.dispose();
+        }
+    }//GEN-LAST:event_btEditarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -13,6 +13,7 @@ import model.Impressora;
 import model.Monitor;
 import model.Notebook;
 import model.Projetor;
+import model.Tablet;
 
 /**
  *
@@ -369,6 +370,7 @@ public class FormEquipamento extends javax.swing.JFrame {
             FormProjetor.pro = (Projetor) eq;
             new FormProjetor().setVisible(true);
         }else if(opcao.equals("Tablet")){
+            FormTablet.ta = (Tablet) eq;
             new FormTablet().setVisible(true);
         }
         this.dispose(); 
