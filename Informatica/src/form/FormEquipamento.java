@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import model.Computador;
 import model.Equipamento;
 import model.Impressora;
+import model.Monitor;
 
 /**
  *
@@ -357,6 +358,7 @@ public class FormEquipamento extends javax.swing.JFrame {
             FormImpressora.imp = (Impressora) eq;
             new FormImpressora().setVisible(true);
         }else if(opcao.equals("Monitor")){
+            FormMonitor.mo = (Monitor) eq;
             new FormMonitor().setVisible(true); 
         }else if(opcao.equals("Notebook")){
             new FormNotebook().setVisible(true);
