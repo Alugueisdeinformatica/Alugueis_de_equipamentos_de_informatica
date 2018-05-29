@@ -7,6 +7,7 @@ package form;
 
 import static form.FormEquipamento.equipamento;
 import java.util.Enumeration;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -19,9 +20,8 @@ import model.Equipamento;
  */
 public class FormDesktop extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormDesktop
-     */
+    public static Computador eq = null;
+    
     public FormDesktop() {
         initComponents();
     }
@@ -60,6 +60,8 @@ public class FormDesktop extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JToolBar.Separator();
         btLimpar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
+        btEditar = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JToolBar.Separator();
         btSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -164,7 +166,7 @@ public class FormDesktop extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel3)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +177,7 @@ public class FormDesktop extends javax.swing.JFrame {
         );
 
         jPanel3.setBackground(new java.awt.Color(250, 250, 250));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Placa de Vídeo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Placa de Vídeo", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         rbOnBoard.setBackground(new java.awt.Color(250, 250, 250));
         bgPlaca.add(rbOnBoard);
@@ -236,6 +238,7 @@ public class FormDesktop extends javax.swing.JFrame {
         btCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
         btCadastrar.setText("Cadastrar");
+        btCadastrar.setEnabled(false);
         btCadastrar.setName("btCadastrar"); // NOI18N
         btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,7 +252,10 @@ public class FormDesktop extends javax.swing.JFrame {
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
         btLimpar.setText("Limpar");
+        btLimpar.setEnabled(false);
+        btLimpar.setMaximumSize(new java.awt.Dimension(115, 55));
         btLimpar.setName("btLimpar"); // NOI18N
+        btLimpar.setPreferredSize(new java.awt.Dimension(115, 55));
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLimparActionPerformed(evt);
@@ -258,11 +264,29 @@ public class FormDesktop extends javax.swing.JFrame {
         jToolBar1.add(btLimpar);
         jToolBar1.add(jSeparator1);
 
+        btEditar.setBackground(new java.awt.Color(250, 250, 250));
+        btEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/edit-file-icon.png"))); // NOI18N
+        btEditar.setText("Editar");
+        btEditar.setEnabled(false);
+        btEditar.setMaximumSize(new java.awt.Dimension(115, 55));
+        btEditar.setName("btEditar"); // NOI18N
+        btEditar.setPreferredSize(new java.awt.Dimension(115, 55));
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btEditar);
+        jToolBar1.add(jSeparator3);
+
         btSair.setBackground(new java.awt.Color(250, 250, 250));
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
         btSair.setText("Sair");
+        btSair.setMaximumSize(new java.awt.Dimension(115, 55));
         btSair.setName("btSair"); // NOI18N
+        btSair.setPreferredSize(new java.awt.Dimension(115, 55));
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSairActionPerformed(evt);
@@ -274,31 +298,34 @@ public class FormDesktop extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbArmHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfArmHD, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38)
+                            .addComponent(tfArmHD))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbMemoria)
-                            .addComponent(tfMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(58, 58, 58)
+                                .addComponent(tfMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(87, 87, 87)
+                                .addComponent(lbMemoria)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbProcessador)))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(lbProcessador))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,16 +354,18 @@ public class FormDesktop extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(536, 427));
+        setSize(new java.awt.Dimension(628, 441));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -421,8 +450,36 @@ public class FormDesktop extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(eq != null){
+            btEditar.setEnabled(true);
+            tfArmHD.setText(eq.getCapacidadeHD());
+            tfMemoria.setText(eq.getMemoria());
+            cbProcessador.setSelectedItem(eq.getProcessador());
+            marcarRadio(bgSO, eq.getSistemaOperacional());
+            marcarRadio(bgPlaca, eq.getPlacaVideo());
+        }else{
+            btCadastrar.setEnabled(true);
+            btLimpar.setEnabled(true);
+        }
         this.setIconImage(new ImageIcon("src\\logo\\my-computer-icon 16.png").getImage());
     }//GEN-LAST:event_formWindowOpened
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja editar os dados?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            String capacidadeHD = tfArmHD.getText();
+            String memoria = tfMemoria.getText();
+            String processador = cbProcessador.getSelectedItem().toString();        
+            String sistemaOp = capturarSO();        
+            String placaVideo = captuarPlaca();   
+            Computador comp = new Computador(sistemaOp, placaVideo, capacidadeHD, processador, memoria, 
+                    eq.getCodEquipamento(), eq.getModelo(), eq.getMarca(),
+                    eq.getQuantEstoque(), eq.getCategoria(), eq.getValorDiaria());
+            FormPrincipal.bdEquipamento.atualizarEquipamento((Equipamento) comp);
+            JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!", "Informações Alteradas", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btEditarActionPerformed
 
     private void capturarRadioSO(Computador comp) {
         //Radio Button SO
@@ -449,6 +506,17 @@ public class FormDesktop extends javax.swing.JFrame {
         }
         comp.setPlacaVideo(placa);
         //FIM PLACA
+    }
+    
+    private void marcarRadio(ButtonGroup grupo, String str){
+        JRadioButton radio; 
+        Enumeration jr = grupo.getElements(); 
+        while ( jr.hasMoreElements() ) 
+        { 
+            radio = (JRadioButton) jr.nextElement(); 
+            if (radio.getText().equals(str)) 
+                radio.setSelected(true); 
+        }
     }
 
     /**
@@ -491,6 +559,7 @@ public class FormDesktop extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bgPlaca;
     private javax.swing.ButtonGroup bgSO;
     private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btEditar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cbProcessador;
@@ -501,6 +570,7 @@ public class FormDesktop extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
+    private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lbArmHD;
     private javax.swing.JLabel lbMemoria;

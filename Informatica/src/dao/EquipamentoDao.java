@@ -46,7 +46,7 @@ public class EquipamentoDao {
         Equipamento eq = buscaEquipamento( codigo );
         if(eq != null){
             int idx = lista.indexOf(eq);
-            lista.set(idx, eq);
+            lista.set(idx, equipamento);
         }
     }
     

@@ -16,6 +16,8 @@ import model.Equipamento;
  */
 public class FormBuscarEquipamento extends javax.swing.JFrame {
     
+    Equipamento equipamento = null;
+    
     public FormBuscarEquipamento() {
         initComponents();
     }
@@ -37,6 +39,7 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
         tfCodigo = new javax.swing.JTextField();
         cboBuscarTodos = new javax.swing.JCheckBox();
         btSair = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Equipamento");
@@ -90,27 +93,37 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
             }
         });
 
+        btEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/edit-file-icon.png"))); // NOI18N
+        btEditar.setText("Editar");
+        btEditar.setEnabled(false);
+        btEditar.setName("btEditar"); // NOI18N
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btSair))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbCodigo)
-                                    .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(53, 53, 53)
-                                .addComponent(cboBuscarTodos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                                .addComponent(btBuscar)))))
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbCodigo)
+                            .addComponent(tfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53)
+                        .addComponent(cboBuscarTodos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                        .addComponent(btBuscar)))
                 .addGap(35, 35, 35))
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,7 +143,9 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
                         .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btSair)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btSair)
+                    .addComponent(btEditar))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -150,10 +165,12 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        taConsulta.setText("");
         if(cboBuscarTodos.isSelected()){
             List<Equipamento> eq = FormPrincipal.bdEquipamento.todosEquipamentos();
             if(eq.size() > 0){
                 for(int i = 0; i < eq.size(); i++){
+                    btEditar.setEnabled(false);
                     taConsulta.append(eq.get(i).toString());
                 }
             }else{
@@ -161,10 +178,12 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
             }
         }else{
             if(!tfCodigo.getText().trim().equals("")){
-                Equipamento equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(Integer.parseInt(tfCodigo.getText()));
+                equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(Integer.parseInt(tfCodigo.getText()));
                 if(equipamento != null){
                     taConsulta.setText(equipamento.toString());
+                    btEditar.setEnabled(true);
                 }else{
+                    btEditar.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "Equipamento não cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
                 }
             }else{
@@ -188,6 +207,12 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\computer-search-icon 16.png").getImage());
     }//GEN-LAST:event_formWindowOpened
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        FormEquipamento.eq = equipamento;
+        new FormEquipamento().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,6 +251,7 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btEditar;
     private javax.swing.JButton btSair;
     private javax.swing.JCheckBox cboBuscarTodos;
     private javax.swing.JPanel jPanel1;

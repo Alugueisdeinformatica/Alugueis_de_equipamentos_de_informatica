@@ -5,9 +5,16 @@
  */
 package form;
 
+import java.awt.Desktop;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import model.Computador;
 import model.Equipamento;
+import model.Impressora;
+import model.Monitor;
+import model.Notebook;
+import model.Projetor;
+import model.Tablet;
 
 /**
  *
@@ -15,7 +22,8 @@ import model.Equipamento;
  */
 public class FormEquipamento extends javax.swing.JFrame {
     
-    public static Equipamento equipamento;   
+    public static Equipamento equipamento ;   
+    public static Equipamento eq = null;
     
     /**
      * Creates new form FormComputador
@@ -37,7 +45,6 @@ public class FormEquipamento extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        btEditar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         btSeguinte = new javax.swing.JButton();
@@ -91,23 +98,10 @@ public class FormEquipamento extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(250, 250, 250));
 
-        btEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/edit-file-icon.png"))); // NOI18N
-        btEditar.setText("Editar");
-        btEditar.setFocusable(false);
-        btEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btEditar.setName("btEditar"); // NOI18N
-        btEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEditarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btEditar);
-
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
         btLimpar.setText("Limpar");
+        btLimpar.setEnabled(false);
         btLimpar.setFocusable(false);
         btLimpar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btLimpar.setName("btLimpar"); // NOI18N
@@ -301,49 +295,32 @@ public class FormEquipamento extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tfCodigoKeyTyped
 
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-         
-    }//GEN-LAST:event_btEditarActionPerformed
-
     private void btSeguinteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeguinteActionPerformed
-        equipamento = new Equipamento();        
-        equipamento.setCodEquipamento(FormPrincipal.codEquipamento);
-        equipamento.setCategoria( cbCategoria.getSelectedItem().toString() );
-        equipamento.setModelo( tfModelo.getText() );
-        equipamento.setMarca( tfMarca.getText() );
-        equipamento.setValorDiaria( Double.parseDouble( tfValor.getText() ) );
-        equipamento.setQuantEstoque( Integer.parseInt( tfQuantidade.getText() ) );
-        
-        if(equipamento.validaEquipamento()){
-            int opcao = cbCategoria.getSelectedIndex();
-        
-            switch(opcao){
-                case 0:
-                    new FormDesktop().setVisible(true);                     
-                    break;
-                case 1:
-                    new FormImpressora().setVisible(true);                    
-                    break;
-                case 2:
-                    new FormMonitor().setVisible(true);                    
-                    break;
-                case 3:
-                    new FormNotebook().setVisible(true);
-                    break;
-                case 4:
-                    new FormProjetor().setVisible(true);
-                    break;
-                case 5:
-                    new FormTablet().setVisible(true);
-                    break;
-            }
-            this.dispose();            
+        if(eq != null){
+            eq.setModelo( tfModelo.getText() );
+            eq.setMarca( tfMarca.getText() );
+            eq.setValorDiaria( Double.parseDouble( tfValor.getText() ) );
+            eq.setQuantEstoque( Integer.parseInt( tfQuantidade.getText() ) );
+            selecionar();
         }else{
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
-        }
+            equipamento = new Equipamento();        
+            equipamento.setCodEquipamento(FormPrincipal.codEquipamento);
+            equipamento.setCategoria( cbCategoria.getSelectedItem().toString() );
+            equipamento.setModelo( tfModelo.getText() );
+            equipamento.setMarca( tfMarca.getText() );
+            equipamento.setValorDiaria( Double.parseDouble( tfValor.getText() ) );
+            equipamento.setQuantEstoque( Integer.parseInt( tfQuantidade.getText() ) );
+
+            if(equipamento.validaEquipamento()){
+                selecionar();
+            }else{
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+            }
+        }        
     }//GEN-LAST:event_btSeguinteActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        equipamento = null;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -357,14 +334,43 @@ public class FormEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setIconImage(new ImageIcon("src\\logo\\my-computer-icon 16.png").getImage());
-        tfCodigo.setText(String.valueOf(FormPrincipal.codEquipamento));
-        tfModelo.requestFocus();
+        if(eq != null){
+            tfCodigo.setText(Integer.toString(eq.getCodEquipamento()));
+            tfCodigo.setEnabled(false);
+            tfModelo.setText(eq.getModelo());
+            tfMarca.setText(eq.getMarca());
+            tfQuantidade.setText(Integer.toString(eq.getQuantEstoque()));
+            tfValor.setText(Double.toString(eq.getValorDiaria()));
+            cbCategoria.setSelectedItem(eq.getCategoria());
+            cbCategoria.setEnabled(false);
+        }else{
+            this.setIconImage(new ImageIcon("src\\logo\\my-computer-icon 16.png").getImage());
+            btLimpar.setEnabled(true);
+            tfCodigo.setText(String.valueOf(FormPrincipal.codEquipamento));
+            tfModelo.requestFocus();
+        }
     }//GEN-LAST:event_formWindowOpened
 
-    /**
-     * @param args the command line arguments
-     */
+    private void selecionar(){
+        Object opcao = cbCategoria.getSelectedItem();
+        
+        if(opcao.equals("Desktop")){
+            FormDesktop.eq = (Computador) eq;
+            new FormDesktop().setVisible(true); 
+        }else if(opcao.equals("Impressora")){
+            new FormImpressora().setVisible(true);
+        }else if(opcao.equals("Monitor")){
+            new FormMonitor().setVisible(true); 
+        }else if(opcao.equals("Notebook")){
+            new FormNotebook().setVisible(true);
+        }else if(opcao.equals("Projetor")){
+            new FormProjetor().setVisible(true);
+        }else if(opcao.equals("Tablet")){
+            new FormTablet().setVisible(true);
+        }
+        this.dispose(); 
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -401,7 +407,6 @@ public class FormEquipamento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btEditar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSeguinte;
