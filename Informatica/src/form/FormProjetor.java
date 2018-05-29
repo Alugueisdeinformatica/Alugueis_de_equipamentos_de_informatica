@@ -17,9 +17,8 @@ import model.Projetor;
  */
 public class FormProjetor extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormProjetor
-     */
+    public static Projetor pro = null;
+    
     public FormProjetor() {
         initComponents();
     }
@@ -158,6 +157,11 @@ public class FormProjetor extends javax.swing.JFrame {
         btEditar.setMaximumSize(new java.awt.Dimension(115, 55));
         btEditar.setName("btEditar"); // NOI18N
         btEditar.setPreferredSize(new java.awt.Dimension(115, 55));
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btEditar);
         jToolBar1.add(jSeparator3);
 
@@ -269,6 +273,9 @@ public class FormProjetor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        FormEquipamento.eq = null;
+        FormEquipamento.equipamento = null;
+        pro = null;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -282,35 +289,69 @@ public class FormProjetor extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        String material = tfMaterial.getText();
-        String brilho = tfBrilho.getText();
-        String resolucao = tfResolucao.getText();
-        String lampada = tfLampada.getText();
-        String lente = tfLente.getText();
-        
-        Projetor proj = new Projetor(material, brilho, resolucao, lampada, lente, 
-                equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
-                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
-        
-        if(proj.validaProjetor()){
-            FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) proj); 
-            JOptionPane.showMessageDialog(null, "Projetor Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
-            FormPrincipal.codEquipamento++;
-            int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
-            if(opcao == 0){
-                this.dispose();
-                new FormEquipamento().setVisible(true);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja efetuar o cadastro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            String material = tfMaterial.getText();
+            String brilho = tfBrilho.getText();
+            String resolucao = tfResolucao.getText();
+            String lampada = tfLampada.getText();
+            String lente = tfLente.getText();
+
+            Projetor proj = new Projetor(material, brilho, resolucao, lampada, lente, 
+                    equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
+                    equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
+
+            if(proj.validaProjetor()){
+                FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) proj); 
+                JOptionPane.showMessageDialog(null, "Projetor Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+                FormPrincipal.codEquipamento++;
+                opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
+                if(opcao == 0){
+                    this.dispose();
+                    new FormEquipamento().setVisible(true);
+                }else{
+                    this.dispose();
+                }
             }else{
-                this.dispose();
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
-        }     
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+            }   
+        }  
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(pro != null){
+            btEditar.setEnabled(true);
+            tfMaterial.setText(pro.getMaterial());
+            tfBrilho.setText(pro.getBrilho());
+            tfResolucao.setText(pro.getResolucaoOptica());
+            tfLampada.setText(pro.getLampada());
+            tfLente.setText(pro.getLente());
+        }else{
+            btCadastrar.setEnabled(true);
+            btLimpar.setEnabled(true);
+        }
         this.setIconImage(new ImageIcon("src\\logo\\film-projector-icon 16.png").getImage());
     }//GEN-LAST:event_formWindowOpened
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja editar os dados?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            String material = tfMaterial.getText();
+            String brilho = tfBrilho.getText();
+            String resolucao = tfResolucao.getText();
+            String lampada = tfLampada.getText();
+            String lente = tfLente.getText(); 
+            Projetor proj = new Projetor(material, brilho, resolucao, lampada, lente, 
+                    pro.getCodEquipamento(), pro.getModelo(), pro.getMarca(),
+                    pro.getQuantEstoque(), pro.getCategoria(), pro.getValorDiaria());
+            FormPrincipal.bdEquipamento.atualizarEquipamento((Equipamento) proj);
+            JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!", "Informações Alteradas", JOptionPane.INFORMATION_MESSAGE);
+            FormEquipamento.eq = null;
+            FormEquipamento.equipamento = null;
+            pro = null;
+            this.dispose();
+        }
+    }//GEN-LAST:event_btEditarActionPerformed
 
     /**
      * @param args the command line arguments
