@@ -58,7 +58,7 @@ public class FormDesktop extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         btCadastrar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
-        btCancelar = new javax.swing.JButton();
+        btLimpar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         btSair = new javax.swing.JButton();
 
@@ -245,17 +245,17 @@ public class FormDesktop extends javax.swing.JFrame {
         jToolBar1.add(btCadastrar);
         jToolBar1.add(jSeparator2);
 
-        btCancelar.setBackground(new java.awt.Color(250, 250, 250));
-        btCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
-        btCancelar.setText("Cancelar");
-        btCancelar.setName("btCancelar"); // NOI18N
-        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btLimpar.setBackground(new java.awt.Color(250, 250, 250));
+        btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
+        btLimpar.setText("Limpar");
+        btLimpar.setName("btLimpar"); // NOI18N
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCancelarActionPerformed(evt);
+                btLimparActionPerformed(evt);
             }
         });
-        jToolBar1.add(btCancelar);
+        jToolBar1.add(btLimpar);
         jToolBar1.add(jSeparator1);
 
         btSair.setBackground(new java.awt.Color(250, 250, 250));
@@ -409,7 +409,7 @@ public class FormDesktop extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
-    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         tfArmHD.setText("");
         tfMemoria.setText("");
         cbProcessador.setSelectedIndex(0);
@@ -418,7 +418,7 @@ public class FormDesktop extends javax.swing.JFrame {
         bgPlaca.clearSelection();
         rbOnBoard.setSelected(true);
         tfArmHD.requestFocus();
-    }//GEN-LAST:event_btCancelarActionPerformed
+    }//GEN-LAST:event_btLimparActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\my-computer-icon 16.png").getImage());
@@ -491,7 +491,7 @@ public class FormDesktop extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bgPlaca;
     private javax.swing.ButtonGroup bgSO;
     private javax.swing.JButton btCadastrar;
-    private javax.swing.JButton btCancelar;
+    private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cbProcessador;
     private javax.swing.JLabel jLabel3;

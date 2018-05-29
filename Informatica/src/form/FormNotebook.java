@@ -41,7 +41,7 @@ public class FormNotebook extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         btCadastrar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        btCancelar = new javax.swing.JButton();
+        btLimpar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         btSair = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -99,20 +99,20 @@ public class FormNotebook extends javax.swing.JFrame {
         jToolBar1.add(btCadastrar);
         jToolBar1.add(jSeparator1);
 
-        btCancelar.setBackground(new java.awt.Color(250, 250, 250));
-        btCancelar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
-        btCancelar.setText("Cancelar");
-        btCancelar.setFocusable(false);
-        btCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btCancelar.setName("btCancelar"); // NOI18N
-        btCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+        btLimpar.setBackground(new java.awt.Color(250, 250, 250));
+        btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
+        btLimpar.setText("Limpar");
+        btLimpar.setFocusable(false);
+        btLimpar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btLimpar.setName("btLimpar"); // NOI18N
+        btLimpar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCancelarActionPerformed(evt);
+                btLimparActionPerformed(evt);
             }
         });
-        jToolBar1.add(btCancelar);
+        jToolBar1.add(btLimpar);
         jToolBar1.add(jSeparator2);
 
         btSair.setBackground(new java.awt.Color(250, 250, 250));
@@ -422,7 +422,7 @@ public class FormNotebook extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
-    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         cbSistemaOp.setSelectedIndex(0);
         cbPlacaVideo.setSelectedIndex(0);
         tfCapacidade.setText("");
@@ -432,7 +432,7 @@ public class FormNotebook extends javax.swing.JFrame {
         bgMemoria.clearSelection();
         rbDDR34g.setSelected(true);
         cbSistemaOp.requestFocus();
-    }//GEN-LAST:event_btCancelarActionPerformed
+    }//GEN-LAST:event_btLimparActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\blue-laptop-icon 16.png").getImage());
@@ -504,7 +504,7 @@ public class FormNotebook extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bgMemoria;
     private javax.swing.ButtonGroup bgProcessador;
     private javax.swing.JButton btCadastrar;
-    private javax.swing.JButton btCancelar;
+    private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cbPlacaVideo;
     private javax.swing.JComboBox<String> cbSistemaOp;

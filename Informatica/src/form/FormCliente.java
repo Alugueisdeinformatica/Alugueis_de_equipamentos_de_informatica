@@ -94,7 +94,7 @@ public class FormCliente extends javax.swing.JFrame {
         btCadastrar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
-        btAtualizar = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Cliente");
@@ -470,16 +470,17 @@ public class FormCliente extends javax.swing.JFrame {
             }
         });
 
-        btAtualizar.setBackground(new java.awt.Color(250, 250, 250));
-        btAtualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/edit-file-icon.png"))); // NOI18N
-        btAtualizar.setText("Atualizar");
-        btAtualizar.setEnabled(false);
-        btAtualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btAtualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btAtualizar.addActionListener(new java.awt.event.ActionListener() {
+        btEditar.setBackground(new java.awt.Color(250, 250, 250));
+        btEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/edit-file-icon.png"))); // NOI18N
+        btEditar.setText("Editar");
+        btEditar.setEnabled(false);
+        btEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btEditar.setName("btEditar"); // NOI18N
+        btEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAtualizarActionPerformed(evt);
+                btEditarActionPerformed(evt);
             }
         });
 
@@ -491,7 +492,7 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGap(65, 65, 65)
                 .addComponent(btCadastrar)
                 .addGap(18, 18, 18)
-                .addComponent(btAtualizar)
+                .addComponent(btEditar)
                 .addGap(18, 18, 18)
                 .addComponent(btLimpar)
                 .addGap(18, 18, 18)
@@ -505,7 +506,7 @@ public class FormCliente extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btCadastrar)
                     .addComponent(btSair)
-                    .addComponent(btAtualizar)
+                    .addComponent(btEditar)
                     .addComponent(btLimpar))
                 .addGap(35, 35, 35))
         );
@@ -665,7 +666,7 @@ public class FormCliente extends javax.swing.JFrame {
         tfComplemento.setText("");
         tfCPF.setEnabled(true);
         tfCPF.requestFocus();
-        btAtualizar.setEnabled(false);
+        btEditar.setEnabled(false);
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void ftfDataNascimentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftfDataNascimentoKeyReleased
@@ -685,7 +686,7 @@ public class FormCliente extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\user-add-icon 16.png").getImage());
         if(cliente != null){
-            btAtualizar.setEnabled(true);
+            btEditar.setEnabled(true);
             btLimpar.setEnabled(false);
             tfCPF.setText(cliente.getCpf());
             tfCPF.setEditable(false);
@@ -719,12 +720,12 @@ public class FormCliente extends javax.swing.JFrame {
         }else{
             tfCPF.setEditable(true);
             tfCPF.setEnabled(true);
-            btAtualizar.setEnabled(false);
+            btEditar.setEnabled(false);
             btLimpar.setEnabled(true);            
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         receberDadosCliente(cliente);
         validarData(cliente);
         if(cliente.validaCliente() && validarData(cliente)){
@@ -736,7 +737,7 @@ public class FormCliente extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);            
         }      
-    }//GEN-LAST:event_btAtualizarActionPerformed
+    }//GEN-LAST:event_btEditarActionPerformed
 
     public static boolean validarCPF(String CPF) {
     if (CPF.equals("00000000000") || CPF.equals("11111111111") ||
@@ -813,8 +814,8 @@ public class FormCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgEstadoCivil;
-    private javax.swing.JButton btAtualizar;
     private javax.swing.JButton btCadastrar;
+    private javax.swing.JButton btEditar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cbEstado;
