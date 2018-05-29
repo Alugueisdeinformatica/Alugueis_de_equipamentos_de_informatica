@@ -11,6 +11,7 @@ import model.Computador;
 import model.Equipamento;
 import model.Impressora;
 import model.Monitor;
+import model.Notebook;
 
 /**
  *
@@ -361,6 +362,7 @@ public class FormEquipamento extends javax.swing.JFrame {
             FormMonitor.mo = (Monitor) eq;
             new FormMonitor().setVisible(true); 
         }else if(opcao.equals("Notebook")){
+            FormNotebook.not = (Notebook) eq;
             new FormNotebook().setVisible(true);
         }else if(opcao.equals("Projetor")){
             new FormProjetor().setVisible(true);

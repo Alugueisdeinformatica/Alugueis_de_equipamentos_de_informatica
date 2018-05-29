@@ -7,6 +7,7 @@ package form;
 
 import static form.FormEquipamento.equipamento;
 import java.util.Enumeration;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -19,9 +20,8 @@ import model.Notebook;
  */
 public class FormNotebook extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FormNotebook
-     */
+    public static Notebook not = null;
+    
     public FormNotebook() {
         initComponents();
     }
@@ -127,6 +127,11 @@ public class FormNotebook extends javax.swing.JFrame {
         btEditar.setMaximumSize(new java.awt.Dimension(115, 55));
         btEditar.setName("btEditar"); // NOI18N
         btEditar.setPreferredSize(new java.awt.Dimension(115, 55));
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btEditar);
         jToolBar1.add(jSeparator3);
 
@@ -404,34 +409,40 @@ public class FormNotebook extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        String sistemaOperacional = cbSistemaOp.getSelectedItem().toString();
-        String placaVideo = cbPlacaVideo.getSelectedItem().toString();
-        String capacidadeHD = tfCapacidade.getText();
-        String bateria = taBateria.getText();
-        String processador = capturaProcessador();
-        String memoria = capturaMemoria();
-        
-        Notebook note = new Notebook(sistemaOperacional, placaVideo, capacidadeHD, processador, memoria, bateria,
-                equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
-                equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
-        
-        if(note.validaNotebook()){
-            FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) note); 
-            JOptionPane.showMessageDialog(null, "Notebook Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
-            FormPrincipal.codEquipamento++;
-            int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
-            if(opcao == 0){
-                this.dispose();
-                new FormEquipamento().setVisible(true);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja efetuar o cadastro?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            String sistemaOperacional = cbSistemaOp.getSelectedItem().toString();
+            String placaVideo = cbPlacaVideo.getSelectedItem().toString();
+            String capacidadeHD = tfCapacidade.getText();
+            String bateria = taBateria.getText();
+            String processador = capturaProcessador();
+            String memoria = capturaMemoria();
+
+            Notebook note = new Notebook(sistemaOperacional, placaVideo, capacidadeHD, processador, memoria, bateria,
+                    equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
+                    equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
+
+            if(note.validaNotebook()){
+                FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) note); 
+                JOptionPane.showMessageDialog(null, "Notebook Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+                FormPrincipal.codEquipamento++;
+                opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
+                if(opcao == 0){
+                    this.dispose();
+                    new FormEquipamento().setVisible(true);
+                }else{
+                    this.dispose();
+                }
             }else{
-                this.dispose();
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
-        } 
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+            } 
+        }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
+        FormEquipamento.eq = null;
+        FormEquipamento.equipamento = null;
+        not = null;
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
 
@@ -448,8 +459,41 @@ public class FormNotebook extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(not != null){
+            btEditar.setEnabled(true);
+            cbSistemaOp.setSelectedItem(not.getSistemaOperacional());
+            cbPlacaVideo.setSelectedItem(not.getPlacaVideo());
+            tfCapacidade.setText(not.getCapacidadeHD());
+            taBateria.setText(not.getBateria());
+            marcarRadio(bgProcessador, not.getProcessador());
+            marcarRadio(bgMemoria, not.getMemoria());
+        }else{
+            btCadastrar.setEnabled(true);
+            btLimpar.setEnabled(true);
+        }
         this.setIconImage(new ImageIcon("src\\logo\\blue-laptop-icon 16.png").getImage());
     }//GEN-LAST:event_formWindowOpened
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja editar os dados?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            String sistemaOperacional = cbSistemaOp.getSelectedItem().toString();
+            String placaVideo = cbPlacaVideo.getSelectedItem().toString();
+            String capacidadeHD = tfCapacidade.getText();
+            String bateria = taBateria.getText();
+            String processador = capturaProcessador();
+            String memoria = capturaMemoria();  
+            Notebook note = new Notebook(sistemaOperacional, placaVideo, capacidadeHD, processador, memoria, bateria,
+                    not.getCodEquipamento(), not.getModelo(), not.getMarca(),
+                    not.getQuantEstoque(), not.getCategoria(), not.getValorDiaria());
+            FormPrincipal.bdEquipamento.atualizarEquipamento((Equipamento) note);
+            JOptionPane.showMessageDialog(null, "Dados alterados com sucesso!", "Informações Alteradas", JOptionPane.INFORMATION_MESSAGE);
+            FormEquipamento.eq = null;
+            FormEquipamento.equipamento = null;
+            not = null;
+            this.dispose();
+        }
+    }//GEN-LAST:event_btEditarActionPerformed
 
     private String capturaMemoria() {
         JRadioButton radio;
@@ -475,9 +519,17 @@ public class FormNotebook extends javax.swing.JFrame {
         return processador;
     }
 
-    /**
-     * @param args the command line arguments
-     */
+    private void marcarRadio(ButtonGroup grupo, String str){
+        JRadioButton radio; 
+        Enumeration jr = grupo.getElements(); 
+        while ( jr.hasMoreElements() ) 
+        { 
+            radio = (JRadioButton) jr.nextElement(); 
+            if (radio.getText().equals(str)) 
+                radio.setSelected(true); 
+        }
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
