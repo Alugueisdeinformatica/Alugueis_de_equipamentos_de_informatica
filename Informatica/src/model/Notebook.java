@@ -13,8 +13,8 @@ package model;
 public class Notebook extends Equipamento{
     private String sistemaOperacional;
     private String placaVideo;
-    private String capacidadeHD;//desmembrar em classe nova, para ter os atributos. Ex: marca, capacidade modelo...
-    private String processador;// idem HD
+    private String capacidadeHD;
+    private String processador;
     private String memoria;
     private String bateria;
 
