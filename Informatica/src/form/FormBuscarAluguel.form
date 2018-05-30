@@ -226,7 +226,7 @@
                             <Column editable="false" title="Cliente" type="java.lang.String"/>
                             <Column editable="false" title="Data do Aluguel" type="java.lang.Object"/>
                             <Column editable="false" title="Data do Vencimento" type="java.lang.Object"/>
-                            <Column editable="false" title="Valor do Aluguel" type="java.lang.Double"/>
+                            <Column editable="false" title="Valor do Aluguel" type="java.lang.String"/>
                           </Table>
                         </Property>
                         <Property name="autoResizeMode" type="int" value="0"/>

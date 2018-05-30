@@ -7,12 +7,9 @@ package form;
 
 import java.awt.Color;
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -26,13 +23,11 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
 
    DefaultTableModel modelo1  = null;
    DefaultTableModel modelo2  = null;
-   NumberFormat nf;
     
     public FormBuscarAluguel() {
         initComponents();
         modelo1 = (DefaultTableModel) tbAluguelRealizado.getModel();
         modelo2 = (DefaultTableModel) tbAvisoVencimento.getModel();
-        nf = new DecimalFormat ("R$ #,##0.00", new DecimalFormatSymbols (new Locale ("pt", "BR")));
     }
 
     /**
@@ -141,7 +136,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -254,12 +249,14 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
     }
     
     private void inserirTabela(List<Aluguel> alugueis, int i, DefaultTableModel modelo){
+        DecimalFormat df = new DecimalFormat("0.00");
+        String v = df.format(alugueis.get(i).getValorTotal());
         modelo.addRow(new Object[]{
             alugueis.get(i).getNumero(), 
             alugueis.get(i).getCliente().getNome(),
             formataData(alugueis.get(i).getDataAluguel()), 
             formataData(alugueis.get(i).dataDevolucao()), 
-            nf.format(alugueis.get(i).getValorTotal())
+            ("R$ " + v)
         });
     }
     

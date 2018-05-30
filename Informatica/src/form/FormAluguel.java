@@ -721,43 +721,45 @@ public class FormAluguel extends javax.swing.JFrame {
 
     private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
         tfDias.setText("0");
-        lbValorTotal.setText(nf.format(0));        
-        Object codigo = modeloEstoque.getValueAt(tbInserir.getSelectedRow(), 0);
-                equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) codigo);         
-                if(equipamento.getQuantEstoque() <= 0){
-                    JOptionPane.showMessageDialog(null, "Não existe estoque suficiente!", "Atenção", JOptionPane.ERROR_MESSAGE);
-                }else{
-                    try{
-                        int valor;
-                        valor = Integer.parseInt(JOptionPane.showInputDialog(null, 
-                                    "Informe a quantidade que Deseja alugar\nDisponivel: " + equipamento.getQuantEstoque(),
-                                    "Atenção",
-                                    JOptionPane.INFORMATION_MESSAGE)); 
-                        if(valor <= equipamento.getQuantEstoque()){
-                            if(valor <= 0){
-                                JOptionPane.showMessageDialog(null, "Valor Inválido!", "Atenção", JOptionPane.ERROR_MESSAGE);
+        lbValorTotal.setText(nf.format(0));  
+        try{
+            Object codigo = modeloEstoque.getValueAt(tbInserir.getSelectedRow(), 0);
+                    equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) codigo);         
+                    if(equipamento.getQuantEstoque() <= 0){
+                        JOptionPane.showMessageDialog(null, "Não existe estoque suficiente!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                        try{
+                            int valor;
+                            valor = Integer.parseInt(JOptionPane.showInputDialog(null, 
+                                        "Informe a quantidade que Deseja alugar\nDisponivel: " + equipamento.getQuantEstoque(),
+                                        "Atenção",
+                                        JOptionPane.INFORMATION_MESSAGE)); 
+                            if(valor <= equipamento.getQuantEstoque()){
+                                if(valor <= 0){
+                                    JOptionPane.showMessageDialog(null, "Valor Inválido!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                                }else{
+                                    Item item = new Item();
+                                    item.setEquipamento(equipamento);
+                                    item.setValorItem(equipamento.getValorDiaria());
+                                    item.setQuantidade(valor);                                
+                                    item.setCodItem(++codItem);
+                                    item.calcularValorItem();
+                                    soma = soma + item.getValorItem();                                
+                                    inserirTabelaPedido(item, equipamento);
+                                    taDescricao.setText(equipamento.toString() + "\nQuantidade em Estoque: " + equipamento.getQuantEstoque());
+                                    equipamento.setQuantEstoque(equipamento.getQuantEstoque() - valor);
+                                    aluguel.adicionaItem(item);
+                                    tfDias.setEnabled(true);
+                                    btRemoverItem.setEnabled(true);
+                                }
                             }else{
-                                Item item = new Item();
-                                item.setEquipamento(equipamento);
-                                item.setValorItem(equipamento.getValorDiaria());
-                                item.setQuantidade(valor);                                
-                                item.setCodItem(++codItem);
-                                item.calcularValorItem();
-                                soma = soma + item.getValorItem();                                
-                                inserirTabelaPedido(item, equipamento);
-                                taDescricao.setText(equipamento.toString() + "\nQuantidade em Estoque: " + equipamento.getQuantEstoque());
-                                equipamento.setQuantEstoque(equipamento.getQuantEstoque() - valor);
-                                aluguel.adicionaItem(item);
-                                tfDias.setEnabled(true);
-                                btRemoverItem.setEnabled(true);
-                            }
-                        }else{
-                            JOptionPane.showMessageDialog(null, "Não existe estoque suficiente!", "Atenção", JOptionPane.WARNING_MESSAGE);
-                        }                
-                    }catch(NumberFormatException e){
-                        JOptionPane.showMessageDialog(null, "Informe um valor!", "Erro", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Não existe estoque suficiente!", "Atenção", JOptionPane.WARNING_MESSAGE);
+                            }                
+                        }catch(NumberFormatException e){
+                            JOptionPane.showMessageDialog(null, "Informe um valor!", "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
                     }
-                }                
+        }catch(ArrayIndexOutOfBoundsException e){}
     }//GEN-LAST:event_btSelecionarActionPerformed
 
     private void tbInserirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbInserirMousePressed
