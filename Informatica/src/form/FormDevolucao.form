@@ -432,7 +432,7 @@
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="0">
                         <Column editable="false" title="ID" type="java.lang.Integer"/>
-                        <Column editable="false" title="Valor Total" type="java.lang.Double"/>
+                        <Column editable="false" title="Valor Total" type="java.lang.String"/>
                         <Column editable="false" title="Data do Aluguel" type="java.lang.Object"/>
                         <Column editable="false" title="Data da Devolu&#xe7;&#xe3;o" type="java.lang.Object"/>
                       </Table>

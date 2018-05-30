@@ -5,8 +5,12 @@
  */
 package form;
 
+import java.text.DecimalFormat;
 import javax.swing.ImageIcon;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.NumberFormatter;
 import model.Computador;
 import model.Equipamento;
 import model.Impressora;
@@ -52,7 +56,6 @@ public class FormEquipamento extends javax.swing.JFrame {
         lbQuantidade = new javax.swing.JLabel();
         tfQuantidade = new javax.swing.JTextField();
         lbValor = new javax.swing.JLabel();
-        tfValor = new javax.swing.JTextField();
         lbCategoria = new javax.swing.JLabel();
         cbCategoria = new javax.swing.JComboBox<>();
         jToolBar1 = new javax.swing.JToolBar();
@@ -61,6 +64,7 @@ public class FormEquipamento extends javax.swing.JFrame {
         btSair = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         btSeguinte = new javax.swing.JButton();
+        tfValor = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Equipamento");
@@ -74,7 +78,7 @@ public class FormEquipamento extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(250, 250, 250));
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/my-computer-icon.png"))); // NOI18N
@@ -138,14 +142,6 @@ public class FormEquipamento extends javax.swing.JFrame {
         lbValor.setText("Valor:");
         lbValor.setName("lbValor"); // NOI18N
 
-        tfValor.setText("0");
-        tfValor.setName("tfValor"); // NOI18N
-        tfValor.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfValorKeyTyped(evt);
-            }
-        });
-
         lbCategoria.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lbCategoria.setText("Categoria:");
         lbCategoria.setName("lbCategoria"); // NOI18N
@@ -202,6 +198,8 @@ public class FormEquipamento extends javax.swing.JFrame {
         });
         jToolBar1.add(btSeguinte);
 
+        tfValor.setName("tfValor"); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -217,35 +215,33 @@ public class FormEquipamento extends javax.swing.JFrame {
                         .addComponent(lbCodigo)
                         .addGap(85, 85, 85)
                         .addComponent(lbModelo)
-                        .addGap(98, 98, 98)
+                        .addGap(87, 87, 87)
                         .addComponent(lbMarca))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addGap(124, 124, 124)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbQuantidade)
-                                    .addComponent(tfCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(44, 44, 44)
-                                        .addComponent(tfModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(74, 74, 74)
-                                        .addComponent(lbValor)))
-                                .addGap(39, 39, 39))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(253, 253, 253)
-                                .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54)))
+                        .addGap(124, 124, 124)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbCategoria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addGap(24, 24, 24)
-                                    .addComponent(lbCategoria))))))
+                            .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbQuantidade)
+                            .addComponent(tfCodigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(tfModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(lbValor))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cbCategoria, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(lbCategoria)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -270,8 +266,8 @@ public class FormEquipamento extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
@@ -299,13 +295,6 @@ public class FormEquipamento extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tfQuantidadeKeyTyped
 
-    private void tfValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfValorKeyTyped
-        String caracteres = "0987654321";
-        if(!caracteres.contains(evt.getKeyChar() + "")){
-            evt.consume();
-        }
-    }//GEN-LAST:event_tfValorKeyTyped
-
     private void tfCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfCodigoKeyTyped
         String caracteres = "0987654321";
         if(!caracteres.contains(evt.getKeyChar() + "")){
@@ -314,10 +303,11 @@ public class FormEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_tfCodigoKeyTyped
 
     private void btSeguinteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeguinteActionPerformed
+        float val = formatarValor(tfValor);
         if(eq != null){
             eq.setModelo( tfModelo.getText() );
             eq.setMarca( tfMarca.getText() );
-            eq.setValorDiaria( Double.parseDouble( tfValor.getText() ) );
+            eq.setValorDiaria(val);
             eq.setQuantEstoque( Integer.parseInt( tfQuantidade.getText() ) );
             selecionar();
         }else{
@@ -326,7 +316,7 @@ public class FormEquipamento extends javax.swing.JFrame {
             equipamento.setCategoria( cbCategoria.getSelectedItem().toString() );
             equipamento.setModelo( tfModelo.getText() );
             equipamento.setMarca( tfMarca.getText() );
-            equipamento.setValorDiaria( Double.parseDouble( tfValor.getText() ) );
+            equipamento.setValorDiaria(val);
             equipamento.setQuantEstoque( Integer.parseInt( tfQuantidade.getText() ) );
 
             if(equipamento.validaEquipamento()){
@@ -353,6 +343,13 @@ public class FormEquipamento extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        DecimalFormat dFormat = new DecimalFormat("#,###,###.00") ;
+        NumberFormatter formatter = new NumberFormatter(dFormat) ;
+        formatter.setFormat(dFormat) ;
+        formatter.setAllowsInvalid(false) ; 
+        tfValor.setFormatterFactory ( new DefaultFormatterFactory ( formatter ) ) ;
+        tfValor.setText("0,00");
+        
         if(eq != null){
             tfCodigo.setText(Integer.toString(eq.getCodEquipamento()));
             tfCodigo.setEnabled(false);
@@ -393,6 +390,13 @@ public class FormEquipamento extends javax.swing.JFrame {
             new FormTablet().setVisible(true);
         }
         this.dispose(); 
+    }
+    
+    private float formatarValor(JFormattedTextField campo){
+        String str = campo.getText().replace(".", "");
+        String array[];
+        array = str.split(",");
+        return Float.parseFloat(array[0] + "." + array[1]);
     }
     
     public static void main(String args[]) {
@@ -451,6 +455,6 @@ public class FormEquipamento extends javax.swing.JFrame {
     private javax.swing.JTextField tfMarca;
     private javax.swing.JTextField tfModelo;
     private javax.swing.JTextField tfQuantidade;
-    private javax.swing.JTextField tfValor;
+    private javax.swing.JFormattedTextField tfValor;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.text.DecimalFormat;
+
 
 /**
  *
@@ -16,12 +18,12 @@ public class Equipamento {
     private String marca;
     private int quantEstoque;
     private String categoria;
-    private double valorDiaria;
+    private float valorDiaria;
 
     public Equipamento() {
     }
 
-    public Equipamento(int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, double valorDiaria) {
+    public Equipamento(int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, float valorDiaria) {
         this.codEquipamento = codEquipamento;
         this.modelo = modelo;
         this.marca = marca;
@@ -70,16 +72,16 @@ public class Equipamento {
         this.categoria = categoria;
     }
 
-    public double getValorDiaria() {
+    public float getValorDiaria() {
         return valorDiaria;
     }
 
-    public void setValorDiaria(double valorDiaria) {
+    public void setValorDiaria(float valorDiaria) {
         this.valorDiaria = valorDiaria;
     }   
     
     public int quantDisponivel(int quant) {
-        int total = getQuantEstoque();//atualizando a quantidade disponivel aumentando ou diminuindo        
+        int total = getQuantEstoque();       
         total += quantEstoque;        
         return total;        
     }
@@ -98,9 +100,9 @@ public class Equipamento {
         str += "\nCódigo do Equipamento: " + codEquipamento;
         str += "\nModelo: " + modelo;
         str += "\nMarca: " + marca;
-        str += "\nQuantidade em Estoque: " + quantEstoque;
         str += "\nCategoria: " + categoria;
-        str += "\nValor da Diária: " + valorDiaria;
+        DecimalFormat df = new DecimalFormat("0.00");
+        str += "\nValor do Equipamento: R$ " + df.format(valorDiaria);
         return str;
     }
 }

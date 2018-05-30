@@ -373,7 +373,7 @@ public class FormDesktop extends javax.swing.JFrame {
             String memoria = tfMemoria.getText();
             String processador = cbProcessador.getSelectedItem().toString();        
             String sistemaOp = capturarSO();        
-            String placaVideo = captuarPlaca();    
+            String placaVideo = captuarPlaca();   
 
             Computador comp = new Computador(sistemaOp, placaVideo, capacidadeHD, processador, memoria, 
                     equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),

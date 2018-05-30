@@ -119,7 +119,7 @@ public class FormAluguel extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
 
         PanelDadosCliente.setBackground(new java.awt.Color(250, 250, 250));
-        PanelDadosCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Cliente", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        PanelDadosCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Cliente", 1, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Nome:");
@@ -265,7 +265,7 @@ public class FormAluguel extends javax.swing.JFrame {
         );
 
         PanelEstoque.setBackground(new java.awt.Color(250, 250, 250));
-        PanelEstoque.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Equipamento em Estoque", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        PanelEstoque.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Equipamento em Estoque", 1, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         tbInserir.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -276,7 +276,7 @@ public class FormAluguel extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -379,7 +379,7 @@ public class FormAluguel extends javax.swing.JFrame {
         );
 
         PanelCliente.setBackground(new java.awt.Color(250, 250, 250));
-        PanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pedido do Cliente", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        PanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pedido do Cliente", 1, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         tbPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -390,7 +390,7 @@ public class FormAluguel extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false
@@ -745,6 +745,7 @@ public class FormAluguel extends javax.swing.JFrame {
                                 item.calcularValorItem();
                                 soma = soma + item.getValorItem();                                
                                 inserirTabelaPedido(item, equipamento);
+                                taDescricao.setText(equipamento.toString() + "\nQuantidade em Estoque: " + equipamento.getQuantEstoque());
                                 equipamento.setQuantEstoque(equipamento.getQuantEstoque() - valor);
                                 aluguel.adicionaItem(item);
                                 tfDias.setEnabled(true);
@@ -762,7 +763,7 @@ public class FormAluguel extends javax.swing.JFrame {
     private void tbInserirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbInserirMousePressed
         int codigo = (int) (modeloEstoque.getValueAt(tbInserir.getSelectedRow(), 0));
         equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(codigo);        
-        taDescricao.setText(equipamento.toString());
+        taDescricao.setText(equipamento.toString() + "\nQuantidade em Estoque: " + equipamento.getQuantEstoque());
         btSelecionar.setEnabled(true);
     }//GEN-LAST:event_tbInserirMousePressed
 
@@ -862,22 +863,26 @@ public class FormAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_btNovaVendaActionPerformed
     
     private void inserirTabelaEstoque(List<Equipamento> equipamentos, int i){
+        DecimalFormat df = new DecimalFormat("0.00");
+        String v = df.format(equipamentos.get(i).getValorDiaria());
         modeloEstoque.addRow(new Object[]{
             equipamentos.get(i).getCodEquipamento(), 
             equipamentos.get(i).getMarca(), 
             equipamentos.get(i).getModelo(), 
-            equipamentos.get(i).getValorDiaria()
+            ("R$ " + v)
         });
     }
     
     private void inserirTabelaPedido(Item item, Equipamento equipamento){
+        DecimalFormat df = new DecimalFormat("0.00");
+        String v = df.format(item.getValorItem());
         modeloPedido.addRow(new Object[]{
             item.getCodItem(),
             equipamento.getCodEquipamento(),
             equipamento.getCategoria(),
             equipamento.getModelo(),
             item.getQuantidade(),
-            item.getValorItem()
+            ("R$ " + v)
         });
     }
     

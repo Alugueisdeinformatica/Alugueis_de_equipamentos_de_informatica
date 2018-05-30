@@ -460,7 +460,7 @@
                         <Column editable="false" title="C&#xf3;digo" type="java.lang.Integer"/>
                         <Column editable="false" title="Marca" type="java.lang.String"/>
                         <Column editable="false" title="Modelo" type="java.lang.String"/>
-                        <Column editable="false" title="Valor Unit&#xe1;rio" type="java.lang.Double"/>
+                        <Column editable="false" title="Valor Unit&#xe1;rio" type="java.lang.String"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -673,7 +673,7 @@
                         <Column editable="false" title="Categoria" type="java.lang.String"/>
                         <Column editable="false" title="Modelo" type="java.lang.String"/>
                         <Column editable="false" title="Quantidade" type="java.lang.Integer"/>
-                        <Column editable="false" title="Sub-Total" type="java.lang.Double"/>
+                        <Column editable="false" title="Sub-Total" type="java.lang.String"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

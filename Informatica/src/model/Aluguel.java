@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -122,10 +123,11 @@ public class Aluguel {
         str += "\nData do Aluguel " + fm.format(dataAluguel);
         str += "\nHorário do Aluguel: " + fmh.format(dataAluguel);
         str += "\nData da Devolução: " + fm.format(dataDevolucao());
-        str += "\nValor Total: " + valorTotal;
+        DecimalFormat df = new DecimalFormat("0.00");
+        str += "\nValor Total: R$ " + df.format(valorTotal);
         str += "\n\n*******Informações do Cliente*******\n";
         str += cliente.toString();
-        str += "\n\n********Informações ds Itens********\n";
+        str += "\n\n****Informações dos Equipamentos****\n";
         for(Item i : lista){
             str += i.toString();
             str += "\n------------------------------------";

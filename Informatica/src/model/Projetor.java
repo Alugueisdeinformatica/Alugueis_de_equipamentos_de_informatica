@@ -21,7 +21,7 @@ public class Projetor extends Equipamento{
         super();
     }
 
-    public Projetor(String material, String brilho, String resolucaoOptica, String lampada, String lente, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, double valorDiaria) {
+    public Projetor(String material, String brilho, String resolucaoOptica, String lampada, String lente, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, float valorDiaria) {
         super(codEquipamento, modelo, marca, quantEstoque, categoria, valorDiaria);
         this.material = material;
         this.brilho = brilho;

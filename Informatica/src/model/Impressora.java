@@ -21,7 +21,7 @@ public class Impressora extends Equipamento{
         wifi = false;
     }
 
-    public Impressora(String tipo, String tecnologia, String especificacao, boolean wifi, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, double valorDiaria) {
+    public Impressora(String tipo, String tecnologia, String especificacao, boolean wifi, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, float valorDiaria) {
         super(codEquipamento, modelo, marca, quantEstoque, categoria, valorDiaria);
         this.tipo = tipo;
         this.tecnologia = tecnologia;

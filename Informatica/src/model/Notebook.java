@@ -22,7 +22,7 @@ public class Notebook extends Equipamento{
         super();
     }
 
-    public Notebook(String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria, String bateria, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, double valorDiaria) {
+    public Notebook(String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria, String bateria, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, float valorDiaria) {
         super(codEquipamento, modelo, marca, quantEstoque, categoria, valorDiaria);
         this.sistemaOperacional = sistemaOperacional;
         this.placaVideo = placaVideo;

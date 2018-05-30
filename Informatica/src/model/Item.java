@@ -13,7 +13,7 @@ public class Item {
     
     private int codItem;
     private Equipamento equipamento;
-    private double valorItem;
+    private float valorItem;
     private int quantidade;
 
     public Item() {
@@ -48,11 +48,11 @@ public class Item {
         this.quantidade = quantidade;
     }    
 
-    public double getValorItem() {
+    public float getValorItem() {
         return valorItem;
     }
 
-    public void setValorItem(double valorItem) {
+    public void setValorItem(float valorItem) {
         this.valorItem = valorItem;
     }
     
@@ -62,11 +62,7 @@ public class Item {
     
     @Override
     public String toString(){
-        String str = "";
-        str += "\nCódigo do Item: " + codItem;
-        str += "\nValor do Item: " + valorItem;
-        str += "\nQuantidade: " + quantidade;
-        str += equipamento.toString();
+        String str = equipamento.toString();
         return str;
     }
 }

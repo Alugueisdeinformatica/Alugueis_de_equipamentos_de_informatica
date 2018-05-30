@@ -5,6 +5,7 @@
  */
 package form;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -103,7 +104,7 @@ public class FormDevolucao extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
 
         PanelDadosCliente.setBackground(new java.awt.Color(250, 250, 250));
-        PanelDadosCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        PanelDadosCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Cliente", 2, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Nome:");
@@ -249,7 +250,7 @@ public class FormDevolucao extends javax.swing.JFrame {
         );
 
         PanelCliente.setBackground(new java.awt.Color(250, 250, 250));
-        PanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Aluguéis do Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        PanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Aluguéis do Cliente", 2, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         tbAluguel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -260,7 +261,7 @@ public class FormDevolucao extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -341,7 +342,7 @@ public class FormDevolucao extends javax.swing.JFrame {
         );
 
         PanelCliente1.setBackground(new java.awt.Color(250, 250, 250));
-        PanelCliente1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Equipamentos Alugados", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        PanelCliente1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Equipamentos Alugados", 2, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         tbEquipamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -554,7 +555,9 @@ public class FormDevolucao extends javax.swing.JFrame {
     }//GEN-LAST:event_tbAluguelMousePressed
 
     private void inserirTabelaAluguel(Aluguel al){
-        modeloAluguel.addRow(new Object[]{al.getNumero(), al.getValorTotal(), 
+        DecimalFormat df = new DecimalFormat("0.00");
+        String v = df.format(al.getValorTotal());
+        modeloAluguel.addRow(new Object[]{al.getNumero(), ("R$ " + v), 
         formataData(al.getDataAluguel()), formataData(al.dataDevolucao())});
     }
     

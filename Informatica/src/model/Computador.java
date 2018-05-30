@@ -21,7 +21,7 @@ public class Computador extends Equipamento{
         super();
     }
 
-    public Computador(String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, double valorDiaria) {
+    public Computador(String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, float valorDiaria) {
         super(codEquipamento, modelo, marca, quantEstoque, categoria, valorDiaria);
         this.sistemaOperacional = sistemaOperacional;
         this.placaVideo = placaVideo;
