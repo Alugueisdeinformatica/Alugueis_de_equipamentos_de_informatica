@@ -210,8 +210,15 @@ public class FormNota extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btEmitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEmitirActionPerformed
-        String nro = Integer.toString(aluguel.getNumero());
-        File arq = new File("src\\notas\\NotaFiscal_" + nro + ".txt");
+        String nro = Integer.toString(aluguel.getNumero());        
+        String usuario = System.getProperty("user.name");        
+        
+        File diretorio = new File("C:\\Users\\"+ usuario +"\\Desktop\\Notas");
+        if (!diretorio.exists()) {
+            diretorio.mkdirs();
+        }        
+        
+        File arq = new File("C:\\Users\\" + usuario + "\\Desktop\\Notas\\NotaFiscal_" + nro + ".txt");
         if(!arq.exists()){
             try {
                 arq.createNewFile();
