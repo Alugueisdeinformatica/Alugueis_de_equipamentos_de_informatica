@@ -643,6 +643,7 @@ public class FormAluguel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
+        FormBuscarCliente.seletor = 1;
         new FormBuscarCliente().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btInserirActionPerformed

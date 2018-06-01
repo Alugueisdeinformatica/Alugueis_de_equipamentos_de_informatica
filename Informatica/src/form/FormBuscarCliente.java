@@ -17,6 +17,7 @@ import model.Cliente;
 public class FormBuscarCliente extends javax.swing.JFrame {
 
     private static Cliente clien = null;
+    public static int seletor;
     
     public static void setCliente(Cliente clien){
         FormBuscarCliente.clien = clien;
@@ -200,6 +201,8 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        btEditar.setEnabled(false);
+        taBusca.setText("");
         if(cboBuscarTodos.isSelected()){
             List<Cliente> cl = FormPrincipal.bdCliente.todosClientes();
             if(cl.size() > 0){
@@ -217,8 +220,13 @@ public class FormBuscarCliente extends javax.swing.JFrame {
                     if(cliente != null){
                         taBusca.setText(cliente.toString() + cliente.getEndereco().toString() + "\n");
                         setCliente(cliente);
-                        btEditar.setEnabled(true);
-                        btSelecionar.setEnabled(true);
+                        if(seletor == 0){
+                            btEditar.setEnabled(true);
+                            btSelecionar.setEnabled(false);
+                        }else{
+                            btEditar.setEnabled(false);
+                            btSelecionar.setEnabled(true);
+                        }                        
                     }else{
                         JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -243,6 +251,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btSelecionarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        FormCliente.seletor = 1;
         new FormCliente().setVisible(true);
         FormCliente.setCliente(getCliente());
         this.dispose();

@@ -391,6 +391,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     }//GEN-LAST:event_JMenuItemSairActionPerformed
 
     private void JMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemClienteActionPerformed
+        FormCliente.seletor = 0;
         new FormCliente().setVisible(true);
     }//GEN-LAST:event_JMenuItemClienteActionPerformed
 
@@ -417,6 +418,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     }//GEN-LAST:event_btSairActionPerformed
 
     private void jMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClientesActionPerformed
+        FormBuscarCliente.seletor = 0;
         new FormBuscarCliente().setVisible(true);
     }//GEN-LAST:event_jMenuItemClientesActionPerformed
 

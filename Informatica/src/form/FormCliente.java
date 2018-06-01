@@ -25,6 +25,7 @@ import model.Cliente;
 public class FormCliente extends javax.swing.JFrame {
     
     public static Cliente cliente;
+    public static int seletor = 0;
 
     public static Cliente getCliente() {
         return cliente;
@@ -684,6 +685,11 @@ public class FormCliente extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\user-add-icon 16.png").getImage());
+        if(seletor == 0){
+            btCadastrar.setEnabled(true);
+        }else{
+            btCadastrar.setEnabled(false);
+        }
         if(cliente != null){
             btEditar.setEnabled(true);
             btLimpar.setEnabled(false);
@@ -725,17 +731,18 @@ public class FormCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        receberDadosCliente(cliente);
-        validarData(cliente);
-        if(cliente.validaCliente() && validarData(cliente)){
-            FormPrincipal.bdCliente.atualizarCliente(cliente);
-            JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso!", "Atualização de Cliente", JOptionPane.INFORMATION_MESSAGE);
-            btLimparActionPerformed(evt);
-            btLimpar.setEnabled(true);
-            tfCPF.setEditable(true);
-        }else{
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);            
-        }      
+        btCadastrar.setEnabled(false);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja editar os dados?", "Alteração de Cadastro", JOptionPane.YES_NO_OPTION);
+        if(opcao == 0){
+            receberDadosCliente(cliente);
+            validarData(cliente);
+            if(cliente.validaCliente() && validarData(cliente)){
+                FormPrincipal.bdCliente.atualizarCliente(cliente);
+                JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso!", "Atualização de Cliente", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);            
+            } 
+        }             
     }//GEN-LAST:event_btEditarActionPerformed
 
     public static boolean validarCPF(String CPF) {
