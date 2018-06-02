@@ -3,10 +3,13 @@ package form;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -741,7 +744,6 @@ public class FormAluguel extends javax.swing.JFrame {
                                 }else{
                                     Item item = new Item();
                                     item.setEquipamento(equipamento);
-                                    item.setValorItem(equipamento.getValorDiaria());
                                     item.setQuantidade(valor);                                
                                     item.setCodItem(++codItem);
                                     item.calcularValorItem();
@@ -776,8 +778,11 @@ public class FormAluguel extends javax.swing.JFrame {
             int codigo = (Integer) tbPedido.getModel().getValueAt(linha, 0);
             int codEquip = (Integer) tbPedido.getModel().getValueAt(linha, 1);            
             int quantidade = (Integer) tbPedido.getModel().getValueAt(linha, 4);
-            double subTotal = (Double) tbPedido.getModel().getValueAt(linha, 5);            
-            soma = soma - subTotal;
+            String subTotal = (String) tbPedido.getModel().getValueAt(linha, 5);  
+            Locale ptBR = new Locale("pt", "BR");
+            NumberFormat moedaFormat = NumberFormat.getCurrencyInstance(ptBR);
+            float val = moedaFormat.parse(subTotal).floatValue();            
+            soma = soma - val;
             equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(codEquip);
             equipamento.setQuantEstoque(equipamento.getQuantEstoque() + quantidade);
             lbValorTotal.setText(nf.format(soma));
@@ -792,6 +797,8 @@ public class FormAluguel extends javax.swing.JFrame {
             }
         }catch(ArrayIndexOutOfBoundsException e){
             JOptionPane.showMessageDialog(null, "Selecione um equipamento para remover!", "Atenção", JOptionPane.ERROR_MESSAGE);
+        } catch (ParseException ex) {
+            Logger.getLogger(FormAluguel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btRemoverItemActionPerformed
    
