@@ -73,23 +73,18 @@ public class Aluguel {
         lista.add(item);
     }
     
-    public Item buscarItem(int codigo)
-    {
+    public Item buscarItem(int codigo){
         Item it = null;
-        for(Item item : lista)
-        {
-            if(item.getEquipamento().getCodEquipamento() == codigo)
+        for(Item item : lista){
+            if(item.getCodItem() == codigo)
                 it = item;
-        }
-        
+        }        
         return it;
     }
     
-    public void removerItem(int codigo)
-    {
+    public void removerItem(int codigo){
         Item item = buscarItem(codigo);
-        if(item != null)
-        {
+        if(item != null){
             lista.remove(item);
         }
     }

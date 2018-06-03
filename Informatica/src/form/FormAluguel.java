@@ -3,13 +3,10 @@ package form;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -733,8 +730,7 @@ public class FormAluguel extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Não existe estoque suficiente!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     }else{
                         try{
-                            int valor;
-                            valor = Integer.parseInt(JOptionPane.showInputDialog(null, 
+                            int valor = Integer.parseInt(JOptionPane.showInputDialog(null, 
                                         "Informe a quantidade que Deseja alugar\nDisponivel: " + equipamento.getQuantEstoque(),
                                         "Atenção",
                                         JOptionPane.INFORMATION_MESSAGE)); 
@@ -746,7 +742,7 @@ public class FormAluguel extends javax.swing.JFrame {
                                     item.setEquipamento(equipamento);
                                     item.setQuantidade(valor);                                
                                     item.setCodItem(++codItem);
-                                    item.calcularValorItem();
+                                    item.calcularValorItem();                                    
                                     soma = soma + item.getValorItem();                                
                                     inserirTabelaPedido(item, equipamento);
                                     taDescricao.setText(equipamento.toString() + "\nQuantidade em Estoque: " + equipamento.getQuantEstoque());
@@ -762,7 +758,9 @@ public class FormAluguel extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null, "Informe um valor!", "Erro", JOptionPane.ERROR_MESSAGE);
                         }
                     }
-        }catch(ArrayIndexOutOfBoundsException e){}
+        }catch(ArrayIndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(null, "Selecione um equipamento para adicionar!", "Atenção", JOptionPane.ERROR_MESSAGE);            
+        }
     }//GEN-LAST:event_btSelecionarActionPerformed
 
     private void tbInserirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbInserirMousePressed
@@ -778,10 +776,10 @@ public class FormAluguel extends javax.swing.JFrame {
             int codigo = (Integer) tbPedido.getModel().getValueAt(linha, 0);
             int codEquip = (Integer) tbPedido.getModel().getValueAt(linha, 1);            
             int quantidade = (Integer) tbPedido.getModel().getValueAt(linha, 4);
-            String subTotal = (String) tbPedido.getModel().getValueAt(linha, 5);  
-            Locale ptBR = new Locale("pt", "BR");
-            NumberFormat moedaFormat = NumberFormat.getCurrencyInstance(ptBR);
-            float val = moedaFormat.parse(subTotal).floatValue();            
+            String subTotal = (String) tbPedido.getModel().getValueAt(linha, 5);
+            String valorFormatado = subTotal.replace("R", "").replace("$", "").replace(" ", "").replace(",", ".");
+            double val = Double.parseDouble( valorFormatado);            
+                                   
             soma = soma - val;
             equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(codEquip);
             equipamento.setQuantEstoque(equipamento.getQuantEstoque() + quantidade);
@@ -797,8 +795,6 @@ public class FormAluguel extends javax.swing.JFrame {
             }
         }catch(ArrayIndexOutOfBoundsException e){
             JOptionPane.showMessageDialog(null, "Selecione um equipamento para remover!", "Atenção", JOptionPane.ERROR_MESSAGE);
-        } catch (ParseException ex) {
-            Logger.getLogger(FormAluguel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btRemoverItemActionPerformed
    
@@ -835,10 +831,12 @@ public class FormAluguel extends javax.swing.JFrame {
 
     private void tfDiasKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDiasKeyReleased
         try{
-            aluguel.setDias(Integer.parseInt(tfDias.getText()));
+            int dias = Integer.parseInt(tfDias.getText());
+            aluguel.setDias(dias);
             aluguel.calcularValorTotal();
+           
             lbValorTotal.setText(nf.format(aluguel.getValorTotal()));
-            if(Integer.parseInt(tfDias.getText()) > 0){
+            if(dias > 0){
                 btFecharPedido.setEnabled(true);
                 tfDataDevolucao.setText("Data de Devolução: " + formataData(aluguel.dataDevolucao()));
             }else{
@@ -873,26 +871,22 @@ public class FormAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_btNovaVendaActionPerformed
     
     private void inserirTabelaEstoque(List<Equipamento> equipamentos, int i){
-        DecimalFormat df = new DecimalFormat("0.00");
-        String v = df.format(equipamentos.get(i).getValorDiaria());
         modeloEstoque.addRow(new Object[]{
             equipamentos.get(i).getCodEquipamento(), 
             equipamentos.get(i).getMarca(), 
             equipamentos.get(i).getModelo(), 
-            ("R$ " + v)
+            nf.format(equipamentos.get(i).getValorDiaria())
         });
     }
     
     private void inserirTabelaPedido(Item item, Equipamento equipamento){
-        DecimalFormat df = new DecimalFormat("0.00");
-        String v = df.format(item.getValorItem());
         modeloPedido.addRow(new Object[]{
             item.getCodItem(),
             equipamento.getCodEquipamento(),
             equipamento.getCategoria(),
             equipamento.getModelo(),
             item.getQuantidade(),
-            ("R$ " + v)
+            nf.format(item.getValorItem())
         });
     }
     
