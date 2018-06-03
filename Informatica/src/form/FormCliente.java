@@ -91,7 +91,7 @@ public class FormCliente extends javax.swing.JFrame {
         tfNome = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btCadastrar = new javax.swing.JButton();
-        btEditar = new javax.swing.JButton();
+        btAtualizar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
 
@@ -231,7 +231,7 @@ public class FormCliente extends javax.swing.JFrame {
                             .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbDataNescimento)
                             .addComponent(ftfDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jpDadosPessoaisLayout.setVerticalGroup(
             jpDadosPessoaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,7 +355,7 @@ public class FormCliente extends javax.swing.JFrame {
                         .addComponent(lbBairro)
                         .addGap(173, 173, 173)
                         .addComponent(lbCEP)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jpEnderecoCompletoLayout.setVerticalGroup(
             jpEnderecoCompletoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,15 +451,15 @@ public class FormCliente extends javax.swing.JFrame {
             }
         });
 
-        btEditar.setBackground(new java.awt.Color(250, 250, 250));
-        btEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/edit-file-icon.png"))); // NOI18N
-        btEditar.setText("Editar");
-        btEditar.setEnabled(false);
-        btEditar.setName(""); // NOI18N
-        btEditar.addActionListener(new java.awt.event.ActionListener() {
+        btAtualizar.setBackground(new java.awt.Color(250, 250, 250));
+        btAtualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/user-settings-icon.png"))); // NOI18N
+        btAtualizar.setText("Atualizar");
+        btAtualizar.setEnabled(false);
+        btAtualizar.setName(""); // NOI18N
+        btAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEditarActionPerformed(evt);
+                btAtualizarActionPerformed(evt);
             }
         });
 
@@ -510,7 +510,7 @@ public class FormCliente extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btEditar)
+                                .addComponent(btAtualizar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -540,10 +540,10 @@ public class FormCliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -666,7 +666,7 @@ public class FormCliente extends javax.swing.JFrame {
         tfComplemento.setText("");
         tfCPF.setEnabled(true);
         tfCPF.requestFocus();
-        btEditar.setEnabled(false);
+        btAtualizar.setEnabled(false);
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void ftfDataNascimentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftfDataNascimentoKeyReleased
@@ -691,7 +691,7 @@ public class FormCliente extends javax.swing.JFrame {
             btCadastrar.setEnabled(false);
         }
         if(cliente != null){
-            btEditar.setEnabled(true);
+            btAtualizar.setEnabled(true);
             btLimpar.setEnabled(false);
             tfCPF.setText(cliente.getCpf());
             tfCPF.setEditable(false);
@@ -725,12 +725,12 @@ public class FormCliente extends javax.swing.JFrame {
         }else{
             tfCPF.setEditable(true);
             tfCPF.setEnabled(true);
-            btEditar.setEnabled(false);
+            btAtualizar.setEnabled(false);
             btLimpar.setEnabled(true);            
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+    private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
         btCadastrar.setEnabled(false);
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja editar os dados?", "Alteração de Cadastro", JOptionPane.YES_NO_OPTION);
         if(opcao == 0){
@@ -743,7 +743,7 @@ public class FormCliente extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);            
             } 
         }             
-    }//GEN-LAST:event_btEditarActionPerformed
+    }//GEN-LAST:event_btAtualizarActionPerformed
 
     public static boolean validarCPF(String CPF) {
     if (CPF.equals("00000000000") || CPF.equals("11111111111") ||
@@ -820,8 +820,8 @@ public class FormCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgEstadoCivil;
+    private javax.swing.JButton btAtualizar;
     private javax.swing.JButton btCadastrar;
-    private javax.swing.JButton btEditar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cbEstado;

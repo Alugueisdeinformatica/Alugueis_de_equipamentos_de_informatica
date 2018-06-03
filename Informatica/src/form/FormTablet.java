@@ -52,7 +52,7 @@ public class FormTablet extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         btLimpar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
-        btEditar = new javax.swing.JButton();
+        btAtualizar = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         btSair = new javax.swing.JButton();
 
@@ -168,20 +168,20 @@ public class FormTablet extends javax.swing.JFrame {
         jToolBar1.add(btLimpar);
         jToolBar1.add(jSeparator2);
 
-        btEditar.setBackground(new java.awt.Color(250, 250, 250));
-        btEditar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/edit-file-icon.png"))); // NOI18N
-        btEditar.setText("Editar");
-        btEditar.setEnabled(false);
-        btEditar.setMaximumSize(new java.awt.Dimension(115, 55));
-        btEditar.setName("btEditar"); // NOI18N
-        btEditar.setPreferredSize(new java.awt.Dimension(115, 55));
-        btEditar.addActionListener(new java.awt.event.ActionListener() {
+        btAtualizar.setBackground(new java.awt.Color(250, 250, 250));
+        btAtualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/refresh_arrow_1546.png"))); // NOI18N
+        btAtualizar.setText("Atualizar");
+        btAtualizar.setEnabled(false);
+        btAtualizar.setMaximumSize(new java.awt.Dimension(115, 55));
+        btAtualizar.setName("btAtualizar"); // NOI18N
+        btAtualizar.setPreferredSize(new java.awt.Dimension(115, 55));
+        btAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEditarActionPerformed(evt);
+                btAtualizarActionPerformed(evt);
             }
         });
-        jToolBar1.add(btEditar);
+        jToolBar1.add(btAtualizar);
         jToolBar1.add(jSeparator3);
 
         btSair.setBackground(new java.awt.Color(250, 250, 250));
@@ -340,7 +340,7 @@ public class FormTablet extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(ta != null){
-            btEditar.setEnabled(true);
+            btAtualizar.setEnabled(true);
             cbCapacidade.setSelectedItem(ta.getCapacidade());
             cbTamanhoTela.setSelectedItem(ta.getTamanhoTela());
             tfMemoria.setText(ta.getMemoriaRam());
@@ -354,8 +354,8 @@ public class FormTablet extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon("src\\logo\\ipad-white-icon 16.png").getImage());
     }//GEN-LAST:event_formWindowOpened
 
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja editar os dados?", "Atenção", JOptionPane.YES_NO_OPTION);
+    private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja atualizar os dados?", "Atenção", JOptionPane.YES_NO_OPTION);
         if(opcao == 0){
             String capacidade = cbCapacidade.getSelectedItem().toString();
             String tamanho = cbTamanhoTela.getSelectedItem().toString();
@@ -373,7 +373,7 @@ public class FormTablet extends javax.swing.JFrame {
             ta = null;
             this.dispose();
         }
-    }//GEN-LAST:event_btEditarActionPerformed
+    }//GEN-LAST:event_btAtualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -411,8 +411,8 @@ public class FormTablet extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAtualizar;
     private javax.swing.JButton btCadastrar;
-    private javax.swing.JButton btEditar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
     private javax.swing.JComboBox<String> cbCapacidade;
