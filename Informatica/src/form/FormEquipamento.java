@@ -351,12 +351,13 @@ public class FormEquipamento extends javax.swing.JFrame {
         tfValor.setText("0,00");
         
         if(eq != null){
+            String valor = Double.toString(eq.getValorDiaria()).replace(".", ",");
             tfCodigo.setText(Integer.toString(eq.getCodEquipamento()));
             tfCodigo.setEnabled(false);
             tfModelo.setText(eq.getModelo());
             tfMarca.setText(eq.getMarca());
             tfQuantidade.setText(Integer.toString(eq.getQuantEstoque()));
-            tfValor.setText(Double.toString(eq.getValorDiaria()));
+            tfValor.setText(valor);
             cbCategoria.setSelectedItem(eq.getCategoria());
             cbCategoria.setEnabled(false);
         }else{
