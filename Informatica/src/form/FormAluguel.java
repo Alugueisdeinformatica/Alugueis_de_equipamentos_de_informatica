@@ -757,9 +757,9 @@ public class FormAluguel extends javax.swing.JFrame {
                                     item.calcularValorItem();                                    
                                     soma = soma + item.getValorItem();                                
                                     inserirTabelaPedido(item, equipamento);
-                                    taDescricao.setText(equipamento.toString() + "\nQuantidade em Estoque: " + equipamento.getQuantEstoque());
                                     equipamento.setQuantEstoque(equipamento.getQuantEstoque() - valor);
                                     aluguel.adicionaItem(item);
+                                    taDescricao.setText(equipamento.toString() + "\nQuantidade em Estoque: " + equipamento.getQuantEstoque());
                                     tfDias.setEnabled(true);
                                     btRemoverItem.setEnabled(true);
                                 }
@@ -790,7 +790,6 @@ public class FormAluguel extends javax.swing.JFrame {
             int quantidade = (Integer) tbPedido.getModel().getValueAt(linha, 4);
             String subTotal = (String) tbPedido.getModel().getValueAt(linha, 5);
             String valorFormatado = subTotal.replace("R", "").replace("$", "").replace(" ", "").replace(".", "");
-            JOptionPane.showMessageDialog(null, valorFormatado.replace(",", "."));
             double val = Double.parseDouble( valorFormatado.replace(",", "."));            
                                    
             soma = soma - val;
@@ -799,6 +798,7 @@ public class FormAluguel extends javax.swing.JFrame {
             lbValorTotal.setText(nf.format(soma));
             aluguel.removerItem(codigo);
             modeloPedido.removeRow(linha);
+            taDescricao.setText(equipamento.toString() + "\nQuantidade em Estoque: " + equipamento.getQuantEstoque());
             if(tbPedido.getRowCount() < 1){
                 tfDias.setEnabled(false);
                 tfDias.setText("0");
