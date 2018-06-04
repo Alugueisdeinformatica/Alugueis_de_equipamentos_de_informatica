@@ -21,10 +21,6 @@ import model.Notebook;
 import model.Projetor;
 import model.Tablet;
 
-/**
- *
- * @author JohnPeter
- */
 public class FormAluguel extends javax.swing.JFrame {
     
     private static Cliente cliente = null;
@@ -528,6 +524,7 @@ public class FormAluguel extends javax.swing.JFrame {
         btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
         btLimpar.setText("Limpar");
+        btLimpar.setEnabled(false);
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLimparActionPerformed(evt);
@@ -678,6 +675,7 @@ public class FormAluguel extends javax.swing.JFrame {
             cbCategoria.setEnabled(true);
             btInserir.setEnabled(false);
             btBuscar.setEnabled(true);
+            btLimpar.setEnabled(true);
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -824,6 +822,7 @@ public class FormAluguel extends javax.swing.JFrame {
                 FormPrincipal.nroAluguel++;
                 btNovaVenda.setEnabled(true);
                 btInserir.setEnabled(false);
+                btLimpar.setEnabled(false);
             }      
         }else{
             JOptionPane.showMessageDialog(null, "Adicione pelo menos um item!", "Atenção!", JOptionPane.ERROR_MESSAGE);
