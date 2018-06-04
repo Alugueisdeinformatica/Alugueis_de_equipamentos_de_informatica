@@ -119,7 +119,7 @@ public class FormAluguel extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
 
         PanelDadosCliente.setBackground(new java.awt.Color(250, 250, 250));
-        PanelDadosCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Cliente", 1, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        PanelDadosCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados Cliente", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Nome:");
@@ -265,7 +265,7 @@ public class FormAluguel extends javax.swing.JFrame {
         );
 
         PanelEstoque.setBackground(new java.awt.Color(250, 250, 250));
-        PanelEstoque.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Equipamento em Estoque", 1, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        PanelEstoque.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Equipamento em Estoque", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         tbInserir.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -290,6 +290,7 @@ public class FormAluguel extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbInserir.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tbInserir.getTableHeader().setReorderingAllowed(false);
         tbInserir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -299,9 +300,13 @@ public class FormAluguel extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbInserir);
         if (tbInserir.getColumnModel().getColumnCount() > 0) {
             tbInserir.getColumnModel().getColumn(0).setResizable(false);
+            tbInserir.getColumnModel().getColumn(0).setPreferredWidth(86);
             tbInserir.getColumnModel().getColumn(1).setResizable(false);
+            tbInserir.getColumnModel().getColumn(1).setPreferredWidth(90);
             tbInserir.getColumnModel().getColumn(2).setResizable(false);
+            tbInserir.getColumnModel().getColumn(2).setPreferredWidth(90);
             tbInserir.getColumnModel().getColumn(3).setResizable(false);
+            tbInserir.getColumnModel().getColumn(3).setPreferredWidth(90);
         }
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -379,7 +384,7 @@ public class FormAluguel extends javax.swing.JFrame {
         );
 
         PanelCliente.setBackground(new java.awt.Color(250, 250, 250));
-        PanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pedido do Cliente", 1, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        PanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pedido do Cliente", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         tbPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -404,15 +409,22 @@ public class FormAluguel extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbPedido.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tbPedido.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tbPedido);
         if (tbPedido.getColumnModel().getColumnCount() > 0) {
             tbPedido.getColumnModel().getColumn(0).setResizable(false);
+            tbPedido.getColumnModel().getColumn(0).setPreferredWidth(50);
             tbPedido.getColumnModel().getColumn(1).setResizable(false);
+            tbPedido.getColumnModel().getColumn(1).setPreferredWidth(80);
             tbPedido.getColumnModel().getColumn(2).setResizable(false);
+            tbPedido.getColumnModel().getColumn(2).setPreferredWidth(80);
             tbPedido.getColumnModel().getColumn(3).setResizable(false);
+            tbPedido.getColumnModel().getColumn(3).setPreferredWidth(80);
             tbPedido.getColumnModel().getColumn(4).setResizable(false);
+            tbPedido.getColumnModel().getColumn(4).setPreferredWidth(80);
             tbPedido.getColumnModel().getColumn(5).setResizable(false);
+            tbPedido.getColumnModel().getColumn(5).setPreferredWidth(80);
         }
 
         btRemoverItem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -777,8 +789,9 @@ public class FormAluguel extends javax.swing.JFrame {
             int codEquip = (Integer) tbPedido.getModel().getValueAt(linha, 1);            
             int quantidade = (Integer) tbPedido.getModel().getValueAt(linha, 4);
             String subTotal = (String) tbPedido.getModel().getValueAt(linha, 5);
-            String valorFormatado = subTotal.replace("R", "").replace("$", "").replace(" ", "").replace(",", ".");
-            double val = Double.parseDouble( valorFormatado);            
+            String valorFormatado = subTotal.replace("R", "").replace("$", "").replace(" ", "").replace(".", "");
+            JOptionPane.showMessageDialog(null, valorFormatado.replace(",", "."));
+            double val = Double.parseDouble( valorFormatado.replace(",", "."));            
                                    
             soma = soma - val;
             equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(codEquip);

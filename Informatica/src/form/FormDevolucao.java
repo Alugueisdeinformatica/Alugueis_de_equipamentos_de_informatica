@@ -104,7 +104,7 @@ public class FormDevolucao extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
 
         PanelDadosCliente.setBackground(new java.awt.Color(250, 250, 250));
-        PanelDadosCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Cliente", 2, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        PanelDadosCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Nome:");
@@ -250,7 +250,7 @@ public class FormDevolucao extends javax.swing.JFrame {
         );
 
         PanelCliente.setBackground(new java.awt.Color(250, 250, 250));
-        PanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Aluguéis do Cliente", 2, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        PanelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Aluguéis do Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         tbAluguel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -288,7 +288,7 @@ public class FormDevolucao extends javax.swing.JFrame {
             tbAluguel.getColumnModel().getColumn(0).setResizable(false);
             tbAluguel.getColumnModel().getColumn(0).setPreferredWidth(50);
             tbAluguel.getColumnModel().getColumn(1).setResizable(false);
-            tbAluguel.getColumnModel().getColumn(1).setPreferredWidth(80);
+            tbAluguel.getColumnModel().getColumn(1).setPreferredWidth(88);
             tbAluguel.getColumnModel().getColumn(2).setResizable(false);
             tbAluguel.getColumnModel().getColumn(2).setPreferredWidth(120);
             tbAluguel.getColumnModel().getColumn(3).setResizable(false);
@@ -342,7 +342,7 @@ public class FormDevolucao extends javax.swing.JFrame {
         );
 
         PanelCliente1.setBackground(new java.awt.Color(250, 250, 250));
-        PanelCliente1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Equipamentos Alugados", 2, 0, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        PanelCliente1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Equipamentos Alugados", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         tbEquipamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -377,9 +377,9 @@ public class FormDevolucao extends javax.swing.JFrame {
             tbEquipamentos.getColumnModel().getColumn(1).setResizable(false);
             tbEquipamentos.getColumnModel().getColumn(1).setPreferredWidth(60);
             tbEquipamentos.getColumnModel().getColumn(2).setResizable(false);
-            tbEquipamentos.getColumnModel().getColumn(2).setPreferredWidth(60);
+            tbEquipamentos.getColumnModel().getColumn(2).setPreferredWidth(63);
             tbEquipamentos.getColumnModel().getColumn(3).setResizable(false);
-            tbEquipamentos.getColumnModel().getColumn(3).setPreferredWidth(80);
+            tbEquipamentos.getColumnModel().getColumn(3).setPreferredWidth(100);
             tbEquipamentos.getColumnModel().getColumn(4).setResizable(false);
             tbEquipamentos.getColumnModel().getColumn(4).setPreferredWidth(80);
         }
@@ -388,10 +388,7 @@ public class FormDevolucao extends javax.swing.JFrame {
         PanelCliente1.setLayout(PanelCliente1Layout);
         PanelCliente1Layout.setHorizontalGroup(
             PanelCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCliente1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         PanelCliente1Layout.setVerticalGroup(
             PanelCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

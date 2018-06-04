@@ -7,9 +7,12 @@ package form;
 
 import java.awt.Color;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -23,11 +26,13 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
 
    DefaultTableModel modelo1  = null;
    DefaultTableModel modelo2  = null;
+   NumberFormat nf;
     
     public FormBuscarAluguel() {
         initComponents();
         modelo1 = (DefaultTableModel) tbAluguelRealizado.getModel();
         modelo2 = (DefaultTableModel) tbAvisoVencimento.getModel();
+        nf = new DecimalFormat ("R$ #,##0.00", new DecimalFormatSymbols (new Locale ("pt", "BR")));
     }
 
     /**
@@ -103,7 +108,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             tbAluguelRealizado.getColumnModel().getColumn(3).setResizable(false);
             tbAluguelRealizado.getColumnModel().getColumn(3).setPreferredWidth(140);
             tbAluguelRealizado.getColumnModel().getColumn(4).setResizable(false);
-            tbAluguelRealizado.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tbAluguelRealizado.getColumnModel().getColumn(4).setPreferredWidth(110);
         }
 
         javax.swing.GroupLayout jpAluguelRealizadoLayout = new javax.swing.GroupLayout(jpAluguelRealizado);
@@ -164,7 +169,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             tbAvisoVencimento.getColumnModel().getColumn(3).setResizable(false);
             tbAvisoVencimento.getColumnModel().getColumn(3).setPreferredWidth(140);
             tbAvisoVencimento.getColumnModel().getColumn(4).setResizable(false);
-            tbAvisoVencimento.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tbAvisoVencimento.getColumnModel().getColumn(4).setPreferredWidth(110);
         }
 
         javax.swing.GroupLayout jpAvisoVencimentoLayout = new javax.swing.GroupLayout(jpAvisoVencimento);
@@ -249,14 +254,12 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
     }
     
     private void inserirTabela(List<Aluguel> alugueis, int i, DefaultTableModel modelo){
-        DecimalFormat df = new DecimalFormat("0.00");
-        String v = df.format(alugueis.get(i).getValorTotal());
         modelo.addRow(new Object[]{
             alugueis.get(i).getNumero(), 
             alugueis.get(i).getCliente().getNome(),
             formataData(alugueis.get(i).getDataAluguel()), 
             formataData(alugueis.get(i).dataDevolucao()), 
-            ("R$ " + v)
+            nf.format(alugueis.get(i).getValorTotal())
         });
     }
     
