@@ -29,9 +29,10 @@ public class FormNota extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         taDados = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
-        btEmitir = new javax.swing.JButton();
+        btTXT = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
+        btPDF = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Emissão de Nota Fiscal");
@@ -78,21 +79,21 @@ public class FormNota extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 42, Short.MAX_VALUE)
+            .addGap(0, 17, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 57, Short.MAX_VALUE)
+            .addGap(0, 79, Short.MAX_VALUE)
         );
 
-        btEmitir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btEmitir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/invoice-icon.png"))); // NOI18N
-        btEmitir.setText("Emitir Nota Fiscal");
-        btEmitir.setEnabled(false);
-        btEmitir.setName("btEmitir"); // NOI18N
-        btEmitir.addActionListener(new java.awt.event.ActionListener() {
+        btTXT.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btTXT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/txt-icon.png"))); // NOI18N
+        btTXT.setText("Gerar TXT");
+        btTXT.setEnabled(false);
+        btTXT.setName("btTXT"); // NOI18N
+        btTXT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEmitirActionPerformed(evt);
+                btTXTActionPerformed(evt);
             }
         });
 
@@ -116,30 +117,38 @@ public class FormNota extends javax.swing.JFrame {
             }
         });
 
+        btPDF.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pdf-icon.png"))); // NOI18N
+        btPDF.setText("Gerar PDF");
+        btPDF.setEnabled(false);
+        btPDF.setName("btPDF"); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbNumero)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(21, 21, 21)
-                                    .addComponent(tfNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btBuscar))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btEmitir)
-                        .addGap(43, 43, 43)
-                        .addComponent(btLimpar)
-                        .addGap(42, 42, 42)
-                        .addComponent(btSair)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbNumero)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(tfNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btBuscar))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btTXT)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btPDF)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btLimpar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btSair))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -160,7 +169,8 @@ public class FormNota extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btSair)
                         .addComponent(btLimpar)
-                        .addComponent(btEmitir))))
+                        .addComponent(btTXT)
+                        .addComponent(btPDF))))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -178,10 +188,10 @@ public class FormNota extends javax.swing.JFrame {
             aluguel = FormPrincipal.bdAluguel.buscaAluguel(Integer.parseInt(tfNumero.getText()));
             if(aluguel != null){
                 taDados.setText(aluguel.toString());
-                btEmitir.setEnabled(true);
+                btTXT.setEnabled(true);
             }else{
                 JOptionPane.showMessageDialog(null, "Aluguel não encontrado!", "Atenção", JOptionPane.ERROR_MESSAGE);
-                btEmitir.setEnabled(false);
+                btTXT.setEnabled(false);
             }
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Informe o número!", "Atenção", JOptionPane.ERROR_MESSAGE);
@@ -191,11 +201,11 @@ public class FormNota extends javax.swing.JFrame {
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         tfNumero.setText("");
         taDados.setText("");
-        btEmitir.setEnabled(false);
+        btTXT.setEnabled(false);
         tfNumero.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
 
-    private void btEmitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEmitirActionPerformed
+    private void btTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTXTActionPerformed
         String nro = Integer.toString(aluguel.getNumero());        
         String usuario = System.getProperty("user.name");        
         
@@ -225,7 +235,7 @@ public class FormNota extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nota fiscal nro "+nro+" já foi gerada!\nConsulte a pasta de Notas",
                     "Informação de Nota", JOptionPane.INFORMATION_MESSAGE);         
         }
-    }//GEN-LAST:event_btEmitirActionPerformed
+    }//GEN-LAST:event_btTXTActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\invoice-icon 16.png").getImage());
@@ -276,9 +286,10 @@ public class FormNota extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;
-    private javax.swing.JButton btEmitir;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btPDF;
     private javax.swing.JButton btSair;
+    private javax.swing.JButton btTXT;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
