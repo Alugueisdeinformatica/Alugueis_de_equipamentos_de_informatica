@@ -784,15 +784,14 @@ public class FormAluguel extends javax.swing.JFrame {
         try{
             int linha = tbPedido.getSelectedRow();
             int codigo = (Integer) tbPedido.getModel().getValueAt(linha, 0);
-            int codEquip = (Integer) tbPedido.getModel().getValueAt(linha, 1);            
-            int quantidade = (Integer) tbPedido.getModel().getValueAt(linha, 4);
+            
+            retornoQuantidadeEstoque(linha);
+            
             String subTotal = (String) tbPedido.getModel().getValueAt(linha, 5);
             String valorFormatado = subTotal.replace("R", "").replace("$", "").replace(" ", "").replace(".", "");
             double val = Double.parseDouble( valorFormatado.replace(",", "."));            
                                    
-            soma = soma - val;
-            equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(codEquip);
-            equipamento.setQuantEstoque(equipamento.getQuantEstoque() + quantidade);
+            soma = soma - val;            
             lbValorTotal.setText(nf.format(soma));
             aluguel.removerItem(codigo);
             modeloPedido.removeRow(linha);
@@ -808,6 +807,13 @@ public class FormAluguel extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione um equipamento para remover!", "Atenção", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btRemoverItemActionPerformed
+
+    private void retornoQuantidadeEstoque(int linha) {
+        int codEquip = (Integer) tbPedido.getModel().getValueAt(linha, 1);
+        int quantidade = (Integer) tbPedido.getModel().getValueAt(linha, 4);
+        equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(codEquip);
+        equipamento.setQuantEstoque(equipamento.getQuantEstoque() + quantidade);
+    }
    
     private void btFecharPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharPedidoActionPerformed
         if(aluguel.todosItens().size() > 0){
@@ -817,6 +823,8 @@ public class FormAluguel extends javax.swing.JFrame {
                 FormPrincipal.bdAluguel.adicionaAluguel(aluguel);
                 JOptionPane.showMessageDialog(null, "Pedido fechado com sucesso!", "Informaçao de Pedido", JOptionPane.INFORMATION_MESSAGE);
                 limparFormulario();
+                limparTabelaPedido();
+                limparTabelaInserir();
                 lbData.setText("");
                 lbNroAluguel.setText("");
                 FormPrincipal.nroAluguel++;
@@ -862,9 +870,18 @@ public class FormAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_tfDiasKeyReleased
    
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        btInserir.setEnabled(true);
+        btInserir.setEnabled(true);        
+        cancelarItensPedido();        
         limparFormulario();
+        limparTabelaPedido();
+        limparTabelaInserir();
     }//GEN-LAST:event_btLimparActionPerformed
+
+    private void cancelarItensPedido() {
+        for(int i = tbPedido.getRowCount()-1; i >= 0; i--){            
+            retornoQuantidadeEstoque(i);
+        }
+    }
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja finalizar a aplicação?", "Confirmação", JOptionPane.YES_NO_OPTION);
@@ -924,9 +941,7 @@ public class FormAluguel extends javax.swing.JFrame {
         lbTelefone.setText("");
         lbUF.setText("");        
         btInserir.setEnabled(true);
-        cbCategoria.setSelectedIndex(0);
-        limparTabelaInserir();
-        limparTabelaPedido();
+        cbCategoria.setSelectedIndex(0);               
         taDescricao.setText("");
         tfDias.setText("0");
         tfDias.setEnabled(false);
