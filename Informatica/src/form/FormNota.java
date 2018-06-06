@@ -3,12 +3,19 @@ package form;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Aluguel;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 public class FormNota extends javax.swing.JFrame {
 
@@ -122,6 +129,11 @@ public class FormNota extends javax.swing.JFrame {
         btPDF.setText("Gerar PDF");
         btPDF.setEnabled(false);
         btPDF.setName("btPDF"); // NOI18N
+        btPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPDFActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -189,9 +201,11 @@ public class FormNota extends javax.swing.JFrame {
             if(aluguel != null){
                 taDados.setText(aluguel.toString());
                 btTXT.setEnabled(true);
+                btPDF.setEnabled(true);
             }else{
                 JOptionPane.showMessageDialog(null, "Aluguel não encontrado!", "Atenção", JOptionPane.ERROR_MESSAGE);
                 btTXT.setEnabled(false);
+                btPDF.setEnabled(false);
             }
         }catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Informe o número!", "Atenção", JOptionPane.ERROR_MESSAGE);
@@ -202,6 +216,7 @@ public class FormNota extends javax.swing.JFrame {
         tfNumero.setText("");
         taDados.setText("");
         btTXT.setEnabled(false);
+        btPDF.setEnabled(false);
         tfNumero.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
 
@@ -209,12 +224,12 @@ public class FormNota extends javax.swing.JFrame {
         String nro = Integer.toString(aluguel.getNumero());        
         String usuario = System.getProperty("user.name");        
         
-        File diretorio = new File("C:\\Users\\"+ usuario +"\\Desktop\\Notas");
+        File diretorio = new File("C:\\Users\\"+ usuario +"\\Desktop\\Notas TXT");
         if (!diretorio.exists()) {
             diretorio.mkdirs();
         }        
         
-        File arq = new File("C:\\Users\\" + usuario + "\\Desktop\\Notas\\NotaFiscal_" + nro + ".txt");
+        File arq = new File("C:\\Users\\" + usuario + "\\Desktop\\Notas TXT\\NotaFiscal_" + nro + ".txt");
         if(!arq.exists()){
             try {
                 arq.createNewFile();
@@ -232,7 +247,7 @@ public class FormNota extends javax.swing.JFrame {
                 Logger.getLogger(FormNota.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Nota fiscal nro "+nro+" já foi gerada!\nConsulte a pasta de Notas",
+            JOptionPane.showMessageDialog(null, "Nota fiscal n° "+nro+" já foi gerada!\nConsulte a pasta Notas TXT.",
                     "Informação de Nota", JOptionPane.INFORMATION_MESSAGE);         
         }
     }//GEN-LAST:event_btTXTActionPerformed
@@ -248,6 +263,44 @@ public class FormNota extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_tfNumeroKeyTyped
+
+    private void btPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPDFActionPerformed
+        String nro = Integer.toString(aluguel.getNumero());        
+        String usuario = System.getProperty("user.name"); 
+        
+        File diretorio = new File("C:\\Users\\"+ usuario +"\\Desktop\\Notas PDF");
+        if (!diretorio.exists()) {
+            diretorio.mkdirs();
+        } 
+        
+        File arq = new File("C:\\Users\\" + usuario + "\\Desktop\\Notas PDF\\NotaFiscal_" + nro + ".pdf");
+
+        if(!arq.exists()){
+            try {
+                Document document = new Document();
+                Image figura = Image.getInstance("src\\logo\\logo.png");
+                figura.setAlignment(Image.MIDDLE);
+                arq.createNewFile();
+                PdfWriter.getInstance(document, new FileOutputStream(arq));
+                document.open();
+                document.add(figura);
+                document.add(new Paragraph(aluguel.toString()));
+                Paragraph p = new Paragraph("\n\n_________________________________________"); 
+                p.setAlignment(Element.ALIGN_CENTER);
+                document.add(p);
+                p = new Paragraph("Assinatura do Cliente");
+                p.setAlignment(Element.ALIGN_CENTER);
+                document.add(p);
+                document.close();
+                JOptionPane.showMessageDialog(null, "Nota fiscal gerada com sucesso!", "Concluído", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException | DocumentException ex) {
+                Logger.getLogger(FormNota.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Nota fiscal nº "+nro+" já foi gerada!\nConsulte a pasta Notas PDF.",
+                    "Informação de Nota", JOptionPane.INFORMATION_MESSAGE);         
+        }
+    }//GEN-LAST:event_btPDFActionPerformed
 
     /**
      * @param args the command line arguments
