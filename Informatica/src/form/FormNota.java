@@ -16,9 +16,6 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class FormNota extends javax.swing.JFrame {
 
@@ -225,41 +222,33 @@ public class FormNota extends javax.swing.JFrame {
 
     private void btTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTXTActionPerformed
         String nro = Integer.toString(aluguel.getNumero());        
-        JFrame parentFrame = new JFrame();
+        String usuario = System.getProperty("user.name");        
         
-        FileNameExtensionFilter fileNameExtensionFilter = new FileNameExtensionFilter(".txt", "txt");
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(fileNameExtensionFilter);
-        fileChooser.setMultiSelectionEnabled(false);
-        fileChooser.setAcceptAllFileFilterUsed(false);
+        File diretorio = new File("C:\\Users\\"+ usuario +"\\Desktop\\Notas TXT");
+        if (!diretorio.exists()) {
+            diretorio.mkdirs();
+        }        
         
-        fileChooser.setSelectedFile(new File("C:\\NotaFiscal_" + nro));
-        fileChooser.setDialogTitle("Escolha o local para salvar o arquivo");   
-
-        int userSelection = fileChooser.showSaveDialog(parentFrame);
-        
-        if (userSelection == JFileChooser.APPROVE_OPTION) {
-            File arq = new File(fileChooser.getSelectedFile() + ".txt");
-            if(!arq.exists()){
-                try {
-                    arq.createNewFile();
-                    FileWriter fw = new FileWriter(arq);
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    String str[] = taDados.getText().split("\n");
-                    for(String linha : str){
-                        bw.write(linha);
-                        bw.newLine();
-                    }
-                    bw.close();
-                    fw.close();
-                    JOptionPane.showMessageDialog(null, "Nota fiscal gerada com sucesso!", "Concluído", JOptionPane.INFORMATION_MESSAGE);
-                } catch (IOException ex) {
-                    Logger.getLogger(FormNota.class.getName()).log(Level.SEVERE, null, ex);
+        File arq = new File("C:\\Users\\" + usuario + "\\Desktop\\Notas TXT\\NotaFiscal_" + nro + ".txt");
+        if(!arq.exists()){
+            try {
+                arq.createNewFile();
+                FileWriter fw = new FileWriter(arq);
+                BufferedWriter bw = new BufferedWriter(fw);
+                String str[] = taDados.getText().split("\n");
+                for(String linha : str){
+                    bw.write(linha);
+                    bw.newLine();
                 }
-            }else{
-                JOptionPane.showMessageDialog(null, "Nota fiscal já foi gerada!\nVerifique em: " + fileChooser.getSelectedFile() + ".txt",
-                        "Informação de Nota", JOptionPane.INFORMATION_MESSAGE);         
+                bw.close();
+                fw.close();
+                JOptionPane.showMessageDialog(null, "Nota fiscal gerada com sucesso!", "Concluído", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException ex) {
+                Logger.getLogger(FormNota.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Nota fiscal n° "+nro+" já foi gerada!\nConsulte a pasta Notas TXT.",
+                    "Informação de Nota", JOptionPane.INFORMATION_MESSAGE);         
         }
     }//GEN-LAST:event_btTXTActionPerformed
 
@@ -277,46 +266,39 @@ public class FormNota extends javax.swing.JFrame {
 
     private void btPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPDFActionPerformed
         String nro = Integer.toString(aluguel.getNumero());        
-        JFrame parentFrame = new JFrame();
+        String usuario = System.getProperty("user.name"); 
         
-        FileNameExtensionFilter fileNameExtensionFilter = new FileNameExtensionFilter(".pdf", "pdf");
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setFileFilter(fileNameExtensionFilter);
-        fileChooser.setMultiSelectionEnabled(false);
-        fileChooser.setAcceptAllFileFilterUsed(false);
+        File diretorio = new File("C:\\Users\\"+ usuario +"\\Desktop\\Notas PDF");
+        if (!diretorio.exists()) {
+            diretorio.mkdirs();
+        } 
         
-        fileChooser.setSelectedFile(new File("C:\\NotaFiscal_" + nro));
-        fileChooser.setDialogTitle("Escolha o local para salvar o arquivo");   
+        File arq = new File("C:\\Users\\" + usuario + "\\Desktop\\Notas PDF\\NotaFiscal_" + nro + ".pdf");
 
-        int userSelection = fileChooser.showSaveDialog(parentFrame);
-        
-        if (userSelection == JFileChooser.APPROVE_OPTION) {
-            File arq = new File(fileChooser.getSelectedFile() + ".pdf");
-            if(!arq.exists()){
-                try {
-                    Document document = new Document();
-                    Image figura = Image.getInstance("src\\logo\\logo.png");
-                    figura.setAlignment(Image.MIDDLE);
-                    arq.createNewFile();
-                    PdfWriter.getInstance(document, new FileOutputStream(arq));
-                    document.open();
-                    document.add(figura);
-                    document.add(new Paragraph(aluguel.toString()));
-                    Paragraph p = new Paragraph("\n\n_________________________________________"); 
-                    p.setAlignment(Element.ALIGN_CENTER);
-                    document.add(p);
-                    p = new Paragraph("Assinatura do Cliente");
-                    p.setAlignment(Element.ALIGN_CENTER);
-                    document.add(p);
-                    document.close();
-                    JOptionPane.showMessageDialog(null, "Nota fiscal gerada com sucesso!", "Concluído", JOptionPane.INFORMATION_MESSAGE);
-                } catch (IOException | DocumentException ex) {
-                    Logger.getLogger(FormNota.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }else{
-                JOptionPane.showMessageDialog(null, "Nota fiscal já foi gerada!\nVerifique em: " + fileChooser.getSelectedFile() + ".pdf",
-                        "Informação de Nota", JOptionPane.INFORMATION_MESSAGE);         
+        if(!arq.exists()){
+            try {
+                Document document = new Document();
+                Image figura = Image.getInstance("src\\logo\\logo.png");
+                figura.setAlignment(Image.MIDDLE);
+                arq.createNewFile();
+                PdfWriter.getInstance(document, new FileOutputStream(arq));
+                document.open();
+                document.add(figura);
+                document.add(new Paragraph(aluguel.toString()));
+                Paragraph p = new Paragraph("\n\n_________________________________________"); 
+                p.setAlignment(Element.ALIGN_CENTER);
+                document.add(p);
+                p = new Paragraph("Assinatura do Cliente");
+                p.setAlignment(Element.ALIGN_CENTER);
+                document.add(p);
+                document.close();
+                JOptionPane.showMessageDialog(null, "Nota fiscal gerada com sucesso!", "Concluído", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IOException | DocumentException ex) {
+                Logger.getLogger(FormNota.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Nota fiscal nº "+nro+" já foi gerada!\nConsulte a pasta Notas PDF.",
+                    "Informação de Nota", JOptionPane.INFORMATION_MESSAGE);         
         }
     }//GEN-LAST:event_btPDFActionPerformed
 
