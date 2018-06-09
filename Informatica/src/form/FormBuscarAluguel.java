@@ -218,13 +218,22 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\02-Basket-icon 16.png").getImage());
-        List<Aluguel> alugueis = FormPrincipal.bdDevolucao.todosAlugueis();
-        for(int i = 0; i < alugueis.size(); i++){
-            inserirTabela(alugueis, i, modelo1);
-            Date dataAtual = new Date();
-            if(verificaVencimento(alugueis.get(i).dataDevolucao(), dataAtual)){
-                inserirTabela(alugueis, i, modelo2);
-                tbAvisoVencimento.setBackground(new Color(255,99,71));
+        List<Aluguel> alugueis = FormPrincipal.bdAluguel.todosAlugueis();
+        List<Aluguel> devolucao = FormPrincipal.bdDevolucao.todosAlugueis();
+        
+        if(devolucao.size() > 0){
+            for(int i = 0; i < devolucao.size(); i++){
+                inserirTabela(devolucao, i, modelo1);            
+            }
+        }
+        
+        if(alugueis.size() > 0){        
+            for(int j = 0; j < alugueis.size(); j++){
+                Date dataAtual = new Date();
+                if(verificaVencimento(alugueis.get(j).dataDevolucao(), dataAtual)){
+                    inserirTabela(alugueis, j, modelo2);
+                    tbAvisoVencimento.setBackground(new Color(255,99,71));
+                }            
             }
         }
     }//GEN-LAST:event_formWindowOpened
