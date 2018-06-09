@@ -3,6 +3,7 @@ package form;
 import dao.AluguelDao;
 import dao.ClienteDao;
 import dao.EquipamentoDao;
+import dao.DevolucaoDao;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
@@ -13,6 +14,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     public static EquipamentoDao bdEquipamento;
     public static ClienteDao bdCliente;
     public static AluguelDao bdAluguel;
+    public static DevolucaoDao bdDevolucao;
     public static int nroAluguel = 1;
     public static int codEquipamento = 1;
     
@@ -20,6 +22,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         bdEquipamento = new EquipamentoDao();
         bdCliente = new ClienteDao();
         bdAluguel = new AluguelDao();
+        bdDevolucao = new DevolucaoDao();
         initComponents();
     }
     

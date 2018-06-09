@@ -493,6 +493,7 @@ public class FormDevolucao extends javax.swing.JFrame {
         if(opcao == 0){
             btEfetuarDevolucao.setEnabled(false);
             aluguel = FormPrincipal.bdAluguel.buscaAluguel(getId());
+            FormPrincipal.bdDevolucao.adicionaAluguel(aluguel);
             devolveEstoque(aluguel);
             FormPrincipal.bdAluguel.removerAluguel(getId());
             int linha = tbAluguel.getSelectedRow(); 

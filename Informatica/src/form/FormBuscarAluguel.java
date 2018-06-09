@@ -175,7 +175,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        tpMenu.addTab("Avisos de Vencimento", jpAvisoVencimento);
+        tpMenu.addTab("Alugueis em Aberto", jpAvisoVencimento);
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
@@ -218,7 +218,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\02-Basket-icon 16.png").getImage());
-        List<Aluguel> alugueis = FormPrincipal.bdAluguel.todosAlugueis();
+        List<Aluguel> alugueis = FormPrincipal.bdDevolucao.todosAlugueis();
         for(int i = 0; i < alugueis.size(); i++){
             inserirTabela(alugueis, i, modelo1);
             Date dataAtual = new Date();
