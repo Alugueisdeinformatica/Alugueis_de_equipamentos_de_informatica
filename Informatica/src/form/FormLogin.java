@@ -1,5 +1,7 @@
 package form;
 
+import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Usuario;
@@ -57,6 +59,11 @@ public class FormLogin extends javax.swing.JFrame {
         btAcessar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAcessarActionPerformed(evt);
+            }
+        });
+        btAcessar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btAcessarKeyPressed(evt);
             }
         });
 
@@ -171,8 +178,12 @@ public class FormLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAcessarActionPerformed
+        validarAcessoUsuario();
+    }//GEN-LAST:event_btAcessarActionPerformed
+
+    private void validarAcessoUsuario() throws HeadlessException {
         Usuario usuario = new Usuario();
-                
+        
         if(tfNome.getText().isEmpty() || tfSenha.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Preencha todos os dados!", "Atenção", JOptionPane.WARNING_MESSAGE);
         }
@@ -186,15 +197,21 @@ public class FormLogin extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Dados de login não conferem! \nPor favor, tente novamente!", "Problema Encontrado", JOptionPane.ERROR_MESSAGE);
                 }
             }
-            else{        
+            else{
                 JOptionPane.showMessageDialog(null, "Dados de login incorretos! \nFavor preenche-los novamente", "Atenção", JOptionPane.WARNING_MESSAGE);
             }
         }
-    }//GEN-LAST:event_btAcessarActionPerformed
+    }
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\my-computer-icon 16.png").getImage());        
     }//GEN-LAST:event_formWindowOpened
+
+    private void btAcessarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btAcessarKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            validarAcessoUsuario();
+        }
+    }//GEN-LAST:event_btAcessarKeyPressed
 
     /**
      * @param args the command line arguments
