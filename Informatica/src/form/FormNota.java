@@ -16,8 +16,10 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Color;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -365,6 +367,8 @@ public class FormNota extends javax.swing.JFrame {
             setAluguel();
             btTXT.setEnabled(true);
             btPDF.setEnabled(true);
+            Date dataAtual = new Date(); 
+            verificaVencimento(aluguel.dataDevolucao(), dataAtual);
         }else{
             btTXT.setEnabled(false);
             btPDF.setEnabled(false);
@@ -401,6 +405,18 @@ public class FormNota extends javax.swing.JFrame {
         int linha = tbAlugueis.getSelectedRow();
         int id = (int) tbAlugueis.getModel().getValueAt(linha, 0);
         aluguel = FormPrincipal.bdAluguel.buscaAluguel(id);
+    }
+    
+    private void verificaVencimento(Date emissao, Date vencimento){
+	if (emissao.before(vencimento)){
+            tbAlugueis.setSelectionBackground(new Color(220,20,60));
+	}
+	else if (emissao.after(vencimento)){
+            tbAlugueis.setSelectionBackground(new Color(65,105,225));
+        }        
+        else{
+            tbAlugueis.setSelectionBackground(new Color(105,105,105));	
+        }
     }
     
     public static void main(String args[]) {

@@ -277,7 +277,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             tbAvisoVencimento.setSelectionBackground(new Color(0,255,0));
 	else
             tbAvisoVencimento.setSelectionBackground(new Color(0,0,255));	
-}
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
