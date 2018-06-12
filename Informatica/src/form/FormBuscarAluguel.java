@@ -143,7 +143,13 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         });
         tbAvisoVencimento.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tbAvisoVencimento.setName("tbAvisoVencimento"); // NOI18N
+        tbAvisoVencimento.setSelectionBackground(new java.awt.Color(255, 255, 255));
         tbAvisoVencimento.getTableHeader().setReorderingAllowed(false);
+        tbAvisoVencimento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbAvisoVencimentoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbAvisoVencimento);
         if (tbAvisoVencimento.getColumnModel().getColumnCount() > 0) {
             tbAvisoVencimento.getColumnModel().getColumn(0).setResizable(false);
@@ -219,28 +225,26 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\02-Basket-icon 16.png").getImage());
         List<Aluguel> alugueis = FormPrincipal.bdAluguel.todosAlugueis();
-        List<Aluguel> devolucao = FormPrincipal.bdDevolucao.todosAlugueis();
+        List<Aluguel> devolucao = FormPrincipal.bdDevolucao.todosAlugueis();        
         
-        if(devolucao.size() > 0){
-            for(int i = 0; i < devolucao.size(); i++){
-                inserirTabela(devolucao, i, modelo1);            
-            }
-        }
-        
-        if(alugueis.size() > 0){        
-            for(int j = 0; j < alugueis.size(); j++){
-                Date dataAtual = new Date();
-                if(verificaVencimento(alugueis.get(j).dataDevolucao(), dataAtual)){
-                    inserirTabela(alugueis, j, modelo2);
-                    tbAvisoVencimento.setBackground(new Color(255,99,71));
-                }            
-            }
-        }
+        for(int i = 0; i < devolucao.size(); i++){
+            inserirTabela(devolucao, i, modelo1);            
+        }       
+                
+        for(int j = 0; j < alugueis.size(); j++){
+            inserirTabela(alugueis, j, modelo2);                          
+        }      
     }//GEN-LAST:event_formWindowOpened
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void tbAvisoVencimentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAvisoVencimentoMouseClicked
+        Date dataVencimento = (Date) modelo2.getValueAt(tbAvisoVencimento.getSelectedRow(), 3);
+        Date dataAtual = new Date();        
+        verificaVencimento(dataVencimento, dataAtual);
+    }//GEN-LAST:event_tbAvisoVencimentoMouseClicked
 
     private void limparTabela(JTable tabela, DefaultTableModel modelo){
         for(int i = tabela.getRowCount()-1; i >= 0; i--){
@@ -264,16 +268,15 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         return str;
     }
     
-    private boolean verificaVencimento(Date emissao, Date vencimento){
-	boolean data;
+    private void verificaVencimento(Date emissao, Date vencimento){
 	if (emissao.before(vencimento)){
-            data = true;
+            //tbAvisoVencimento.setSelectionBackground(new Color(255,99,71));
+            tbAvisoVencimento.setSelectionBackground(new Color(255,0,0));
 	}
 	else if (emissao.after(vencimento))
-            data = false;
+            tbAvisoVencimento.setSelectionBackground(new Color(0,255,0));
 	else
-            data = true;
-	return data;
+            tbAvisoVencimento.setSelectionBackground(new Color(0,0,255));	
 }
     
     public static void main(String args[]) {
