@@ -4,6 +4,7 @@ import dao.AluguelDao;
 import dao.ClienteDao;
 import dao.EquipamentoDao;
 import dao.DevolucaoDao;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
@@ -74,6 +75,11 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
+            }
+        });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
             }
         });
 
@@ -446,6 +452,12 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     private void JMenuItemAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAjudaActionPerformed
         new FormAjuda().setVisible(true);
     }//GEN-LAST:event_JMenuItemAjudaActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_F1) {
+            new FormAjuda().setVisible(true);
+        }
+    }//GEN-LAST:event_formKeyPressed
     
     public void executarDataHora(){
         new Thread(){
