@@ -334,6 +334,11 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         JMenuItemAjuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/Button-Help-icon 16.png"))); // NOI18N
         JMenuItemAjuda.setText("Ajuda");
         JMenuItemAjuda.setName("JMenuItemAjuda"); // NOI18N
+        JMenuItemAjuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMenuItemAjudaActionPerformed(evt);
+            }
+        });
         JMenuSuporte.add(JMenuItemAjuda);
         JMenuSuporte.add(jSeparator2);
 
@@ -437,6 +442,10 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         str += "\nCES-JF Junho de 2018";
         JOptionPane.showMessageDialog(null, str, "", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_JMenuItemSobreActionPerformed
+
+    private void JMenuItemAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAjudaActionPerformed
+        new FormAjuda().setVisible(true);
+    }//GEN-LAST:event_JMenuItemAjudaActionPerformed
     
     public void executarDataHora(){
         new Thread(){
