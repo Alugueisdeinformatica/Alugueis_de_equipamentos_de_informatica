@@ -16,13 +16,20 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class FormNota extends javax.swing.JFrame {
 
+    List<Aluguel> alugueis = null;
     Aluguel aluguel = null;
+    DefaultTableModel modeloAlugueis  = null;
     
     public FormNota() {
         initComponents();
+        modeloAlugueis = (DefaultTableModel) tbAlugueis.getModel();
     }
     
     @SuppressWarnings("unchecked")
@@ -31,15 +38,15 @@ public class FormNota extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lbNumero = new javax.swing.JLabel();
-        tfNumero = new javax.swing.JTextField();
         btBuscar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        taDados = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         btTXT = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
         btPDF = new javax.swing.JButton();
+        tfCPF = new javax.swing.JFormattedTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbAlugueis = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Emissão de Nota Fiscal");
@@ -53,15 +60,8 @@ public class FormNota extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
 
         lbNumero.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbNumero.setText("Número do Aluguel:");
+        lbNumero.setText("CPF:");
         lbNumero.setName("lbNumero"); // NOI18N
-
-        tfNumero.setName("tfNumero"); // NOI18N
-        tfNumero.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfNumeroKeyTyped(evt);
-            }
-        });
 
         btBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Document-search-icon.png"))); // NOI18N
@@ -73,20 +73,13 @@ public class FormNota extends javax.swing.JFrame {
             }
         });
 
-        taDados.setEditable(false);
-        taDados.setColumns(20);
-        taDados.setRows(5);
-        taDados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        taDados.setName("taDados"); // NOI18N
-        jScrollPane1.setViewportView(taDados);
-
         jPanel2.setBackground(new java.awt.Color(250, 250, 250));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 17, Short.MAX_VALUE)
+            .addGap(0, 648, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,33 +128,95 @@ public class FormNota extends javax.swing.JFrame {
             }
         });
 
+        try {
+            tfCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        tfCPF.setName("tfCPF"); // NOI18N
+
+        tbAlugueis.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Aluguel", "Nome", "E-mail", "Telefone", "Data Aluguel", "Data Devolução", "Horário Aluguel", "Valor Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbAlugueis.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tbAlugueis.setName("tbAlugueis"); // NOI18N
+        tbAlugueis.getTableHeader().setReorderingAllowed(false);
+        tbAlugueis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbAlugueisMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbAlugueis);
+        if (tbAlugueis.getColumnModel().getColumnCount() > 0) {
+            tbAlugueis.getColumnModel().getColumn(0).setResizable(false);
+            tbAlugueis.getColumnModel().getColumn(0).setPreferredWidth(100);
+            tbAlugueis.getColumnModel().getColumn(1).setResizable(false);
+            tbAlugueis.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tbAlugueis.getColumnModel().getColumn(2).setResizable(false);
+            tbAlugueis.getColumnModel().getColumn(2).setPreferredWidth(100);
+            tbAlugueis.getColumnModel().getColumn(3).setResizable(false);
+            tbAlugueis.getColumnModel().getColumn(3).setPreferredWidth(100);
+            tbAlugueis.getColumnModel().getColumn(4).setResizable(false);
+            tbAlugueis.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tbAlugueis.getColumnModel().getColumn(5).setResizable(false);
+            tbAlugueis.getColumnModel().getColumn(5).setPreferredWidth(100);
+            tbAlugueis.getColumnModel().getColumn(6).setResizable(false);
+            tbAlugueis.getColumnModel().getColumn(6).setPreferredWidth(100);
+            tbAlugueis.getColumnModel().getColumn(7).setResizable(false);
+            tbAlugueis.getColumnModel().getColumn(7).setPreferredWidth(100);
+        }
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbNumero)
+                            .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(tfNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btBuscar))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(btTXT)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btPDF)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btLimpar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btSair))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(85, 85, 85)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(btBuscar)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btTXT)
+                                .addGap(87, 87, 87)
+                                .addComponent(btPDF)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btLimpar)
+                                .addGap(98, 98, 98)
+                                .addComponent(btSair))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,23 +226,23 @@ public class FormNota extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lbNumero)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btBuscar))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btSair)
-                        .addComponent(btLimpar)
-                        .addComponent(btTXT)
-                        .addComponent(btPDF))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btTXT)
+                    .addComponent(btPDF)
+                    .addComponent(btLimpar)
+                    .addComponent(btSair))
+                .addGap(403, 403, 403)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(626, 443));
+        setSize(new java.awt.Dimension(894, 435));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -196,28 +251,33 @@ public class FormNota extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        try{
-            aluguel = FormPrincipal.bdAluguel.buscaAluguel(Integer.parseInt(tfNumero.getText()));
-            if(aluguel != null){
-                taDados.setText(aluguel.toString());
-                btTXT.setEnabled(true);
-                btPDF.setEnabled(true);
+        btTXT.setEnabled(false);
+        btPDF.setEnabled(false);
+        limparTabela();
+        String cpsSemMascara = tfCPF.getText().replace(".", "").replace("-", "");
+        if(FormCliente.validarCPF(cpsSemMascara)){
+                if(!cpsSemMascara.trim().equals("")){
+                    alugueis = FormPrincipal.bdAluguel.buscaAluguel(tfCPF.getText());
+                    if(alugueis.size() > 0){
+                        for(int i = 0; i < alugueis.size(); i++){
+                            inserirTabela(alugueis, i);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
             }else{
-                JOptionPane.showMessageDialog(null, "Aluguel não encontrado!", "Atenção", JOptionPane.ERROR_MESSAGE);
-                btTXT.setEnabled(false);
-                btPDF.setEnabled(false);
+                tfCPF.setValue("");
+                JOptionPane.showMessageDialog(null, "CPF Inválido!", "Atenção", JOptionPane.ERROR_MESSAGE);
             }
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Informe o número!", "Atenção", JOptionPane.ERROR_MESSAGE);
-        }  
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        tfNumero.setText("");
-        taDados.setText("");
+        tfCPF.setValue("");
+        limparTabela();
         btTXT.setEnabled(false);
         btPDF.setEnabled(false);
-        tfNumero.requestFocus();
+        tfCPF.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btTXTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTXTActionPerformed
@@ -235,7 +295,7 @@ public class FormNota extends javax.swing.JFrame {
                 arq.createNewFile();
                 FileWriter fw = new FileWriter(arq);
                 BufferedWriter bw = new BufferedWriter(fw);
-                String str[] = taDados.getText().split("\n");
+                String str[] = aluguel.toString().split("\n");
                 for(String linha : str){
                     bw.write(linha);
                     bw.newLine();
@@ -254,15 +314,8 @@ public class FormNota extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\invoice-icon 16.png").getImage());
-        tfNumero.requestFocus();
+        tfCPF.requestFocus();
     }//GEN-LAST:event_formWindowOpened
-
-    private void tfNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfNumeroKeyTyped
-        String caracteres = "0987654321";
-        if(!caracteres.contains(evt.getKeyChar() + "")){
-            evt.consume();
-        }
-    }//GEN-LAST:event_tfNumeroKeyTyped
 
     private void btPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPDFActionPerformed
         String nro = Integer.toString(aluguel.getNumero());        
@@ -302,9 +355,54 @@ public class FormNota extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btPDFActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void tbAlugueisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAlugueisMouseClicked
+        int linha = tbAlugueis.getSelectedRow();
+        if((tbAlugueis.isCellSelected(linha, 0) || tbAlugueis.isCellSelected(linha, 1) ||
+           tbAlugueis.isCellSelected(linha, 2) || tbAlugueis.isCellSelected(linha, 3) ||
+           tbAlugueis.isCellSelected(linha, 4) || tbAlugueis.isCellSelected(linha, 5)) ||
+           tbAlugueis.isCellSelected(linha, 6) || tbAlugueis.isCellSelected(linha, 7))
+        {
+            setAluguel();
+            btTXT.setEnabled(true);
+            btPDF.setEnabled(true);
+        }else{
+            btTXT.setEnabled(false);
+            btPDF.setEnabled(false);
+        }
+    }//GEN-LAST:event_tbAlugueisMouseClicked
+
+    private void inserirTabela(List<Aluguel> aluguel, int i){
+        SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat fmh = new SimpleDateFormat("HH:mm:ss");
+        DecimalFormat df = new DecimalFormat("0.00");
+        String dataAluguel = fm.format(aluguel.get(i).getDataAluguel());
+        String dataDevolucao = fm.format(aluguel.get(i).dataDevolucao());
+        String horario = fmh.format(aluguel.get(i).getDataAluguel());
+        String valor = "R$ " + df.format(aluguel.get(i).getValorTotal());
+        modeloAlugueis.addRow(new Object[]{
+            aluguel.get(i).getNumero(), 
+            aluguel.get(i).getCliente().getNome(), 
+            aluguel.get(i).getCliente().getEmail(), 
+            aluguel.get(i).getCliente().getTelefone(),
+            dataAluguel,
+            dataDevolucao,
+            horario,
+            valor
+        });
+    }
+    
+    private void limparTabela(){
+        for(int i = tbAlugueis.getRowCount()-1; i >= 0; i--){
+            modeloAlugueis.removeRow(i);
+        }
+    }
+    
+    private void setAluguel(){
+        int linha = tbAlugueis.getSelectedRow();
+        int id = (int) tbAlugueis.getModel().getValueAt(linha, 0);
+        aluguel = FormPrincipal.bdAluguel.buscaAluguel(id);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -347,7 +445,7 @@ public class FormNota extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbNumero;
-    private javax.swing.JTextArea taDados;
-    private javax.swing.JTextField tfNumero;
+    private javax.swing.JTable tbAlugueis;
+    private javax.swing.JFormattedTextField tfCPF;
     // End of variables declaration//GEN-END:variables
 }
