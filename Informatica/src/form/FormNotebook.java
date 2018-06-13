@@ -316,8 +316,8 @@ public class FormNotebook extends javax.swing.JFrame {
         lbSistemaOp.setText("Sistema Operacional:");
         lbSistemaOp.setName("lbSistemaOp"); // NOI18N
 
-        cbArmazenamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2TB", "1TB", "750GB", "500GB", "320GB", " " }));
-        cbArmazenamento.setSelectedIndex(1);
+        cbArmazenamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "320GB", "500GB", "750GB", "1TB", "2TB", " ", " ", " ", " ", " " }));
+        cbArmazenamento.setSelectedIndex(3);
         cbArmazenamento.setName("cbArmazenamento"); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -437,7 +437,7 @@ public class FormNotebook extends javax.swing.JFrame {
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         cbSistemaOp.setSelectedIndex(0);
         cbPlacaVideo.setSelectedIndex(0);
-        cbArmazenamento.setSelectedItem(1);
+        cbArmazenamento.setSelectedItem(3);
         taDiferenciais.setText("");
         bgProcessador.clearSelection();
         rbInteli3.setSelected(true);

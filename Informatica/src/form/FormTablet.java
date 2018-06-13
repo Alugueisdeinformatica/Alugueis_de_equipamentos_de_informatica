@@ -29,10 +29,7 @@ public class FormTablet extends javax.swing.JFrame {
         lbProcessador = new javax.swing.JLabel();
         cbCapacidade = new javax.swing.JComboBox<>();
         cbTamanhoTela = new javax.swing.JComboBox<>();
-        tfBateria = new javax.swing.JTextField();
         cbSO = new javax.swing.JComboBox<>();
-        tfProcessador = new javax.swing.JTextField();
-        tfMemoria = new javax.swing.JTextField();
         jToolBar1 = new javax.swing.JToolBar();
         btCadastrar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
@@ -41,6 +38,9 @@ public class FormTablet extends javax.swing.JFrame {
         btAtualizar = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         btSair = new javax.swing.JButton();
+        cbMemoria = new javax.swing.JComboBox<>();
+        cbProcessador = new javax.swing.JComboBox<>();
+        cbBateria = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Tablet");
@@ -67,7 +67,7 @@ public class FormTablet extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,7 +86,7 @@ public class FormTablet extends javax.swing.JFrame {
         lbTamanhoTela.setName("lbTamanhoTela"); // NOI18N
 
         lbMemoria.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbMemoria.setText("Memória:");
+        lbMemoria.setText("Memória RAM:");
         lbMemoria.setName("lbMemoria"); // NOI18N
 
         lbSO.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -107,14 +107,8 @@ public class FormTablet extends javax.swing.JFrame {
         cbTamanhoTela.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8\"", "10\"", "12\"", "18\"", "20\"" }));
         cbTamanhoTela.setName("cbTamanhoTela"); // NOI18N
 
-        tfBateria.setName("tfBateria"); // NOI18N
-
         cbSO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Android 4.1", "Android 5.0", "Android 6.0", "I.O.S. 6.0" }));
         cbSO.setName("cbSO"); // NOI18N
-
-        tfProcessador.setName("tfProcessador"); // NOI18N
-
-        tfMemoria.setName("tfMemoria"); // NOI18N
 
         jToolBar1.setBackground(new java.awt.Color(250, 250, 250));
         jToolBar1.setFloatable(false);
@@ -185,6 +179,15 @@ public class FormTablet extends javax.swing.JFrame {
         });
         jToolBar1.add(btSair);
 
+        cbMemoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1GB", "2GB", "4GB", "6GB", "8GB" }));
+        cbMemoria.setName("cbMemoria"); // NOI18N
+
+        cbProcessador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quad-Core 1.2 GHz", "Quad-Core 1.3GHZ", " " }));
+        cbProcessador.setName("cbProcessador"); // NOI18N
+
+        cbBateria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2700 mAh", "2800 mAh", "4000 mAh", "4200 mAh", " ", " ", " " }));
+        cbBateria.setName("cbBateria"); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -192,45 +195,37 @@ public class FormTablet extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(cbCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                                .addComponent(cbTamanhoTela, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tfBateria, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(52, 52, 52))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbSO)
-                            .addComponent(cbSO, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(114, 114, 114)
-                        .addComponent(lbBateria)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(lbCapacidade)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbTamanhoTela)
-                        .addGap(74, 74, 74)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lbSO)
+                        .addGap(97, 97, 97)
+                        .addComponent(lbBateria)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lbProcessador)
-                        .addGap(97, 97, 97))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tfMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(78, 78, 78))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(lbMemoria)
-                        .addGap(112, 112, 112))))
+                        .addGap(102, 102, 102))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(cbSO, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(74, 74, 74)
+                                .addComponent(cbBateria, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addComponent(cbProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cbCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbCapacidade))
+                                .addGap(102, 102, 102)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbTamanhoTela, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbTamanhoTela))
+                                .addGap(100, 100, 100)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lbMemoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbMemoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,27 +233,27 @@ public class FormTablet extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbCapacidade)
                     .addComponent(lbTamanhoTela)
-                    .addComponent(lbMemoria))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbMemoria)
+                    .addComponent(lbCapacidade))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbTamanhoTela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbTamanhoTela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbSO)
-                    .addComponent(lbBateria)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbSO)
+                        .addComponent(lbBateria))
                     .addComponent(lbProcessador))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbSO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                    .addComponent(cbBateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -286,10 +281,10 @@ public class FormTablet extends javax.swing.JFrame {
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         cbCapacidade.setSelectedIndex(0);
         cbTamanhoTela.setSelectedIndex(0);
-        tfMemoria.setText("");
+        cbMemoria.setSelectedItem(2);
         cbSO.setSelectedIndex(0);
-        tfBateria.setText("");
-        tfProcessador.setText("");
+        cbBateria.setSelectedItem(0);
+        cbProcessador.setSelectedItem(0);
         cbCapacidade.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
 
@@ -298,10 +293,10 @@ public class FormTablet extends javax.swing.JFrame {
         if(opcao == 0){
             String capacidade = cbCapacidade.getSelectedItem().toString();
             String tamanho = cbTamanhoTela.getSelectedItem().toString();
-            String memoria = tfMemoria.getText();
+            String memoria = cbMemoria.getSelectedItem().toString();
             String sistema = cbSO.getSelectedItem().toString();
-            String bateria = tfBateria.getText();
-            String processador = tfProcessador.getText();
+            String bateria = cbBateria.getSelectedItem().toString();
+            String processador = cbProcessador.getSelectedItem().toString();
 
             Tablet tab = new Tablet(capacidade, tamanho, memoria, sistema, bateria, processador, 
                     equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
@@ -329,10 +324,10 @@ public class FormTablet extends javax.swing.JFrame {
             btAtualizar.setEnabled(true);
             cbCapacidade.setSelectedItem(ta.getCapacidade());
             cbTamanhoTela.setSelectedItem(ta.getTamanhoTela());
-            tfMemoria.setText(ta.getMemoriaRam());
+            cbMemoria.setSelectedItem(ta.getMemoriaRam());
             cbSO.setSelectedItem(ta.getSistemaOperacional());
-            tfBateria.setText(ta.getBateria());
-            tfProcessador.setText(ta.getProcessador());
+            cbBateria.setSelectedItem(ta.getBateria());
+            cbProcessador.setSelectedItem(ta.getProcessador());
         }else{
             btCadastrar.setEnabled(true);
             btLimpar.setEnabled(true);
@@ -345,10 +340,10 @@ public class FormTablet extends javax.swing.JFrame {
         if(opcao == 0){
             String capacidade = cbCapacidade.getSelectedItem().toString();
             String tamanho = cbTamanhoTela.getSelectedItem().toString();
-            String memoria = tfMemoria.getText();
+            String memoria = cbMemoria.getSelectedItem().toString();
             String sistema = cbSO.getSelectedItem().toString();
-            String bateria = tfBateria.getText();
-            String processador = tfProcessador.getText();
+            String bateria = cbBateria.getSelectedItem().toString();
+            String processador = cbCapacidade.getSelectedItem().toString();
             Tablet tab = new Tablet(capacidade, tamanho, memoria, sistema, bateria, processador, 
                     ta.getCodEquipamento(), ta.getModelo(), ta.getMarca(),
                     ta.getQuantEstoque(), ta.getCategoria(), ta.getValorDiaria());
@@ -401,7 +396,10 @@ public class FormTablet extends javax.swing.JFrame {
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
+    private javax.swing.JComboBox<String> cbBateria;
     private javax.swing.JComboBox<String> cbCapacidade;
+    private javax.swing.JComboBox<String> cbMemoria;
+    private javax.swing.JComboBox<String> cbProcessador;
     private javax.swing.JComboBox<String> cbSO;
     private javax.swing.JComboBox<String> cbTamanhoTela;
     private javax.swing.JLabel jLabel1;
@@ -417,8 +415,5 @@ public class FormTablet extends javax.swing.JFrame {
     private javax.swing.JLabel lbProcessador;
     private javax.swing.JLabel lbSO;
     private javax.swing.JLabel lbTamanhoTela;
-    private javax.swing.JTextField tfBateria;
-    private javax.swing.JTextField tfMemoria;
-    private javax.swing.JTextField tfProcessador;
     // End of variables declaration//GEN-END:variables
 }

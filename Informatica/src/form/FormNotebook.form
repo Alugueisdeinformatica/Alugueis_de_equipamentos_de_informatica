@@ -638,16 +638,20 @@
         <Component class="javax.swing.JComboBox" name="cbArmazenamento">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
-                <StringItem index="0" value="2TB"/>
-                <StringItem index="1" value="1TB"/>
+              <StringArray count="10">
+                <StringItem index="0" value="320GB"/>
+                <StringItem index="1" value="500GB"/>
                 <StringItem index="2" value="750GB"/>
-                <StringItem index="3" value="500GB"/>
-                <StringItem index="4" value="320GB"/>
+                <StringItem index="3" value="1TB"/>
+                <StringItem index="4" value="2TB"/>
                 <StringItem index="5" value=" "/>
+                <StringItem index="6" value=" "/>
+                <StringItem index="7" value=" "/>
+                <StringItem index="8" value=" "/>
+                <StringItem index="9" value=" "/>
               </StringArray>
             </Property>
-            <Property name="selectedIndex" type="int" value="1"/>
+            <Property name="selectedIndex" type="int" value="3"/>
             <Property name="name" type="java.lang.String" value="cbArmazenamento" noResource="true"/>
           </Properties>
           <AuxValues>

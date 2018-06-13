@@ -267,11 +267,11 @@ public class FormDesktop extends javax.swing.JFrame {
         });
         jToolBar1.add(btSair);
 
-        cbArmazenamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2TB", "1TB", "750GB", "500GB", "320GB", " " }));
-        cbArmazenamento.setSelectedIndex(1);
+        cbArmazenamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "320GB", "500GB", "750GB", "1TB", "2TB", " ", " ", " ", " " }));
+        cbArmazenamento.setSelectedIndex(3);
         cbArmazenamento.setName("cbArmazenamento"); // NOI18N
 
-        cbMemoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8GB", "6GB", "4GB", "2GB", "1GB" }));
+        cbMemoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1GB", "2GB", "4GB", "6GB", "8GB", " ", " ", " ", " " }));
         cbMemoria.setSelectedIndex(2);
         cbMemoria.setName("cbMemoria"); // NOI18N
 
@@ -405,7 +405,7 @@ public class FormDesktop extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        cbArmazenamento.setSelectedItem(1);
+        cbArmazenamento.setSelectedItem(3);
         cbMemoria.setSelectedItem(2);
         cbProcessador.setSelectedIndex(0);
         bgSO.clearSelection();
