@@ -50,24 +50,31 @@ public class FormAjuda extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
+        treeAjuda.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Ajuda");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Cliente");
-        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Cadastro");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Cadastro");
+        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Novo Cliente");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Consulta");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Novo Equipamento");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Equipamento");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Cadastro");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Consulta");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Clientes");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Consulta");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Equipamentos");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Alugueis");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Aluguel");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Realizados");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Novo Aluguel");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Devoluções");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Emitir Nota Fiscal");
         treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Efetuar Devolução");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Sobre");
         treeNode1.add(treeNode2);
         treeAjuda.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         treeAjuda.setRootVisible(false);
@@ -78,6 +85,7 @@ public class FormAjuda extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(treeAjuda);
 
+        tpVisualizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jScrollPane2.setViewportView(tpVisualizar);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

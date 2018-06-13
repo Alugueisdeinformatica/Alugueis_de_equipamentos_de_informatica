@@ -74,8 +74,13 @@
           <SubComponents>
             <Component class="javax.swing.JTree" name="treeAjuda">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder bevelType="1"/>
+                  </Border>
+                </Property>
                 <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-                  <TreeModel code="Ajuda&#xa; Cliente&#xa;  Cadastro&#xa;  Consulta&#xa; Equipamento&#xa;  Cadastro&#xa;  Consulta&#xa; Aluguel&#xa;  Realizados&#xa;  Devolu&#xe7;&#xf5;es"/>
+                  <TreeModel code="Ajuda&#xa; Cadastro&#xa;  Novo Cliente&#xa;  Novo Equipamento&#xa; Consulta&#xa;  Clientes&#xa;  Equipamentos&#xa;  Alugueis&#xa; Aluguel&#xa;  Novo Aluguel&#xa;  Emitir Nota Fiscal&#xa;  Efetuar Devolu&#xe7;&#xe3;o&#xa; Sobre"/>
                 </Property>
                 <Property name="rootVisible" type="boolean" value="false"/>
               </Properties>
@@ -93,6 +98,13 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Component class="javax.swing.JTextPane" name="tpVisualizar">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder bevelType="1"/>
+                  </Border>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
