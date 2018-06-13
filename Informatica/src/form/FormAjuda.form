@@ -99,12 +99,16 @@
           <SubComponents>
             <Component class="javax.swing.JTextPane" name="tpVisualizar">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
                     <BevelBorder bevelType="1"/>
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="hyperlinkUpdate" listener="javax.swing.event.HyperlinkListener" parameters="javax.swing.event.HyperlinkEvent" handler="tpVisualizarHyperlinkUpdate"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

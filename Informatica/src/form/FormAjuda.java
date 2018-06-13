@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.event.HyperlinkEvent;
 
 /**
  *
@@ -85,7 +86,13 @@ public class FormAjuda extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(treeAjuda);
 
+        tpVisualizar.setEditable(false);
         tpVisualizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        tpVisualizar.addHyperlinkListener(new javax.swing.event.HyperlinkListener() {
+            public void hyperlinkUpdate(javax.swing.event.HyperlinkEvent evt) {
+                tpVisualizarHyperlinkUpdate(evt);
+            }
+        });
         jScrollPane2.setViewportView(tpVisualizar);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -141,6 +148,16 @@ public class FormAjuda extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\Button-Help-icon 16.png").getImage());
     }//GEN-LAST:event_formWindowOpened
+
+    private void tpVisualizarHyperlinkUpdate(javax.swing.event.HyperlinkEvent evt) {//GEN-FIRST:event_tpVisualizarHyperlinkUpdate
+        if (evt.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+            try {
+                tpVisualizar.setPage(evt.getURL());
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }           
+        }
+    }//GEN-LAST:event_tpVisualizarHyperlinkUpdate
 
     /**
      * @param args the command line arguments
