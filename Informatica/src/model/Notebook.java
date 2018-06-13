@@ -6,20 +6,20 @@ public class Notebook extends Equipamento{
     private String capacidadeHD;
     private String processador;
     private String memoria;
-    private String bateria;
+    private String diferenciais;
 
     public Notebook() {
         super();
     }
 
-    public Notebook(String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria, String bateria, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, float valorDiaria) {
+    public Notebook(String sistemaOperacional, String placaVideo, String capacidadeHD, String processador, String memoria, String diferenciais, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, float valorDiaria) {
         super(codEquipamento, modelo, marca, quantEstoque, categoria, valorDiaria);
         this.sistemaOperacional = sistemaOperacional;
         this.placaVideo = placaVideo;
         this.capacidadeHD = capacidadeHD;
         this.processador = processador;
         this.memoria = memoria;
-        this.bateria = bateria;
+        this.diferenciais = diferenciais;
     }   
 
     public String getSistemaOperacional() {
@@ -63,11 +63,11 @@ public class Notebook extends Equipamento{
     }
 
     public String getBateria() {
-        return bateria;
+        return diferenciais;
     }
 
     public void setBateria(String bateria) {
-        this.bateria = bateria;
+        this.diferenciais = bateria;
     }    
     
     public boolean validaNotebook(){
@@ -75,8 +75,7 @@ public class Notebook extends Equipamento{
                !placaVideo.equals("") &&
                !capacidadeHD.equals("") &&
                !processador.equals("") &&
-               !memoria.equals("") &&
-               !bateria.equals("");
+               !memoria.equals("");
     }
     
     @Override
@@ -87,7 +86,7 @@ public class Notebook extends Equipamento{
         str += "\nCapacidade de HD: " + capacidadeHD;
         str += "\nProcessador: " + processador;
         str += "\nMemória: " + memoria;
-        str += "\nBateria: " + bateria;
+        str += "\nDiferenciais: " + diferenciais;
         return str;
     }
 }

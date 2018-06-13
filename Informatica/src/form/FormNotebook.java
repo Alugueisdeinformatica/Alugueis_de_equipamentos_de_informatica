@@ -45,16 +45,16 @@ public class FormNotebook extends javax.swing.JFrame {
         rbInteli5 = new javax.swing.JRadioButton();
         rbInteli7 = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        taBateria = new javax.swing.JTextArea();
-        tfCapacidade = new javax.swing.JTextField();
+        taDiferenciais = new javax.swing.JTextArea();
         cbPlacaVideo = new javax.swing.JComboBox<>();
         cbSistemaOp = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        lbBateria = new javax.swing.JLabel();
-        lbCapacidade = new javax.swing.JLabel();
+        lbDiferenciais = new javax.swing.JLabel();
+        lbArmazenamento = new javax.swing.JLabel();
         lbPlacaVideo = new javax.swing.JLabel();
         lbSistemaOp = new javax.swing.JLabel();
+        cbArmazenamento = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Notebook");
@@ -143,31 +143,31 @@ public class FormNotebook extends javax.swing.JFrame {
         bgMemoria.add(rbDDR34g);
         rbDDR34g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbDDR34g.setSelected(true);
-        rbDDR34g.setText("DDR 3 4Gb");
+        rbDDR34g.setText("8GB");
         rbDDR34g.setName("rbDDR34g"); // NOI18N
 
         rbDDR48g.setBackground(new java.awt.Color(250, 250, 250));
         bgMemoria.add(rbDDR48g);
         rbDDR48g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        rbDDR48g.setText("DDR 4 8Gb");
+        rbDDR48g.setText("6GB");
         rbDDR48g.setName("rbDDR48g"); // NOI18N
 
         rbDDR22g.setBackground(new java.awt.Color(250, 250, 250));
         bgMemoria.add(rbDDR22g);
         rbDDR22g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        rbDDR22g.setText("DDR 2 2Gb");
+        rbDDR22g.setText("4GB");
         rbDDR22g.setName("rbDDR22g"); // NOI18N
 
         rbDDR32g.setBackground(new java.awt.Color(250, 250, 250));
         bgMemoria.add(rbDDR32g);
         rbDDR32g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        rbDDR32g.setText("DDR 3 2Gb");
+        rbDDR32g.setText("2GB");
         rbDDR32g.setName("rbDDR32g"); // NOI18N
 
         rbDDR38g.setBackground(new java.awt.Color(250, 250, 250));
         bgMemoria.add(rbDDR38g);
         rbDDR38g.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        rbDDR38g.setText("DDR 3 8GB");
+        rbDDR38g.setText("1GB");
         rbDDR38g.setName("rbDDR38g"); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -265,12 +265,10 @@ public class FormNotebook extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        taBateria.setColumns(20);
-        taBateria.setRows(5);
-        taBateria.setName("taBateria"); // NOI18N
-        jScrollPane1.setViewportView(taBateria);
-
-        tfCapacidade.setName("tfCapacidade"); // NOI18N
+        taDiferenciais.setColumns(20);
+        taDiferenciais.setRows(5);
+        taDiferenciais.setName("taDiferenciais"); // NOI18N
+        jScrollPane1.setViewportView(taDiferenciais);
 
         cbPlacaVideo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "On-Board", "Asus Geforce Gtx", "Nvidia Gt 210", "Radeon R5 230" }));
         cbPlacaVideo.setName("cbPlacaVideo"); // NOI18N
@@ -302,13 +300,13 @@ public class FormNotebook extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        lbBateria.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbBateria.setText("Bateria:");
-        lbBateria.setName("lbBateria"); // NOI18N
+        lbDiferenciais.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbDiferenciais.setText("Diferenciais:");
+        lbDiferenciais.setName("lbDiferenciais"); // NOI18N
 
-        lbCapacidade.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbCapacidade.setText("Capacidade HD:");
-        lbCapacidade.setName("lbCapacidade"); // NOI18N
+        lbArmazenamento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbArmazenamento.setText("Armazenamento HD");
+        lbArmazenamento.setName("lbArmazenamento"); // NOI18N
 
         lbPlacaVideo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPlacaVideo.setText("Placa de Vídeo:");
@@ -317,6 +315,10 @@ public class FormNotebook extends javax.swing.JFrame {
         lbSistemaOp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbSistemaOp.setText("Sistema Operacional:");
         lbSistemaOp.setName("lbSistemaOp"); // NOI18N
+
+        cbArmazenamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2TB", "1TB", "750GB", "500GB", "320GB", " " }));
+        cbArmazenamento.setSelectedIndex(1);
+        cbArmazenamento.setName("cbArmazenamento"); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -333,7 +335,7 @@ public class FormNotebook extends javax.swing.JFrame {
                 .addGap(63, 63, 63)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbBateria)
+                    .addComponent(lbDiferenciais)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel3Layout.createSequentialGroup()
@@ -347,9 +349,9 @@ public class FormNotebook extends javax.swing.JFrame {
                                     .addGap(11, 11, 11)
                                     .addComponent(lbPlacaVideo)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfCapacidade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbCapacidade, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lbArmazenamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbArmazenamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -360,14 +362,14 @@ public class FormNotebook extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbSistemaOp)
                     .addComponent(lbPlacaVideo)
-                    .addComponent(lbCapacidade))
+                    .addComponent(lbArmazenamento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbSistemaOp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbPlacaVideo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfCapacidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbArmazenamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(lbBateria)
+                .addComponent(lbDiferenciais)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -376,7 +378,7 @@ public class FormNotebook extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -399,12 +401,12 @@ public class FormNotebook extends javax.swing.JFrame {
         if(opcao == 0){
             String sistemaOperacional = cbSistemaOp.getSelectedItem().toString();
             String placaVideo = cbPlacaVideo.getSelectedItem().toString();
-            String capacidadeHD = tfCapacidade.getText();
-            String bateria = taBateria.getText();
+            String capacidadeHD = cbArmazenamento.getSelectedItem().toString();
+            String diferenciais = taDiferenciais.getText();
             String processador = capturaProcessador();
             String memoria = capturaMemoria();
 
-            Notebook note = new Notebook(sistemaOperacional, placaVideo, capacidadeHD, processador, memoria, bateria,
+            Notebook note = new Notebook(sistemaOperacional, placaVideo, capacidadeHD, processador, memoria, diferenciais,
                     equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
                     equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
 
@@ -435,8 +437,8 @@ public class FormNotebook extends javax.swing.JFrame {
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         cbSistemaOp.setSelectedIndex(0);
         cbPlacaVideo.setSelectedIndex(0);
-        tfCapacidade.setText("");
-        taBateria.setText("");
+        cbArmazenamento.setSelectedItem(1);
+        taDiferenciais.setText("");
         bgProcessador.clearSelection();
         rbInteli3.setSelected(true);
         bgMemoria.clearSelection();
@@ -449,8 +451,8 @@ public class FormNotebook extends javax.swing.JFrame {
             btAtualizar.setEnabled(true);
             cbSistemaOp.setSelectedItem(not.getSistemaOperacional());
             cbPlacaVideo.setSelectedItem(not.getPlacaVideo());
-            tfCapacidade.setText(not.getCapacidadeHD());
-            taBateria.setText(not.getBateria());
+            cbArmazenamento.setSelectedItem(not.getCapacidadeHD());
+            taDiferenciais.setText(not.getBateria());
             marcarRadio(bgProcessador, not.getProcessador());
             marcarRadio(bgMemoria, not.getMemoria());
         }else{
@@ -465,11 +467,11 @@ public class FormNotebook extends javax.swing.JFrame {
         if(opcao == 0){
             String sistemaOperacional = cbSistemaOp.getSelectedItem().toString();
             String placaVideo = cbPlacaVideo.getSelectedItem().toString();
-            String capacidadeHD = tfCapacidade.getText();
-            String bateria = taBateria.getText();
+            String capacidadeHD = cbArmazenamento.getSelectedItem().toString();
+            String diferenciais = taDiferenciais.getText();
             String processador = capturaProcessador();
             String memoria = capturaMemoria();  
-            Notebook note = new Notebook(sistemaOperacional, placaVideo, capacidadeHD, processador, memoria, bateria,
+            Notebook note = new Notebook(sistemaOperacional, placaVideo, capacidadeHD, processador, memoria, diferenciais,
                     not.getCodEquipamento(), not.getModelo(), not.getMarca(),
                     not.getQuantEstoque(), not.getCategoria(), not.getValorDiaria());
             FormPrincipal.bdEquipamento.atualizarEquipamento((Equipamento) note);
@@ -558,6 +560,7 @@ public class FormNotebook extends javax.swing.JFrame {
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
+    private javax.swing.JComboBox<String> cbArmazenamento;
     private javax.swing.JComboBox<String> cbPlacaVideo;
     private javax.swing.JComboBox<String> cbSistemaOp;
     private javax.swing.JLabel jLabel7;
@@ -570,8 +573,8 @@ public class FormNotebook extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JLabel lbBateria;
-    private javax.swing.JLabel lbCapacidade;
+    private javax.swing.JLabel lbArmazenamento;
+    private javax.swing.JLabel lbDiferenciais;
     private javax.swing.JLabel lbPlacaVideo;
     private javax.swing.JLabel lbSistemaOp;
     private javax.swing.JRadioButton rbAmdAthlon;
@@ -584,7 +587,6 @@ public class FormNotebook extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbInteli3;
     private javax.swing.JRadioButton rbInteli5;
     private javax.swing.JRadioButton rbInteli7;
-    private javax.swing.JTextArea taBateria;
-    private javax.swing.JTextField tfCapacidade;
+    private javax.swing.JTextArea taDiferenciais;
     // End of variables declaration//GEN-END:variables
 }
