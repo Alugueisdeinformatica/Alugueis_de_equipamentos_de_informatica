@@ -316,8 +316,7 @@ public class FormNotebook extends javax.swing.JFrame {
         lbSistemaOp.setText("Sistema Operacional:");
         lbSistemaOp.setName("lbSistemaOp"); // NOI18N
 
-        cbArmazenamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "320GB", "500GB", "750GB", "1TB", "2TB", " ", " ", " ", " ", " " }));
-        cbArmazenamento.setSelectedIndex(3);
+        cbArmazenamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "320GB", "500GB", "750GB", "1TB", "2TB" }));
         cbArmazenamento.setName("cbArmazenamento"); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);

@@ -267,12 +267,10 @@ public class FormDesktop extends javax.swing.JFrame {
         });
         jToolBar1.add(btSair);
 
-        cbArmazenamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "320GB", "500GB", "750GB", "1TB", "2TB", " ", " ", " ", " " }));
-        cbArmazenamento.setSelectedIndex(3);
+        cbArmazenamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "320GB", "500GB", "750GB", "1TB", "2TB" }));
         cbArmazenamento.setName("cbArmazenamento"); // NOI18N
 
-        cbMemoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1GB", "2GB", "4GB", "6GB", "8GB", " ", " ", " ", " " }));
-        cbMemoria.setSelectedIndex(2);
+        cbMemoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1GB", "2GB", "4GB", "6GB", "8GB" }));
         cbMemoria.setName("cbMemoria"); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);

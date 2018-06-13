@@ -176,7 +176,7 @@ public class FormProjetor extends javax.swing.JFrame {
         cbLente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Foco Manual / Zoom Digital" }));
         cbLente.setName("cbLente"); // NOI18N
 
-        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LCD Portátil", "Teto e Mesa", " " }));
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LCD Portátil", "Teto e Mesa" }));
         cbTipo.setName("cbTipo"); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

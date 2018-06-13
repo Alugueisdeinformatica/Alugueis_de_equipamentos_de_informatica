@@ -690,6 +690,7 @@ public class FormAluguel extends javax.swing.JFrame {
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         limparTabelaInserir();
+        taDescricao.setText("");
         List<Equipamento> equipamentos = FormPrincipal.bdEquipamento.todosEquipamentos();
         if(equipamentos.size() > 0){
             for (int i = 0; i < equipamentos.size(); i++){

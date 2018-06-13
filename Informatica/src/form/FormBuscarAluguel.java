@@ -147,7 +147,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         });
         tbAvisoVencimento.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tbAvisoVencimento.setName("tbAvisoVencimento"); // NOI18N
-        tbAvisoVencimento.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        tbAvisoVencimento.setSelectionBackground(new java.awt.Color(51, 102, 255));
         tbAvisoVencimento.getTableHeader().setReorderingAllowed(false);
         tbAvisoVencimento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
