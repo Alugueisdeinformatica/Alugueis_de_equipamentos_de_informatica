@@ -22,11 +22,8 @@ public class FormImpressora extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         lbTipo = new javax.swing.JLabel();
-        tfTipo = new javax.swing.JTextField();
-        lbEsp = new javax.swing.JLabel();
-        tfEsp = new javax.swing.JTextField();
-        tfTecn = new javax.swing.JTextField();
-        lbTecn = new javax.swing.JLabel();
+        lbConectividade = new javax.swing.JLabel();
+        lbVoltagem = new javax.swing.JLabel();
         cboWifi = new javax.swing.JCheckBox();
         jToolBar1 = new javax.swing.JToolBar();
         btCadastrar = new javax.swing.JButton();
@@ -36,6 +33,9 @@ public class FormImpressora extends javax.swing.JFrame {
         btAtualizar = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         btSair = new javax.swing.JButton();
+        cbTipo = new javax.swing.JComboBox<>();
+        cbVoltagem = new javax.swing.JComboBox<>();
+        cbConectividade = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Impressora");
@@ -76,19 +76,13 @@ public class FormImpressora extends javax.swing.JFrame {
         lbTipo.setText("Tipo:");
         lbTipo.setName("lbTipo"); // NOI18N
 
-        tfTipo.setName("tfTipo"); // NOI18N
+        lbConectividade.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbConectividade.setText("Conectividade");
+        lbConectividade.setName("lbConectividade"); // NOI18N
 
-        lbEsp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbEsp.setText("Especificação:");
-        lbEsp.setName("lbEsp"); // NOI18N
-
-        tfEsp.setName("tfEsp"); // NOI18N
-
-        tfTecn.setName("tfTecn"); // NOI18N
-
-        lbTecn.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbTecn.setText("Tecnologia");
-        lbTecn.setName("lbTecn"); // NOI18N
+        lbVoltagem.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbVoltagem.setText("Voltagem");
+        lbVoltagem.setName("lbVoltagem"); // NOI18N
 
         cboWifi.setBackground(new java.awt.Color(250, 250, 250));
         cboWifi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -163,38 +157,49 @@ public class FormImpressora extends javax.swing.JFrame {
         });
         jToolBar1.add(btSair);
 
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jato", "Laser", "Tanque", "Térmica", "Matricial" }));
+        cbTipo.setName("cbTipo"); // NOI18N
+
+        cbVoltagem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "110V", "220V" }));
+        cbVoltagem.setName("cbVoltagem"); // NOI18N
+
+        cbConectividade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "USB 2.0", "USB 3.0" }));
+        cbConectividade.setName("cbConectividade"); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tfTecn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(cboWifi)
-                        .addGap(13, 13, 13)))
-                .addGap(109, 109, 109))
-            .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(cbVoltagem, 0, 54, Short.MAX_VALUE)
+                                        .addGap(208, 208, 208)))
+                                .addGap(8, 8, 8)
+                                .addComponent(cboWifi)
+                                .addGap(61, 61, 61))
+                            .addComponent(lbVoltagem))))
+                .addGap(60, 60, 60))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(139, 139, 139)
                 .addComponent(lbTipo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbEsp)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbConectividade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbConectividade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(130, 130, 130))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(lbTecn))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(61, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,17 +208,17 @@ public class FormImpressora extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbTipo)
-                    .addComponent(lbEsp))
+                    .addComponent(lbConectividade))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfEsp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbConectividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
-                .addComponent(lbTecn)
+                .addComponent(lbVoltagem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfTecn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboWifi))
+                    .addComponent(cboWifi)
+                    .addComponent(cbVoltagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(35, Short.MAX_VALUE))
@@ -239,12 +244,12 @@ public class FormImpressora extends javax.swing.JFrame {
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja efetuar o cadastro?", "Confirmação", JOptionPane.YES_NO_OPTION);
         if(opcao == 0){
-            String tipo = tfTipo.getText();
-            String tecnologia = tfTecn.getText();
-            String especificacao = tfEsp.getText();
+            String tipo = cbTipo.getSelectedItem().toString();
+            String voltagem = cbVoltagem.getSelectedItem().toString();
+            String conectividade = cbConectividade.getSelectedItem().toString();
             boolean wifi = cboWifi.isSelected();      
 
-            Impressora impres = new Impressora(tipo, tecnologia, especificacao, wifi,
+            Impressora impres = new Impressora(tipo, voltagem, conectividade, wifi,
                     equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
                     equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
 
@@ -273,19 +278,19 @@ public class FormImpressora extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        tfTipo.setText("");
-        tfEsp.setText("");
-        tfTecn.setText("");
+        cbTipo.setSelectedItem(0);
+        cbConectividade.setSelectedItem(0);
+        cbVoltagem.setSelectedItem(0);
         cboWifi.setSelected(false);
-        tfTipo.requestFocus();
+        cbTipo.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(imp != null){
             btAtualizar.setEnabled(true);
-            tfTipo.setText(imp.getTipo());
-            tfEsp.setText(imp.getEspecificacao());
-            tfTecn.setText(imp.getTecnologia());
+            cbTipo.setSelectedItem(imp.getTipo());
+            cbConectividade.setSelectedItem(imp.getEspecificacao());
+            cbVoltagem.setSelectedItem(imp.getTecnologia());
             if(imp.isWifi()){
                 cboWifi.setSelected(true);
             }
@@ -299,9 +304,9 @@ public class FormImpressora extends javax.swing.JFrame {
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja atualizar os dados?", "Atenção", JOptionPane.YES_NO_OPTION);
         if(opcao == 0){
-            String tipo = tfTipo.getText();
-            String tecnologia = tfTecn.getText();
-            String especificacao = tfEsp.getText();
+            String tipo = cbTipo.getSelectedItem().toString();
+            String tecnologia = cbVoltagem.getSelectedItem().toString();
+            String especificacao = cbConectividade.getSelectedItem().toString();
             boolean wifi = cboWifi.isSelected();   
             Impressora impres = new Impressora(tipo, tecnologia, especificacao, wifi,
                 imp.getCodEquipamento(), imp.getModelo(), imp.getMarca(),
@@ -356,6 +361,9 @@ public class FormImpressora extends javax.swing.JFrame {
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
+    private javax.swing.JComboBox<String> cbConectividade;
+    private javax.swing.JComboBox<String> cbTipo;
+    private javax.swing.JComboBox<String> cbVoltagem;
     private javax.swing.JCheckBox cboWifi;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
@@ -364,11 +372,8 @@ public class FormImpressora extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JLabel lbEsp;
-    private javax.swing.JLabel lbTecn;
+    private javax.swing.JLabel lbConectividade;
     private javax.swing.JLabel lbTipo;
-    private javax.swing.JTextField tfEsp;
-    private javax.swing.JTextField tfTecn;
-    private javax.swing.JTextField tfTipo;
+    private javax.swing.JLabel lbVoltagem;
     // End of variables declaration//GEN-END:variables
 }

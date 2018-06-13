@@ -2,8 +2,8 @@ package model;
 
 public class Impressora extends Equipamento{
     private String tipo;
-    private String tecnologia;
-    private String especificacao;
+    private String voltagem;
+    private String conectividade;
     private boolean wifi;
 
     public Impressora() {
@@ -14,8 +14,8 @@ public class Impressora extends Equipamento{
     public Impressora(String tipo, String tecnologia, String especificacao, boolean wifi, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, float valorDiaria) {
         super(codEquipamento, modelo, marca, quantEstoque, categoria, valorDiaria);
         this.tipo = tipo;
-        this.tecnologia = tecnologia;
-        this.especificacao = especificacao;
+        this.voltagem = tecnologia;
+        this.conectividade = especificacao;
         this.wifi = wifi;
     }  
 
@@ -28,19 +28,19 @@ public class Impressora extends Equipamento{
     }
 
     public String getTecnologia() {
-        return tecnologia;
+        return voltagem;
     }
 
     public void setTecnologia(String tecnologia) {
-        this.tecnologia = tecnologia;
+        this.voltagem = tecnologia;
     }
 
     public String getEspecificacao() {
-        return especificacao;
+        return conectividade;
     }
 
     public void setEspecificacao(String especificacao) {
-        this.especificacao = especificacao;
+        this.conectividade = especificacao;
     }
 
     public boolean isWifi() {
@@ -59,15 +59,15 @@ public class Impressora extends Equipamento{
         }
         String str = toString_();
         str += "\nTipo: " + tipo;
-        str += "\nTecnologia: " + tecnologia;
-        str += "\nEspecificação: " + especificacao;
+        str += "\nVoltagem: " + voltagem;
+        str += "\nConectividade: " + conectividade;
         str += "\nWifi: " + w;
         return str;
     }
     
     public boolean validaImpressora(){
         return !tipo.equals("") &&
-               !tecnologia.equals("") &&
-               !especificacao.equals("");
+               !voltagem.equals("") &&
+               !conectividade.equals("");
     }
 }
