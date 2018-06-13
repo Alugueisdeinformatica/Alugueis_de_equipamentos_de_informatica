@@ -51,53 +51,58 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jPanel1" max="32767" attributes="0"/>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="jToolBar1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="tfLampada" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="tfMaterial" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                          <Component id="lbLampada" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbTipo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="cbLampada" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="lbMaterial" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Component id="lbTipo" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Component id="lbLampada" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="tfLente" alignment="0" pref="100" max="32767" attributes="0"/>
-                                      <Component id="tfBrilho" alignment="0" max="32767" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                          <Component id="lbBrilho" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="cbLuminosidade" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbLuminosidade" min="-2" pref="104" max="-2" attributes="0"/>
                                       </Group>
+                                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="lbResolucao" max="32767" attributes="0"/>
+                                          <Component id="cbResolucao" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="tfResolucao" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="lbResolucao" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="cbLente" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="lbLente" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <Component id="jToolBar1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="66" max="32767" attributes="0"/>
               </Group>
@@ -109,15 +114,15 @@
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbMaterial" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbBrilho" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbLuminosidade" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbResolucao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tfMaterial" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfBrilho" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfResolucao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbLuminosidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbResolucao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -126,12 +131,12 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tfLente" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tfLampada" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbLampada" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbLente" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="jToolBar1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="40" max="32767" attributes="0"/>
+                  <EmptySpace pref="39" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -183,27 +188,22 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="lbMaterial">
+        <Component class="javax.swing.JLabel" name="lbTipo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Material:"/>
-            <Property name="name" type="java.lang.String" value="lbMaterial" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="Tipo:"/>
+            <Property name="name" type="java.lang.String" value="lbTipo" noResource="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbBrilho">
+        <Component class="javax.swing.JLabel" name="lbLuminosidade">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Brilho:"/>
-            <Property name="name" type="java.lang.String" value="lbBrilho" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tfMaterial">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="tfMaterial" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="Luminosidade:"/>
+            <Property name="name" type="java.lang.String" value="lbLuminosidade" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbResolucao">
@@ -211,7 +211,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Resolu&#xe7;&#xe3;o Optica:"/>
+            <Property name="text" type="java.lang.String" value="Resolu&#xe7;&#xe3;o M&#xe1;xima:"/>
             <Property name="name" type="java.lang.String" value="lbResolucao" noResource="true"/>
           </Properties>
         </Component>
@@ -354,25 +354,79 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="tfBrilho">
+        <Component class="javax.swing.JComboBox" name="cbLuminosidade">
           <Properties>
-            <Property name="name" type="java.lang.String" value="tfBrilho" noResource="true"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="2">
+                <StringItem index="0" value="2700 ANSI Lumens"/>
+                <StringItem index="1" value="3600 ANSI lumens"/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="cbLuminosidade" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfResolucao">
+        <Component class="javax.swing.JComboBox" name="cbResolucao">
           <Properties>
-            <Property name="name" type="java.lang.String" value="tfResolucao" noResource="true"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="7">
+                <StringItem index="0" value="VGA"/>
+                <StringItem index="1" value="SVGA"/>
+                <StringItem index="2" value="XGA"/>
+                <StringItem index="3" value="WXGA"/>
+                <StringItem index="4" value="WXGA+"/>
+                <StringItem index="5" value="SXGA"/>
+                <StringItem index="6" value="SXGA+"/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="cbResolucao" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfLampada">
+        <Component class="javax.swing.JComboBox" name="cbLampada">
           <Properties>
-            <Property name="name" type="java.lang.String" value="tfLampada" noResource="true"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value="Tipo 200W"/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="cbLampada" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="tfLente">
+        <Component class="javax.swing.JComboBox" name="cbLente">
           <Properties>
-            <Property name="name" type="java.lang.String" value="tfLente" noResource="true"/>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value="Foco Manual / Zoom Digital"/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="cbLente" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cbTipo">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="LCD Port&#xe1;til"/>
+                <StringItem index="1" value="Teto e Mesa"/>
+                <StringItem index="2" value=" "/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="cbTipo" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

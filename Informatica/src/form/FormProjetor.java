@@ -21,9 +21,8 @@ public class FormProjetor extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lbMaterial = new javax.swing.JLabel();
-        lbBrilho = new javax.swing.JLabel();
-        tfMaterial = new javax.swing.JTextField();
+        lbTipo = new javax.swing.JLabel();
+        lbLuminosidade = new javax.swing.JLabel();
         lbResolucao = new javax.swing.JLabel();
         lbLampada = new javax.swing.JLabel();
         lbLente = new javax.swing.JLabel();
@@ -35,10 +34,11 @@ public class FormProjetor extends javax.swing.JFrame {
         btAtualizar = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         btSair = new javax.swing.JButton();
-        tfBrilho = new javax.swing.JTextField();
-        tfResolucao = new javax.swing.JTextField();
-        tfLampada = new javax.swing.JTextField();
-        tfLente = new javax.swing.JTextField();
+        cbLuminosidade = new javax.swing.JComboBox<>();
+        cbResolucao = new javax.swing.JComboBox<>();
+        cbLampada = new javax.swing.JComboBox<>();
+        cbLente = new javax.swing.JComboBox<>();
+        cbTipo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Projetor");
@@ -75,18 +75,16 @@ public class FormProjetor extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        lbMaterial.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbMaterial.setText("Material:");
-        lbMaterial.setName("lbMaterial"); // NOI18N
+        lbTipo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbTipo.setText("Tipo:");
+        lbTipo.setName("lbTipo"); // NOI18N
 
-        lbBrilho.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbBrilho.setText("Brilho:");
-        lbBrilho.setName("lbBrilho"); // NOI18N
-
-        tfMaterial.setName("tfMaterial"); // NOI18N
+        lbLuminosidade.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbLuminosidade.setText("Luminosidade:");
+        lbLuminosidade.setName("lbLuminosidade"); // NOI18N
 
         lbResolucao.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbResolucao.setText("Resolução Optica:");
+        lbResolucao.setText("Resolução Máxima:");
         lbResolucao.setName("lbResolucao"); // NOI18N
 
         lbLampada.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -166,13 +164,20 @@ public class FormProjetor extends javax.swing.JFrame {
         });
         jToolBar1.add(btSair);
 
-        tfBrilho.setName("tfBrilho"); // NOI18N
+        cbLuminosidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2700 ANSI Lumens", "3600 ANSI lumens" }));
+        cbLuminosidade.setName("cbLuminosidade"); // NOI18N
 
-        tfResolucao.setName("tfResolucao"); // NOI18N
+        cbResolucao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VGA", "SVGA", "XGA", "WXGA", "WXGA+", "SXGA", "SXGA+" }));
+        cbResolucao.setName("cbResolucao"); // NOI18N
 
-        tfLampada.setName("tfLampada"); // NOI18N
+        cbLampada.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo 200W" }));
+        cbLampada.setName("cbLampada"); // NOI18N
 
-        tfLente.setName("tfLente"); // NOI18N
+        cbLente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Foco Manual / Zoom Digital" }));
+        cbLente.setName("cbLente"); // NOI18N
+
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LCD Portátil", "Teto e Mesa", " " }));
+        cbTipo.setName("cbTipo"); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -180,40 +185,43 @@ public class FormProjetor extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(35, 35, 35))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(60, 60, 60)
+                                    .addComponent(cbLampada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(40, 40, 40)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfLampada, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(19, 19, 19)
-                                        .addComponent(lbLampada))))
+                                .addGap(88, 88, 88)
+                                .addComponent(lbTipo))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(lbMaterial)))
-                        .addGap(79, 79, 79)
+                                .addGap(73, 73, 73)
+                                .addComponent(lbLampada)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(tfLente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                    .addComponent(tfBrilho, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                        .addGap(25, 25, 25)
-                                        .addComponent(lbBrilho)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfResolucao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbResolucao, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(24, 24, 24))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(cbLuminosidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lbLuminosidade, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(70, 70, 70)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lbResolucao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cbResolucao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGap(24, 24, 24))
+                                .addComponent(cbLente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(lbLente)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(69, 69, 69)))))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -222,25 +230,25 @@ public class FormProjetor extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbMaterial)
-                    .addComponent(lbBrilho)
+                    .addComponent(lbTipo)
+                    .addComponent(lbLuminosidade)
                     .addComponent(lbResolucao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfBrilho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfResolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbLuminosidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbResolucao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbLampada)
                     .addComponent(lbLente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfLente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfLampada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbLampada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbLente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -266,24 +274,24 @@ public class FormProjetor extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        tfMaterial.setText("");
-        tfBrilho.setText("");
-        tfResolucao.setText("");
-        tfLampada.setText("");
-        tfLente.setText("");
-        tfMaterial.requestFocus();
+        cbTipo.setSelectedItem(0);
+        cbLuminosidade.setSelectedItem(0);
+        cbResolucao.setSelectedItem(0);
+        cbLampada.setSelectedItem(0);
+        cbLente.setSelectedItem(0);
+        cbTipo.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja efetuar o cadastro?", "Confirmação", JOptionPane.YES_NO_OPTION);
         if(opcao == 0){
-            String material = tfMaterial.getText();
-            String brilho = tfBrilho.getText();
-            String resolucao = tfResolucao.getText();
-            String lampada = tfLampada.getText();
-            String lente = tfLente.getText();
+            String tipo = cbTipo.getSelectedItem().toString();
+            String luminosidade = cbLuminosidade.getSelectedItem().toString();
+            String resolucao = cbResolucao.getSelectedItem().toString();
+            String lampada = cbLampada.getSelectedItem().toString();
+            String lente = cbLente.getSelectedItem().toString();
 
-            Projetor proj = new Projetor(material, brilho, resolucao, lampada, lente, 
+            Projetor proj = new Projetor(tipo, luminosidade, resolucao, lampada, lente, 
                     equipamento.getCodEquipamento(), equipamento.getModelo(), equipamento.getMarca(),
                     equipamento.getQuantEstoque(), equipamento.getCategoria(), equipamento.getValorDiaria());
 
@@ -307,11 +315,11 @@ public class FormProjetor extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(pro != null){
             btAtualizar.setEnabled(true);
-            tfMaterial.setText(pro.getMaterial());
-            tfBrilho.setText(pro.getBrilho());
-            tfResolucao.setText(pro.getResolucaoOptica());
-            tfLampada.setText(pro.getLampada());
-            tfLente.setText(pro.getLente());
+            cbTipo.setSelectedItem(pro.getTipo());
+            cbLuminosidade.setSelectedItem(pro.getLuminosidade());
+            cbResolucao.setSelectedItem(pro.getResolucaoOptica());
+            cbLampada.setSelectedItem(pro.getLampada());
+            cbLente.setSelectedItem(pro.getLente());
         }else{
             btCadastrar.setEnabled(true);
             btLimpar.setEnabled(true);
@@ -322,12 +330,12 @@ public class FormProjetor extends javax.swing.JFrame {
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja atualizar os dados?", "Atenção", JOptionPane.YES_NO_OPTION);
         if(opcao == 0){
-            String material = tfMaterial.getText();
-            String brilho = tfBrilho.getText();
-            String resolucao = tfResolucao.getText();
-            String lampada = tfLampada.getText();
-            String lente = tfLente.getText(); 
-            Projetor proj = new Projetor(material, brilho, resolucao, lampada, lente, 
+            String tipo = cbTipo.getSelectedItem().toString();
+            String luminosidade = cbLuminosidade.getSelectedItem().toString();
+            String resolucao = cbResolucao.getSelectedItem().toString();
+            String lampada = cbLampada.getSelectedItem().toString();
+            String lente = cbLente.getSelectedItem().toString();
+            Projetor proj = new Projetor(tipo, luminosidade, resolucao, lampada, lente, 
                     pro.getCodEquipamento(), pro.getModelo(), pro.getMarca(),
                     pro.getQuantEstoque(), pro.getCategoria(), pro.getValorDiaria());
             FormPrincipal.bdEquipamento.atualizarEquipamento((Equipamento) proj);
@@ -379,6 +387,11 @@ public class FormProjetor extends javax.swing.JFrame {
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
+    private javax.swing.JComboBox<String> cbLampada;
+    private javax.swing.JComboBox<String> cbLente;
+    private javax.swing.JComboBox<String> cbLuminosidade;
+    private javax.swing.JComboBox<String> cbResolucao;
+    private javax.swing.JComboBox<String> cbTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -386,15 +399,10 @@ public class FormProjetor extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JLabel lbBrilho;
     private javax.swing.JLabel lbLampada;
     private javax.swing.JLabel lbLente;
-    private javax.swing.JLabel lbMaterial;
+    private javax.swing.JLabel lbLuminosidade;
     private javax.swing.JLabel lbResolucao;
-    private javax.swing.JTextField tfBrilho;
-    private javax.swing.JTextField tfLampada;
-    private javax.swing.JTextField tfLente;
-    private javax.swing.JTextField tfMaterial;
-    private javax.swing.JTextField tfResolucao;
+    private javax.swing.JLabel lbTipo;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,8 +1,8 @@
 package model;
 
 public class Projetor extends Equipamento{
-    private String material;
-    private String brilho;
+    private String tipo;
+    private String luminosidade;
     private String resolucaoOptica;
     private String lampada;
     private String lente;
@@ -11,29 +11,29 @@ public class Projetor extends Equipamento{
         super();
     }
 
-    public Projetor(String material, String brilho, String resolucaoOptica, String lampada, String lente, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, float valorDiaria) {
+    public Projetor(String tipo, String luminosidade, String resolucaoOptica, String lampada, String lente, int codEquipamento, String modelo, String marca, int quantEstoque, String categoria, float valorDiaria) {
         super(codEquipamento, modelo, marca, quantEstoque, categoria, valorDiaria);
-        this.material = material;
-        this.brilho = brilho;
+        this.tipo = tipo;
+        this.luminosidade = luminosidade;
         this.resolucaoOptica = resolucaoOptica;
         this.lampada = lampada;
         this.lente = lente;
     }   
 
-    public String getMaterial() {
-        return material;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setMaterial(String material) {
-        this.material = material;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public String getBrilho() {
-        return brilho;
+    public String getLuminosidade() {
+        return luminosidade;
     }
 
-    public void setBrilho(String brilho) {
-        this.brilho = brilho;
+    public void setLuminosidade(String luminosidade) {
+        this.luminosidade = luminosidade;
     }
 
     public String getResolucaoOptica() {
@@ -61,8 +61,8 @@ public class Projetor extends Equipamento{
     }
     
     public boolean validaProjetor(){
-        return !material.equals("") &&
-               !brilho.equals("") &&
+        return !tipo.equals("") &&
+               !luminosidade.equals("") &&
                !resolucaoOptica.equals("") &&
                !lampada.equals("") &&
                !lente.equals("");
@@ -71,9 +71,9 @@ public class Projetor extends Equipamento{
     @Override
     public String toString(){
         String str = toString_();
-        str += "\nMaterial: " + material;
-        str += "\nBrilho: " + brilho;
-        str += "\nResolução Óptica: " + resolucaoOptica;
+        str += "\nTipo: " + tipo;
+        str += "\nLuminosidade: " + luminosidade;
+        str += "\nResolução Máxima: " + resolucaoOptica;
         str += "\nLâmpada: " + lampada;
         str += "\nLente: " + lente;
         return str;
