@@ -413,10 +413,7 @@ public class FormNota extends javax.swing.JFrame {
 	}
 	else if (emissao.after(vencimento)){
             tbAlugueis.setSelectionBackground(new Color(65,105,225));
-        }        
-        else{
-            tbAlugueis.setSelectionBackground(new Color(105,105,105));	
-        }
+        }  
     }
     
     public static void main(String args[]) {

@@ -4,10 +4,13 @@ import java.awt.Color;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -18,6 +21,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
    DefaultTableModel modelo1  = null;
    DefaultTableModel modelo2  = null;
    NumberFormat nf;
+   List<Aluguel> devolucao = null;
     
     public FormBuscarAluguel() {
         initComponents();
@@ -225,15 +229,15 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\02-Basket-icon 16.png").getImage());
         List<Aluguel> alugueis = FormPrincipal.bdAluguel.todosAlugueis();
-        List<Aluguel> devolucao = FormPrincipal.bdDevolucao.todosAlugueis();        
+        devolucao = FormPrincipal.bdAluguel.todosAlugueis();
         
         for(int i = 0; i < devolucao.size(); i++){
-            inserirTabela(devolucao, i, modelo1);            
+            inserirTabela(devolucao, i, modelo2); 
         }       
                 
-        for(int j = 0; j < alugueis.size(); j++){
+        /*for(int j = 0; j < alugueis.size(); j++){
             inserirTabela(alugueis, j, modelo2);                          
-        }      
+        }      */
     }//GEN-LAST:event_formWindowOpened
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
@@ -241,9 +245,27 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void tbAvisoVencimentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAvisoVencimentoMouseClicked
-        Date dataVencimento = (Date) modelo2.getValueAt(tbAvisoVencimento.getSelectedRow(), 3);
-        Date dataAtual = new Date();        
-        verificaVencimento(dataVencimento, dataAtual);
+        int linha = tbAvisoVencimento.getSelectedRow();
+        if((tbAvisoVencimento.isCellSelected(linha, 0) || tbAvisoVencimento.isCellSelected(linha, 1) ||
+           tbAvisoVencimento.isCellSelected(linha, 2) || tbAvisoVencimento.isCellSelected(linha, 3) ||
+           tbAvisoVencimento.isCellSelected(linha, 4)))
+        {
+            Date dataAtual = new Date(); 
+            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+            tbAvisoVencimento.getModel().getValueAt(linha, 3);
+            String vencimento = (String) tbAvisoVencimento.getModel().getValueAt(linha, 3);
+            Date v = null;
+            try {
+                v = formatador.parse(vencimento);
+            } catch (ParseException ex) {
+                Logger.getLogger(FormBuscarAluguel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(verificaVencimento(dataAtual, v)){
+                colorirTabela(true);
+            }else{
+                colorirTabela(false);
+            }
+        }
     }//GEN-LAST:event_tbAvisoVencimentoMouseClicked
 
     private void limparTabela(JTable tabela, DefaultTableModel modelo){
@@ -268,15 +290,23 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         return str;
     }
     
-    private void verificaVencimento(Date emissao, Date vencimento){
-	if (emissao.before(vencimento)){
-            //tbAvisoVencimento.setSelectionBackground(new Color(255,99,71));
-            tbAvisoVencimento.setSelectionBackground(new Color(255,0,0));
+    private boolean verificaVencimento(Date emissao, Date vencimento){
+	boolean venceu = false;
+        if (emissao.before(vencimento)){
+            venceu = true;
 	}
-	else if (emissao.after(vencimento))
-            tbAvisoVencimento.setSelectionBackground(new Color(0,255,0));
-	else
-            tbAvisoVencimento.setSelectionBackground(new Color(0,0,255));	
+	else if (emissao.after(vencimento)){
+            venceu = false;
+        }
+        return venceu;
+    }
+    
+    private void colorirTabela(boolean venceu){
+        if(venceu){
+            tbAvisoVencimento.setSelectionBackground(new Color(65,105,225));
+        }else{
+            tbAvisoVencimento.setSelectionBackground(new Color(220,20,60));
+        }
     }
     
     public static void main(String args[]) {
