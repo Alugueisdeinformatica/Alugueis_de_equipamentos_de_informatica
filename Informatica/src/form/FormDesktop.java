@@ -27,8 +27,6 @@ public class FormDesktop extends javax.swing.JFrame {
         lbArmHD = new javax.swing.JLabel();
         lbMemoria = new javax.swing.JLabel();
         lbProcessador = new javax.swing.JLabel();
-        tfMemoria = new javax.swing.JTextField();
-        tfArmHD = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         rbWind = new javax.swing.JRadioButton();
         rbUbuntu = new javax.swing.JRadioButton();
@@ -49,6 +47,8 @@ public class FormDesktop extends javax.swing.JFrame {
         btAtualizar = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         btSair = new javax.swing.JButton();
+        cbArmazenamento = new javax.swing.JComboBox<>();
+        cbMemoria = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Desktop");
@@ -73,20 +73,6 @@ public class FormDesktop extends javax.swing.JFrame {
         lbProcessador.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbProcessador.setText("Processador:");
         lbProcessador.setName("lbProcessador"); // NOI18N
-
-        tfMemoria.setName("tfMemoria"); // NOI18N
-        tfMemoria.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfMemoriaKeyTyped(evt);
-            }
-        });
-
-        tfArmHD.setName("tfArmHD"); // NOI18N
-        tfArmHD.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfArmHDKeyTyped(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sistema Operacional", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -281,6 +267,14 @@ public class FormDesktop extends javax.swing.JFrame {
         });
         jToolBar1.add(btSair);
 
+        cbArmazenamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2TB", "1TB", "750GB", "500GB", "320GB", " " }));
+        cbArmazenamento.setSelectedIndex(1);
+        cbArmazenamento.setName("cbArmazenamento"); // NOI18N
+
+        cbMemoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8GB", "6GB", "4GB", "2GB", "1GB" }));
+        cbMemoria.setSelectedIndex(2);
+        cbMemoria.setName("cbMemoria"); // NOI18N
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -292,14 +286,11 @@ public class FormDesktop extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbArmHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tfArmHD))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(tfMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addComponent(lbMemoria)))
+                            .addComponent(cbArmazenamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(94, 94, 94)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lbMemoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbMemoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -325,16 +316,16 @@ public class FormDesktop extends javax.swing.JFrame {
                     .addComponent(lbProcessador))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfArmHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbProcessador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbArmazenamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbMemoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 34, Short.MAX_VALUE))
+                .addGap(0, 33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -355,8 +346,8 @@ public class FormDesktop extends javax.swing.JFrame {
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja efetuar o cadastro?", "Confirmação", JOptionPane.YES_NO_OPTION);
         if(opcao == 0){
-            String capacidadeHD = tfArmHD.getText();
-            String memoria = tfMemoria.getText();
+            String capacidadeHD = cbArmazenamento.getSelectedItem().toString();
+            String memoria = cbMemoria.getSelectedItem().toString();
             String processador = cbProcessador.getSelectedItem().toString();        
             String sistemaOp = capturarSO();        
             String placaVideo = captuarPlaca();   
@@ -406,20 +397,6 @@ public class FormDesktop extends javax.swing.JFrame {
         return sistemaOp;
     }
     
-    private void tfArmHDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfArmHDKeyTyped
-        String caracteres = "0987654321";
-        if(!caracteres.contains(evt.getKeyChar() + "")){
-            evt.consume();
-        }
-    }//GEN-LAST:event_tfArmHDKeyTyped
-
-    private void tfMemoriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfMemoriaKeyTyped
-        String caracteres = "0987654321";
-        if(!caracteres.contains(evt.getKeyChar() + "")){
-            evt.consume();
-        }
-    }//GEN-LAST:event_tfMemoriaKeyTyped
-
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         FormEquipamento.eq = null;
         FormEquipamento.equipamento = null;
@@ -428,21 +405,21 @@ public class FormDesktop extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        tfArmHD.setText("");
-        tfMemoria.setText("");
+        cbArmazenamento.setSelectedItem(1);
+        cbMemoria.setSelectedItem(2);
         cbProcessador.setSelectedIndex(0);
         bgSO.clearSelection();
         rbWind.setSelected(true);
         bgPlaca.clearSelection();
         rbOnBoard.setSelected(true);
-        tfArmHD.requestFocus();
+        cbArmazenamento.requestFocus();
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(eq != null){
             btAtualizar.setEnabled(true);
-            tfArmHD.setText(eq.getCapacidadeHD());
-            tfMemoria.setText(eq.getMemoria());
+            cbArmazenamento.setSelectedItem(eq.getCapacidadeHD());
+            cbMemoria.setSelectedItem(eq.getMemoria());
             cbProcessador.setSelectedItem(eq.getProcessador());
             marcarRadio(bgSO, eq.getSistemaOperacional());
             marcarRadio(bgPlaca, eq.getPlacaVideo());
@@ -456,8 +433,8 @@ public class FormDesktop extends javax.swing.JFrame {
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
         int opcao = JOptionPane.showConfirmDialog(null, "Deseja atualizar os dados?", "Atenção", JOptionPane.YES_NO_OPTION);
         if(opcao == 0){
-            String capacidadeHD = tfArmHD.getText();
-            String memoria = tfMemoria.getText();
+            String capacidadeHD = cbArmazenamento.getSelectedItem().toString();
+            String memoria = cbMemoria.getSelectedItem().toString();
             String processador = cbProcessador.getSelectedItem().toString();        
             String sistemaOp = capturarSO();        
             String placaVideo = captuarPlaca();   
@@ -554,6 +531,8 @@ public class FormDesktop extends javax.swing.JFrame {
     private javax.swing.JButton btCadastrar;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btSair;
+    private javax.swing.JComboBox<String> cbArmazenamento;
+    private javax.swing.JComboBox<String> cbMemoria;
     private javax.swing.JComboBox<String> cbProcessador;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -574,7 +553,5 @@ public class FormDesktop extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbRadeon;
     private javax.swing.JRadioButton rbUbuntu;
     private javax.swing.JRadioButton rbWind;
-    private javax.swing.JTextField tfArmHD;
-    private javax.swing.JTextField tfMemoria;
     // End of variables declaration//GEN-END:variables
 }
