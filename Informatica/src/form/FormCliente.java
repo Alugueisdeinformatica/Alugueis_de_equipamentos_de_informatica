@@ -722,6 +722,7 @@ public class FormCliente extends javax.swing.JFrame {
             if(cliente.validaCliente() && validarData(cliente)){
                 FormPrincipal.bdCliente.atualizarCliente(cliente);
                 JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso!", "Atualização de Cliente", JOptionPane.INFORMATION_MESSAGE);
+                btSairActionPerformed(evt);
             }else{
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);            
             } 
