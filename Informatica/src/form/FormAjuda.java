@@ -160,7 +160,7 @@ public class FormAjuda extends javax.swing.JFrame {
                         
         }
         
-        File arq = null;        
+        File arq;        
         if(menu != null){
             arq = new File("src\\HTML\\"+ menu +".html");
             try {
@@ -173,6 +173,16 @@ public class FormAjuda extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\Button-Help-icon 16.png").getImage());
+        tpVisualizar.setContentType("text/html");        
+        
+        File arq = new File("src\\HTML\\index.html");       
+        if(arq != null){            
+            try {
+                tpVisualizar.setPage(arq.toURI().toURL());
+            } catch (IOException ex) {
+                Logger.getLogger(FormAjuda.class.getName()).log(Level.SEVERE, null, ex);
+            }      
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void tpVisualizarHyperlinkUpdate(javax.swing.event.HyperlinkEvent evt) {//GEN-FIRST:event_tpVisualizarHyperlinkUpdate
