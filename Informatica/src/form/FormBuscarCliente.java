@@ -226,11 +226,13 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         btEditar.setEnabled(false); 
         limparTabela();
+        Cliente cli;
         if(cboBuscarTodos.isSelected()){
-            List<Cliente> cl = FormPrincipal.bdCliente.todosClientes();
+            List<Cliente> cl = FormPrincipal.bdCliente.todosClientes();            
             if(cl.size() > 0){               
                 for(int i = 0; i < cl.size(); i++){
-                    inserirTabelaCliente(cl, i);                    
+                    cli = cl.get(i);
+                    inserirTabelaCliente(cli);                    
                 }
             }else{
                 JOptionPane.showMessageDialog(null, "Não existem clientes cadastrados!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
@@ -262,17 +264,6 @@ public class FormBuscarCliente extends javax.swing.JFrame {
                     + cli.getEndereco().getBairro() + " ," + cli.getEndereco().getCidade(), 
             cli.getEmail(), 
             cli.getTelefone()
-        });
-    }
-
-    private void inserirTabelaCliente(List<Cliente> cl, int i) {
-        modeloCliente.addRow(new Object[] {
-            cl.get(i).getNome(),
-            cl.get(i).getCpf(),
-            cl.get(i).getEndereco().getRua() +", "+ cl.get(i).getEndereco().getBairro()+
-                    " ,"+cl.get(i).getEndereco().getCidade(),
-            cl.get(i).getEmail(),
-            cl.get(i).getTelefone()
         });
     }
     
