@@ -18,15 +18,13 @@ import model.Aluguel;
 
 public class FormBuscarAluguel extends javax.swing.JFrame {
 
-   DefaultTableModel modelo1  = null;
-   DefaultTableModel modelo2  = null;
+   DefaultTableModel modeloAluguel  = null;
    NumberFormat nf;
    List<Aluguel> devolucao = null;
     
     public FormBuscarAluguel() {
         initComponents();
-        modelo1 = (DefaultTableModel) tbAluguelRealizado.getModel();
-        modelo2 = (DefaultTableModel) tbAvisoVencimento.getModel();
+        modeloAluguel = (DefaultTableModel) tbAvisoVencimento.getModel();
         nf = new DecimalFormat ("R$ #,##0.00", new DecimalFormatSymbols (new Locale ("pt", "BR")));
     }
     
@@ -35,14 +33,16 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        tpMenu = new javax.swing.JTabbedPane();
-        jpAluguelRealizado = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbAluguelRealizado = new javax.swing.JTable();
-        jpAvisoVencimento = new javax.swing.JPanel();
+        btSair = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbAvisoVencimento = new javax.swing.JTable();
-        btSair = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Aluguel");
@@ -56,71 +56,17 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(250, 250, 250));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        tpMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tpMenu.setName("tpMenu"); // NOI18N
-
-        jpAluguelRealizado.setName("jpAluguelRealizado"); // NOI18N
-
-        tbAluguelRealizado.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Cliente", "Data do Aluguel", "Data do Vencimento", "Valor do Aluguel"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
+        btSair.setText("Sair");
+        btSair.setName("btSair"); // NOI18N
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
             }
         });
-        tbAluguelRealizado.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        tbAluguelRealizado.setName("tbAluguelRealizado"); // NOI18N
-        tbAluguelRealizado.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tbAluguelRealizado);
-        if (tbAluguelRealizado.getColumnModel().getColumnCount() > 0) {
-            tbAluguelRealizado.getColumnModel().getColumn(0).setResizable(false);
-            tbAluguelRealizado.getColumnModel().getColumn(0).setPreferredWidth(65);
-            tbAluguelRealizado.getColumnModel().getColumn(1).setResizable(false);
-            tbAluguelRealizado.getColumnModel().getColumn(1).setPreferredWidth(150);
-            tbAluguelRealizado.getColumnModel().getColumn(2).setResizable(false);
-            tbAluguelRealizado.getColumnModel().getColumn(2).setPreferredWidth(120);
-            tbAluguelRealizado.getColumnModel().getColumn(3).setResizable(false);
-            tbAluguelRealizado.getColumnModel().getColumn(3).setPreferredWidth(140);
-            tbAluguelRealizado.getColumnModel().getColumn(4).setResizable(false);
-            tbAluguelRealizado.getColumnModel().getColumn(4).setPreferredWidth(110);
-        }
 
-        javax.swing.GroupLayout jpAluguelRealizadoLayout = new javax.swing.GroupLayout(jpAluguelRealizado);
-        jpAluguelRealizado.setLayout(jpAluguelRealizadoLayout);
-        jpAluguelRealizadoLayout.setHorizontalGroup(
-            jpAluguelRealizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAluguelRealizadoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jpAluguelRealizadoLayout.setVerticalGroup(
-            jpAluguelRealizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAluguelRealizadoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        tpMenu.addTab("Aluguéis Realizados", jpAluguelRealizado);
-
-        jpAvisoVencimento.setName("jpAvisoVencimento"); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Alugueis em Aberto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         tbAvisoVencimento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -168,76 +114,138 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             tbAvisoVencimento.getColumnModel().getColumn(4).setPreferredWidth(110);
         }
 
-        javax.swing.GroupLayout jpAvisoVencimentoLayout = new javax.swing.GroupLayout(jpAvisoVencimento);
-        jpAvisoVencimento.setLayout(jpAvisoVencimentoLayout);
-        jpAvisoVencimentoLayout.setHorizontalGroup(
-            jpAvisoVencimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAvisoVencimentoLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addContainerGap())
         );
-        jpAvisoVencimentoLayout.setVerticalGroup(
-            jpAvisoVencimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpAvisoVencimentoLayout.createSequentialGroup()
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        tpMenu.addTab("Alugueis em Aberto", jpAvisoVencimento);
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Legenda quando clica na tabela", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
-        btSair.setText("Sair");
-        btSair.setName("btSair"); // NOI18N
-        btSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSairActionPerformed(evt);
-            }
-        });
+        jPanel4.setBackground(new java.awt.Color(65, 105, 225));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 24, Short.MAX_VALUE)
+        );
+
+        jPanel5.setBackground(new java.awt.Color(220, 20, 60));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 31, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 24, Short.MAX_VALUE)
+        );
+
+        jLabel1.setText("Aluguéis no Prazo");
+
+        jLabel2.setText("Aluguéis em Atraso");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addContainerGap(103, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jButton1.setText("Efetuar Devolução");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tpMenu, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                         .addComponent(btSair)))
-                .addContainerGap())
+                .addGap(27, 27, 27))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(tpMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btSair)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(631, 430));
+        setSize(new java.awt.Dimension(702, 438));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\02-Basket-icon 16.png").getImage());
         List<Aluguel> alugueis = FormPrincipal.bdAluguel.todosAlugueis();
-        devolucao = FormPrincipal.bdAluguel.todosAlugueis();
+        //devolucao = FormPrincipal.bdAluguel.todosAlugueis();
         
-        for(int i = 0; i < devolucao.size(); i++){
-            inserirTabela(devolucao, i, modelo2); 
-        }       
-                
-        /*for(int j = 0; j < alugueis.size(); j++){
-            inserirTabela(alugueis, j, modelo2);                          
-        }      */
+        for(int i = 0; i < alugueis.size(); i++){
+            inserirTabela(alugueis, i, modeloAluguel); 
+        } 
     }//GEN-LAST:event_formWindowOpened
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
@@ -247,24 +255,24 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
     private void tbAvisoVencimentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAvisoVencimentoMouseClicked
         int linha = tbAvisoVencimento.getSelectedRow();
         if((tbAvisoVencimento.isCellSelected(linha, 0) || tbAvisoVencimento.isCellSelected(linha, 1) ||
-           tbAvisoVencimento.isCellSelected(linha, 2) || tbAvisoVencimento.isCellSelected(linha, 3) ||
-           tbAvisoVencimento.isCellSelected(linha, 4)))
-        {
-            Date dataAtual = new Date(); 
-            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-            tbAvisoVencimento.getModel().getValueAt(linha, 3);
-            String vencimento = (String) tbAvisoVencimento.getModel().getValueAt(linha, 3);
-            Date v = null;
-            try {
-                v = formatador.parse(vencimento);
-            } catch (ParseException ex) {
-                Logger.getLogger(FormBuscarAluguel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if(verificaVencimento(dataAtual, v)){
-                colorirTabela(true);
-            }else{
-                colorirTabela(false);
-            }
+            tbAvisoVencimento.isCellSelected(linha, 2) || tbAvisoVencimento.isCellSelected(linha, 3) ||
+            tbAvisoVencimento.isCellSelected(linha, 4)))
+    {
+        Date dataAtual = new Date();
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        tbAvisoVencimento.getModel().getValueAt(linha, 3);
+        String vencimento = (String) tbAvisoVencimento.getModel().getValueAt(linha, 3);
+        Date v = null;
+        try {
+            v = formatador.parse(vencimento);
+        } catch (ParseException ex) {
+            Logger.getLogger(FormBuscarAluguel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(verificaVencimento(dataAtual, v)){
+            colorirTabela(true);
+        }else{
+            colorirTabela(false);
+        }
         }
     }//GEN-LAST:event_tbAvisoVencimentoMouseClicked
 
@@ -343,13 +351,15 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btSair;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JPanel jpAluguelRealizado;
-    private javax.swing.JPanel jpAvisoVencimento;
-    private javax.swing.JTable tbAluguelRealizado;
     private javax.swing.JTable tbAvisoVencimento;
-    private javax.swing.JTabbedPane tpMenu;
     // End of variables declaration//GEN-END:variables
 }
