@@ -15,12 +15,18 @@ import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Aluguel;
+import model.Cliente;
 
 public class FormBuscarAluguel extends javax.swing.JFrame {
 
    DefaultTableModel modeloAluguel  = null;
    NumberFormat nf;
    List<Aluguel> devolucao = null;
+   Cliente clien = null;
+
+    public void setClien(Cliente clien) {
+        this.clien = clien;
+    }  
     
     public FormBuscarAluguel() {
         initComponents();
@@ -42,7 +48,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btSelecionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Aluguel");
@@ -76,14 +82,14 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Cliente", "Data do Aluguel", "Data do Vencimento", "Valor do Aluguel"
+                "ID", "Cliente", "CPF", "Data do Aluguel", "Data do Vencimento", "Valor do Aluguel"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -110,11 +116,12 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             tbAvisoVencimento.getColumnModel().getColumn(1).setResizable(false);
             tbAvisoVencimento.getColumnModel().getColumn(1).setPreferredWidth(150);
             tbAvisoVencimento.getColumnModel().getColumn(2).setResizable(false);
-            tbAvisoVencimento.getColumnModel().getColumn(2).setPreferredWidth(120);
             tbAvisoVencimento.getColumnModel().getColumn(3).setResizable(false);
-            tbAvisoVencimento.getColumnModel().getColumn(3).setPreferredWidth(140);
+            tbAvisoVencimento.getColumnModel().getColumn(3).setPreferredWidth(120);
             tbAvisoVencimento.getColumnModel().getColumn(4).setResizable(false);
-            tbAvisoVencimento.getColumnModel().getColumn(4).setPreferredWidth(110);
+            tbAvisoVencimento.getColumnModel().getColumn(4).setPreferredWidth(140);
+            tbAvisoVencimento.getColumnModel().getColumn(5).setResizable(false);
+            tbAvisoVencimento.getColumnModel().getColumn(5).setPreferredWidth(110);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -123,7 +130,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -204,9 +211,15 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/symbol-check-icon.png"))); // NOI18N
-        jButton1.setText("Selecionar");
+        btSelecionar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/symbol-check-icon.png"))); // NOI18N
+        btSelecionar.setText("Selecionar");
+        btSelecionar.setEnabled(false);
+        btSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSelecionarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -214,14 +227,14 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btSair))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btSelecionar)
+                        .addGap(47, 47, 47)
+                        .addComponent(btSair)))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -234,17 +247,17 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
                         .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btSair)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(11, 11, 11)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(669, 459));
+        setSize(new java.awt.Dimension(741, 459));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -263,28 +276,38 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void tbAvisoVencimentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAvisoVencimentoMouseClicked
-        int linha = tbAvisoVencimento.getSelectedRow();
+        int linha = tbAvisoVencimento.getSelectedRow();        
+        String cpf = (String) tbAvisoVencimento.getModel().getValueAt(linha, 2);
+        Cliente cliente = FormPrincipal.bdCliente.buscaCliente(cpf);
+        setClien(cliente);
+        btSelecionar.setEnabled(true);
+        
         if((tbAvisoVencimento.isCellSelected(linha, 0) || tbAvisoVencimento.isCellSelected(linha, 1) ||
             tbAvisoVencimento.isCellSelected(linha, 2) || tbAvisoVencimento.isCellSelected(linha, 3) ||
-            tbAvisoVencimento.isCellSelected(linha, 4)))
-    {
-        Date dataAtual = new Date();
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
-        tbAvisoVencimento.getModel().getValueAt(linha, 3);
-        String vencimento = (String) tbAvisoVencimento.getModel().getValueAt(linha, 3);
-        Date v = null;
-        try {
-            v = formatador.parse(vencimento);
-        } catch (ParseException ex) {
-            Logger.getLogger(FormBuscarAluguel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if(verificaVencimento(dataAtual, v)){
-            colorirTabela(true);
-        }else{
-            colorirTabela(false);
-        }
+            tbAvisoVencimento.isCellSelected(linha, 4) || tbAvisoVencimento.isCellSelected(linha, 5) )){
+            Date dataAtual = new Date();
+            SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+            tbAvisoVencimento.getModel().getValueAt(linha, 4);
+            String vencimento = (String) tbAvisoVencimento.getModel().getValueAt(linha, 4);        
+            Date v = null;
+            try {
+                v = formatador.parse(vencimento);
+            } catch (ParseException ex) {
+                Logger.getLogger(FormBuscarAluguel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(verificaVencimento(dataAtual, v)){
+                colorirTabela(true);
+            }else{
+                colorirTabela(false);
+            }
         }
     }//GEN-LAST:event_tbAvisoVencimentoMouseClicked
+
+    private void btSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSelecionarActionPerformed
+        new FormDevolucao().setVisible(true);
+        FormDevolucao.setCliente(clien);
+        btSairActionPerformed(evt);
+    }//GEN-LAST:event_btSelecionarActionPerformed
 
     private void limparTabela(JTable tabela, DefaultTableModel modelo){
         for(int i = tabela.getRowCount()-1; i >= 0; i--){
@@ -296,6 +319,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         modelo.addRow(new Object[]{
             alugueis.get(i).getNumero(), 
             alugueis.get(i).getCliente().getNome(),
+            alugueis.get(i).getCliente().getCpf(),
             formataData(alugueis.get(i).getDataAluguel()), 
             formataData(alugueis.get(i).dataDevolucao()), 
             nf.format(alugueis.get(i).getValorTotal())
@@ -361,7 +385,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btSair;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btSelecionar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
