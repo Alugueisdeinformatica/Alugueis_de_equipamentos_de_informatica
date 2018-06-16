@@ -420,12 +420,15 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     }//GEN-LAST:event_jMenuItemClientesActionPerformed
 
     private void jMenuItemNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemNovoActionPerformed
-        //new FormAluguel().setVisible(true);
-        new FormAluguel().setVisible(true);
+        btAluguelActionPerformed(evt);
     }//GEN-LAST:event_jMenuItemNovoActionPerformed
 
     private void btAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAluguelActionPerformed
-        new FormAluguel().setVisible(true);
+        if(bdCliente.todosClientes().size() > 0 && bdEquipamento.todosEquipamentos().size() > 0){        
+            new FormAluguel().setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Cadastre um cliente e insere algum equipamento");
+        }
     }//GEN-LAST:event_btAluguelActionPerformed
 
     private void JMenuItemAlugueisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAlugueisActionPerformed
