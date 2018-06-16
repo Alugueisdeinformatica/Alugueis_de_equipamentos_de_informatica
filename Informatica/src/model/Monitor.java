@@ -48,8 +48,7 @@ public class Monitor extends Equipamento{
     
     @Override
     public String toString(){
-        String str = toString_();
-        str += "\nTipo: " + tipo;
+        String str = "Tipo: " + tipo;
         str += "\nTamanho da Tela: " + tamanhoTela;
         str += "\nResolução: " + resolucao;
         return str;

@@ -86,8 +86,7 @@ public class Equipamento {
     }
     
     public String toString_(){
-        String str = "";
-        str += "\nCódigo do Equipamento: " + codEquipamento;
+        String str = "Código do Equipamento: " + codEquipamento;
         str += "\nModelo: " + modelo;
         str += "\nMarca: " + marca;
         str += "\nCategoria: " + categoria;

@@ -313,7 +313,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         jMenuAluguel.add(jMenuItemNovo);
 
         jMenuItemEmitir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/invoice-icon 16.png"))); // NOI18N
-        jMenuItemEmitir.setText("Emitir Nota Fiscal");
+        jMenuItemEmitir.setText("Emitir Recibo");
         jMenuItemEmitir.setName("jMenuItemEmitir"); // NOI18N
         jMenuItemEmitir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -440,7 +440,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     }//GEN-LAST:event_jMenuItemEfetuarActionPerformed
 
     private void jMenuItemEmitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEmitirActionPerformed
-        new FormNota().setVisible(true);
+        new FormRecibo().setVisible(true);
     }//GEN-LAST:event_jMenuItemEmitirActionPerformed
 
     private void JMenuItemSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemSobreActionPerformed

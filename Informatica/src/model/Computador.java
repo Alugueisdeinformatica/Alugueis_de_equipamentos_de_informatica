@@ -62,8 +62,7 @@ public class Computador extends Equipamento{
 
     @Override
     public String toString() {
-        String str = toString_();
-        str += "\nSistema Operacional: " + sistemaOperacional; 
+        String str = "Sistema Operacional: " + sistemaOperacional; 
         str += "\nPlaca de Vídeo: " + placaVideo;
         str += "\nCapacidade de HD: " + capacidadeHD;
         str += "\nProcessador: " + processador;

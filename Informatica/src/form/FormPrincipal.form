@@ -117,7 +117,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/logo/invoice-icon 16.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Emitir Nota Fiscal"/>
+                <Property name="text" type="java.lang.String" value="Emitir Recibo"/>
                 <Property name="name" type="java.lang.String" value="jMenuItemEmitir" noResource="true"/>
               </Properties>
               <Events>

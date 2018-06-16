@@ -754,7 +754,7 @@ public class FormAluguel extends javax.swing.JFrame {
                             inserirTabelaPedido(item, equipamento);
                             equipamento.setQuantEstoque(equipamento.getQuantEstoque() - valor);
                             aluguel.adicionaItem(item);
-                            taDescricao.setText(equipamento.toString() + "\nQuantidade em Estoque: " + equipamento.getQuantEstoque());
+                            taDescricao.setText(equipamento.toString_() + "\n" + equipamento.toString() + "\nQuantidade em Estoque: " + equipamento.getQuantEstoque());
                             tfDias.setEnabled(true);
                             btRemoverItem.setEnabled(true);
                         }
@@ -782,7 +782,7 @@ public class FormAluguel extends javax.swing.JFrame {
     private void tbInserirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbInserirMousePressed
         int codigo = (int) (modeloEstoque.getValueAt(tbInserir.getSelectedRow(), 0));
         equipamento = FormPrincipal.bdEquipamento.buscaEquipamento(codigo);        
-        taDescricao.setText(equipamento.toString() + "\nQuantidade em Estoque: " + equipamento.getQuantEstoque());
+        taDescricao.setText(equipamento.toString_() + "\n" + equipamento.toString() + "\nQuantidade em Estoque: " + equipamento.getQuantEstoque());
         btSelecionar.setEnabled(true);
     }//GEN-LAST:event_tbInserirMousePressed
 

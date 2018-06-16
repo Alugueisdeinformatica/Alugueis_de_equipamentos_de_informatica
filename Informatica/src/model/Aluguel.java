@@ -116,9 +116,20 @@ public class Aluguel {
         str += cliente.toString();
         str += "\n\n****Informações dos Equipamentos****\n";
         for(Item i : lista){
-            str += i.toString();
-            str += "\n------------------------------------";
+            str += i.getEquipamento().toString_() + "\n" + i.getEquipamento().toString();
+            str += "\n------------------------------------\n";
         }
+        return str;
+    }
+    
+    public String infoAluguel(){
+        SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat fmh = new SimpleDateFormat("HH:mm:ss");
+        DecimalFormat df = new DecimalFormat("0.00");
+        String str = "Data do Aluguel: " + fm.format(dataAluguel);
+        str += "\nData de Devolução: " + fm.format(dataDevolucao());
+        str += "\nHorário do Aluguel: " + fmh.format(dataAluguel);
+        str += "\nValor Total: R$ " + df.format(valorTotal);
         return str;
     }
 }

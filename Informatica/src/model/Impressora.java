@@ -57,8 +57,7 @@ public class Impressora extends Equipamento{
         if(wifi){
             w = "Sim";
         }
-        String str = toString_();
-        str += "\nTipo: " + tipo;
+        String str = "Tipo: " + tipo;
         str += "\nVoltagem: " + voltagem;
         str += "\nConectividade: " + conectividade;
         str += "\nWifi: " + w;

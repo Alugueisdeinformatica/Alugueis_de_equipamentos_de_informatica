@@ -1,5 +1,6 @@
 package form;
 
+import com.itextpdf.text.BaseColor;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -13,23 +14,29 @@ import java.io.IOException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
+import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Color;
+import java.awt.Font;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import static javax.swing.text.StyleConstants.FontFamily;
+import model.Item;
 
-public class FormNota extends javax.swing.JFrame {
+public class FormRecibo extends javax.swing.JFrame {
 
     List<Aluguel> alugueis = null;
     Aluguel aluguel = null;
     DefaultTableModel modeloAlugueis  = null;
     
-    public FormNota() {
+    public FormRecibo() {
         initComponents();
         modeloAlugueis = (DefaultTableModel) tbAlugueis.getModel();
     }
@@ -51,7 +58,7 @@ public class FormNota extends javax.swing.JFrame {
         tbAlugueis = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Emissão de Nota Fiscal");
+        setTitle("Emissão de Recibo");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -286,12 +293,12 @@ public class FormNota extends javax.swing.JFrame {
         String nro = Integer.toString(aluguel.getNumero());        
         String usuario = System.getProperty("user.name");        
         
-        File diretorio = new File("C:\\Users\\"+ usuario +"\\Desktop\\Notas TXT");
+        File diretorio = new File("C:\\Users\\"+ usuario +"\\Desktop\\Recibos TXT");
         if (!diretorio.exists()) {
             diretorio.mkdirs();
         }        
         
-        File arq = new File("C:\\Users\\" + usuario + "\\Desktop\\Notas TXT\\NotaFiscal_" + nro + ".txt");
+        File arq = new File("C:\\Users\\" + usuario + "\\Desktop\\Recibos TXT\\Recibo_" + nro + ".txt");
         if(!arq.exists()){
             try {
                 arq.createNewFile();
@@ -299,18 +306,24 @@ public class FormNota extends javax.swing.JFrame {
                 BufferedWriter bw = new BufferedWriter(fw);
                 String str[] = aluguel.toString().split("\n");
                 for(String linha : str){
-                    bw.write(linha);
+                    bw.write(linha + "\n");
                     bw.newLine();
                 }
+                bw.newLine();
+                bw.newLine();
+                bw.write("____________________________________");
+                bw.newLine();
+                bw.write("Assinatura do Cliente\n");
+                bw.newLine();
                 bw.close();
                 fw.close();
-                JOptionPane.showMessageDialog(null, "Nota fiscal gerada com sucesso!", "Concluído", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Recibo gerado com sucesso!", "Concluído", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException ex) {
-                Logger.getLogger(FormNota.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FormRecibo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Nota fiscal n° "+nro+" já foi gerada!\nConsulte a pasta Notas TXT.",
-                    "Informação de Nota", JOptionPane.INFORMATION_MESSAGE);         
+            JOptionPane.showMessageDialog(null, "Recibo n° "+nro+" já foi gerado!\nConsulte a pasta Recibos TXT.",
+                    "Informação de Recibo", JOptionPane.INFORMATION_MESSAGE);         
         }
     }//GEN-LAST:event_btTXTActionPerformed
 
@@ -323,12 +336,12 @@ public class FormNota extends javax.swing.JFrame {
         String nro = Integer.toString(aluguel.getNumero());        
         String usuario = System.getProperty("user.name"); 
         
-        File diretorio = new File("C:\\Users\\"+ usuario +"\\Desktop\\Notas PDF");
+        File diretorio = new File("C:\\Users\\"+ usuario +"\\Desktop\\Recibos PDF");
         if (!diretorio.exists()) {
             diretorio.mkdirs();
         } 
         
-        File arq = new File("C:\\Users\\" + usuario + "\\Desktop\\Notas PDF\\NotaFiscal_" + nro + ".pdf");
+        File arq = new File("C:\\Users\\" + usuario + "\\Desktop\\Recibos PDF\\Recibo_" + nro + ".pdf");
 
         if(!arq.exists()){
             try {
@@ -338,22 +351,45 @@ public class FormNota extends javax.swing.JFrame {
                 arq.createNewFile();
                 PdfWriter.getInstance(document, new FileOutputStream(arq));
                 document.open();
-                document.add(figura);
-                document.add(new Paragraph(aluguel.toString()));
-                Paragraph p = new Paragraph("\n\n_________________________________________"); 
-                p.setAlignment(Element.ALIGN_CENTER);
-                document.add(p);
-                p = new Paragraph("Assinatura do Cliente");
-                p.setAlignment(Element.ALIGN_CENTER);
-                document.add(p);
+                PdfPTable table = new PdfPTable(6);
+                PdfPCell tab = new PdfPCell(figura);
+                tab.setHorizontalAlignment(Element.ALIGN_CENTER);
+                tab.setColspan(4);
+                table.addCell(tab);
+                SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
+                com.itextpdf.text.Font fonte = FontFactory.getFont("Times Roman", 9, BaseColor.BLACK);
+                tab = new PdfPCell(new Paragraph("Recibo de Aluguel\nDevolução: " + fm.format(aluguel.dataDevolucao())+ "\nContrato: " + aluguel.numero, fonte));
+                tab.setColspan(2);
+                table.addCell(tab);
+                tab = new PdfPCell(new Paragraph("Dados do Cliente\n" + aluguel.getCliente().toString() + "\n", fonte));
+                tab.setColspan(4);
+                table.addCell(tab);
+                tab = new PdfPCell(new Paragraph(aluguel.infoAluguel(), fonte));
+                tab.setColspan(2);
+                table.addCell(tab);
+                String str = "";
+                for(Item i : aluguel.todosItens()){
+                    tab = new PdfPCell(new Paragraph(i.getEquipamento().toString_(), fonte));
+                    tab.setColspan(3);
+                    table.addCell(tab);
+                    tab = new PdfPCell(new Paragraph(i.getEquipamento().toString(), fonte));
+                    tab.setColspan(3);
+                    table.addCell(tab);
+                }
+                Paragraph p = new Paragraph("\n\n_________________________________________\n    Assinatura do Cliente\n", fonte);
+                tab = new PdfPCell(p);
+                tab.setHorizontalAlignment(Element.ALIGN_CENTER);
+                tab.setColspan(6);
+                table.addCell(tab);
+                document.add(table);
                 document.close();
-                JOptionPane.showMessageDialog(null, "Nota fiscal gerada com sucesso!", "Concluído", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Recibo gerado com sucesso!", "Concluído", JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException | DocumentException ex) {
-                Logger.getLogger(FormNota.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FormRecibo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Nota fiscal nº "+nro+" já foi gerada!\nConsulte a pasta Notas PDF.",
-                    "Informação de Nota", JOptionPane.INFORMATION_MESSAGE);         
+            JOptionPane.showMessageDialog(null, "Recibo nº "+nro+" já foi gerado!\nConsulte a pasta Recibos PDF.",
+                    "Informação de Recibo", JOptionPane.INFORMATION_MESSAGE);         
         }
     }//GEN-LAST:event_btPDFActionPerformed
 
@@ -430,20 +466,23 @@ public class FormNota extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormNota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormRecibo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormNota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormRecibo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormNota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormRecibo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormNota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormRecibo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormNota().setVisible(true);
+                new FormRecibo().setVisible(true);
             }
         });
     }
