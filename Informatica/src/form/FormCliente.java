@@ -676,7 +676,7 @@ public class FormCliente extends javax.swing.JFrame {
         int dataAtual = hoje.get(Calendar.YEAR);
         int dataNasc = Integer.parseInt(form.format(data));
         int diferenca = dataAtual - dataNasc;
-        if(diferenca < 18 && diferenca > 100){
+        if(diferenca < 18 || diferenca > 100){
             JOptionPane.showMessageDialog(null, "Idade Invalida ou Ainda nao completou 18 anos!!");
             ftfDataNascimento.setText("");
         }
