@@ -92,15 +92,22 @@ public class FormHistoricoCliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbHistorico.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tbHistorico.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbHistorico);
         if (tbHistorico.getColumnModel().getColumnCount() > 0) {
             tbHistorico.getColumnModel().getColumn(0).setResizable(false);
+            tbHistorico.getColumnModel().getColumn(0).setPreferredWidth(50);
             tbHistorico.getColumnModel().getColumn(1).setResizable(false);
+            tbHistorico.getColumnModel().getColumn(1).setPreferredWidth(150);
             tbHistorico.getColumnModel().getColumn(2).setResizable(false);
+            tbHistorico.getColumnModel().getColumn(2).setPreferredWidth(93);
             tbHistorico.getColumnModel().getColumn(3).setResizable(false);
+            tbHistorico.getColumnModel().getColumn(3).setPreferredWidth(100);
             tbHistorico.getColumnModel().getColumn(4).setResizable(false);
+            tbHistorico.getColumnModel().getColumn(4).setPreferredWidth(120);
             tbHistorico.getColumnModel().getColumn(5).setResizable(false);
+            tbHistorico.getColumnModel().getColumn(5).setPreferredWidth(80);
         }
 
         javax.swing.GroupLayout jPanelClienteLayout = new javax.swing.GroupLayout(jPanelCliente);

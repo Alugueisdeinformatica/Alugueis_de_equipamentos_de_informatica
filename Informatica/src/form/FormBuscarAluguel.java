@@ -112,16 +112,17 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tbAvisoVencimento);
         if (tbAvisoVencimento.getColumnModel().getColumnCount() > 0) {
             tbAvisoVencimento.getColumnModel().getColumn(0).setResizable(false);
-            tbAvisoVencimento.getColumnModel().getColumn(0).setPreferredWidth(65);
+            tbAvisoVencimento.getColumnModel().getColumn(0).setPreferredWidth(55);
             tbAvisoVencimento.getColumnModel().getColumn(1).setResizable(false);
             tbAvisoVencimento.getColumnModel().getColumn(1).setPreferredWidth(150);
             tbAvisoVencimento.getColumnModel().getColumn(2).setResizable(false);
+            tbAvisoVencimento.getColumnModel().getColumn(2).setPreferredWidth(100);
             tbAvisoVencimento.getColumnModel().getColumn(3).setResizable(false);
             tbAvisoVencimento.getColumnModel().getColumn(3).setPreferredWidth(120);
             tbAvisoVencimento.getColumnModel().getColumn(4).setResizable(false);
-            tbAvisoVencimento.getColumnModel().getColumn(4).setPreferredWidth(140);
+            tbAvisoVencimento.getColumnModel().getColumn(4).setPreferredWidth(138);
             tbAvisoVencimento.getColumnModel().getColumn(5).setResizable(false);
-            tbAvisoVencimento.getColumnModel().getColumn(5).setPreferredWidth(110);
+            tbAvisoVencimento.getColumnModel().getColumn(5).setPreferredWidth(100);
         }
 
         javax.swing.GroupLayout jPanelAluguelAbertoLayout = new javax.swing.GroupLayout(jPanelAluguelAberto);
@@ -210,7 +211,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
 
         btSelecionar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/symbol-check-icon.png"))); // NOI18N
-        btSelecionar.setText("Selecionar");
+        btSelecionar.setText("Efetuar Devolução");
         btSelecionar.setEnabled(false);
         btSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,11 +231,11 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
                         .addContainerGap(11, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanelLegenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85)
+                        .addGap(103, 103, 103)
                         .addComponent(btSelecionar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btSair)
-                        .addGap(57, 57, 57))))
+                        .addGap(19, 19, 19))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
