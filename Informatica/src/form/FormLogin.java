@@ -184,12 +184,12 @@ public class FormLogin extends javax.swing.JFrame {
     private void validarAcessoUsuario() throws HeadlessException {
         Usuario usuario = new Usuario();
         
-        if(tfNome.getText().isEmpty() || tfSenha.getText().isEmpty()){
+        if(tfNome.getText().isEmpty() || new String (tfSenha.getPassword()).isEmpty()){
             JOptionPane.showMessageDialog(null, "Preencha todos os dados!", "Atenção", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            if(usuario.validarNome(tfNome.getText()) && usuario.validarSenha(tfSenha.getText())){
-                if(usuario.efetuarLogin(tfNome.getText(), tfSenha.getText())){
+            if(usuario.validarNome(tfNome.getText()) && usuario.validarSenha(new String (tfSenha.getPassword()))){
+                if(usuario.efetuarLogin(tfNome.getText(), new String (tfSenha.getPassword()))){
                     new FormPrincipal().setVisible(true);
                     this.dispose();
                 }
