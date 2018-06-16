@@ -10,6 +10,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
 
     private static Cliente clien = null;
     public static int seletor;
+    private String cpf;
     DefaultTableModel modeloCliente  = null;
     
     public static void setCliente(Cliente clien){
@@ -41,7 +42,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
         btEditar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbClientes = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btHistorico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de Cliente");
@@ -154,7 +155,15 @@ public class FormBuscarCliente extends javax.swing.JFrame {
             tbClientes.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        jButton1.setText("Histórico");
+        btHistorico.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btHistorico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Order-history-icon.png"))); // NOI18N
+        btHistorico.setText("Histórico");
+        btHistorico.setEnabled(false);
+        btHistorico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btHistoricoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -167,23 +176,25 @@ public class FormBuscarCliente extends javax.swing.JFrame {
                         .addComponent(lbCPF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                         .addComponent(cboBuscarTodos)
                         .addGap(119, 119, 119)
                         .addComponent(btBuscar))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jScrollPane2)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btEditar)
-                                .addGap(47, 47, 47)
+                                .addGap(18, 18, 18)
+                                .addComponent(btHistorico)
+                                .addGap(18, 18, 18)
                                 .addComponent(btSelecionar)
-                                .addGap(33, 33, 33)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btSair))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btSair)
+                                .addGap(22, 22, 22)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +213,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
                     .addComponent(btEditar)
                     .addComponent(btSelecionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
 
@@ -226,7 +237,8 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        btEditar.setEnabled(false); 
+        btEditar.setEnabled(false);
+        btHistorico.setEnabled(false);
         limparTabela();
         Cliente cli;
         if(cboBuscarTodos.isSelected()){
@@ -305,17 +317,24 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void tbClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbClientesMousePressed
-        String cpf = (String) (modeloCliente.getValueAt(tbClientes.getSelectedRow(), 1));        
+        cpf = (String) (modeloCliente.getValueAt(tbClientes.getSelectedRow(), 1));        
         Cliente cliente = FormPrincipal.bdCliente.buscaCliente(cpf);         
         setCliente(cliente);
         if(seletor == 0){
             btEditar.setEnabled(true);
+            btHistorico.setEnabled(true);
             btSelecionar.setEnabled(false);
         }else{
             btEditar.setEnabled(false);
+            btHistorico.setEnabled(false);
             btSelecionar.setEnabled(true);
         }
     }//GEN-LAST:event_tbClientesMousePressed
+
+    private void btHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHistoricoActionPerformed
+        new FormHistoricoCliente().setVisible(true);
+        FormHistoricoCliente.setCpf(cpf);
+    }//GEN-LAST:event_btHistoricoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -355,10 +374,10 @@ public class FormBuscarCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btEditar;
+    private javax.swing.JButton btHistorico;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btSelecionar;
     private javax.swing.JCheckBox cboBuscarTodos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbCPF;

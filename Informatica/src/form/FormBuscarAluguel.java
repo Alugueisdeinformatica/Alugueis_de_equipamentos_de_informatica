@@ -261,9 +261,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\02-Basket-icon 16.png").getImage());
-        List<Aluguel> alugueis = FormPrincipal.bdAluguel.todosAlugueis();
-        //devolucao = FormPrincipal.bdAluguel.todosAlugueis();
-        
+        List<Aluguel> alugueis = FormPrincipal.bdAluguel.todosAlugueis();        
         for(int i = 0; i < alugueis.size(); i++){
             inserirTabela(alugueis, i, modeloAluguel); 
         } 
