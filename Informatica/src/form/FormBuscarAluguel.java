@@ -40,10 +40,10 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btSair = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelAluguelAberto = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbAvisoVencimento = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
+        jPanelLegenda = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -72,8 +72,8 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(250, 250, 250));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Aluguéis em Aberto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanelAluguelAberto.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelAluguelAberto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Aluguéis em Aberto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jScrollPane2.setBackground(new java.awt.Color(250, 250, 250));
 
@@ -124,26 +124,25 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             tbAvisoVencimento.getColumnModel().getColumn(5).setPreferredWidth(110);
         }
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelAluguelAbertoLayout = new javax.swing.GroupLayout(jPanelAluguelAberto);
+        jPanelAluguelAberto.setLayout(jPanelAluguelAbertoLayout);
+        jPanelAluguelAbertoLayout.setHorizontalGroup(
+            jPanelAluguelAbertoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAluguelAbertoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jPanelAluguelAbertoLayout.setVerticalGroup(
+            jPanelAluguelAbertoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAluguelAbertoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel3.setBackground(new java.awt.Color(250, 250, 250));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Legenda de Aluguéis", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-        jPanel3.setLayout(null);
+        jPanelLegenda.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelLegenda.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Legenda de Aluguéis", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jPanel4.setBackground(new java.awt.Color(65, 105, 225));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -152,15 +151,12 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 18, Short.MAX_VALUE)
+            .addGap(0, 13, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 18, Short.MAX_VALUE)
+            .addGap(0, 13, Short.MAX_VALUE)
         );
-
-        jPanel3.add(jPanel4);
-        jPanel4.setBounds(30, 20, 20, 20);
 
         jPanel5.setBackground(new java.awt.Color(220, 20, 60));
         jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -169,27 +165,48 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 18, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 18, Short.MAX_VALUE)
+            .addGap(0, 13, Short.MAX_VALUE)
         );
-
-        jPanel3.add(jPanel5);
-        jPanel5.setBounds(30, 50, 20, 20);
 
         jLabel1.setBackground(new java.awt.Color(250, 250, 250));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("Aluguéis no Prazo");
-        jPanel3.add(jLabel1);
-        jLabel1.setBounds(60, 20, 100, 14);
 
         jLabel2.setBackground(new java.awt.Color(250, 250, 250));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Aluguéis em Atraso");
-        jPanel3.add(jLabel2);
-        jLabel2.setBounds(60, 50, 110, 14);
+
+        javax.swing.GroupLayout jPanelLegendaLayout = new javax.swing.GroupLayout(jPanelLegenda);
+        jPanelLegenda.setLayout(jPanelLegendaLayout);
+        jPanelLegendaLayout.setHorizontalGroup(
+            jPanelLegendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLegendaLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanelLegendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelLegendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addContainerGap())
+        );
+        jPanelLegendaLayout.setVerticalGroup(
+            jPanelLegendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLegendaLayout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addGroup(jPanelLegendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(15, 15, 15)
+                .addGroup(jPanelLegendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)))
+        );
 
         btSelecionar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/symbol-check-icon.png"))); // NOI18N
@@ -209,10 +226,10 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelAluguelAberto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(11, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelLegenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(85, 85, 85)
                         .addComponent(btSelecionar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -223,7 +240,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelAluguelAberto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
@@ -232,7 +249,7 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
                             .addComponent(btSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanelLegenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -370,10 +387,10 @@ public class FormBuscarAluguel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanelAluguelAberto;
+    private javax.swing.JPanel jPanelLegenda;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tbAvisoVencimento;
     // End of variables declaration//GEN-END:variables
