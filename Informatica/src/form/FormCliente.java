@@ -1,10 +1,13 @@
 package form;
 
+import java.awt.HeadlessException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -656,15 +659,28 @@ public class FormCliente extends javax.swing.JFrame {
         if(ftfDataNascimento.getText().trim().length() == 10){
             String txt = ftfDataNascimento.getText();
             SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat form = new SimpleDateFormat("yyyy");
             try {
                 format.setLenient(false);
-                Date data = format.parse(txt);
+                Date data = format.parse(txt);                
+                idadeNaoValida(form, data);               
             } catch (ParseException e) {
                 JOptionPane.showMessageDialog(null, "Data inválida", "Aviso", JOptionPane.WARNING_MESSAGE);
                 ftfDataNascimento.setText("");
             }
         }      
     }//GEN-LAST:event_ftfDataNascimentoKeyReleased
+
+    private void idadeNaoValida(SimpleDateFormat form, Date data) throws HeadlessException, NumberFormatException {
+        Calendar hoje = Calendar.getInstance();
+        int dataAtual = hoje.get(Calendar.YEAR);
+        int dataNasc = Integer.parseInt(form.format(data));
+        int diferenca = dataAtual - dataNasc;
+        if(diferenca < 18 && diferenca > 100){
+            JOptionPane.showMessageDialog(null, "Idade Invalida ou Ainda nao completou 18 anos!!");
+            ftfDataNascimento.setText("");
+        }
+    }
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(new ImageIcon("src\\logo\\user-add-icon 16.png").getImage());
