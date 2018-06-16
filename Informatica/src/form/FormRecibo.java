@@ -21,13 +21,11 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Color;
-import java.awt.Font;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import static javax.swing.text.StyleConstants.FontFamily;
 import model.Item;
 
 public class FormRecibo extends javax.swing.JFrame {

@@ -27,6 +27,10 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         initComponents();
     }
     
+    /*
+        João Pedro Guedes Presto / Luís Gustavo da Cunha Cipriani
+    */
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -71,6 +75,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("J&L Informática");
+        setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -373,7 +378,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(772, 669));
+        setSize(new java.awt.Dimension(756, 630));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
