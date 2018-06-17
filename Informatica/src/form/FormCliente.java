@@ -1,12 +1,12 @@
 package form;
 
-import java.awt.HeadlessException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -662,7 +662,7 @@ public class FormCliente extends javax.swing.JFrame {
             try {
                 format.setLenient(false);
                 Date data = format.parse(txt);                
-                idadeNaoValida(form, data);               
+                validarIdade(data);               
             } catch (ParseException e) {
                 JOptionPane.showMessageDialog(null, "Data inválida", "Aviso", JOptionPane.WARNING_MESSAGE);
                 ftfDataNascimento.setText("");
@@ -670,13 +670,20 @@ public class FormCliente extends javax.swing.JFrame {
         }      
     }//GEN-LAST:event_ftfDataNascimentoKeyReleased
 
-    private void idadeNaoValida(SimpleDateFormat form, Date data) throws HeadlessException, NumberFormatException {
-        Calendar hoje = Calendar.getInstance();
-        int dataAtual = hoje.get(Calendar.YEAR);
-        int dataNasc = Integer.parseInt(form.format(data));
-        int diferenca = dataAtual - dataNasc;
-        if(diferenca < 18 || diferenca > 100){
-            JOptionPane.showMessageDialog(null, "Idade Invalida ou Ainda nao completou 18 anos!!");
+    private void validarIdade(Date data) {
+        Calendar dataNasc = new GregorianCalendar();
+        dataNasc.setTime(data);
+        
+        Calendar hoje = Calendar.getInstance();		
+	int idade = hoje.get(Calendar.YEAR) - dataNasc.get(Calendar.YEAR);
+        
+        dataNasc.add(Calendar.YEAR, idade);
+        if (hoje.before(dataNasc)) {
+            idade--;
+	}
+        
+        if(idade < 18 || idade > 100){
+            JOptionPane.showMessageDialog(null, "Idade inválida ou ainda não completou 18 anos!", "Idade Inválida", JOptionPane.INFORMATION_MESSAGE);
             ftfDataNascimento.setText("");
         }
     }
