@@ -366,8 +366,9 @@ public class FormRecibo extends javax.swing.JFrame {
                 tab.setColspan(2);
                 table.addCell(tab);
                 String str = "";
-                for(Item i : aluguel.todosItens()){
-                    tab = new PdfPCell(new Paragraph(i.getEquipamento().toString_(), fonte));
+                for(Item i : aluguel.todosItens()){                    
+                    tab = new PdfPCell(new Paragraph("Quantidade alugada: " + i.getQuantidade()
+                            +"\n"+i.getEquipamento().toString_(), fonte));
                     tab.setColspan(3);
                     table.addCell(tab);
                     tab = new PdfPCell(new Paragraph(i.getEquipamento().toString(), fonte));
