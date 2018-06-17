@@ -116,7 +116,7 @@ public class Aluguel {
         str += cliente.toString();
         str += "\n\n****Informações dos Equipamentos****\n";
         for(Item i : lista){
-            str += "Quantidade alugada: \n" + i.getQuantidade();
+            str += "Quantidade alugada: " + i.getQuantidade() + "\n";
             str += i.getEquipamento().toString_() + "\n" + i.getEquipamento().toString();
             str += "\n------------------------------------\n";
         }
