@@ -15,6 +15,10 @@ public class Aluguel {
     private Date dataAluguel;
     private double valorTotal;
     private int dias;
+    
+    SimpleDateFormat fm; //Formatador
+    SimpleDateFormat fmh;  //Formatador
+    DecimalFormat df;  //Formatador
 
     public Aluguel() {
         lista = new ArrayList<Item>();
@@ -103,14 +107,15 @@ public class Aluguel {
     
     @Override
     public String toString(){
-        SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat fmh = new SimpleDateFormat("HH:mm:ss");
+        fm = new SimpleDateFormat("dd/MM/yyyy");
+        fmh = new SimpleDateFormat("HH:mm:ss");
+        df = new DecimalFormat("0.00");
+        
         String str = "";
         str += "\nNúmero do Aluguel: " + numero;
         str += "\nData do Aluguel " + fm.format(dataAluguel);
         str += "\nHorário do Aluguel: " + fmh.format(dataAluguel);
         str += "\nData da Devolução: " + fm.format(dataDevolucao());
-        DecimalFormat df = new DecimalFormat("0.00");
         str += "\nValor Total: R$ " + df.format(valorTotal);
         str += "\n\n*******Informações do Cliente*******\n";
         str += cliente.toString();
@@ -124,9 +129,10 @@ public class Aluguel {
     }
     
     public String infoAluguel(){
-        SimpleDateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat fmh = new SimpleDateFormat("HH:mm:ss");
-        DecimalFormat df = new DecimalFormat("0.00");
+        fm = new SimpleDateFormat("dd/MM/yyyy");
+        fmh = new SimpleDateFormat("HH:mm:ss");
+        df = new DecimalFormat("0.00");
+        
         String str = "Data do Aluguel: " + fm.format(dataAluguel);
         str += "\nData de Devolução: " + fm.format(dataDevolucao());
         str += "\nHorário do Aluguel: " + fmh.format(dataAluguel);
