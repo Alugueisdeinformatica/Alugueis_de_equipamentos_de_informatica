@@ -304,7 +304,7 @@ public class FormTablet extends javax.swing.JFrame {
 
             if(tab.validaTablet()){
                 FormPrincipal.bdEquipamento.adicionaEquipamento((Equipamento) tab); 
-                JOptionPane.showMessageDialog(null, "Tablet Cadastrado!", "", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Tablet Cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
                 FormPrincipal.codEquipamento++;
                 opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar Novo Equipamento", "Confirmação", JOptionPane.YES_NO_OPTION);
                 if(opcao == 0){
@@ -314,7 +314,7 @@ public class FormTablet extends javax.swing.JFrame {
                     this.dispose();
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Atenção", JOptionPane.WARNING_MESSAGE);
             } 
         }
     }//GEN-LAST:event_btCadastrarActionPerformed
@@ -336,7 +336,7 @@ public class FormTablet extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja atualizar os dados?", "Atenção", JOptionPane.YES_NO_OPTION);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja atualizar os dados?", "Confirmação", JOptionPane.YES_NO_OPTION);
         if(opcao == 0){
             String capacidade = cbCapacidade.getSelectedItem().toString();
             String tamanho = cbTamanhoTela.getSelectedItem().toString();

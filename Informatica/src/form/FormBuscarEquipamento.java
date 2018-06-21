@@ -219,7 +219,7 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
                     inserirTabelaEquipamento(equip);                    
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Não existem equipamentos cadastrados!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Não existem equipamentos cadastrados!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
             }
         }else{                        
             if(!tfCodigo.getText().trim().equals("")){
@@ -229,10 +229,10 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
                     inserirTabelaEquipamento(equip);                    
                 }else{
                     btEditar.setEnabled(false);
-                    JOptionPane.showMessageDialog(null, "Equipamento não cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Equipamento não cadastrado!", "Atenção", JOptionPane.ERROR_MESSAGE);
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Informe o Código!", "Campo não Preenchido", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Informe o Código!", "Atenção", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btBuscarActionPerformed

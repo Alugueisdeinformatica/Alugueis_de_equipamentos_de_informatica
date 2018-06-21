@@ -489,7 +489,7 @@ public class FormDevolucao extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btEfetuarDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEfetuarDevolucaoActionPerformed
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja efetuar a devolução?", "Atenção!", JOptionPane.YES_NO_OPTION);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja efetuar a devolução?", "Confirmação!", JOptionPane.YES_NO_OPTION);
         if(opcao == 0){
             btEfetuarDevolucao.setEnabled(false);
             aluguel = FormPrincipal.bdAluguel.buscaAluguel(getId());

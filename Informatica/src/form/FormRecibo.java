@@ -270,7 +270,7 @@ public class FormRecibo extends javax.swing.JFrame {
                             inserirTabela(alugueis, i);
                         }
                     }else{
-                        JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }else{

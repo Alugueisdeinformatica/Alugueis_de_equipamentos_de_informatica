@@ -245,7 +245,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
                     inserirTabelaCliente(cli);                    
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Não existem clientes cadastrados!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Não existem clientes cadastrados!", "Atenção", JOptionPane.INFORMATION_MESSAGE);
             }
         }else{
             String cpf = tfCPF.getText();
@@ -256,7 +256,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
                     if(cliente != null){
                         inserirTabelaCliente(cliente);                                                                       
                     }else{
-                        JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Atenção", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }else{

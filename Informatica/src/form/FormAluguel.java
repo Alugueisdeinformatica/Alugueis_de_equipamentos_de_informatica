@@ -823,7 +823,7 @@ public class FormAluguel extends javax.swing.JFrame {
    
     private void btFecharPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFecharPedidoActionPerformed
         if(aluguel.todosItens().size() > 0){
-            int opcao = JOptionPane.showConfirmDialog(null, "Deseja fechar o pedido?", "Fechamento de pedido", JOptionPane.YES_NO_OPTION);
+            int opcao = JOptionPane.showConfirmDialog(null, "Deseja fechar o pedido?", "Confirmação", JOptionPane.YES_NO_OPTION);
             if(opcao == 0){
                 aluguel.setNumero(FormPrincipal.nroAluguel);
                 FormPrincipal.bdAluguel.adicionaAluguel(aluguel);

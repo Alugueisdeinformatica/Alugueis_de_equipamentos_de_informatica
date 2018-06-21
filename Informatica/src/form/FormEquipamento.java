@@ -305,7 +305,7 @@ public class FormEquipamento extends javax.swing.JFrame {
             if(equipamento.validaEquipamento()){
                 selecionar();
             }else{
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Atenção", JOptionPane.WARNING_MESSAGE);
             }
         }        
     }//GEN-LAST:event_btSeguinteActionPerformed

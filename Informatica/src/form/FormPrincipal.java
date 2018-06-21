@@ -414,7 +414,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     }//GEN-LAST:event_btEquipamentoActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        int decisao = JOptionPane.showConfirmDialog(null, "Deseja finalizar a aplicação?", "ATENÇÃO",
+        int decisao = JOptionPane.showConfirmDialog(null, "Deseja finalizar a aplicação?", "Confirmação",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (decisao == 0) this.dispose();
     }//GEN-LAST:event_btSairActionPerformed
@@ -432,7 +432,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         if(bdCliente.todosClientes().size() > 0 && bdEquipamento.todosEquipamentos().size() > 0){        
             new FormAluguel().setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(null, "Cadastre um cliente e insere algum equipamento");
+            JOptionPane.showMessageDialog(null, "Cadastre um cliente e insira algum equipamento", "Atenção", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btAluguelActionPerformed
 
@@ -454,7 +454,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         str += "\nAlunos: João Pedro Guedes Presto e Luís Gustavo da Cunha Cipriani";
         str += "\nBacharelado em Sistemas de Informação - 4° Período";
         str += "\nCES-JF Junho de 2018";
-        JOptionPane.showMessageDialog(null, str, "", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, str, "Informações", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_JMenuItemSobreActionPerformed
 
     private void JMenuItemAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMenuItemAjudaActionPerformed

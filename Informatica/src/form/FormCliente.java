@@ -568,19 +568,19 @@ public class FormCliente extends javax.swing.JFrame {
         }else{
             Cliente clienteBuscar = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
             if(clienteBuscar != null){
-                JOptionPane.showMessageDialog(null, "Já existe este CPF cadastrado!", "Informação de Cliente", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Já existe este CPF cadastrado!", "Atenção", JOptionPane.ERROR_MESSAGE);
                 tfCPF.setValue("");
                 tfCPF.requestFocus();
             }else{
                 if(cliente.validaCliente() && validarData(cliente) && validarCPF(tfCPF.getText().replace(".", "").replace("-", ""))){
-                    int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar o cliente?", "Atenção", JOptionPane.YES_NO_OPTION);
+                    int opcao = JOptionPane.showConfirmDialog(null, "Deseja cadastrar o cliente?", "Confirmação", JOptionPane.YES_NO_OPTION);
                     if(opcao == 0){
                         FormPrincipal.bdCliente.adicionaCliente(cliente);
                         JOptionPane.showMessageDialog(null, "Cliente Cadastrado!", "Informação de Cadastro", JOptionPane.INFORMATION_MESSAGE);            
                         btLimparActionPerformed(evt);
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Atenção", JOptionPane.WARNING_MESSAGE);
                     btCadastrar.setEnabled(true);
                 }
             }
@@ -737,7 +737,7 @@ public class FormCliente extends javax.swing.JFrame {
 
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed
         btCadastrar.setEnabled(false);
-        int opcao = JOptionPane.showConfirmDialog(null, "Deseja editar os dados?", "Alteração de Cadastro", JOptionPane.YES_NO_OPTION);
+        int opcao = JOptionPane.showConfirmDialog(null, "Deseja editar os dados?", "Confirmação", JOptionPane.YES_NO_OPTION);
         if(opcao == 0){
             receberDadosCliente(cliente);
             validarData(cliente);
@@ -746,7 +746,7 @@ public class FormCliente extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Cliente Atualizado com Sucesso!", "Atualização de Cliente", JOptionPane.INFORMATION_MESSAGE);
                 btSairActionPerformed(evt);
             }else{
-                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Informação de Preenchimento", JOptionPane.WARNING_MESSAGE);            
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Atenção", JOptionPane.WARNING_MESSAGE);            
             } 
         }             
     }//GEN-LAST:event_btAtualizarActionPerformed
