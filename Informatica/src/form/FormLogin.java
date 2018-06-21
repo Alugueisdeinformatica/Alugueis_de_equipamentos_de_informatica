@@ -198,7 +198,7 @@ public class FormLogin extends javax.swing.JFrame {
                 }
             }
             else{
-                JOptionPane.showMessageDialog(null, "Nome e/ou senha incorretos \nTente novamente", "Atenção", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Nome e/ou senha incorretos! \nPor favor, tente novamente!", "Atenção", JOptionPane.WARNING_MESSAGE);
             }
         }
     }
