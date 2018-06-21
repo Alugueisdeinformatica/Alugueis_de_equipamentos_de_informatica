@@ -228,10 +228,10 @@ public class FormBuscarEquipamento extends javax.swing.JFrame {
                     inserirTabelaEquipamento(equip);                    
                 }else{
                     btEditar.setEnabled(false);
-                    JOptionPane.showMessageDialog(null, "Equipamento não cadastrado!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Equipamento não cadastrado!", "Atenção", JOptionPane.WARNING_MESSAGE);
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Informe o Código!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Informe o Código!", "Atenção", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_btBuscarActionPerformed

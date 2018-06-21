@@ -270,12 +270,12 @@ public class FormRecibo extends javax.swing.JFrame {
                             inserirTabela(alugueis, i);
                         }
                     }else{
-                        JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Atenção", JOptionPane.WARNING_MESSAGE);
                     }
                 }
             }else{
                 tfCPF.setValue("");
-                JOptionPane.showMessageDialog(null, "CPF Inválido!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "CPF Inválido!", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
             }
     }//GEN-LAST:event_btBuscarActionPerformed
 

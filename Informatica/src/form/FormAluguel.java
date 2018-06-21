@@ -738,7 +738,7 @@ public class FormAluguel extends javax.swing.JFrame {
             Object codigo = modeloEstoque.getValueAt(tbInserir.getSelectedRow(), 0);
             equipamento = FormPrincipal.bdEquipamento.buscaEquipamento((int) codigo);         
             if(equipamento.getQuantEstoque() <= 0){
-                JOptionPane.showMessageDialog(null, "Não existe estoque suficiente!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Não existe estoque suficiente!", "Atenção", JOptionPane.WARNING_MESSAGE);
             }else{
                 try{
                     int valor = Integer.parseInt(JOptionPane.showInputDialog(null, 
@@ -766,7 +766,7 @@ public class FormAluguel extends javax.swing.JFrame {
                 }
             }
         }catch(ArrayIndexOutOfBoundsException e){
-            JOptionPane.showMessageDialog(null, "Selecione um equipamento para adicionar!", "Atenção", JOptionPane.ERROR_MESSAGE);            
+            JOptionPane.showMessageDialog(null, "Selecione um equipamento para adicionar!", "Atenção", JOptionPane.WARNING_MESSAGE);            
         }
     }//GEN-LAST:event_btSelecionarActionPerformed
 
@@ -810,7 +810,7 @@ public class FormAluguel extends javax.swing.JFrame {
                 btFecharPedido.setEnabled(false);
             }
         }catch(ArrayIndexOutOfBoundsException e){
-            JOptionPane.showMessageDialog(null, "Selecione um equipamento para remover!", "Atenção", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Selecione um equipamento para remover!", "Atenção", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btRemoverItemActionPerformed
 

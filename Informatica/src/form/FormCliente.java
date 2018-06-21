@@ -564,11 +564,11 @@ public class FormCliente extends javax.swing.JFrame {
         String data = ftfDataNascimento.getText().replace("/", "");
         if(!validarCPF(tfCPF.getText().replace(".", "").replace("-", ""))){
             tfCPF.setValue("");
-            JOptionPane.showMessageDialog(null, "CPF Inválido!", "Atenção", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "CPF Inválido!", "Mensagem de erro", JOptionPane.ERROR_MESSAGE);
         }else{
             Cliente clienteBuscar = FormPrincipal.bdCliente.buscaCliente(tfCPF.getText());
             if(clienteBuscar != null){
-                JOptionPane.showMessageDialog(null, "Já existe este CPF cadastrado!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Já existe este CPF cadastrado!", "Atenção", JOptionPane.WARNING_MESSAGE);
                 tfCPF.setValue("");
                 tfCPF.requestFocus();
             }else{
@@ -683,7 +683,7 @@ public class FormCliente extends javax.swing.JFrame {
 	}
         
         if(idade < 18 || idade > 100){
-            JOptionPane.showMessageDialog(null, "Idade inválida ou ainda não completou 18 anos!", "Idade Inválida", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Idade inválida ou ainda não completou 18 anos!", "Idade Inválida", JOptionPane.WARNING_MESSAGE);
             ftfDataNascimento.setText("");
         }
     }

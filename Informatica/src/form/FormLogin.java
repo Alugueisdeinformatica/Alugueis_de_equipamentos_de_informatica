@@ -185,7 +185,7 @@ public class FormLogin extends javax.swing.JFrame {
         Usuario usuario = new Usuario();
         
         if(tfNome.getText().isEmpty() || new String (tfSenha.getPassword()).isEmpty()){
-            JOptionPane.showMessageDialog(null, "Preencha todos os dados!", "Atenção", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Atenção", JOptionPane.WARNING_MESSAGE);
         }
         else{
             if(usuario.validarNome(tfNome.getText()) && usuario.validarSenha(new String (tfSenha.getPassword()))){
@@ -194,11 +194,11 @@ public class FormLogin extends javax.swing.JFrame {
                     this.dispose();
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "Dados de login não conferem! \nPor favor, tente novamente!", "Problema Encontrado", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Nome e/ou senha não conferem! \nPor favor, tente novamente!", "Login incorreto", JOptionPane.WARNING_MESSAGE);
                 }
             }
             else{
-                JOptionPane.showMessageDialog(null, "Dados de login incorretos! \nFavor preenche-los novamente", "Atenção", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Nome e/ou senha incorretos \nTente novamente", "Atenção", JOptionPane.WARNING_MESSAGE);
             }
         }
     }

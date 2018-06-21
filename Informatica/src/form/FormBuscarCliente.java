@@ -256,7 +256,7 @@ public class FormBuscarCliente extends javax.swing.JFrame {
                     if(cliente != null){
                         inserirTabelaCliente(cliente);                                                                       
                     }else{
-                        JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Atenção", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "Atenção", JOptionPane.WARNING_MESSAGE);
                     }
                 }
             }else{
