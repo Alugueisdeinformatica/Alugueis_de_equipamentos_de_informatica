@@ -1,14 +1,22 @@
 package form;
 
+import com.jgoodies.looks.plastic.PlasticLookAndFeel;
+import com.jgoodies.looks.plastic.theme.ExperienceRoyale;
 import dao.AluguelDao;
 import dao.ClienteDao;
 import dao.EquipamentoDao;
 import dao.DevolucaoDao;
+import java.awt.SystemColor;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     
@@ -25,6 +33,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         bdAluguel = new AluguelDao();
         bdDevolucao = new DevolucaoDao();
         initComponents();
+        alterarTema();
     }
     
     /*
@@ -107,15 +116,18 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
 
         jPanel1.add(jPanelCentro, java.awt.BorderLayout.CENTER);
 
-        jPanelNorte.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelNorte.setBackground(new java.awt.Color(204, 255, 255));
+        jPanelNorte.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanelNorte.setLayout(new javax.swing.BoxLayout(jPanelNorte, javax.swing.BoxLayout.LINE_AXIS));
 
         jToolBar1.setBackground(new java.awt.Color(204, 255, 255));
         jToolBar1.setBorder(null);
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
+        jToolBar1.setBorderPainted(false);
+        jToolBar1.setOpaque(false);
 
-        btCliente.setBackground(new java.awt.Color(250, 250, 250));
+        btCliente.setBackground(new java.awt.Color(204, 255, 255));
         btCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/user-add-icon.png"))); // NOI18N
         btCliente.setText("Novo Cliente");
@@ -131,7 +143,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         jToolBar1.add(btCliente);
         jToolBar1.add(jSeparator4);
 
-        btEquipamento.setBackground(new java.awt.Color(250, 250, 250));
+        btEquipamento.setBackground(new java.awt.Color(204, 255, 255));
         btEquipamento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btEquipamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/my-computer-icon.png"))); // NOI18N
         btEquipamento.setText("Novo Equipamento");
@@ -147,7 +159,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         jToolBar1.add(btEquipamento);
         jToolBar1.add(jSeparator3);
 
-        btAluguel.setBackground(new java.awt.Color(250, 250, 250));
+        btAluguel.setBackground(new java.awt.Color(204, 255, 255));
         btAluguel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btAluguel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/02-Basket-icon.png"))); // NOI18N
         btAluguel.setText("Novo Aluguel");
@@ -163,7 +175,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         jToolBar1.add(btAluguel);
         jToolBar1.add(jSeparator5);
 
-        btSair.setBackground(new java.awt.Color(250, 250, 250));
+        btSair.setBackground(new java.awt.Color(204, 255, 255));
         btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo/symbol-delete-icon.png"))); // NOI18N
         btSair.setText("Sair");
@@ -375,7 +387,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(756, 630));
@@ -492,6 +504,33 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         String hora = fmh.format(data);        
         lbData.setText(str);
         lbHora.setText(hora);
+    }
+    
+    private void alterarTema(){
+        // lookandfeel muda de cores
+        // biblioteca     looksdemo-2.3.1.jar
+
+        //SkyBlue()
+        //BrownSugar()
+        // DarkStar()  
+        //DesertGreen()
+        //Silver()
+        //ExperienceRoyale()
+        try {
+            PlasticLookAndFeel.setPlasticTheme(new ExperienceRoyale());
+            try {
+                UIManager.setLookAndFeel("com.jgoodies.looks.plastic.Plastic3DLookAndFeel");
+            } catch (InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(this.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        SwingUtilities.updateComponentTreeUI(this);
+
+        setBackground(SystemColor.BLUE);
     }
     
     /**
