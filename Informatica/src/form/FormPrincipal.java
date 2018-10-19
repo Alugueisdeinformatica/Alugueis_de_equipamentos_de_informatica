@@ -1,22 +1,14 @@
 package form;
 
-import com.jgoodies.looks.plastic.PlasticLookAndFeel;
-import com.jgoodies.looks.plastic.theme.ExperienceRoyale;
 import dao.AluguelDao;
 import dao.ClienteDao;
 import dao.EquipamentoDao;
 import dao.DevolucaoDao;
-import java.awt.SystemColor;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class FormPrincipal extends javax.swing.JFrame implements Runnable{
     
@@ -33,7 +25,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         bdAluguel = new AluguelDao();
         bdDevolucao = new DevolucaoDao();
         initComponents();
-        alterarTema();
+        
     }
     
     /*
@@ -504,34 +496,7 @@ public class FormPrincipal extends javax.swing.JFrame implements Runnable{
         String hora = fmh.format(data);        
         lbData.setText(str);
         lbHora.setText(hora);
-    }
-    
-    private void alterarTema(){
-        // lookandfeel muda de cores
-        // biblioteca     looksdemo-2.3.1.jar
-
-        //SkyBlue()
-        //BrownSugar()
-        // DarkStar()  
-        //DesertGreen()
-        //Silver()
-        //ExperienceRoyale()
-        try {
-            PlasticLookAndFeel.setPlasticTheme(new ExperienceRoyale());
-            try {
-                UIManager.setLookAndFeel("com.jgoodies.looks.plastic.Plastic3DLookAndFeel");
-            } catch (InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                Logger.getLogger(this.getName()).log(Level.SEVERE, null, ex);
-            }
-           
-
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
-        SwingUtilities.updateComponentTreeUI(this);
-
-        setBackground(SystemColor.BLUE);
-    }
+    }   
     
     /**
      * @param args the command line arguments

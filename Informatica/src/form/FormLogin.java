@@ -1,15 +1,24 @@
 package form;
 
+import com.jgoodies.looks.plastic.PlasticLookAndFeel;
+import com.jgoodies.looks.plastic.theme.ExperienceRoyale;
 import java.awt.HeadlessException;
+import java.awt.SystemColor;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import model.Usuario;
 
 public class FormLogin extends javax.swing.JFrame {
     
     public FormLogin() {
         initComponents();
+        alterarTema();
     }
     
     @SuppressWarnings("unchecked")
@@ -21,11 +30,11 @@ public class FormLogin extends javax.swing.JFrame {
         tfNome = new javax.swing.JTextField();
         lbSenha = new javax.swing.JLabel();
         tfSenha = new javax.swing.JPasswordField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         btAcessar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
@@ -50,47 +59,6 @@ public class FormLogin extends javax.swing.JFrame {
 
         tfSenha.setName("tfSenha"); // NOI18N
 
-        btAcessar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btAcessar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
-        btAcessar.setText("Acessar");
-        btAcessar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btAcessar.setName("btAcessar"); // NOI18N
-        btAcessar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btAcessar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAcessarActionPerformed(evt);
-            }
-        });
-        btAcessar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btAcessarKeyPressed(evt);
-            }
-        });
-
-        btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
-        btLimpar.setText("Limpar");
-        btLimpar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btLimpar.setName("btLimpar"); // NOI18N
-        btLimpar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btLimparActionPerformed(evt);
-            }
-        });
-
-        btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
-        btSair.setText("Sair");
-        btSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btSair.setName("btSair"); // NOI18N
-        btSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSairActionPerformed(evt);
-            }
-        });
-
         jPanel2.setBackground(new java.awt.Color(153, 204, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, new java.awt.Color(0, 153, 255), null, null));
 
@@ -114,32 +82,75 @@ public class FormLogin extends javax.swing.JFrame {
                 .addComponent(jLabel1))
         );
 
+        btAcessar.setBackground(new java.awt.Color(255, 255, 255));
+        btAcessar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btAcessar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Accept-icon.png"))); // NOI18N
+        btAcessar.setText("Acessar");
+        btAcessar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btAcessar.setName("btAcessar"); // NOI18N
+        btAcessar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btAcessar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAcessarActionPerformed(evt);
+            }
+        });
+        btAcessar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btAcessarKeyPressed(evt);
+            }
+        });
+
+        btLimpar.setBackground(new java.awt.Color(255, 255, 255));
+        btLimpar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Refresh-icon.png"))); // NOI18N
+        btLimpar.setText("Limpar");
+        btLimpar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btLimpar.setName("btLimpar"); // NOI18N
+        btLimpar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
+
+        btSair.setBackground(new java.awt.Color(255, 255, 255));
+        btSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Apps-Dialog-Close-icon.png"))); // NOI18N
+        btSair.setText("Sair");
+        btSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btSair.setName("btSair"); // NOI18N
+        btSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btAcessar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btLimpar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btSair))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbNome)
                             .addComponent(lbSenha))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tfSenha)
+                            .addComponent(tfNome)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btAcessar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btSair, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,17 +164,17 @@ public class FormLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbSenha)
                     .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btAcessar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btLimpar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btSair, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(0, 19, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btAcessar)
+                    .addComponent(btLimpar)
+                    .addComponent(btSair))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(318, 288));
+        setSize(new java.awt.Dimension(337, 290));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -246,7 +257,7 @@ public class FormLogin extends javax.swing.JFrame {
                 new FormLogin().setVisible(true);
             }
         });
-    }
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAcessar;
@@ -260,4 +271,32 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JTextField tfNome;
     private javax.swing.JPasswordField tfSenha;
     // End of variables declaration//GEN-END:variables
+    
+    private void alterarTema(){
+        // lookandfeel muda de cores
+        // biblioteca     looksdemo-2.3.1.jar
+
+        //SkyBlue()
+        //BrownSugar()
+        // DarkStar()  
+        //DesertGreen()
+        //Silver()
+        //ExperienceRoyale()
+        try {
+            PlasticLookAndFeel.setPlasticTheme(new ExperienceRoyale());
+            try {
+                UIManager.setLookAndFeel("com.jgoodies.looks.plastic.Plastic3DLookAndFeel");
+            } catch (InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(this.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        SwingUtilities.updateComponentTreeUI(this);
+
+        setBackground(SystemColor.BLUE);
+    }
+
 }
